@@ -28,7 +28,7 @@
 						<li><a href="admin.jsp">你好，超级管理员</a></li>
 						
 						<li><a href="admin.jsp"><span
-								class="glyphicon glyphicon-log-in"></span>退出</a></li>
+								class="glyphicon glyphicon-log-in"></span>退出登陆</a></li>
 						
 					</ul>
 				</div>

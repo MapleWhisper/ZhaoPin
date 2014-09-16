@@ -5,14 +5,15 @@
 	<%@ include file="header.jspf" %>
   </head>
   
-  <body>
+  <body >
     	<div class="container">
-    		<div class="row">
+    		<%@ include file="head.jsp" %>
+    		<div class="row" style="margin-top: 60px">
     			<div class="col-sm-3">
 					<%@ include file="left.jsp" %>
     			</div>
     			<div class="col-sm-9">
-				<div class="panel panel-primary">
+				<div class="panel panel-success">
 					<div class="panel-heading">管理员列表</div>
 				
 				<div class="panel-body">

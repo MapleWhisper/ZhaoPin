@@ -7,6 +7,7 @@
   
   <body>
     	<div class="container">
+    		<%@ include file="head.jsp" %>
     		<div class="row">
     			<div class="col-sm-3">
 					<%@ include file="left.jsp" %>

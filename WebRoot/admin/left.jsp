@@ -38,8 +38,8 @@
 <!-- 				系统管理 -->
 				<li><span><i class="glyphicon glyphicon-minus-sign"></i>系统管理</span>
 					<ul>
-						<li><span><i class="glyphicon glyphicon-leaf"></i><a>列表</a></span></li>
-						<li><span><i class="glyphicon glyphicon-leaf"></i><a>添加</a></span></li>
+						<li><span><i class="glyphicon glyphicon-leaf"></i><a href="admin.jsp">列表</a></span></li>
+						<li><span><i class="glyphicon glyphicon-leaf"></i><a href="addAdmin.jsp">添加</a></span></li>
 						
 					</ul>
 				</li>

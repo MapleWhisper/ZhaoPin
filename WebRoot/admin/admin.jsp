@@ -12,11 +12,12 @@
 
 <body>
 	<div class="container">
-		<div class="row">
-			<div class="col-sm-4">
+		<%@ include file="head.jsp"%>
+		<div class="row " style="margin-top: 70px">
+			<div class="col-sm-3">
 				<%@ include file="left.jsp"%>
 			</div>
-			<div class="col-sm-8 ">
+			<div class="col-sm-9 ">
 				<div class="panel panel-primary">
 					<div class="panel-heading">管理员列表</div>
 
@@ -40,7 +41,7 @@
 						<div class="row">
 							<div class="col-sm-6 col-sm-offset-5">
 								<div class="no1">
-									<a class="btn btn-success " href="#">添加管理员</a>
+									<a class="btn btn-success " href="addAdmin.jsp">添加管理员</a>
 								</div>
 
 							</div>

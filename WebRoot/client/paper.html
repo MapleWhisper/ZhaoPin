@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>模板 Html</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet"
+	href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<style type="text/css">
+	.quest {font-size: medium;margin-top: 20px}
+	.questArea {margin-top: 10px;padding-left: 50px}
+	.nav-left {position: fixed;width: 150px;height: 100px}
+</style>
+<script>
+		$(function(){
+			$(".pre").click(function(){
+				//alert("ok");
+				$(this).addClass("active");
+				$(this).siblings().removeClass("active");
+			})
+		});
+		
+</script>
+</head>
+
+<body>
+	<!--导航条 -->
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><strong>教育公司图标</strong></a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="index.html">社会招聘</a></li>
+					<li><a href="company.html">公司介绍</a></li>
+					</li>
+				</ul>
+				<form class="navbar-form navbar-left" role="search">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="搜索岗位">
+					</div>
+					<button type="submit" class="btn btn-default">提交</button>
+				</form>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">欢迎来到 集团招聘！</a></li>
+					<li><a href="">个人中心</a></li>
+					<li><a href="login.html"><span
+							class="glyphicon glyphicon-log-in"></span>登陆</a></li>
+					<li><a href="register.html"><span
+							class="glyphicon glyphicon-registration-mark"></span>注册</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+	<!--导航条 -->
+	<div class="container" style="margin-bottom: 200px">
+		<div class="page-header " style="text-align: center;margin-top: 100px">
+			<h1 >招聘问卷试题</h1>
+		</div>
+		<div class="row">
+			<!--左侧的导航条 -->
+		  <div class="col-sm-2">
+	  			<ul class="nav nav-pills nav-stacked nav-left" role="tablist" id="nav" >
+  					  <li role="presentation" class="pre active"><a href="#part1" >单选题</a></li>
+					  <li role="presentation" class="pre"><a href="#part2" >多选题</a></li>
+					  <li role="presentation" class="pre"><a href="#part3" >判断题</a></li>
+					  <li role="presentation" class="pre"><a href="#part4" >问答题</a></li>
+				</ul>
+		  </div><!--左侧的导航条 -->
+		  <div class="col-sm-10">
+		  
+		   <form action="" method="post">
+<!-- 		   	单选题 -->
+			<div class="panel panel-primary" id="part1">
+			  <div class="panel-heading">
+			    <h3 class="panel-title">第一部分 单选题</h3>
+			  </div>
+			  <div class="panel-body">
+			  		<div style="margin-left: 50px">
+				  		<div class="quest"><code>第1题</code> 位于祖国正北方内蒙古自治区中部，简称为二连的是哪个市 </div>
+						<div class="radio"><label><input type="radio" value="1">A:二连浩特</label></div>
+						<div class="radio"><label><input type="radio" value="2">B:二连浩特</label></div>
+						<div class="radio"><label><input type="radio" value="3">C:二连浩特</label></div>
+						<div class="radio"><label><input type="radio" value="4">D:二连浩特</label></div>
+					</div>
+					
+					<div style="margin-left: 50px">
+				  		<div class="quest"><code>第2题</code> 位于祖国正北方内蒙古自治区中部，简称为二连的是哪个市 </div>
+						<div class="radio"><label><input type="radio" value="1">A:二连浩特</label></div>
+						<div class="radio"><label><input type="radio" value="2">B:二连浩特</label></div>
+						<div class="radio"><label><input type="radio" value="3">C:二连浩特</label></div>
+						<div class="radio"><label><input type="radio" value="4">D:二连浩特</label></div>
+					</div>
+			  </div>
+			</div>
+			
+<!-- 			多选题 -->
+			<div class="panel panel-primary" id="part2">
+			  <div class="panel-heading">
+			    <h3 class="panel-title">第二部分 多选题</h3>
+			  </div>
+			  <div class="panel-body">
+			    	<div style="margin-left: 50px">
+				  		<div class="quest"><code>第1题</code> 位于祖国正北方内蒙古自治区中部，简称为二连的是哪个市 </div>
+						<div class="checkbox"><label><input type="checkbox" value="1">A:二连浩特</label></div>
+						<div class="checkbox"><label><input type="checkbox" value="2">B:二连浩特</label></div>
+						<div class="checkbox"><label><input type="checkbox" value="3">C:二连浩特</label></div>
+						<div class="checkbox"><label><input type="checkbox" value="4">D:二连浩特</label></div>
+					</div>
+			  </div>
+			</div>
+			
+<!-- 			判断题 -->
+			<div class="panel panel-primary" id="part3">
+			  <div class="panel-heading">
+			    <h3 class="panel-title">第三部分 判断题</h3>
+			  </div>
+			  <div class="panel-body">
+			    	<div style="margin-left: 50px">
+				  		<div class="quest"><code>第1题</code> 位于祖国正北方内蒙古自治区中部，简称为二连的是哪个市 </div>
+						<div class="radio"><label><input type="radio" value="1">A:对</label></div>
+						<div class="radio"><label><input type="radio" value="2">B:错</label></div>
+					</div>
+					<div style="margin-left: 50px">
+				  		<div class="quest"><code>第2题</code> 位于祖国正北方内蒙古自治区中部，简称为二连的是哪个市 </div>
+						<div class="radio"><label><input type="radio" value="1">A:对</label></div>
+						<div class="radio"><label><input type="radio" value="2">B:错</label></div>
+					</div>
+			  </div>
+			</div>
+			
+<!-- 			 问答题 -->
+			<div class="panel panel-primary" id="part4">
+			  <div class="panel-heading">
+			    <h3 class="panel-title">第四部分 问答题</h3>
+			  </div>
+			  <div class="panel-body">
+			    	<div class="quest"><code>第1题</code> 白居易的《暮江吟》中，“可怜九月初三夜”的下一句是什么？ </div>
+			    	<div class="questArea">
+			    		<textarea class="form-control" >露似珍珠月似弓</textarea>
+			    	</div>
+			    	
+			    	<div class="quest"><code>第2题</code> 白居易的《暮江吟》中，“可怜九月初三夜”的下一句是什么？ </div>
+			    	<div class="questArea">
+			    		<textarea class="form-control" >露似珍珠月似弓</textarea>
+			    	</div>
+			  </div>
+			</div>
+			<div>
+				<center><input type="submit" class="btn btn-primary btn-lg" value="提交问卷"></input></center>
+			</div>
+		   </form>
+		   </div>
+		</div> <!-- 第一行结束 -->
+		
+		
+	</div>
+<!-- 	container结束 -->
+</body>
+</html>

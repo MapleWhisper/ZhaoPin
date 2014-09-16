@@ -56,6 +56,9 @@
 			</div>
 
 		</div>
+		
+	</div>
+		<%@ include file="buttom.jsp" %>
 </body>
 </html>
 

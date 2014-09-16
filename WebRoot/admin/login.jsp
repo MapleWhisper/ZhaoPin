@@ -38,7 +38,7 @@
 									<!--  
 										<button type="submit" class="btn btn-warning">登录</button>
 									-->
-									<a href="#" class="btn btn-primary" >管理员登陆</a>
+									<a href="admin.jsp" class="btn btn-primary" >管理员登陆</a>
 									</div>
 								</div>
 							</form>
@@ -51,6 +51,8 @@
 		</div>
     		
     	</div>
+<!--     	container -->
+		
     	
   </body>
 </html>

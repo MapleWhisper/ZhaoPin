@@ -84,7 +84,8 @@
 		</div>
 
 	</div>
-
+<!-- 	container -->
+	<%@ include file="buttom.jsp" %>
 </body>
 </html>
 

@@ -42,7 +42,7 @@
     border:1px solid #999;
     border-radius:5px;
     display:inline-block;
-    padding:2px 8px;
+    padding:2px 6px;
     text-decoration:none
 }
 .tree li.parent_li>span {

@@ -25,7 +25,7 @@
 						
 					</form>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="admin.jsp">你好，超级管理员</a></li>
+						<li><p class="navbar-text" >你好，超级管理员</p></li>
 						
 						<li><a href="admin.jsp"><span
 								class="glyphicon glyphicon-log-in"></span>退出登陆</a></li>

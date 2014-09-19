@@ -1,67 +1,19 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
 <html>
-<head>
-<title>模板 Html</title>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-</head>
-
-<body style="background: url(../image/index-bg.jpg) repeat;">
-	<div  style="margin-top: 50px">
+  <head>
+	<%@ include file="header.jspf" %>
+  </head>
+  
+  <body style="background: url(../image/index-bg.jpg) repeat;">
+    	<div  style="margin-top: 50px">
 			<img width="100%" src="../image/index-im1.jpg">
 	</div>
 
 	<!--container -->
 	<div class="container">
+		<%@ include file="head.jsp" %>
 		
-		<!--导航条 -->
-		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-			<div class="container-fluid">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed"
-						data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span> <span
-							class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#"><strong>教育公司图标</strong></a>
-				</div>
-
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse"
-					id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<li class="active"><a href="index.html">社会招聘</a></li>
-						<li><a href="company.html">公司介绍</a></li>
-					</ul>
-					<form class="navbar-form navbar-left" role="search">
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="搜索岗位">
-						</div>
-						<button type="submit" class="btn btn-default">提交</button>
-					</form>
-					<ul class="nav navbar-nav navbar-right">
-						<li><p class="navbar-text">欢迎来到 集团招聘！</p></li>
-						<li><a href="personalCenter.html">个人中心</a></li>
-						<li><a href="../admin/login.jsp">登陆后台</a></li>
-						<li><a href="login.html"><span
-								class="glyphicon glyphicon-log-in"></span>登陆</a></li>
-						<li><a href="register.html"><span
-								class="glyphicon glyphicon-registration-mark"></span>注册</a></li>
-					</ul>
-				</div>
-				<!-- /.navbar-collapse -->
-			</div>
-			<!-- /.container-fluid -->
-		</nav>
-		<!--导航条 -->
 		<div class="row" style="margin-top: 20px">
 			<div class="col-md-9">
 				<div class="panel panel-info">
@@ -116,7 +68,7 @@
 								<td>截止日期</td>
 							</tr>
 							<tr>
-								<td><a href="position.html">（集团安全）资深Android开发工程师-Nokia</a></td>
+								<td><a href="position.jsp">（集团安全）资深Android开发工程师-Nokia</a></td>
 								<td>开发类</td>
 								<td>杭州市</td>
 								<td>若干</td>
@@ -237,6 +189,6 @@
 	</div>
 	<!--container -->
 
-</body>
-
+    	<%@ include file="buttom.jsp" %>
+  </body>
 </html>

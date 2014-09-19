@@ -1,58 +1,14 @@
-<html>
-<head>
-<title>注册页面</title>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link rel="stylesheet"
-	href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-	<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-		
-</head>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
-<body  style=""  >
-<div class="container" >
-	<div class="row">
-			<!--导航条 -->
-				<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-					  <div class="container-fluid">
-					    <!-- Brand and toggle get grouped for better mobile display -->
-					    <div class="navbar-header">
-					    	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						        <span class="sr-only">Toggle navigation</span>
-						        <span class="icon-bar"></span>
-						        <span class="icon-bar"></span>
-						        <span class="icon-bar"></span>
-						     </button>
-					      <a class="navbar-brand" href="#"><strong>教育公司图标</strong></a>
-					    </div>
-					
-					    <!-- Collect the nav links, forms, and other content for toggling -->
-					    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					      <ul class="nav navbar-nav">
-					        <li class="active"><a href="index.html">社会招聘</a></li>
-					        <li><a href="company.html">公司介绍</a></li>
-					        </li>
-					      </ul>
-					      <form class="navbar-form navbar-left" role="search">
-					        <div class="form-group">
-					          <input type="text" class="form-control" placeholder="搜索岗位">
-					        </div>
-					        <button type="submit" class="btn btn-default">提交</button>
-					      </form>
-					      <ul class="nav navbar-nav navbar-right">
-					       		 <li><a href="#">欢迎来到  集团招聘！</a></li>
-					       		 <li><a href="personalCenter.html">个人中心</a></li>
-					            <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span>登陆</a></li>
-					            <li><a href="register.html"><span class="glyphicon glyphicon-registration-mark"></span>注册</a></li>
-					      </ul>
-					    </div><!-- /.navbar-collapse -->
-					  </div><!-- /.container-fluid -->
-					</nav><!--导航条 -->
-		</div>
-	<div class="row" style="margin-top: 100px;margin-top:150px">
+<html>
+  <head>
+	<%@ include file="header.jspf" %>
+  </head>
+  
+  <body>
+    	<div class="container">
+    		<%@ include file="head.jsp" %>
+    		<div class="row" style="margin-top: 100px;margin-top:150px">
 		 <div class="col-sm-10 col-sm-offset-1">	 
 			<div class="panel panel-default">
 				<div class="panel-heading">个人信息简介</div>
@@ -294,21 +250,22 @@
 								</table>
 								<strong><h5>
 										获取奖励
-										<h5></strong>
+										</h5></strong>
 								<textarea class="form-control" row="5"></textarea>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-6 col-sm-4">									
-							<a href="paper.html" class="btn btn-primary btn-lg active" role="button">开始答题</a>
-							<button   type="submit" class="btn btn-info">提交简历 </button>
+<!-- 							<input   type="submit" onClick="location.href='personalCenter.jsp' " class="btn btn-primary btn-lg " value="提交简历"> </input> -->
+							<a   href='personalCenter.jsp'  class="btn btn-primary btn-lg " > 提交简历</a>
 						</div>										
 					</div>
 					</form>
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
-</body>
+    		
+    	</div>
+    	<%@ include file="buttom.jsp" %>
+  </body>
 </html>

@@ -7,6 +7,8 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  * 
  * 进入客户端的IndexControl
+ * 访问/ZhaoPin/client/index
+ * 看到Succeess说明spring mvc成功
  * @author 广路
  *
  */

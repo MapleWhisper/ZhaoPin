@@ -5,7 +5,7 @@
 	<%@ include file="header.jspf" %>
   </head>
   
-  <body style="background:url(../image/login-bg.jpg);>
+  <body style="background:url(../image/login-bg.jpg);">
     	<div class="container">
     		<%@ include file="head.jsp" %>
     		

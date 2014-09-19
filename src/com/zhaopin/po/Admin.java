@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
+import org.springframework.stereotype.Component;
+
 /**
  * 
  * 管理员类，对应于数据库中管理员表 
@@ -15,7 +17,7 @@ import javax.persistence.Transient;
  * @author 于广路
  *
  */
-
+@Component
 @Entity
 public class Admin {
 	@Id

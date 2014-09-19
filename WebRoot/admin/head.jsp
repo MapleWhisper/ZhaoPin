@@ -19,7 +19,7 @@
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="admin.jsp">后台管理</a></li>
-						<li ><a href="../client/index.html">前台页面</a></li>
+						<li ><a href="../client/index.jsp">前台页面</a></li>
 					</ul>
 					<form class="navbar-form navbar-left" role="search">
 						

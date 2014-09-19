@@ -8,6 +8,7 @@
   <body style="background: url('../image/admin-login-bg.jpg');">
     	<div class="container">
     		<!--登陆表单 -->
+    		<%@ include file="head.jsp" %>
 		<div class="row" style="margin-top: 250px; ">
 			<div class="row">
 				<div class="col-sm-4 col-sm-offset-4" >
@@ -38,7 +39,7 @@
 									<!--  
 										<button type="submit" class="btn btn-warning">登录</button>
 									-->
-									<a href="admin.jsp" class="btn btn-primary" >管理员登陆</a>
+									<a href="../admin/admin.jsp" class="btn btn-primary" >管理员登陆</a>
 									</div>
 								</div>
 							</form>

@@ -18,7 +18,7 @@
 						</div>
 						<div class="panel-body">
 					<!--表单 -->
-							<form action="login" class="form-horizontal" role="form" style="margin-top: 20px" method="post">
+							<form action="loginAdmin/login" class="form-horizontal" role="form" style="margin-top: 20px" method="post">
 								<div class="form-group" align="center">
 									<label for="inputEmail3" class="col-sm-3 control-label">用户名:</label>
 									<div class="col-sm-9">

@@ -5,9 +5,9 @@
 	<%@ include file="header.jspf" %>
   </head>
   
-  <body style="background: url(../image/index-bg.jpg) repeat;">
+  <body style="background: url(${pageContext.request.contextPath}/image/index-bg.jpg) repeat;">
     	<div  style="margin-top: 50px">
-			<img width="100%" src="../image/index-im1.jpg">
+			<img width="100%" src="${pageContext.request.contextPath}/image/index-im1.jpg">
 	</div>
 
 	<!--container -->
@@ -57,7 +57,7 @@
 					</div>
 				</div>
 
-				<div class="panel panel-info" style="margin-top: 15px ; margin-bottom: 100px">
+				<div class="panel panel-info" style="margin-top: 15px ">
 					<div class="panel-body">
 						<table class="table table-striped table-hover">
 							<tr class="warning">
@@ -68,7 +68,7 @@
 								<td>截止日期</td>
 							</tr>
 							<tr>
-								<td><a href="position.jsp">（集团安全）资深Android开发工程师-Nokia</a></td>
+								<td><a href="position">（集团安全）资深Android开发工程师-Nokia</a></td>
 								<td>开发类</td>
 								<td>杭州市</td>
 								<td>若干</td>

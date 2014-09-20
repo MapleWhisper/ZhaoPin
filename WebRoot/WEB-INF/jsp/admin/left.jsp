@@ -16,9 +16,9 @@
 				<li><span><i class="glyphicon glyphicon-minus-sign"></i>岗位管理</span>
 					<ul>
 						<li><span><i class="glyphicon glyphicon-leaf"></i><a
-								href="position.jsp">岗位列表</a></span></li>
+								href="${pageContext.request.contextPath}/admin/position">岗位列表</a></span></li>
 						<li><span><i class="glyphicon glyphicon-leaf"></i><a
-								href="addPosition.jsp">添加岗位</a></span></li>
+								href="${pageContext.request.contextPath}/admin/position/add">添加岗位</a></span></li>
 					</ul></li>
 
 				<!-- 				简历管理 -->
@@ -40,9 +40,9 @@
 				<li><span><i class="glyphicon glyphicon-minus-sign"></i>系统管理</span>
 					<ul>
 						<li><span><i class="glyphicon glyphicon-leaf"></i><a
-								href="admin.jsp">管理员列表</a></span></li>
+								href="${pageContext.request.contextPath}/admin/admin">管理员列表</a></span></li>
 						<li><span><i class="glyphicon glyphicon-leaf"></i><a
-								href="addAdmin.jsp">添加管理员</a></span></li>
+								href="${pageContext.request.contextPath}/admin/admin/add">添加管理员</a></span></li>
 
 					</ul></li>
 			</ul></li>

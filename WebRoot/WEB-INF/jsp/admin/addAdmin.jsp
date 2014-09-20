@@ -25,8 +25,7 @@
 									
 									<label for="inputEmail3" class="col-sm-3 control-label">管理员账号</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control inputxt" id="username"
-											placeholder="1205">
+										<input type="text" class="form-control inputxt" id="username" placeholder="username">
 									</div>
 								</div>
 								
@@ -34,21 +33,21 @@
 									<label for="inputEmail3" class="col-sm-3 control-label">输入密码</label>
 									<div class="col-sm-9">
 										<input type="text" class="form-control inputxt" id="username"
-											placeholder="123****">
+											placeholder="password">
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="inputEmail3" class="col-sm-3 control-label">确认输入密码</label>
 									<div class="col-sm-9">
 										<input type="text" class="form-control inputxt" id="username"
-											placeholder="123****">
+											placeholder="confirm password">
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="inputEmail3" class="col-sm-3 control-label">姓名</label>
 									<div class="col-sm-9">
 										<input type="text" class="form-control inputxt" id="username"
-											placeholder="张三">
+											placeholder="name">
 									</div>
 								</div>
 								<div class="form-group" data-toggle="tooltip" data-placement="top" title="可多选" onmouseover="$(this).tooltip('show')">
@@ -69,7 +68,7 @@
 									
 									<div class="form-group">    
 										 <div class="col-sm-6 col-sm-offset-4">
-											<button type="submit" class="btn btn-info  btn-lg ">提交管理员</button>																			 
+											<button type="submit" class="btn btn-primary  btn-lg ">提交管理员</button>																			 
 										 </div>
 									</div>
 								</div>

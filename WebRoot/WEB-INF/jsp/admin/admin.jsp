@@ -30,18 +30,22 @@
 								<td>操作</td>
 								<td>操作</td>
 							</tr>
-							<tr>
-								<td>武玉密</td>
-								<td>admin</td>
-								<td>超级管理员</td>
-								<td><button type="submit" class="btn btn-info">修改</button></td>
-								<td><button type="submit" class="btn btn-danger">删除</button></td>
+						 <c:forEach items="${adminList}" var="admin">
+						 	<tr>
+								<td>${admin.name }</td>
+								<td>${admin.username }</td>
+								<td>${admin.position }</td>
+								<td><a href="admin/edit/id/${admin.id }" class="btn btn-info">修改</a></td>
+								<td><a href="admin/delete/id/${admin.id}" class="btn btn-danger" onclick="return confirm('确认要删除吗？')">删除</a></td>
 							</tr>
+						 </c:forEach>
+							
+							
 						</table>
 						<div class="row">
 							<div class="col-sm-6 col-sm-offset-5">
 								<div class="no1">
-									<a class="btn btn-success " href="addAdmin.jsp">添加管理员</a>
+									<a class="btn btn-primary " href="addAdmin.jsp">添加管理员</a>
 								</div>
 
 							</div>

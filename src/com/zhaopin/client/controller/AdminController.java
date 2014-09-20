@@ -36,10 +36,9 @@ public class AdminController {
 	 * @param admin
 	 * @return
 	 */
-	@RequestMapping("/login")
+	@RequestMapping("/loginAdmin/login")
 	public String login(@ModelAttribute Admin admin,HttpSession session){
-		System.out.println(admin.getUsername());
-		System.out.println(admin.getPassword());
+		
 		Admin a =adminServer.login(admin);
 		System.out.println(a==null);
 		
@@ -47,11 +46,11 @@ public class AdminController {
 		//重定向不受前缀后缀干扰，直接跳转到指定url
 		if(a!=null){
 			session.setAttribute("admin", a);
-			return "redirect:/admin/position.jsp";
+			return "redirect:/admin/position";
 		}
 		//登陆失败
 		//重定向不受前缀后缀干扰，直接跳转到指定url
-		return "redirect:/client/loginAdmin.jsp";
+		return "redirect:/client/loginAdmin";
 		
 	}
 

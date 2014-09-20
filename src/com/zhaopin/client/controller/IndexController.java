@@ -17,8 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class IndexController {
 	
 	@RequestMapping("index")
-	public ModelAndView execute(){
+	public String execute(){
 		System.out.println("ok");
-		return new ModelAndView("success");
+		return "/client/index";
 	}
 }

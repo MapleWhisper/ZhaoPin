@@ -11,8 +11,8 @@
 
 	<property name="myeclipse.connection.profile">Mysql</property>
 	<property name="javax.persistence.validation.mode">none</property>
-	<property name="hibernate.current_session_context_class">thread</property>
 	<mapping class="com.zhaopin.po.Admin" />
+	<mapping class="com.zhaopin.po.Position" />
 
 
 </session-factory>

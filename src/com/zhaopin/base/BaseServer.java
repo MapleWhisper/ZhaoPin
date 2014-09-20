@@ -2,6 +2,7 @@ package com.zhaopin.base;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @param <T>
  */
+@Repository
 @Transactional
 public interface BaseServer<T> {
 	/**

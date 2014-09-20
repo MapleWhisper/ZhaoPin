@@ -7,5 +7,9 @@ import com.zhaopin.po.Admin;
 
 public class TestSpring {
 	
-	
+	public static void main(String[] args) {
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+		Admin admin = (Admin) ctx.getBean("admin");
+		
+	}
 }

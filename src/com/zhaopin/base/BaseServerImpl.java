@@ -22,8 +22,8 @@ import org.springframework.transaction.annotation.Transactional;
  * @param <E>
  */
 @Repository
-@Transactional
 @SuppressWarnings("unchecked")
+@Transactional
 public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 	
 	/**

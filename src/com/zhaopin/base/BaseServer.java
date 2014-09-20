@@ -2,6 +2,8 @@ package com.zhaopin.base;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 /**
  * 公共的 Server公共接口
  * 所有的server接口必须继承此接口
@@ -10,7 +12,7 @@ import java.util.List;
  *
  * @param <T>
  */
-
+@Transactional
 public interface BaseServer<T> {
 	/**
 	 * 保存实体

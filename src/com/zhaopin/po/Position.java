@@ -20,7 +20,7 @@ public class Position {
 	private String position;		//职位	教师，管理
 	private String type;			//类型  全职，专职，兼职，实习
 	private String company;			//公司
-	private Double salary;			//薪水
+	private String salary;			//薪水
 	
 	private Date createdate;		//创建日期
 	private Date endDate;			//截止日期
@@ -136,10 +136,10 @@ public class Position {
 	public void setSuccessNumber(Integer successNumber) {
 		this.successNumber = successNumber;
 	}
-	public Double getSalary() {
+	public String getSalary() {
 		return salary;
 	}
-	public void setSalary(Double salary) {
+	public void setSalary(String salary) {
 		this.salary = salary;
 	}
 	

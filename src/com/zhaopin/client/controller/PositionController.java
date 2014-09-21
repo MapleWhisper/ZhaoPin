@@ -20,7 +20,7 @@ public class PositionController {
 	 * 显示职位详情页面
 	 * @return
 	 */
-	@RequestMapping("/position/id/{id}")
+	@RequestMapping("/position/show/id/{id}")
 	public ModelAndView loginAdmin( @RequestParam int id,Model model){
 		model.addAttribute("position",positionServer.getById(id));
 		

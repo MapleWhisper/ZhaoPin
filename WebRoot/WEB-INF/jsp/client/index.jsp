@@ -34,12 +34,8 @@
 							<table>
 								<tr>	
 									<td>工作地点:</td>
-									<td><a href="#" class="hre">北京</a></td>
-									<td><a href="#" class="hre">杭州</a></td>
-									<td><a href="#" class="hre">上海</a></td>
-									<td><a href="#">深圳</a></td>
-									<td><a href="#">更多>></a></td>
-									<td><a href="#">更多>></a></td>
+									<td><a href="#" class="hre">哈尔滨</a></td>
+									
 								</tr>
 								<tr>
 									<td>职位类别：</td>
@@ -59,79 +55,29 @@
 
 				<div class="panel panel-info" style="margin-top: 15px ">
 					<div class="panel-body">
+			<!-- 职业信息 -->
 						<table class="table table-striped table-hover">
-							<tr class="warning">
+							<tr class="info">
 								<td>职位名称</td>
 								<td>职位类别</td>
 								<td>工作地点</td>
 								<td>招聘人数</td>
 								<td>截止日期</td>
-							</tr>
-							<tr>
-								<td><a href="position">（集团安全）资深Android开发工程师-Nokia</a></td>
-								<td>开发类</td>
-								<td>杭州市</td>
-								<td>若干</td>
-								<td>2014-09-13</td>
-							</tr>
-							<tr>
-								<td>（集团安全）资深Android开发工程师-Nokia</td>
-								<td>开发类</td>
-								<td>杭州市</td>
-								<td>若干</td>
-								<td>2014-09-13</td>
-							</tr>
-							<tr>
-								<td>（集团安全）资深Android开发工程师-Nokia</td>
-								<td>开发类</td>
-								<td>杭州市</td>
-								<td>若干</td>
-								<td>2014-09-13</td>
-							</tr>
-							<tr>
-								<td>（集团安全）资深Android开发工程师-Nokia</td>
-								<td>开发类</td>
-								<td>杭州市</td>
-								<td>若干</td>
-								<td>2014-09-13</td>
-							</tr>
-							<tr>
-								<td>（集团安全）资深Android开发工程师-Nokia</td>
-								<td>开发类</td>
-								<td>杭州市</td>
-								<td>若干</td>
-								<td>2014-09-13</td>
-							</tr>
-							<tr>
-								<td>（集团安全）资深Android开发工程师-Nokia</td>
-								<td>开发类</td>
-								<td>杭州市</td>
-								<td>若干</td>
-								<td>2014-09-13</td>
-							</tr>
-							<tr>
-								<td>（集团安全）资深Android开发工程师-Nokia</td>
-								<td>开发类</td>
-								<td>杭州市</td>
-								<td>若干</td>
-								<td>2014-09-13</td>
-							</tr>
-							<tr>
-								<td>（集团安全）资深Android开发工程师-Nokia</td>
-								<td>开发类</td>
-								<td>杭州市</td>
-								<td>若干</td>
-								<td>2014-09-13</td>
-							</tr>
-							<tr>
-								<td>（集团安全）资深Android开发工程师-Nokia</td>
-								<td>开发类</td>
-								<td>杭州市</td>
-								<td>若干</td>
-								<td>2014-09-13</td>
-							</tr>
+							</tr>	
+							
+							<c:forEach items="${positionList}" var="p">
+								<tr>
+									<td><a href="position/show/id/${p.id}">${p.name}</a></td>
+									<td>${p.position }</td>
+									<td>${p.workPlace }</td>
+									<td>${p.recruitNumber }</td>
+									<td><fm:formatDate value="${p.endDate}"></fm:formatDate></td>
+									
+								</tr>
+							</c:forEach>
 							
 						</table>
+				<!-- 导航条 
 						<div class="row">
 							<div class="col-md--4 col-md-offset-8">
 								<ul class="pagination ">
@@ -145,6 +91,8 @@
 								</ul>
 							</div>
 						</div>
+					-->
+					
 					</div>
 				</div>
 
@@ -157,13 +105,13 @@
 						<h3 class="panel-title">最近岗位</h3>
 					</div>
 					<div class="panel-body" >
-						<ul >
+						<ul style="margin-left: -25">
 							<li >（集团安全）资深Andr前安全...</li>
 							<li >前安全测试工程师/安...</li>
 							<li >前阿里巴巴无线事业部招聘...</li>
 							<li >前安全开发工程师（北京）...</li>
 							<li >前资深网络安全测试开发...</li>
-						</ul>
+						</ul > 
 					</div>
 				</div>
 				
@@ -172,7 +120,7 @@
 						<h3 class="panel-title">招聘须知</h3>
 					</div>
 					<div class="panel-body" >
-						<ul >
+						<ul style="margin-left: -25">
 							<li >如何应聘公司的职位？...</li>
 							<li >应届生如何应聘？...</li>
 							<li >腾讯应聘流程是什么？...</li>

@@ -1,5 +1,15 @@
 package com.zhaopin.po;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import org.springframework.stereotype.Component;
+
+@Entity
+@Component
 public class User {
 	private Integer id;
 	private String username;
@@ -8,13 +18,16 @@ public class User {
 	private String email;
 	private String phoneNumber;
 	
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
+	@Column(unique=true)
 	public String getUsername() {
 		return username;
 	}

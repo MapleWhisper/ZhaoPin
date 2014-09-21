@@ -14,52 +14,51 @@
 					<div class="panel-heading">注册信息</div>
 					<div class="panel-body">
 						<div class="row">
-							<div class="col-sm-4" >
-								<button class="btn btn-primary btn-lg" style="border-top:1px">上传图片</button>
-							</div>
-							<div class="col-sm-8">
-								<form class="form-horizontal" role="form" id="form">
+							
+								<form action="register/save" class="form-horizontal" role="form" id="form" method="post">
+									
 									<div class="form-group">
-										<label for="inputEmail3" class="col-sm-3 control-label">账号</label>
-										<div class="col-sm-9">
-											<input type="text" class="form-control inputxt" id="username" 
-												placeholder="账号">
+										<label for="inputPassword3" class="col-sm-3 control-label"
+											id="">邮箱</label>
+										<div class="col-sm-8">
+											<input type="email"  name="email" class="form-control" id="email"
+												>
 										</div>
-										
-										
 									</div>
+									
 									<div class="form-group">
 										<label for="inputPassword3" class="col-sm-3 control-label">密码</label>
-										<div class="col-sm-9">
-											<input type="password" class="form-control" id="pwd1"
-												placeholder="Password">
+										<div class="col-sm-8">
+											<input type="password" name="password" class="form-control" id="pwd1"
+												>
 										</div>
 									</div>
 
 									<div class="form-group">
 										<label for="inputPassword3" class="col-sm-3 control-label">确认密码</label>
-										<div class="col-sm-9">
+										<div class="col-sm-8">
 											<input type="password" class="form-control" id="pwd2"
-												placeholder="Password">
+												>
 										</div>
 									</div>
 
-
+									
 									<div class="form-group">
 										<label for="inputPassword3" class="col-sm-3 control-label"
-											id="">邮箱</label>
-										<div class="col-sm-9">
-											<input type="email" class="form-control" id="email"
-												placeholder="Email">
+											id="">真实姓名</label>
+										<div class="col-sm-8">
+											<input type="text" name="name" class="form-control" id="name" >
 										</div>
 									</div>
+									
+									
 
 
 									<div class="form-group">
 										<label for="inputPassword3" class="col-sm-3 control-label">手机号</label>
-										<div class="col-sm-9">
-											<input type="text" class="form-control" id="phoneNumber"
-												placeholder="Photo">
+										<div class="col-sm-8">
+											<input type="text" name="phoneNumber" class="form-control" id="phoneNumber"
+												>
 										</div>
 									</div>
 

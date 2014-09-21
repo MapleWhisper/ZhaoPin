@@ -30,10 +30,10 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li><p class="navbar-text">欢迎来到 集团招聘！</p></li>
 						<li><a href="personalCenter.jsp">个人中心</a></li>
-						<li><a href="loginAdmin.jsp">登陆后台</a></li>
-						<li><a href="login.jsp"><span
+						<li><a href="${pageContext.request.contextPath}/admin/admin">登陆后台</a></li>
+						<li><a href="${pageContext.request.contextPath}/client/login"><span
 								class="glyphicon glyphicon-log-in"></span>登陆</a></li>
-						<li><a href="register.jsp"><span
+						<li><a href="${pageContext.request.contextPath}/client/register"><span
 								class="glyphicon glyphicon-registration-mark"></span>注册</a></li>
 					</ul>
 				</div>

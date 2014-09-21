@@ -81,10 +81,11 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 	 */
 	@Override
 	public void delete(Integer id) {
-		
-		Object entry = this.getById(id);
+		E entry = this.getById(id);
+		Session session = getSession();
 		if(entry!=null){
-			getSession().delete(entry);
+			session.delete(entry);
+			session.flush();
 		}
 	}
 	
@@ -109,14 +110,8 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 	 */
 	@Override
 	public List<E> findAll() {
-		List list = new ArrayList<>();
-		Query query = getSession().createQuery("from "+clazz.getSimpleName()).setCacheable(true);
-		Iterator<E> it = query.iterate();
-		while(it.hasNext()){
-			list.add(it.next());
-		}
 		
-		return list;
+		return 	(List<E>) getSession().createQuery("from "+clazz.getSimpleName()).list();
 	}
 	
 	/**

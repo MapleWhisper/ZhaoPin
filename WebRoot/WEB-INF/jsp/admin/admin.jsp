@@ -45,7 +45,7 @@
 						<div class="row">
 							<div class="col-sm-6 col-sm-offset-5">
 								<div class="no1">
-									<a class="btn btn-primary " href="addAdmin.jsp">添加管理员</a>
+									<a class="btn btn-primary " href="admin/add">添加管理员</a>
 								</div>
 
 							</div>

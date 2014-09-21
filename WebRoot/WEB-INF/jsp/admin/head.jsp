@@ -17,8 +17,8 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="admin.jsp">后台管理</a></li>
-						<li ><a href="../client/index.jsp">前台页面</a></li>
+						<li class="active"><a href="${pageContext.request.contextPath}/admin/admin">后台管理</a></li>
+						<li ><a href="${pageContext.request.contextPath}/client/index">前台页面</a></li>
 					</ul>
 					<form class="navbar-form navbar-left" role="search">
 						
@@ -26,8 +26,7 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li><p class="navbar-text" >你好，超级管理员</p></li>
 						
-						<li><a href="admin.jsp"><span
-								class="glyphicon glyphicon-log-in"></span>退出登陆</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/admin/logout"><span class="glyphicon glyphicon-log-in"></span>退出登陆</a></li>
 						
 					</ul>
 				</div>

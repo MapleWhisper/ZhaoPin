@@ -45,18 +45,18 @@ public class PositionController {
 	public void select(HttpServletRequest req ,HttpServletResponse resp){
 		System.out.println("ajax ok");
 		HashMap<String, String> map = new HashMap<>();
-		map.put("workPlace", req.getParameter("workPlace"));
+		map.put("workPlace", req.getParameter("workPlace"));		//把需要查询的条件放到map
 		map.put("position", req.getParameter("position"));
 		map.put("type",req.getParameter("type"));
 		
-		List<Position> list = positionServer.getByKey(map);
+		List<Position> list = positionServer.getByKey(map);			//更需条件查询列表
 		
-		String positionList = JSON.toJSONStringWithDateFormat(list,"yyyy-MM-dd");
-		System.out.println(positionList);
+		String positionList = JSON.toJSONStringWithDateFormat(list,"yyyy-MM-dd");	//查询列表转换成Json字符串
+		//System.out.println(positionList);
 		resp.setCharacterEncoding("utf-8");
 		resp.setContentType("application/json");
 		try {
-			resp.getWriter().append(positionList);
+			resp.getWriter().append(positionList);		//返回json数据
 			resp.getWriter().flush();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

@@ -3,6 +3,9 @@
 <html>
   <head>
 	<%@ include file="header.jspf" %>
+	<style type="text/css">
+		#nav {position:fixed;width: 200px}
+	</style>
 	<script>
 		$(function(){
 			$(".pre").click(function(){

@@ -15,36 +15,32 @@
 			</div>
 			<div class="col-sm-9 ">
 				<div class="panel panel-primary">
-					<div class="panel-heading">管理员信息填写</div>
+					<div class="panel-heading">修改管理员信息</div>
 
 					<div class="panel-body">
 					<div class="row">
 						<div class="col-sm-8 col-sm-offset-2">
-							<form class="form-horizontal" role="form" id="form">
+							<form action="${pageContext.request.contextPath}/admin/admin/update" class="form-horizontal" role="form" id="form" method="post">
 								<div class="form-group">
 									
 									<label for="inputEmail3" class="col-sm-3 control-label">管理员账号</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control inputxt" id="username" placeholder="username">
+										<input type="text" class="form-control inputxt" id="username" value="${admin.username }">
+										<input type="hidden" name="id" value="${admin.id }">
 									</div>
 								</div>
 								
 								<div class="form-group">
-									<label for="inputEmail3" class="col-sm-3 control-label">输入密码</label>
+									<label for="inputEmail3" class="col-sm-3 control-label">输入新密码</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control inputxt" id="username">
+										<input type="text" class="form-control inputxt" id="username" placeholder="password" value="${admin.password }">
 									</div>
 								</div>
-								<div class="form-group">
-									<label for="inputEmail3" class="col-sm-3 control-label">确认输入密码</label>
-									<div class="col-sm-9">
-										<input type="text" class="form-control inputxt" id="username">
-									</div>
-								</div>
+								
 								<div class="form-group">
 									<label for="inputEmail3" class="col-sm-3 control-label">姓名</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control inputxt" id="username"	>
+										<input type="text" class="form-control inputxt" id="username" value="${admin.name }">
 									</div>
 								</div>
 								<div class="form-group" data-toggle="tooltip" data-placement="top" title="可多选" onmouseover="$(this).tooltip('show')">
@@ -65,7 +61,7 @@
 									
 									<div class="form-group">    
 										 <div class="col-sm-6 col-sm-offset-4">
-											<button type="submit" class="btn btn-primary  btn-lg ">提交管理员</button>																			 
+											<button type="submit" class="btn btn-primary  btn-lg ">确认修改管理员信息</button>																			 
 										 </div>
 									</div>
 								</div>

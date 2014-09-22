@@ -18,8 +18,8 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="index.jsp">社会招聘</a></li>
-						<li><a href="company.jsp">公司介绍</a></li>
+						<li class="active"><a href="${pageContext.request.contextPath}/client/index">社会招聘</a></li>
+						<li><a href="${pageContext.request.contextPath}/client/company">公司介绍</a></li>
 					</ul>
 					<form class="navbar-form navbar-left" role="search">
 						<div class="form-group">
@@ -29,7 +29,7 @@
 					</form>
 					<ul class="nav navbar-nav navbar-right">
 						<li><p class="navbar-text">欢迎来到 集团招聘！</p></li>
-						<li><a href="personalCenter.jsp">个人中心</a></li>
+						<li><a href="${pageContext.request.contextPath}/client/personalCenter">个人中心</a></li>
 						<li><a href="${pageContext.request.contextPath}/admin/admin">登陆后台</a></li>
 						<li><a href="${pageContext.request.contextPath}/client/login"><span
 								class="glyphicon glyphicon-log-in"></span>登陆</a></li>

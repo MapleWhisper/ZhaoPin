@@ -3,6 +3,7 @@ package com.zhaopin.admin.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -64,13 +65,13 @@ public class AdminController {
 	 * 修改管理员页面
 	 * @return
 	 */
-	@RequestMapping("/admin/editAdmin/id/{id}")
+	@RequestMapping("/admin/edit/id/{id}")
 	public String editAdmin(@PathVariable int id,Model model){
 		model.addAttribute("admin",adminServer.getById(id));
 		model.addAttribute("action", "update");
 		model.addAttribute("id", id);
 		
-		return "admin/addAdmin";	//转到修改页面
+		return "admin/editAdmin";	//转到修改页面
 	}
 	
 	/**
@@ -85,7 +86,34 @@ public class AdminController {
 		a.setName(admin.getName());
 		a.setPosition(admin.getPosition());
 		adminServer.updata(a);
-		return "admin/admin";	//跳到管理员列表页面
+		return "redirect:/admin/admin";	//跳到管理员列表页面
+	}
+	
+	/**
+	 * 
+	 * 初始化管理员密码
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping("/admin/initPassword/id/{id}")
+	public String initPassword(@PathVariable int id){
+		Admin a = adminServer.getById(id);
+		a.setPassword("1234");
+		adminServer.updata(a);
+		return "redirect:/admin/position";
+	}
+	
+	/**
+	 *  退出管理员登陆
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping("/admin/logout")
+	public String logout(HttpSession session){
+		
+		session.removeAttribute("admin");	//将管理员信息从session中移除
+		
+		return "redirect:/client/loginAdmin";
 	}
 	
 	

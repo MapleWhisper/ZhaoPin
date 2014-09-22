@@ -4,13 +4,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
 @Controller
 @RequestMapping("/client")
-public class PersonalCenterController {
+public class CompanyController {
 	
-	@RequestMapping("/personalCenter")
-	public String personalCenter(Model model){
-		return "client/personalCenter";
+	@RequestMapping("/company")
+	public String company(Model model){
+		
+		return "client/company";
 	}
 }

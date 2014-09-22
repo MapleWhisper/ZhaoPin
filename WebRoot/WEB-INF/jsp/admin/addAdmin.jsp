@@ -20,19 +20,19 @@
 					<div class="panel-body">
 					<div class="row">
 						<div class="col-sm-8 col-sm-offset-2">
-							<form class="form-horizontal" role="form" id="form">
+							<form action="${pageContext.request.contextPath }/admin/admin/save" class="form-horizontal" role="form" id="form" method="post">
 								<div class="form-group">
 									
 									<label for="inputEmail3" class="col-sm-3 control-label">管理员账号</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control inputxt" id="username" placeholder="username">
+										<input type="text" class="form-control inputxt" name="username" id="username" placeholder="username">
 									</div>
 								</div>
 								
 								<div class="form-group">
 									<label for="inputEmail3" class="col-sm-3 control-label">输入密码</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control inputxt" id="username">
+										<input type="text" class="form-control inputxt" name="password" id="username">
 									</div>
 								</div>
 								<div class="form-group">
@@ -44,7 +44,7 @@
 								<div class="form-group">
 									<label for="inputEmail3" class="col-sm-3 control-label">姓名</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control inputxt" id="username"	>
+										<input type="text" class="form-control inputxt" name="name" id="username"	>
 									</div>
 								</div>
 								<div class="form-group" data-toggle="tooltip" data-placement="top" title="可多选" onmouseover="$(this).tooltip('show')">

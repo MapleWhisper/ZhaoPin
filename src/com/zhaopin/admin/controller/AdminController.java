@@ -58,7 +58,7 @@ public class AdminController {
 	@RequestMapping("/admin/save")
 	public String save(@ModelAttribute Admin admin){
 		adminServer.save(admin);
-		return "redirect:admin/admin";	//保存完成后返回列表页面
+		return "redirect:/admin/admin";	//保存完成后返回列表页面
 	}
 	
 	/**

@@ -27,7 +27,7 @@ public class PositionServerImpl extends BaseServerImpl<Position> implements Posi
 	public List<Position> getByKey(HashMap<String,String> map) {
 		String hql = "from Position p ";
 		int index = 0;
-		for(String key : map.keySet()){
+		for(String key : map.keySet()){					//生成 hql 查询条件字符串
 			if( map.get(key)!=null && !map.get(key).equals("") && !map.get(key).equals("不限") ){
 				if(index==0){
 					hql+=" where p."+key+" = '"+map.get(key)+"' ";

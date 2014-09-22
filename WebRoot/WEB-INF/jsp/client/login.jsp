@@ -50,7 +50,8 @@
 								</div>
 								<div class="form-group">
 									<div class="col-sm-offset-2 col-sm-10">
-										<button type="submit" class="btn btn-warning">登录</button>
+										<button type="submit" class="btn btn-warning"><span
+									class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;登陆</button>
 									</div>
 								</div>
 							</form>

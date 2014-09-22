@@ -30,9 +30,12 @@
 <!--     	//Controler 返回的ModeAndView自动到此目录下找对应jsp为后缀的文件   -->
         <property name="prefix" value="/WEB-INF/jsp/"/>  
         <property name="suffix" value=".jsp"/><!--可为空,方便实现自已的依据扩展名来选择视图解释类的逻辑  -->  
+<!--         使用Jsp作为视图解释层 -->
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />  
     </bean>  
     
+    
+<!--     配置静态资源，直接映射到对应的文件夹，不被DispatcherServlet处理 -->
     <mvc:resources mapping="/image/**" location="/image/" />
     <mvc:resources mapping="/css/**" location="/css/" />
     <mvc:resources mapping="/js/**" location="/js/" />

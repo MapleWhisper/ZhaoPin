@@ -21,9 +21,9 @@
 							<form class="form-horizontal" role="form"
 								style="margin-top: 20px">
 								<div class="form-group" align="center">
-									<label for="inputEmail3" class="col-sm-3 control-label">用户名:</label>
+									<label for="inputEmail3" class="col-sm-3 control-label">邮箱:</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" id="inputEmail3"
+										<input type="email" class="form-control" id="inputEmail3"
 											placeholder="username">
 									</div>
 								</div>

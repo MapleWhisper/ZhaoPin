@@ -66,8 +66,8 @@
 								<div>
 									
 									<div class="form-group">    
-										 <div class="col-sm-6 col-sm-offset-4">
-											<button type="submit" class="btn btn-primary  btn-lg ">确认修改管理员信息</button>																			 
+										 <div class="col-sm-6 col-sm-offset-4">				
+											<button type="submit" class="btn btn-primary  btn-lg "><span class="glyphicon glyphicon-floppy-saved"></span>&nbsp;&nbsp;确认修改管理员信息</button>																			 
 										 </div>
 									</div>
 								</div>

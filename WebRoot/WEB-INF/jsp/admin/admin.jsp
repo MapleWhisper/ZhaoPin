@@ -35,16 +35,16 @@
 								<td>${admin.name }</td>
 								<td>${admin.username }</td>
 								<td>${admin.position }</td>
-								<td><a href="admin/edit/id/${admin.id }" class="btn btn-info">修改</a></td>
-								<td><a href="admin/delete/id/${admin.id}" class="btn btn-danger" onclick="return confirm('确认要删除吗？')">删除</a></td>
-							</tr>
+								<td><a href="admin/edit/id/${admin.id }" class="btn btn-info"><span class=" glyphicon glyphicon-edit"></span>&nbsp;&nbsp;修改</a></td>
+								<td><a href="admin/delete/id/${admin.id}" class="btn btn-danger" onclick="return confirm('确认要删除吗？')"><span class=" glyphicon  glyphicon-trash"></span>&nbsp;&nbsp;删除</a></td>
+							</tr>																								
 						 </c:forEach>
 							
 							
 						</table>
 						<div class="row">
 							<div class="col-sm-6 col-sm-offset-5">
-								<div class="no1">
+								<div class="no1">				 
 									<a class="btn btn-primary " href="admin/add">添加管理员</a>
 								</div>
 

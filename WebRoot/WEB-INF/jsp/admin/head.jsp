@@ -16,17 +16,17 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
+					<ul class="nav navbar-nav">				
 						<li class="active"><a href="${pageContext.request.contextPath}/admin/admin">后台管理</a></li>
-						<li ><a href="${pageContext.request.contextPath}/client/index">前台页面</a></li>
+						<li ><a href="${pageContext.request.contextPath}/client/index"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;前台页面</a></li>
 					</ul>
 					<form class="navbar-form navbar-left" role="search">
 						
 					</form>
 					<ul class="nav navbar-nav navbar-right">
-						<li><p class="navbar-text" >你好，超级管理员</p></li>
+						<li class="active"><p class="navbar-text" >你好，超级管理员</p></li>
 						
-						<li><a href="${pageContext.request.contextPath}/admin/admin/logout"><span class="glyphicon glyphicon-log-in"></span>退出登陆</a></li>
+						<li class="active"><a href="${pageContext.request.contextPath}/admin/admin/logout"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;退出登陆</a></li>
 						
 					</ul>
 				</div>

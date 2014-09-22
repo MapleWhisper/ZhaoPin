@@ -1,5 +1,8 @@
 package com.zhaopin.client.server;
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import com.zhaopin.base.BaseServer;
@@ -13,5 +16,7 @@ import com.zhaopin.po.Position;
  */
 @Transactional
 public interface PositionServer extends BaseServer<Position> {
+
+	public List<Position> getByKey(HashMap<String,String> map);
 	
 }

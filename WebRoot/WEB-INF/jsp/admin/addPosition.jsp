@@ -53,7 +53,8 @@
 									<div class="input-group input-group-sm">
 										
 										<select class="form-control" name="position">
-											<option value="教育" selected>教育</option>
+											<option value="教师" selected>教师</option>
+											<option value="技术" selected>技术</option>
 											<option value="管理" >管理</option>
 										
 										</select>
@@ -142,7 +143,7 @@
 								<td class="info">招聘人数</td>
 								<td>
 									<div class="input-group input-group-sm">
-										<input type="text" name="recruitNumber" class="form-control">
+										<input type="text" name="recruitNumber" class="form-control" >
 									</div>
 								</td>
 							</tr>

@@ -3,6 +3,58 @@
 <html>
   <head>
 	<%@ include file="header.jspf" %>
+	<script type="text/javascript">
+		$(function(){
+			var workPlace = "";
+			var position = "";
+			var type = "";
+			$("button").click(function(){
+				//alert("ok");
+				//按钮点击时，添加active class效果
+				var btn = $(this);
+				var classString = $(this).attr("class");
+				if(classString.indexOf("active")!=-1){
+					$(this).removeClass("active");
+				}else{
+					$(this).addClass("active");
+					$(this).siblings().removeClass("active");
+				}
+				
+				var name = btn.attr("name");
+				if(name=="workPlace"){
+					workPlace = btn.text();
+				}
+				if(name=="position" ){
+					position = btn.text();
+				}
+				if(name=="type"){
+					type = btn.text();
+				}
+				//ajax 向后台传送数据
+				$.ajax({
+					type:"POST",
+					 url: "position/select/json",
+					 data:{"workPlace":workPlace,"position":position,"type":type},
+					 dataType:"json",
+					 success:function(data){
+						//alert(data);
+						var str;
+						$(".data").remove();
+						$(data).each(function(i,p){
+							//alert(p.name);
+							var data = $("<tr class='data'><td><a href='position/show/id/${p.id}'>"+
+										p.name+"</a></td><td>"+p.position+"</td><td>"+p.workPlace+"</td><td>"+
+										p.recruitNumber+"</td><td>"+p.endDate+"</td></tr>");
+							$("#table").append(data);
+							
+						});
+						//alert(str);
+					 }
+				});
+			});
+		});
+	</script>
+	
   </head>
   
   <body style="background: url(${pageContext.request.contextPath}/image/index-bg.jpg) repeat;">
@@ -31,22 +83,47 @@
 							</form>
 						-->
 						<div>
-							<table>
-								<tr>	
+							<table class="table"  >
+								<tr >	
 									<td>工作地点:</td>
-									<td><a href="#" class="hre">哈尔滨</a></td>
+									<td>
+										<div class="btn-group">
+										  <button type="button" class="btn btn-default" name="workPlace" >不限</button>
+										  <button type="button" class="btn btn-default " name="workPlace">哈尔滨</button>
+										  <button type="button" class="btn btn-default " name="workPlace">北京</button>
+										  <button type="button" class="btn btn-default" name="workPlace">上海</button>
+										</div>
+									</td>
 									
 								</tr>
-								<tr>
-									<td>职位类别：</td>
-									<td><a href="#" style="margin-left: 10px;"> 综合类</a></td>
-									<td><a href="#" style="margin-left: 10px;">技术类</a></td>
-									<td><a href="#" style="margin-left: 10px;">产品类</a></td>
-									<td><a href="#" style="margin-left: 10px;">运营类</a></td>
-									<td><a href="#" style="margin-left: 10px;">设计类</a></td>
-									<td><a href="#" style="margin-left: 10px;">客服类</a></td>
-									<td><a href="#" style="margin-left: 10px;">设计类</a></td>
-								</tr>
+								
+									<tr >
+										<td>职位类别：</td>
+										<td>
+											<div class="btn-group" >
+											  <button type="button" class="btn btn-default" name="position">不限</button>
+											  <button type="button" class="btn btn-default" name="position">教师</button>
+											  <button type="button" class="btn btn-default" name="position">技术</button>
+											  <button type="button" class="btn btn-default" name="position">管理</button>
+											</div>
+										</td>
+										
+									</tr>
+									<tr style="margin-top: 30px">
+										<td>职位类型：</td>
+										<td><div class="btn-group">
+											  <button type="button" class="btn btn-default" name="type">不限</button>
+											  <button type="button" class="btn btn-default" name="type">全职</button>
+											  <button type="button" class="btn btn-default" name="type">专职</button>
+											  <button type="button" class="btn btn-default" name="type">兼职</button>
+											  <button type="button" class="btn btn-default" name="type">实习</button>
+											</div> 
+										</td>
+										
+									</tr>
+								
+									
+									
 								
 							</table>
 						</div>
@@ -56,7 +133,7 @@
 				<div class="panel panel-info" style="margin-top: 15px ">
 					<div class="panel-body">
 			<!-- 职业信息 -->
-						<table class="table table-striped table-hover">
+						<table class="table table-striped table-hover" id="table">
 							<tr class="info">
 								<td>职位名称</td>
 								<td>职位类别</td>
@@ -64,9 +141,8 @@
 								<td>招聘人数</td>
 								<td>截止日期</td>
 							</tr>	
-							
 							<c:forEach items="${positionList}" var="p">
-								<tr>
+								<tr class="data">
 									<td><a href="position/show/id/${p.id}">${p.name}</a></td>
 									<td>${p.position }</td>
 									<td>${p.workPlace }</td>

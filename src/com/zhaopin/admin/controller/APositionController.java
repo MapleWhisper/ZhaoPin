@@ -61,7 +61,15 @@ public class APositionController {
 		System.out.println("要保存position");
 		//保存岗位，
 		position.setCreatedate(new Date()); 		//设置 岗位信息生成日期
+		position.setApplyNumber(0);
+		position.setSuccessNumber(0);
+		position.setScanNumber(0);
+		if(position.getRecruitNumber()==null || position.getRecruitNumber().equals("")){	//如果招聘人数null 或者为空 
+			position.setRecruitNumber(1);													//设置招聘人数为1
+		}
+		
 		positionServer.save(position);				//保存岗位
+		
 		return "redirect:/admin/position";
 	} 
 	

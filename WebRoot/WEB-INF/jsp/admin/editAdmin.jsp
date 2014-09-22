@@ -43,6 +43,12 @@
 										<input type="text" class="form-control inputxt" id="username" value="${admin.name }">
 									</div>
 								</div>
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-3 control-label">职位</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control inputxt" name="position" id="username"value="${admin.position }">
+									</div>
+								</div>
 								<div class="form-group" data-toggle="tooltip" data-placement="top" title="可多选" onmouseover="$(this).tooltip('show')">
 									<label for="inputEmail3" class="col-sm-3 control-label">权限</label>
 									<div class="col-sm-9">

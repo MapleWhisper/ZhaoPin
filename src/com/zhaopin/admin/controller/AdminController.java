@@ -58,7 +58,7 @@ public class AdminController {
 	@RequestMapping("/admin/save")
 	public String save(@ModelAttribute Admin admin){
 		adminServer.save(admin);
-		return "redirect:/admin/admin";	//保存完成后返回列表页面
+		return "redirect:/admin/admin";	//保存完成后  跳转到管理员列表页面
 	}
 	
 	/**
@@ -86,6 +86,19 @@ public class AdminController {
 		a.setName(admin.getName());
 		a.setPosition(admin.getPosition());
 		adminServer.updata(a);
+		return "redirect:/admin/admin";	//跳到管理员列表页面
+	}
+	
+	/**
+	 * 删除管理员
+	 * @param id 需要删除的管理员id
+	 * @return	返回到管理员列表页面
+	 */
+	@RequestMapping("admin/delete/id/{id}")
+	public String delete(@PathVariable int id){
+		
+		adminServer.delete(id);
+		
 		return "redirect:/admin/admin";	//跳到管理员列表页面
 	}
 	

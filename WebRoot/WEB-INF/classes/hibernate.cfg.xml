@@ -6,17 +6,12 @@
 <hibernate-configuration>
 
 <session-factory>
-	<property name="show_sql">true</property>
-	<property name="hbm2ddl.auto">update</property>
-	<property name="dialect">
-		org.hibernate.dialect.MySQLDialect
-	</property>
-	<property name="myeclipse.connection.profile">Mysql</property>
-	<property name="javax.persistence.validation.mode">none</property>
+
 	<mapping class="com.zhaopin.po.Admin" />
 	<mapping class="com.zhaopin.po.Position" />
 	<mapping class="com.zhaopin.po.User" />
 	<mapping class="com.zhaopin.po.Resume" />
+	<mapping class="com.zhaopin.po.Problem" />
 
 
 </session-factory>

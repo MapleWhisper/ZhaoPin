@@ -75,7 +75,7 @@
 								</div>
 								
 							<div class="row">
-									<center><a class="btn btn-lg btn-primary">立即申请<br>Apply</a></center>
+									<center><a class="btn btn-lg btn-primary"  href="${pageContext.request.contextPath}/client/resume" >立即申请<br>Apply</a></center>
 								
 							</div>
 					  </div>

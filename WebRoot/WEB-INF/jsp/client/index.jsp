@@ -1,7 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
 <html>
+
   <head>
+  <title>博弈教育招聘</title>
 	<%@ include file="header.jspf" %>
 	<script type="text/javascript">
 		$(function(){

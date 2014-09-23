@@ -16,6 +16,7 @@
 	<mapping class="com.zhaopin.po.Admin" />
 	<mapping class="com.zhaopin.po.Position" />
 	<mapping class="com.zhaopin.po.User" />
+	<mapping class="com.zhaopin.po.Resume" />
 
 
 </session-factory>

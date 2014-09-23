@@ -42,7 +42,7 @@ public class Resume {
 	private String educatinBackground;//毕业学历
 	private String major;//专业名称
 	private String company;//曾工作单位名称
-	private Integer workTime;//任职时间
+	private String workTime;//任职时间
 	private String workDescribe;//职位描述
 	private String reward;//所获奖励
 
@@ -179,13 +179,13 @@ public class Resume {
 
 	
 
-	@Column(length=10,nullable=true)
-	public Integer getWorkTime() {
+	@Column(length=20,nullable=true)
+	public String getWorkTime() {
 		return workTime;
 	}
 
 
-	public void setWorkTime(Integer workTime) {
+	public void setWorkTime(String workTime) {
 		this.workTime = workTime;
 	}
 
@@ -208,7 +208,7 @@ public class Resume {
 		this.reward = reward;
 	}
 
-
+	@Column(length=20,nullable=true)
 	public String getIdType() {
 		return idType;
 	}
@@ -218,7 +218,7 @@ public class Resume {
 		this.idType = idType;
 	}
 
-
+	@Column(length=30,nullable=true)
 	public String getIdNumber() {
 		return idNumber;
 	}
@@ -228,7 +228,7 @@ public class Resume {
 		this.idNumber = idNumber;
 	}
 
-
+	@Column(length=20,nullable=true)
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
@@ -238,7 +238,7 @@ public class Resume {
 		this.phoneNumber = phoneNumber;
 	}
 
-
+	@Column(length=20,nullable=true)
 	public String getTeach() {
 		return teach;
 	}
@@ -248,7 +248,7 @@ public class Resume {
 		this.teach = teach;
 	}
 
-
+	@Column(length=10,nullable=true)
 	public Integer getExceptSalary() {
 		return exceptSalary;
 	}
@@ -258,7 +258,7 @@ public class Resume {
 		this.exceptSalary = exceptSalary;
 	}
 
-
+	@Column(length=1000,nullable=true)
 	public String getEducatinBackground() {
 		return educatinBackground;
 	}
@@ -268,7 +268,7 @@ public class Resume {
 		this.educatinBackground = educatinBackground;
 	}
 
-
+	@Column(length=1000,nullable=true)
 	public String getCompany() {
 		return company;
 	}

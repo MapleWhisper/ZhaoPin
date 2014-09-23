@@ -12,7 +12,7 @@ import com.zhaopin.po.Resume;
  */
 
 public interface ResumeService extends BaseServer<Resume> {
-	
+	 
 	
 
 }

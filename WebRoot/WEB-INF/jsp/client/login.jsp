@@ -18,19 +18,17 @@
 							<h3 class="panel-title">登录</h3>
 						</div>
 						<div class="panel-body">
-							<form class="form-horizontal" role="form"
-								style="margin-top: 20px">
+							<form class="form-horizontal" role="form" action="login/login" method="post" style="margin-top: 20px">
 								<div class="form-group" align="center">
 									<label for="inputEmail3" class="col-sm-3 control-label">邮箱:</label>
 									<div class="col-sm-9">
-										<input type="email" class="form-control" id="inputEmail3"
-											placeholder="username">
+										<input type="email" class="form-control" name="email">
 									</div>
 								</div>
 								<div class="form-group" align="center">
 									<label for="inputPassword3" class="col-sm-3 control-label">密码:</label>
 									<div class="col-sm-9">
-										<input type="password" class="form-control"
+										<input type="password" class="form-control" name="password"
 											id="inputPassword3" placeholder="password">
 									</div>
 								</div>

@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,13 +12,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.zhaopin.client.server.ResumeService;
 import com.zhaopin.client.server.ResumeServiceImpl;
+import com.zhaopin.client.server.UserServer;
 import com.zhaopin.po.Resume;
+import com.zhaopin.po.User;
 
 @Controller()
 @RequestMapping("/client")
 public class ResumeController  {
 		@Resource(name="resumeServiceImpl")
 		private ResumeService  resumeService;
+		
+		@Resource(name="userServerImpl")
+		private UserServer userSever;
+	 
 		
 		@RequestMapping("/resume")
  		public String resume(){
@@ -28,7 +35,7 @@ public class ResumeController  {
 		
 		
 		@RequestMapping("/resume/save")
-		public String save( HttpServletRequest req , @ModelAttribute Resume resume){
+		public String save( HttpServletRequest req , @ModelAttribute Resume resume,HttpSession session){
 			
 			  
 			 
@@ -54,10 +61,27 @@ public class ResumeController  {
 			resume .setCompany(w1[0] + " "+w2[0]+" "+w3[0] +" "+w4[0]);
 			resume .setWorkTime(w1[1]+" "+w2[1]+" "+w3[1]+" "+w4[0] );
 			resume .setMajor(w1[2]+" "+w2[2]+" "+w3[2] +" "+w4[0]);
+		 
 				 
-			resumeService.save(resume);
+			User user=(User)session.getAttribute("user");
+			System.out.println("ok");
+			if(user!=null){
+				System.out.println(user.getId());
+				
+				resume.setUser(user);
+				user.setResume(resume);
+				
+				userSever.updata(user);
+				
+				System.out.println("user");
+				return "redirect:/client/personalCenter";
+			}else{
+				return "redirect:/client/resume";
+				
+			}
+			
 			 
-				return "client/index";
+				
 				
 		}
 }

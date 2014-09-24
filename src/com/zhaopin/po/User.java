@@ -1,10 +1,13 @@
 package com.zhaopin.po;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import org.springframework.stereotype.Component;
 
@@ -17,6 +20,7 @@ public class User {
 	private String name;
 	private String email;
 	private String phoneNumber;
+	private Resume resume;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -55,9 +59,19 @@ public class User {
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
+	@OneToOne( cascade=CascadeType.ALL)
+	@JoinColumn(insertable=true,unique=true,name="resume_id")
+	public Resume getResume() {
+		return resume;
+	}
+	public void setResume(Resume resume) {
+		this.resume = resume;
+	}
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+	
+	
 	
 	
 }

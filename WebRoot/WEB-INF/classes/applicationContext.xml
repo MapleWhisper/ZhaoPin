@@ -21,7 +21,6 @@
        class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
        <property name="dataSource" ref="dataSource" />
         <property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
-   
        <property name="packagesToScan" value="com.zhaopin.po"></property>
 	</bean>
 	

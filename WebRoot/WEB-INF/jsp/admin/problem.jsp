@@ -3,6 +3,23 @@
 <html>
   <head>
 	<%@ include file="header.jspf" %>
+	<script type="text/javascript">
+		$(function(){
+			$("#problemList").click(function(){
+				$(".data").remove();
+				$.post("problem/list/json",function(data){
+					$(data).each(function(){
+						
+						var tr = $("<tr class='data'><td>"+this.type+"</td><td>"+this.title+ "</td><td>"+this.optA+ "</td><td>"+this.optB+ "</td><td>"+this.optC+ "</td><td>"+this.optD+ "</td><td>"+this.answer+ "</td></tr>")
+						$("#table1").append(tr);
+						
+					});
+				});
+				$('#myModal').modal('toggle');
+				
+			});
+		});
+	</script>
   </head>
   
   <body>
@@ -24,8 +41,12 @@
     						 		<div class="col-sm-8">
     						 			<input type="text" class="form-control" placeholder="输入试题标签">
     						 		</div>
-    						 		<div class="col-sm-4">
+    						 		<div class="col-sm-2">
     						 			 <button type="submit" class="btn btn-default">搜索试题</button>
+    						 		</div>
+    						 		<div class="col-sm-2">
+    						 			 <button type="submit" id="problemList" class="btn btn-default" >
+    						 			 	浏览所有试题</button>
     						 		</div>
     						 	</div>
     						 	
@@ -291,6 +312,33 @@
     		</div>
     		
     	</div>
+		<!--  模态框 -->
+		<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		        <h4 class="modal-title" id="myModalLabel">试题列表</h4>
+		      </div>
+		      <div class="modal-body" >
+		        	<table class="table table-hover table-striped" id="table1">
+		        		<tr>
+		        			<td>类型</td>
+		        			<td>题目</td>
+		        			<td>选项A</td>
+		        			<td>选项B</td>
+		        			<td>选项C</td>
+		        			<td>选项D</td>
+		        			<td>答案</td>
+		        		</tr>
+		        	</table>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div><!--  模态框 -->
     	
     	<%@ include file="buttom.jsp" %>
   </body>

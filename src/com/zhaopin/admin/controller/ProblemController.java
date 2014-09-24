@@ -1,12 +1,17 @@
 package com.zhaopin.admin.controller;
 
+import java.io.IOException;
+import java.util.List;
+
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.alibaba.fastjson.JSON;
 import com.zhaopin.admin.server.ProblemService;
 import com.zhaopin.po.Problem;
 
@@ -47,7 +52,25 @@ public class ProblemController {
 		
 		problemService.save(problem);
 		
+		model.addAttribute("mes", "addSuccess");//添加数据成功
 		return "redirect:/admin/problem";
+	}
+	
+	@RequestMapping("/problem/list/json")
+	public void list(HttpServletResponse response){
+		
+		List<Problem> problemList =  problemService.findAll();
+		String list = JSON.toJSONString(problemList);
+		response.setContentType("application/json");
+		response.setCharacterEncoding("utf-8");
+		try {
+			response.getWriter().println(list);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 	}
 }
 

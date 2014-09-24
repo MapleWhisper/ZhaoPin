@@ -25,8 +25,8 @@ public class UserServerImpl extends BaseServerImpl<User> implements UserServer{
 	 */
 	@Override
 	public User login(User user) {
-		User u = (User) getSessionFactory().openSession().createQuery("from User a where a.username = ? and a.password= ? ")
-			.setParameter(0, user.getUsername()).setParameter(1, user.getPassword()).uniqueResult();
+		User u = (User) getSessionFactory().openSession().createQuery("from User a where a.email = ? and a.password= ? ")
+			.setParameter(0, user.getEmail()).setParameter(1, user.getPassword()).uniqueResult();
 		return u;
 	}
 }

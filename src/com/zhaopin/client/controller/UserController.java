@@ -50,7 +50,7 @@ public class UserController {
 	 */
 	@RequestMapping("/login/login")
 	public String login(@ModelAttribute User user,HttpSession session,Model model){
-		
+		System.out.println("ok");
 		User u =userServer.login(user);
 		
 		//登陆成功 

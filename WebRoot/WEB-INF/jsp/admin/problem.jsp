@@ -56,7 +56,7 @@
 									  <div class="tab-pane active" id="single">
 									  		
 									  		
-									  		<form class="form-horizontal" role="form">
+									  		<form class="form-horizontal" role="form" action="problem/save" methos="post" >
 											  <div class="form-group">
 											    <label for="inputEmail3" class="col-sm-2 control-label">题目</label>
 											    <div class="col-sm-10">
@@ -127,7 +127,7 @@
 									  
 									  <!--多选题 -->
 									  <div class="tab-pane" id="Multiple">
-									  		<form class="form-horizontal" role="form">
+									  		<form class="form-horizontal" role="form" action="problem/save" methos="post" >
 											  <div class="form-group">
 											    <label for="inputEmail3" class="col-sm-2 control-label">题目</label>
 											    <div class="col-sm-10">
@@ -198,7 +198,7 @@
 									  
 									  <!--判断题 -->
 									  <div class="tab-pane" id="juedge">
-									  		<form class="form-horizontal" role="form">
+									  		<form class="form-horizontal" role="form" action="problem/save" methos="post" >
 											  <div class="form-group">
 											    <label for="inputEmail3" class="col-sm-2 control-label">题目</label>
 											    <div class="col-sm-10">
@@ -244,20 +244,20 @@
 									  
 									  <!--简答题 -->
 									  <div class="tab-pane" id="question">
-									  			<form class="form-horizontal" role="form">
+									  			<form class="form-horizontal" role="form" action="problem/save" methos="post" >
 												  <div class="form-group">
 												    <label for="inputEmail3" class="col-sm-2 control-label">题目</label>
 												    <div class="col-sm-10">
 												      <textarea type="text" class="form-control"  rows="3" name="title"></textarea>
-												      <input type="hidden" name="type" value="多选题">
+												      <input type="hidden" name="type" value="简答题">
 												    </div>
 												  </div>
 												
 												 
 												  <div class="form-group" >
-												    <label for="inputPassword3" class="col-sm-2 control-label">参考</label>
-												    <div class="col-sm-2" >
-												      	<textarea type="text" class="form-control"  rows="3" name="title" placeholder="参考答案"></textarea>
+												    <label for="inputPassword3" class="col-sm-2 control-label">参考答案</label>
+												    <div class="col-sm-10" >
+												      	<textarea type="text" class="form-control"  rows="3" name="key" placeholder="参考答案"></textarea>
 												    </div>
 												  </div>
 												  <div class="form-group">

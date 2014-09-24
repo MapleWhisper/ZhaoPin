@@ -21,14 +21,7 @@
        class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
        <property name="dataSource" ref="dataSource" />
         <property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
-       <property name="hibernateProperties">
-       		<props>
-       			<prop key="dialect">org.hibernate.dialect.MySQLDialect</prop>
-       			<prop key="javax.persistence.validation.mode">none</prop>
-       			<prop key="show_sql">true</prop>
-       			<prop key="hbm2ddl.auto">update</prop>
-       		</props>
-       </property>
+   
        <property name="packagesToScan" value="com.zhaopin.po"></property>
 	</bean>
 	

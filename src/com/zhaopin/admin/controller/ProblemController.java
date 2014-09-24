@@ -1,10 +1,13 @@
 package com.zhaopin.admin.controller;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.zhaopin.admin.server.ProblemService;
 import com.zhaopin.po.Problem;
 
 
@@ -18,7 +21,11 @@ import com.zhaopin.po.Problem;
 @RequestMapping("/admin")
 public class ProblemController {
 	
+	@Resource(name="problemServiceImpl")
+	private ProblemService problemService;
+	
 	/**
+	 * 
 	 * 跳转到试卷主页面
 	 * @return
 	 */
@@ -29,14 +36,17 @@ public class ProblemController {
 	}
 	
 	/**
+	 * 保存试卷
 	 * 
 	 * @return
 	 */
 	@RequestMapping("/problem/save")
 	public String save(@ModelAttribute Problem problem ,Model model){
 		
+		System.out.println("ok");
 		
-		model.addAttribute("success", "添加成功");
+		problemService.save(problem);
+		
 		return "redirect:/admin/problem";
 	}
 }

@@ -40,7 +40,6 @@ public class IndexController {
 		if(!map.containsAttribute("positionList")){
 			map.addAttribute("positionList",positionServer.findAll());	//把简历列表信息 加载到主页面
 		}
-		map.addAttribute("error", "错误");
 		ArrayList<Integer> list = new ArrayList<>();
 		list.add(1);
 		list.add(2);
@@ -50,20 +49,5 @@ public class IndexController {
 		System.out.println("ok");
 		return "client/index";
 	}
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

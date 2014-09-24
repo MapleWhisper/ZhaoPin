@@ -4,10 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
 @Entity
+@Table()
 @Component
 public class Problem {
 	private Integer id;			//id
@@ -17,7 +19,7 @@ public class Problem {
 	private String optC;		//选项C
 	private String optD;		//选项D
 	private String type;		//题目类型	单选，多选，判断题，简答题
-	private String key;			//答案		问题答案
+	private String answer;			//答案		问题答案
 	private String difficulty;	//题目难度	简单，中等， 困难
 	private String label;		//题目标签  	便于搜索
 	
@@ -65,11 +67,12 @@ public class Problem {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public String getKey() {
-		return key;
+	
+	public String getAnswer() {
+		return answer;
 	}
-	public void setKey(String key) {
-		this.key = key;
+	public void setAnswer(String answer) {
+		this.answer = answer;
 	}
 	public String getDifficulty() {
 		return difficulty;

@@ -56,7 +56,7 @@
 									  <div class="tab-pane active" id="single">
 									  		
 									  		
-									  		<form class="form-horizontal" role="form" action="problem/save" methos="post" >
+									  		<form class="form-horizontal" role="form" action="problem/save" method="post" >
 											  <div class="form-group">
 											    <label for="inputEmail3" class="col-sm-2 control-label">题目</label>
 											    <div class="col-sm-10">
@@ -92,7 +92,7 @@
 											  <div class="form-group">
 											    <label for="inputPassword3" class="col-sm-2 control-label">答案</label>
 											    <div class="col-sm-2">
-											      	<select class="form-control" name="key">
+											      	<select class="form-control" name="answer">
 											      		<option value="A" selected="selected">A</option>
 											      		<option value="B">B</option>
 											      		<option value="C">C</option>
@@ -127,7 +127,7 @@
 									  
 									  <!--多选题 -->
 									  <div class="tab-pane" id="Multiple">
-									  		<form class="form-horizontal" role="form" action="problem/save" methos="post" >
+									  		<form class="form-horizontal" role="form" action="problem/save" method="post"  >
 											  <div class="form-group">
 											    <label for="inputEmail3" class="col-sm-2 control-label">题目</label>
 											    <div class="col-sm-10">
@@ -163,7 +163,7 @@
 											  <div class="form-group" >
 											    <label for="inputPassword3" class="col-sm-2 control-label">答案</label>
 											    <div class="col-sm-2" data-toggle="tooltip" data-placement="top" title="按住 Control (Ctrl) 键多选" onmouseover="$(this).tooltip('show')">
-											      	<select class="form-control" multiple name="key">
+											      	<select class="form-control" multiple name="answer">
 											      		<option value="A" selected="selected">A</option>
 											      		<option value="B">B</option>
 											      		<option value="C">C</option>
@@ -198,7 +198,7 @@
 									  
 									  <!--判断题 -->
 									  <div class="tab-pane" id="juedge">
-									  		<form class="form-horizontal" role="form" action="problem/save" methos="post" >
+									  		<form class="form-horizontal" role="form" action="problem/save" method="post" >
 											  <div class="form-group">
 											    <label for="inputEmail3" class="col-sm-2 control-label">题目</label>
 											    <div class="col-sm-10">
@@ -211,7 +211,7 @@
 											  <div class="form-group" >
 											    <label for="inputPassword3" class="col-sm-2 control-label">答案</label>
 											    <div class="col-sm-2" >
-											      	<select class="form-control"  name="key">
+											      	<select class="form-control"  name="answer">
 											      		<option value="对" selected="selected">对</option>
 											      		<option value="错">错</option>
 											      	</select>
@@ -244,7 +244,7 @@
 									  
 									  <!--简答题 -->
 									  <div class="tab-pane" id="question">
-									  			<form class="form-horizontal" role="form" action="problem/save" methos="post" >
+									  			<form class="form-horizontal" role="form" action="problem/save" method="post" >
 												  <div class="form-group">
 												    <label for="inputEmail3" class="col-sm-2 control-label">题目</label>
 												    <div class="col-sm-10">
@@ -257,7 +257,7 @@
 												  <div class="form-group" >
 												    <label for="inputPassword3" class="col-sm-2 control-label">参考答案</label>
 												    <div class="col-sm-10" >
-												      	<textarea type="text" class="form-control"  rows="3" name="key" placeholder="参考答案"></textarea>
+												      	<textarea type="text" class="form-control"  rows="3" name="answer" placeholder="参考答案"></textarea>
 												    </div>
 												  </div>
 												  <div class="form-group">

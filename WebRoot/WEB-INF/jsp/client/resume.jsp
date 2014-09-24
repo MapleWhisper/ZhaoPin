@@ -154,29 +154,29 @@
 											</tr>
 											<tr>
 												<td><input type="text" name="e1"></td>
+												<td><input type="text" name="e2"></td>
+												<td><input type="text" name="e3"></td>
+												<td><button type="button" class="btn btn-info">删除</button>
+												</td>
+											</tr>
+											<tr>
 												<td><input type="text" name="e1"></td>
+												<td><input type="text" name="e2"></td>
+												<td><input type="text" name="e3"></td>
+												<td><button type="button" class="btn btn-info">删除</button>
+												</td>
+											</tr>
+											<tr>
 												<td><input type="text" name="e1"></td>
-												<td><button type="button" class="btn btn-info">删除</button>
-												</td>
-											</tr>
-											<tr>
 												<td><input type="text" name="e2"></td>
-												<td><input type="text" name="e2"></td>
-												<td><input type="text" name="e2"></td>
-												<td><button type="button" class="btn btn-info">删除</button>
-												</td>
-											</tr>
-											<tr>
-												<td><input type="text" name="e3"></td>
-												<td><input type="text" name="e3"></td>
 												<td><input type="text" name="e3"></td>
 												<td><button type="button" class="btn btn-info">删除</button>
 												</td>
 											</tr>
 											<tr>
-												<td><input type="text" name="e4"></td>
-												<td><input type="text" name="e4"></td>
-												<td><input type="text" name="e4"></td>
+												<td><input type="text" name="e1"></td>
+												<td><input type="text" name="e2"></td>
+												<td><input type="text" name="e3"></td>
 												<td><button type="button" class="btn btn-info">删除</button>
 												</td>
 											</tr>
@@ -192,39 +192,39 @@
 											<tr>
 												<td><input class="form-control input-sm" type="text"  name="w1"
 													placeholder=" "></td>
-												<td><input class="form-control input-sm" type="text"  name="w1"
+												<td><input class="form-control input-sm" type="text"  name="w2"
 													placeholder=" "></td>
+												<td><input class="form-control input-sm" type="text" name="w3"
+													placeholder=" "></td>
+												<td><button type="button" class="btn btn-info">删除</button>
+												</td>
+											</tr>
+											<tr>
 												<td><input class="form-control input-sm" type="text" name="w1"
 													placeholder=" "></td>
+												<td><input class="form-control input-sm" type="text"name="w2"
+													placeholder=" "></td>
+												<td><input class="form-control input-sm" type="text"name="w3"
+													placeholder=" "></td>
 												<td><button type="button" class="btn btn-info">删除</button>
 												</td>
 											</tr>
 											<tr>
-												<td><input class="form-control input-sm" type="text" name="w2"
+												<td><input class="form-control input-sm" type="text"name="w1"
 													placeholder=" "></td>
 												<td><input class="form-control input-sm" type="text"name="w2"
 													placeholder=" "></td>
+												<td><input class="form-control input-sm" type="text"name="w3"
+													placeholder=" "></td>
+												<td><button type="button" class="btn btn-info">删除</button>
+												</td>
+											</tr>
+											<tr>
+												<td><input class="form-control input-sm" type="text" name="w1"
+													placeholder=" "></td>
 												<td><input class="form-control input-sm" type="text"name="w2"
 													placeholder=" "></td>
-												<td><button type="button" class="btn btn-info">删除</button>
-												</td>
-											</tr>
-											<tr>
 												<td><input class="form-control input-sm" type="text"name="w3"
-													placeholder=" "></td>
-												<td><input class="form-control input-sm" type="text"name="w3"
-													placeholder=" "></td>
-												<td><input class="form-control input-sm" type="text"name="w3"
-													placeholder=" "></td>
-												<td><button type="button" class="btn btn-info">删除</button>
-												</td>
-											</tr>
-											<tr>
-												<td><input class="form-control input-sm" type="text" name="w4"
-													placeholder=" "></td>
-												<td><input class="form-control input-sm" type="text"name="w4"
-													placeholder=" "></td>
-												<td><input class="form-control input-sm" type="text"name="w4"
 													placeholder=" "></td>
 												<td><button type="button" class="btn btn-info">删除</button>
 												</td>

@@ -59,7 +59,7 @@ public class User {
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-	@OneToOne( cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(insertable=true,unique=true,name="resume_id")
 	public Resume getResume() {
 		return resume;
@@ -70,8 +70,4 @@ public class User {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	
-	
-	
-	
 }

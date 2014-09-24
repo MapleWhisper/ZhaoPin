@@ -33,6 +33,7 @@
 					<ul>
 						<li><span><i class="glyphicon glyphicon-leaf"></i><a>试卷列表</a></span></li>
 						<li><span><i class="glyphicon glyphicon-leaf"></i><a>添加试卷</a></span></li>
+						<li><span><i class="glyphicon glyphicon-leaf"></i><a href="${pageContext.request.contextPath}/admin/problem">试题管理</a></span></li>
 
 					</ul></li>
 

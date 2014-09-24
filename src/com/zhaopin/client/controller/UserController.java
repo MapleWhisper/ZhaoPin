@@ -56,11 +56,11 @@ public class UserController {
 		//登陆成功 
 		if(u!=null){
 			session.setAttribute("user", u);	//把用户信息添加到session中，跳转到主页面
-			return "client/index";
+			return "redirect:/client/index";
 		}
 		//登陆失败
 		model.addAttribute("error", "error");
-		return "client/login";		//返回到登陆页面
+		return "redirect:/client/login";		//返回到登陆页面
 		
 	}
 	

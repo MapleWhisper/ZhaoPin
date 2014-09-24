@@ -38,7 +38,7 @@ public class PositionServerImpl extends BaseServerImpl<Position> implements Posi
 				
 			}
 		}
-		System.out.println(hql);
+		System.out.println("hql语句:"+hql);
 		
 		return (List<Position>) getSession().createQuery(hql).list();
 	}

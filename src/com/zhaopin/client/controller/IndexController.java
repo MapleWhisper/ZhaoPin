@@ -36,7 +36,7 @@ public class IndexController {
 	 * @return	返回到主页 index页面上
 	 */
 	@RequestMapping("/index")
-	public String index(ModelMap map){
+	public String index(ModelMap map,HttpServletRequest req){
 		if(!map.containsAttribute("positionList")){
 			map.addAttribute("positionList",positionServer.findAll());	//把简历列表信息 加载到主页面
 		}
@@ -44,7 +44,10 @@ public class IndexController {
 		list.add(1);
 		list.add(2);
 		list.add(3);
-		
+		if(!map.containsAttribute("positionName")){
+			map.addAttribute("positionName",positionServer.getPositionName());
+			req.getSession().setAttribute("positionName",positionServer.getPositionName());
+		}
 		map.addAttribute("list",list);
 		System.out.println("ok");
 		return "client/index";

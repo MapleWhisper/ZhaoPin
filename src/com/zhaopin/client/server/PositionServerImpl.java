@@ -4,6 +4,7 @@ package com.zhaopin.client.server;
 import java.util.HashMap;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -41,5 +42,15 @@ public class PositionServerImpl extends BaseServerImpl<Position> implements Posi
 		System.out.println("hql语句:"+hql);
 		
 		return (List<Position>) getSession().createQuery(hql).list();
+	}
+
+	@Override
+	public List<Position> getPositionName() {
+		// TODO Auto-generated method stub
+		String hql="from Position as p order by createdate desc";
+		Query query=this.getSession().createQuery(hql);
+		query.setFirstResult(0);
+		query.setMaxResults(5);
+		return (List<Position>)query.list();
 	}
 }

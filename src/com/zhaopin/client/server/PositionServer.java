@@ -18,5 +18,5 @@ import com.zhaopin.po.Position;
 public interface PositionServer extends BaseServer<Position> {
 
 	public List<Position> getByKey(HashMap<String,String> map);
-	
+	public List<Position>getPositionName();
 }

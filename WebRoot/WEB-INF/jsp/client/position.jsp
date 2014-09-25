@@ -90,15 +90,13 @@
 							<div class="panel-heading">
 								<h3 class="panel-title">最近岗位</h3>
 							</div>
-							<div class="panel-body" >
+							<c:forEach items="${positionName }" var="pn">
+								<div class="panel-body" >
 								<ul style="margin-left: -25">
-									<li >（集团安全）资深Andr前安全...</li>
-									<li >前安全测试工程师/安...</li>
-									<li >前阿里巴巴无线事业部招聘...</li>
-									<li >前安全开发工程师（北京）...</li>
-									<li >前资深网络安全测试开发...</li>
+								<li ><a href="${pn.id}">${pn.name}</a></li>
 								</ul > 
-							</div>
+								</div>
+						</c:forEach>
 						</div>
 					</div>	
 					</div>

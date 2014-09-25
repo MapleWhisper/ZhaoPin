@@ -1,1 +1,6 @@
+/applicationContext.xml
 /com
+/dbconfig.properties
+/hibernate.cfg.xml
+/spring-jdbc.xml
+/spring-mvc.xml

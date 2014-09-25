@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/client")
 public class PersonalCenterController {
 	
+	
+	
 	@RequestMapping("/personalCenter")
 	public String personalCenter(Model model){
+		
 		return "client/personalCenter";
 	}
 }

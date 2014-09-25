@@ -75,7 +75,7 @@ public class User {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	@OneToMany(cascade={CascadeType.PERSIST,CascadeType.MERGE})
+	@OneToMany(cascade={CascadeType.PERSIST,CascadeType.MERGE},mappedBy="user")
 	public Set<Apply> getApplys() {
 		return applys;
 	}

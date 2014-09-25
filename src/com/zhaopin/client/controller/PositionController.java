@@ -1,12 +1,14 @@
 package com.zhaopin.client.controller;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.alibaba.fastjson.JSON;
 import com.zhaopin.client.server.PositionServer;
+import com.zhaopin.client.server.UserServer;
+import com.zhaopin.po.Apply;
 import com.zhaopin.po.Position;
+import com.zhaopin.po.User;
+import com.zhaopin.utils.ApplyState;
 
 @Controller
 @RequestMapping("/client")
@@ -23,6 +29,10 @@ public class PositionController {
 
 	@Resource(name="positionServerImpl")
 	private PositionServer positionServer;
+	
+	@Resource(name="userServerImpl")
+	private UserServer userServer;
+	
 	/**
 	 * 显示职位详情页面
 	 * @return
@@ -36,6 +46,8 @@ public class PositionController {
 		System.out.println("ok");
 		return "client/position";
 	}
+	
+
 	
 	/**
 	 * 根据关键字查询特定的简历列表
@@ -64,6 +76,8 @@ public class PositionController {
 		}
 		
 	}
+	
+	
 	
 	
 	

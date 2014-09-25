@@ -147,7 +147,7 @@ public class Position {
 		this.salary = salary;
 	}
 	
-	@OneToMany(cascade={CascadeType.PERSIST,CascadeType.MERGE})
+	@OneToMany(cascade={CascadeType.PERSIST,CascadeType.MERGE},mappedBy="position")
 	public Set<Apply> getApplys() {
 		return applys;
 	}

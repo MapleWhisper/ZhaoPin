@@ -13,8 +13,12 @@
 					<%@ include file="left.jsp" %>
     			</div>
     			<div class="col-sm-9">
-    					<div class="panel panel-info" style="margin-top: 15px ;">
-					<div class="panel-body">
+    					<div class="panel panel-info" >
+    				<div class="panel panel-primary">
+    					<div class="panel-heading">
+    						职位列表
+    					</div>
+    					<div class="panel-body">
 						<table class="table table-striped table-hover table-bordered table-condensed">
 							<tr class="info">
 								<td>职位名称</td>
@@ -44,6 +48,8 @@
 								  	<center><a href="position/add" class="btn btn-info btn-lg">增加职位</a></center>
 						</div>
 					</div>
+    				</div>
+					
 				</div>
     			</div>
     		</div>

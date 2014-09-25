@@ -3,6 +3,24 @@
 <html>
   <head>
 	<%@ include file="header.jspf" %>
+	<script type="text/javascript">
+		$(function(){
+			$(".nav a").click(function(){
+				//alert( $(this).attr('title') ) ;
+				$(".data").remove();
+				
+				$.post("apply/json","state="+$(this).attr('title'),function(data){
+					$.each(data,function(){
+						var tr = $("<tr class='data'><td>"+this.user.name+"</td><td>"+this.position.name+"</td><td>"+
+								this.applyDate+"</td><td>"+this.user.resume+"</td><td><a href='#' class='btn btn-info '>接受</a></td><td><a href='#' class='btn btn-danger '>拒绝</a></td></tr>");
+						$("#table1").append(tr);
+						
+					});
+				});
+			});
+		})
+	
+	</script>
   </head>
   
   <body>
@@ -21,30 +39,33 @@
     					<div class="panel-body">
     						<!-- 申请头 -->
 							<ul class="nav  nav-pills nav-justified" role="tablist">
-							  <li class="active"><a href="#step1" >待审核<span class="badge">4</span></a></li>
-							  <li><a href="#step2" >待答题</a></li>
-							  <li><a href="#step3" >待批阅</a></li>
-							  <li><a href="#finish" >已完成</a></li>
-							  <li><a href="#refuse" >已拒绝</a></li>
+							  <li class="active"><a title="待审核" data-toggle="tab">待审核<span class="badge">4</span></a></li>
+							  <li><a  title="待答题" data-toggle="tab">待答题</a></li>
+							  <li><a  title="待批阅" data-toggle="tab">待批阅</a></li>
+							  <li><a  title="已完成" data-toggle="tab">已完成</a></li>
+							  <li><a  title="已拒绝" data-toggle="tab">已拒绝</a></li>
 							</ul><!-- 申请头 -->
 							
 							<!-- 申请表格 Ajax -->
 							<div class="tab-content" style="margin-top: 20px">
-							 	<table class="table table-striped table-hover table-bordered">
-							 		<tr>
+							 	<table class="table table-striped table-hover table-bordered" id="table1">
+							 		<tr class="info">
 							 			<td>申请人</td>
 							 			<td>申请岗位</td>
 							 			<td>申请时间</td>
 							 			<td>查看简历</td>
+							 			<td>操作</td>
+							 			<td>操作</td>
 							 		</tr>
 							 		<tr class="data">
-							 			<td><a>武玉密</a></td>
-							 			<td>老师</td>
-							 			<td>2014-9-25</td>
-							 			<td><a>查看简历</a></td>
-							 			<td><a class="btn btn-info">接受</a></td>
-							 			<td><a class="btn btn-danger">拒绝</a></td>
-							 			
+								 		<c:forEach items="${ applyList}" var="a">
+								 			<td>${a.user.name}</td>
+								 			<td>${a.position.name }</td>
+								 			<td>${a.applyDate }</td>
+								 			<td><a>简历<a></a></td>
+								 			<td><a href='#' class='btn btn-info '>接受</a></td>
+								 			<td><a href='#' class='btn btn-danger '>拒绝</a></td>
+								 		</c:forEach>
 							 		</tr>
 							 		
 							 	</table>

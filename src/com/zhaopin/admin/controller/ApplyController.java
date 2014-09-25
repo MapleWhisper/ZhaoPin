@@ -1,63 +1,67 @@
 package com.zhaopin.admin.controller;
 
-import java.util.Date;
+import java.io.IOException;
+import java.util.List;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.alibaba.fastjson.JSON;
 import com.zhaopin.client.server.ApplyService;
-import com.zhaopin.client.server.PositionServer;
-import com.zhaopin.client.server.UserServer;
 import com.zhaopin.po.Apply;
-import com.zhaopin.po.Position;
-import com.zhaopin.po.User;
-import com.zhaopin.utils.ApplyState;
 
 /**
- * 申请 相关操作
+ * 后台简历管理
  * 
  * @author 于广路
  *
  */
-@Controller
-@RequestMapping("/client")
+@Controller("AapplyController")
+@RequestMapping("/admin")
 public class ApplyController {
-	@Resource(name="positionServerImpl")
-	private PositionServer positionServer;
-	
-	@Resource(name="userServerImpl")
-	private UserServer userServer;
 	
 	@Resource(name="applyServiceImpl")
 	private ApplyService applyService;
 	/**
-	 * 用户 申请 岗位
-	 * 
-	 * @param positionId 传入岗位Id
-	 * @return
+	 * 	Ajax请求返回Json字符串
+	 * 	@param state	传入的状态 		待审核，待答题，待批阅，已完成，已拒绝
+	 * 	@return
 	 */
-	@RequestMapping("/apply/{positionId}")
-	public String apply(@PathVariable int positionId,HttpSession session){
-		Position position = positionServer.getById(positionId);
-		User user = (User) session.getAttribute("user");
-		
-		if(user==null || position==null){
-			return "redirect:/client/login";	//用户为空，返回登录页面
+	
+	@RequestMapping("/apply")
+	public String apply(Model model){
+		List<Apply> applyList = applyService.findByState("待审核");
+		model.addAttribute("applyList", applyList);
+		return "admin/apply";
+	}
+	
+	@RequestMapping("/apply/json")
+	public void apply(@RequestParam String state ,HttpServletResponse response){
+		if(state==null || state.equals("")){
+			try {
+				response.sendRedirect("admin/apply");	//如果传入的参数不正确，返回后台主页
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-		User u = userServer.getById(user.getId());
-		Apply apply = new Apply();
-		apply.setUser(u);
-		apply.setState(ApplyState.待审核.toString());
-			System.out.println(ApplyState.待审核.toString());
-		apply.setApplyDate(new Date());
-		apply.setPosition(position);
+		System.out.println(state);
+		List<Apply> applyList = applyService.findByState(state);
+		response.setContentType("application/json");
+		response.setCharacterEncoding("utf-8");
+		String list = JSON.toJSONStringWithDateFormat(applyList,"yyyy-MM-dd hh:mm:ss");
+		System.out.println(list);
+		try {
+			response.getWriter().println(list);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
-		applyService.save(apply);
-		
-		return "redirect:/client/personalCenter";
 	}
 }

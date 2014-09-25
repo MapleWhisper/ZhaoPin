@@ -24,7 +24,8 @@
 				<!-- 				简历管理 -->
 				<li><span><i class="glyphicon glyphicon-minus-sign"></i>简历管理</span>
 					<ul>
-						<li><span><i class="glyphicon glyphicon-leaf"></i><a>申请审核</a></span></li>
+						<li><span><i class="glyphicon glyphicon-leaf"></i><a href="${pageContext.request.contextPath}/admin/apply
+						">申请审核</a></span></li>
 						<li><span><i class="glyphicon glyphicon-leaf"></i><a>简历列表</a></span></li>
 
 					</ul></li>

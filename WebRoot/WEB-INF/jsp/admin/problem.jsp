@@ -64,7 +64,7 @@
 							  </div>
 							  <div class="panel-body">
 									<!--添加试题框 -->
-									<ul class="nav nav-pills" role="tablist">
+									<ul class="nav nav-pills nav-justified" role="tablist">
 									  <li class="active"><a href="#single" role="tab" data-toggle="tab">单选题</a></li>
 									  <li><a href="#Multiple" role="tab" data-toggle="tab">多选题</a></li>
 									  <li><a href="#juedge" role="tab" data-toggle="tab">判断题</a></li>

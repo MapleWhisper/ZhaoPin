@@ -29,9 +29,10 @@
 					</form>
 					<ul class="nav navbar-nav navbar-right">
 						<li><p class="navbar-text">欢迎来到 集团招聘！</p></li>		
-						<li><a href="${pageContext.request.contextPath}/client/personalCenter"><span
+						<li><p class="navbar-text">你好${sessionScope.user.name}</p></li>		
+						<li> <a href="${pageContext.request.contextPath}/client/personalCenter"><span
 								class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;个人中心</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/admin">登陆后台</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/position">登陆后台</a></li>
 						<li><a href="${pageContext.request.contextPath}/client/login"><span
 								class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;登陆</a></li>
 						<li><a href="${pageContext.request.contextPath}/client/register"><span

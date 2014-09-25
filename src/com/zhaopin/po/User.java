@@ -1,5 +1,7 @@
 package com.zhaopin.po;
 
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import org.springframework.stereotype.Component;
@@ -14,13 +18,14 @@ import org.springframework.stereotype.Component;
 @Entity
 @Component
 public class User {
-	private Integer id;
-	private String username;
-	private String password;
-	private String name;
-	private String email;
-	private String phoneNumber;
-	private Resume resume;
+	private Integer id;				//id
+	private String username;		//用户名
+	private String password;		//密码
+	private String name;			//姓名
+	private String email;			//邮箱
+	private String phoneNumber;		//手机号
+	private Resume resume;			//简历
+	private Set<Apply> applys;			//申请
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -70,4 +75,17 @@ public class User {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+	@OneToMany(cascade={CascadeType.PERSIST,CascadeType.MERGE})
+	public Set<Apply> getApplys() {
+		return applys;
+	}
+	public void setApplys(Set<Apply> applys) {
+		this.applys = applys;
+	}
+	
+	
+	
+	
+	
+	
 }

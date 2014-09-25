@@ -1,11 +1,14 @@
 package com.zhaopin.po;
 
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
@@ -32,6 +35,7 @@ public class Position {
 	private Integer scanNumber;		//浏览人数
 	private Integer applyNumber;	//申请人数
 	private Integer successNumber;	//成功人数
+	private Set<Apply> applys;		//申请该岗位的申请
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -141,6 +145,14 @@ public class Position {
 	}
 	public void setSalary(String salary) {
 		this.salary = salary;
+	}
+	
+	@OneToMany(cascade={CascadeType.PERSIST,CascadeType.MERGE})
+	public Set<Apply> getApplys() {
+		return applys;
+	}
+	public void setApplys(Set<Apply> applys) {
+		this.applys = applys;
 	}
 	
 	

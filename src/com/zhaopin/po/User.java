@@ -1,5 +1,6 @@
 package com.zhaopin.po;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -17,7 +18,7 @@ import org.springframework.stereotype.Component;
 
 @Entity
 @Component
-public class User {
+public class User implements Serializable{
 	private Integer id;				//id
 	private String username;		//用户名
 	private String password;		//密码

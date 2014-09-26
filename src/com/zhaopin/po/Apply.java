@@ -1,5 +1,6 @@
 package com.zhaopin.po;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Component;
 
 @Entity
 @Component
-public class Apply {
+public class Apply implements Serializable{
 	private Integer id;
 	private User user; 				//申请人
 	private Position position;		//申请岗位

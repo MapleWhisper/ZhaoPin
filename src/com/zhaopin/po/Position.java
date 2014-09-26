@@ -1,5 +1,6 @@
 package com.zhaopin.po;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Component;
 	
 @Component
 @Entity
-public class Position {
+public class Position implements Serializable{
 	private Integer id;		//岗位id
 	private String name;	//岗位名称
 	

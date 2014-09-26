@@ -1,5 +1,7 @@
 package com.zhaopin.po;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table()
 @Component
-public class Problem {
+public class Problem implements Serializable{
 	private Integer id;			//id
 	private String title;		//题目
 	private String optA;		//选项A

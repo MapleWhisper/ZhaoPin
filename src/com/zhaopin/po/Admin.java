@@ -1,5 +1,6 @@
 package com.zhaopin.po;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -21,7 +22,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Entity
-public class Admin {
+public class Admin implements Serializable{
 	
 	private Integer id;
 	private String name;					//姓名

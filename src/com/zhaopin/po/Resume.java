@@ -1,6 +1,7 @@
 package com.zhaopin.po;
 
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -22,7 +23,7 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table
 @Component
-public class Resume {
+public class Resume implements Serializable{
 	 
 	
 

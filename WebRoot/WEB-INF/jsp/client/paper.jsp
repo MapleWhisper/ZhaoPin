@@ -3,6 +3,7 @@
 <html>
   <head>
 	<%@ include file="header.jspf" %>
+	<title>答题页面</title>
 	<style type="text/css">
 		.quest {font-size: medium;margin-top: 20px}
 		.questArea {margin-top: 10px;padding-left: 50px}

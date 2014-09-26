@@ -3,6 +3,7 @@
 <html>
   <head>
 	<%@ include file="header.jspf" %>
+	<title>公司介绍</title>
 	<style type="text/css">
 		#nav {position:fixed;width: 200px}
 	</style>
@@ -18,7 +19,7 @@
 	</script>
   </head>
   
-  <body style="position: relative" data-spy="scroll" data-target=".nav">
+  <body >
     	<div class="container">
     		<%@ include file="head.jsp" %>
     		<div class="row" style="margin-top: 70px">

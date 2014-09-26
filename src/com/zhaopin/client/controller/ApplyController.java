@@ -43,6 +43,9 @@ public class ApplyController {
 	@RequestMapping("/apply/{positionId}")
 	public String apply(@PathVariable int positionId,HttpSession session){
 		Position position = positionServer.getById(positionId);
+		
+		position.setApplyNumber(position.getApplyNumber()==null?1:position.getApplyNumber()+1);		//申请次数加一
+		
 		User user = (User) session.getAttribute("user");
 		
 		if(user==null || position==null){
@@ -52,7 +55,6 @@ public class ApplyController {
 		Apply apply = new Apply();
 		apply.setUser(u);
 		apply.setState(ApplyState.待审核.toString());
-			System.out.println(ApplyState.待审核.toString());
 		apply.setApplyDate(new Date());
 		apply.setPosition(position);
 		

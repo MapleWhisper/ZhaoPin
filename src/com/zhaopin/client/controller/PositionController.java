@@ -77,10 +77,4 @@ public class PositionController {
 		
 	}
 	
-	
-	
-	
-	
-	
-	
 }

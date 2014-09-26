@@ -3,6 +3,7 @@
 <html>
   <head>
 	<%@ include file="header.jspf" %>
+	<title>登陆后台</title>
   </head>
   
   <body style="background: url('../image/admin-login-bg.jpg');">

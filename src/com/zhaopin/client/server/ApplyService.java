@@ -14,5 +14,10 @@ public interface ApplyService extends BaseServer<Apply>{
 	 * @return	
 	 */
 	public List<Apply> findByState(String state);
+	
+	/**
+	 * 返回每个状态的数目
+	 */
+	public void findCountByState();
 
 }

@@ -1,5 +1,6 @@
 package com.zhaopin.client.server;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.zhaopin.base.BaseServer;
@@ -18,6 +19,6 @@ public interface ApplyService extends BaseServer<Apply>{
 	/**
 	 * 返回每个状态的数目
 	 */
-	public void findCountByState();
+	public HashMap<String,String> findCountByState();
 
 }

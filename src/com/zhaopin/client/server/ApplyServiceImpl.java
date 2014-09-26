@@ -1,6 +1,7 @@
 package com.zhaopin.client.server;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -19,15 +20,20 @@ public class ApplyServiceImpl extends BaseServerImpl<Apply> implements ApplyServ
 	@Override
 	public List<Apply> findByState(String state) {
 		@SuppressWarnings("unchecked")
-		List<Apply> list= (List<Apply>) getSession().createQuery("from Apply a where state = ?").setParameter(0, state).list();
+		List<Apply> list= (List<Apply>) getSession().createQuery("from Apply a where a.state = ?").setParameter(0, state).list();
 		return list;
 	}
 	
 	@Override
-	public void findCountByState() {
+	public HashMap<String,String> findCountByState() {
+
 		Query query =  getSession().createQuery("select a.state ,count(*) from Apply a group by a.state");
-		
-		
+		List<Object[]> list = query.list();
+		HashMap<String,String> map = new HashMap<>();
+		for(Object[] o : list){
+			map.put(o[0].toString(), o[1].toString());
+		}
+		return map;
 	}
 	
 }

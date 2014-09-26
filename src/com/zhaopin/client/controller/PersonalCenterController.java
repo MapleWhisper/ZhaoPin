@@ -20,10 +20,12 @@ public class PersonalCenterController {
 	public String personalCenter(Model model,HttpSession session){
 		
 		User user=(User)session.getAttribute("user");
-		System.out.println(user.getId());
-		System.out.println("asdasdasd");
+		if(user!=null){
+			return "client/personalCenter";
+		}else{
+			return "redirect:/client/login";
+		}
 		
 		
-		return "client/personalCenter";
 	}
 }

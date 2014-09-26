@@ -6,7 +6,7 @@
 	<title>登陆后台</title>
   </head>
   
-  <body style="background: url('../image/admin-login-bg.jpg');">
+  <body style="background: url('../image/adm-login-bg.jpg');">
     	<div class="container">
     		<!--登陆表单 -->
     		<%@ include file="head.jsp" %>

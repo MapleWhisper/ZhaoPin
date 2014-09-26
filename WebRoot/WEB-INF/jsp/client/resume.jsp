@@ -17,17 +17,14 @@
 						<div class="row">
 							<div class="col-sm-2">
 								<div class="col-sm-4">
-
 									<button class="btn btn-primary btn-lg" style="border-top:1px">上传图片</button>
 								</div>
 							</div>
 							<div class="col-sm-10 ">
-								
 									<div class="page-header">
 										<h3>个人信息基础</h3>
 									</div>
 									<div class="row">
-
 										<div class="col-sm-6">
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-3 control-label">姓名</label>
@@ -36,14 +33,12 @@
 														id="username" placeholder="姓名">
 												</div>
 											</div>
-
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-3 control-label">出生日期</label>
 												<div class="col-sm-6">
 													<input type="text" class="form-control inputxt"
 														name="birthday" id="dataTime" placeholder="年">
 												</div>
-
 											</div>
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-3 control-label">证件号码</label>

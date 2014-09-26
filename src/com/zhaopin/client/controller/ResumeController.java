@@ -63,7 +63,7 @@ public class ResumeController  {
 		 
 				 
 			User user=(User)session.getAttribute("user");
-			System.out.println("ok");
+
 			if(user!=null){
 				System.out.println(user.getId());
 				User u = userSever.getById(user.getId());

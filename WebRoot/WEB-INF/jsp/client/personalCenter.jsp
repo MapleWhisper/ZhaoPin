@@ -4,7 +4,6 @@
 	<head>
 	<%@ include file="header.jspf"%>
 	</head>
-
 <body>
 	<div class="container">
 		<%@ include file="head.jsp"%>
@@ -34,25 +33,28 @@
 									<table class="table table-striped table-hover">
 										<tr>
 											<td>姓名</td>
-											<td>姓名</td>
+											<td>数据</td>
+											<td></td>
+											<td></td>
 										</tr>
 										<tr>
-											<td>出生日期</td>
-											<td>证件类型</td>
+											<td>邮箱</td>
+											<td>数据</td>
+											<td></td>
+											<td></td>
 										</tr>
 										<tr>
-											<td>证件号码</td>
-											<td>婚姻状况</td>
+											<td>手机号</td>
+											<td>数据</td>
+											<td></td>
+											<td></td>
 										</tr>
 										<tr>
-											<td>工作年限</td>
-											<td>电话</td>
+											<td> <button class="btn btn-info btn-lg" style="border-top:1px">修改密码</button></td>
+											<td></td>
+											<td> <button class="btn btn-info btn-lg" style="border-top:1px">个人简历完善</button></td>
+											<td></td>
 										</tr>
-										<tr>
-											<td>电子邮箱</td>
-											<td>邮编</td>
-										</tr>
-
 									</table>
 
 								</div>

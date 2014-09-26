@@ -1,6 +1,13 @@
 package com.zhaopin.client.controller;
 
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+
+
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -45,8 +52,34 @@ public class IndexController {
 		list.add(2);
 		list.add(3);
 		if(!map.containsAttribute("positionName")){
+
+			List<Position>plist=positionServer.getPositionName();
+			List<Position>li=new ArrayList<Position>();
+			Iterator<Position>it=plist.iterator();
+			long day=0;
+			 SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd");
+			 Date date=new Date();
+			while(it.hasNext()){
+				Position p=it.next();
+				try {
+					Date date1=sf.parse(sf.format(date));
+					Date date2=sf.parse(sf.format(p.getCreatedate()));
+					day=date1.getTime()-date2.getTime();
+					day=day/1000/60/60/24;
+					p.setScanNumber((int)day);
+					li.add(p);
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+			map.addAttribute("positionName",li);
+			req.getSession().setAttribute("positionName",li);
+
 			map.addAttribute("positionName",positionServer.getPositionName());
 			req.getSession().setAttribute("positionName",positionServer.getPositionName());
+
 		}
 		map.addAttribute("list",list);
 		System.out.println("ok");

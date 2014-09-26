@@ -101,4 +101,29 @@ public class APositionController {
 		return "admin/showPosition";
 	} 
 	
+	//修改职位信息
+	@RequestMapping("/position/edit/id/{id}")
+	public String edit(@PathVariable int id,Model model){
+		Position position=positionServer.getById(id);
+		model.addAttribute("position",position);
+		return "admin/editPosition";
+	}
+	@RequestMapping("/position/update")
+	public String update(Position position){
+		Position p=positionServer.getById(position.getId());
+		p.setName(position.getName());
+		p.setEndDate(position.getEndDate());
+		p.setRecruitNumber(position.getRecruitNumber());
+		p.setPositionInfo(position.getPositionInfo());
+		p.setPosition(position.getPosition());
+		p.setType(position.getType());
+		p.setWorkExper(position.getWorkExper());
+		p.setEducationNeed(position.getEducationNeed());
+		p.setSalary(position.getSalary());
+		p.setLanguageNeed(position.getLanguageNeed());
+		p.setWorkPlace(position.getWorkPlace());
+		positionServer.updata(p);
+		return "redirect:/admin/position";
+	}
+	
 }

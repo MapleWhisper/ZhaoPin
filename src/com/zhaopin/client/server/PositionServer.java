@@ -16,7 +16,15 @@ import com.zhaopin.po.Position;
  */
 @Transactional
 public interface PositionServer extends BaseServer<Position> {
-
+	
+	/**
+	 * 根据查询条件返回对象列表
+	 */
 	public List<Position> getByKey(HashMap<String,String> map);
+	
+	/**
+	 * 得到position列表  时间倒序排序
+	 * @return
+	 */
 	public List<Position>getPositionName();
 }

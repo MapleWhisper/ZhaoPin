@@ -40,7 +40,7 @@ public class PositionController {
 	@RequestMapping("/position/show/id/{id}")
 	public String loginAdmin( @PathVariable int id,Model model){
 		Position p = positionServer.getById(id);
-		p.setScanNumber(p.getScanNumber()==null?0:p.getScanNumber()+1);		//浏览岗位，把岗位浏览次数加一
+		p.setScanNumber(p.getScanNumber()==null?1:p.getScanNumber()+1);		//浏览岗位，把岗位浏览次数加一
 		positionServer.updata(p);
 		model.addAttribute("position",p);
 		System.out.println("ok");

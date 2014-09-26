@@ -74,7 +74,6 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 		Session session = getSession();
 		if(entry!=null){
 			session.update(entry);
-			session.flush();
 		}
 		
 	}

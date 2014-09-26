@@ -19,11 +19,12 @@ import com.zhaopin.po.Position;
  */
 @Service()
 @Transactional
+@SuppressWarnings("unchecked")
 public class PositionServerImpl extends BaseServerImpl<Position> implements PositionServer{
 	/**
 	 * 根据查询条件返回对象列表
 	 */
-	@SuppressWarnings("unchecked")
+	
 	@Override
 	public List<Position> getByKey(HashMap<String,String> map) {
 		String hql = "from Position p ";

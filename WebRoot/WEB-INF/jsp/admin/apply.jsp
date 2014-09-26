@@ -39,11 +39,11 @@
     					<div class="panel-body">
     						<!-- 申请头 -->
 							<ul class="nav  nav-pills nav-justified" role="tablist">
-							  <li class="active"><a title="待审核" data-toggle="tab">待审核<span class="badge">4</span></a></li>
-							  <li><a  title="待答题" data-toggle="tab">待答题</a></li>
-							  <li><a  title="待批阅" data-toggle="tab">待批阅</a></li>
-							  <li><a  title="已完成" data-toggle="tab">已完成</a></li>
-							  <li><a  title="已拒绝" data-toggle="tab">已拒绝</a></li>
+							  <li class="active"><a title="待审核" data-toggle="tab">待审核<span class="badge" id="step1">0</span></a></li>
+							  <li><a  title="待答题" data-toggle="tab">待答题<span class="badge" id="step2"></span></a></li>
+							  <li><a  title="待批阅" data-toggle="tab">待批阅<span class="badge" id="step3"></span></a></li>
+							  <li><a  title="已完成" data-toggle="tab">已完成<span class="badge" id="step4"></span></a></li>
+							  <li><a  title="已拒绝" data-toggle="tab">已拒绝<span class="badge" id="step5"></span></a></li>
 							</ul><!-- 申请头 -->
 							
 							<!-- 申请表格 Ajax -->

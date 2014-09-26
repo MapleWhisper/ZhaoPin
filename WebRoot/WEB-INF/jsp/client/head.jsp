@@ -40,7 +40,7 @@
 						<li><p class="navbar-text">你好${sessionScope.user.name}</p></li>		
 						<li> <a href="${pageContext.request.contextPath}/client/personalCenter"><span
 								class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;个人中心</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/position">登陆后台</a></li>
+						<li><a href="${pageContext.request.contextPath}/client/loginAdmin">登陆后台</a></li>
 						<li><a href="${pageContext.request.contextPath}/client/login"><span
 								class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;登陆</a></li>
 						<li><a href="${pageContext.request.contextPath}/client/register"><span

@@ -53,11 +53,11 @@
 								<td class="info">职位类型</td>
 								<td>
 									<div class="input-group input-group-sm">
-										<select class="form-control"  name="position">								
-											<option value="教育" selected="selected">教育&nbsp;&nbsp;&nbsp;</option>
-											<option value="管理" selected="selected">管理</option>
-											<option value="技术">技术</option>
-										</select>	
+										<f:select class="form-control" path="position.position">								
+											<f:option value="教育">教育&nbsp;&nbsp;&nbsp;</f:option>
+											<f:option value="管理">管理</f:option>
+											<f:option value="技术">技术</f:option>
+										</f:select>	
 									</div>
 									
 										
@@ -66,13 +66,13 @@
 								<td>
 									<div class="input-group input-group-sm">
 										
-										<select class="form-control" name="type">
-											<option value="不限" selected>不限</option>
-											<option value="全职" >全职</option>
-											<option value="专职">专职</option>
-											<option value="兼职">兼职</option>
-											<option value="实习">实习</option>
-										</select>
+										<f:select class="form-control" path="position.type">
+											<f:option value="不限">不限</f:option>
+											<f:option value="全职" >全职</f:option>
+											<f:option value="专职">专职</f:option>
+											<f:option value="兼职">兼职</f:option>
+											<f:option value="实习">实习</f:option>
+										</f:select>
 									</div>
 								</td>
 								
@@ -80,15 +80,15 @@
 								<td class="info">工作经验</td>
 								<td>
 									<div class="input-group input-group-sm">
-										<select class="form-control" path="position.workExper">
-											<option value="不限" >不限</option>
-											<option value="应届毕业生">应届毕业生</option>
-											<option value="一年以下">一年以下</option>
-											<option value="1-3年">1-3年</option>
-											<option value="3-5年">3-5年</option>
-											<option value="5-10年">5-10年</option>
-											<option value="10年以上">10年以上</option>
-										</select>
+										<f:select class="form-control" path="position.workExper">
+											<f:option value="不限" >不限</f:option>
+											<f:option value="应届毕业生">应届毕业生</f:option>
+											<f:option value="一年以下">一年以下</f:option>
+											<f:option value="1-3年">1-3年</f:option>
+											<f:option value="3-5年">3-5年</f:option>
+											<f:option value="5-10年">5-10年</f:option>
+											<f:option value="10年以上">10年以上</f:option>
+										</f:select>
 										
 									</div>
 								</td>
@@ -115,21 +115,21 @@
 								<td>
 									<div class="input-group input-group-sm">
 										
-										<select class="form-control" name="salary">
-											<option value="" selected>空</option>
-											<option value="面谈">面谈</option>
-										</select>
+										<f:select class="form-control" path="position.salary">
+											<f:option value="">空</f:option>
+											<f:option value="面谈">面谈</f:option>
+										</f:select>
 									</div>
 								</td>
 
 								<td class="info">语言要求</td>
 								<td>
 									<div class="input-group input-group-sm">
-										<select class="form-control" name="languageNeed">
-											<option value="不限" selected>不限</option>
-											<option value="普通话">普通话</option>
-											<option value="普通话 英语">普通话   英语</option>
-										</select>
+										<f:select class="form-control" path="position.languageNeed">
+											<f:option value="不限">不限</f:option>
+											<f:option value="普通话">普通话</f:option>
+											<f:option value="普通话 英语">普通话   英语</f:option>
+										</f:select>
 									</div>
 								</td>
 							</tr>
@@ -137,10 +137,10 @@
 								<td class="info">工作地点</td>
 								<td>
 									<div class="input-group input-group-sm">
-										<select class="form-control" name="workPlace">
-											<option value="哈尔滨" selected>哈尔滨</option>
+										<f:select class="form-control" path="position.workPlace">
+											<f:option value="哈尔滨">哈尔滨</f:option>
 											
-										</select>
+										</f:select>
 									</div>
 								</td>
 								<td class="info">招聘人数</td>

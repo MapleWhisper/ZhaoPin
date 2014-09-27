@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.zhaopin.client.server.UserServer;
 import com.zhaopin.po.User;
@@ -48,7 +49,7 @@ public class UserController {
 	 * 验证登陆
 	 * @return
 	 */
-	@RequestMapping("/login/login")
+	@RequestMapping(value="/login/login",method=RequestMethod.POST)
 	public String login(@ModelAttribute User user,HttpSession session,Model model){
 		System.out.println("ok");
 		User u =userServer.login(user);
@@ -70,7 +71,7 @@ public class UserController {
 	 * @param user
 	 * @return
 	 */
-	@RequestMapping("/register/save")
+	@RequestMapping(value="/register/save",method=RequestMethod.POST)
 	public String save(@ModelAttribute User user,Model model){
 		try {
 			userServer.save(user);

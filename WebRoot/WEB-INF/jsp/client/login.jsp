@@ -3,7 +3,10 @@
 <html>
   <head>
 	<%@ include file="header.jspf" %>
+	
 	<title >用户登录</title>
+	<script src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
+	
   </head>
   
   <body style="background:url(../image/login-bg.jpg);">
@@ -19,30 +22,27 @@
 							<h3 class="panel-title">登录</h3>
 						</div>
 						<div class="panel-body">
-							<form class="form-horizontal" role="form" action="login/login" method="post" style="margin-top: 20px">
+							<form class="form-horizontal" role="form" action="login/login" method="post" style="margin-top: 20px" id="form1">
 								<div class="form-group" align="center">
-									<label for="inputEmail3" class="col-sm-3 control-label">邮箱:</label>
+									<label  class="col-sm-3 control-label">邮箱:</label>
 									<div class="col-sm-9">
-										<input type="email" class="form-control" name="email">
+										<input type="email" id="email" class="form-control" name="email">
 									</div>
 								</div>
 								<div class="form-group" align="center">
 									<label for="inputPassword3" class="col-sm-3 control-label">密码:</label>
 									<div class="col-sm-9">
-										<input type="password" class="form-control" name="password"
-											id="inputPassword3" placeholder="password">
+										<input type="password" class="form-control" name="password" id="password" >
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="col-sm-offset-2 col-sm-6">
 										<div class="checkbox">
-											<label> <input type="checkbox">记住密码
-											</label>
+											<label> <input type="checkbox">记住密码</label>
 										</div>
 									</div>
 									<div class="col-sm-4">
 										<div style="margin-top: 7px">
-											
 											<a href="#" class="form-control-static">忘记密码？ </a>
 										</div>
 									</div>
@@ -69,4 +69,29 @@
     	</div>
     	<%@ include file="buttom.jsp" %>
   </body>
+  <script type="text/javascript">
+		$(function() {  
+			$("#form1").validate({
+				rules:{
+					email: {
+						required:true,
+						email:true
+					},
+					password: {
+						required:true,
+						minlength:2
+					}
+					
+				},
+				messages:{
+					email:"请输入正确邮箱地址",
+					password:{
+						required:"请输入密码",
+						minlength:"长度需要大于3"
+					}
+				}
+			});  
+		});
+	
+	</script>
 </html>

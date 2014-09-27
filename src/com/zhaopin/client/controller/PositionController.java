@@ -1,8 +1,11 @@
 package com.zhaopin.client.controller;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -40,10 +43,36 @@ public class PositionController {
 	 */
 	@RequestMapping("/position/show/id/{id}")
 	public String loginAdmin( @PathVariable int id,Model model){
-		Position p = positionServer.getById(id);
-		p.setScanNumber(p.getScanNumber()==null?1:p.getScanNumber()+1);		//浏览岗位，把岗位浏览次数加一
-		positionServer.updata(p);
-		model.addAttribute("position",p);
+		Position p1 = positionServer.getById(id);
+		p1.setScanNumber(p1.getScanNumber()==null?1:p1.getScanNumber()+1);		//浏览岗位，把岗位浏览次数加一
+		positionServer.updata(p1);
+		if(!model.containsAttribute("positionName")){
+
+			List<Position>plist=positionServer.getPositionName();	
+			Iterator<Position>it=plist.iterator();
+			long day=0;
+			SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd");
+			Date date=new Date();
+			Position p;
+			while(it.hasNext()){
+				p=it.next();
+				try {
+					Date date1=sf.parse(sf.format(date));
+					if(p.getCreatedate()!=null){
+						Date date2=sf.parse(sf.format(p.getCreatedate()));
+						day=date1.getTime()-date2.getTime();
+						day=day/1000/60/60/24;
+						p.setDay( (int)day );
+						String name = p.getName();
+						p.setName(name.substring(0, name.length()<10?name.length():10));
+					}
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+			}
+			model.addAttribute("positionName",plist);
+		}
+		model.addAttribute("position",p1);
 		System.out.println("ok");
 		return "client/position";
 	}

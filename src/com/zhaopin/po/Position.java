@@ -36,7 +36,9 @@ public class Position implements Serializable{
 	private Integer scanNumber;		//浏览人数
 	private Integer applyNumber;	//申请人数
 	private Integer successNumber;	//成功人数
+	private Integer day;			//距离发布多少天
 	private Set<Apply> applys;		//申请该岗位的申请
+	
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -154,6 +156,12 @@ public class Position implements Serializable{
 	}
 	public void setApplys(Set<Apply> applys) {
 		this.applys = applys;
+	}
+	public Integer getDay() {
+		return day;
+	}
+	public void setDay(Integer day) {
+		this.day = day;
 	}
 	
 	

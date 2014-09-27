@@ -191,7 +191,7 @@
 								<c:forEach items="${positionName }" var="pn">
 								<ul style="margin-left: -25">
 								<li ><a href="position/show/id/${pn.id}">${pn.name}</a>
-								<span style="float: right;">${pn.scanNumber }天前</span>
+								<span style="float: right;">${pn.day }天前</span>
 								</li>
 								</ul > 
 								</c:forEach>

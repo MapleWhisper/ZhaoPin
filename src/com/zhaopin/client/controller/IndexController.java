@@ -29,8 +29,8 @@ import com.zhaopin.po.Position;
 public class IndexController {
 	@Resource(name="positionServerImpl")
 	private PositionServer positionServer;
-	
-	
+
+
 	/**
 	 * 此方法是用来加载主页数据，然后跳转到主页上的
 	 * 
@@ -42,44 +42,33 @@ public class IndexController {
 		if(!map.containsAttribute("positionList")){
 			map.addAttribute("positionList",positionServer.getByEndDate());	//把简历列表信息 加载到主页面
 		}
-		ArrayList<Integer> list = new ArrayList<>();
-		list.add(1);
-		list.add(2);
-		list.add(3);
+
 		if(!map.containsAttribute("positionName")){
 
-			List<Position>plist=positionServer.getPositionName();
-			List<Position>li=new ArrayList<Position>();
+			List<Position>plist=positionServer.getPositionName();	
 			Iterator<Position>it=plist.iterator();
 			long day=0;
-			 SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd");
-			 Date date=new Date();
+			SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd");
+			Date date=new Date();
 			while(it.hasNext()){
 				Position p=it.next();
 				try {
 					Date date1=sf.parse(sf.format(date));
-					Date date2=sf.parse(sf.format(p.getCreatedate()));
-					day=date1.getTime()-date2.getTime();
-					day=day/1000/60/60/24;
-					p.setScanNumber((int)day);
-					li.add(p);
+					if(p.getCreatedate()!=null){
+						Date date2=sf.parse(sf.format(p.getCreatedate()));
+						day=date1.getTime()-date2.getTime();
+						day=day/1000/60/60/24;
+						String name = p.getName();
+						p.setName(name.substring(0, name.length()<10?name.length():10));
+						p.setDay( (int)day );
+					}
 				} catch (ParseException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
-				
 			}
-			map.addAttribute("positionName",li);
-			req.getSession().setAttribute("positionName",li);
-
-			map.addAttribute("positionName",positionServer.getPositionName());
-			req.getSession().setAttribute("positionName",positionServer.getPositionName());
-
+			map.addAttribute("positionName",plist);
 		}
-		map.addAttribute("list",list);
-		System.out.println("ok");
 		return "client/index";
 	}
-	
+
 }

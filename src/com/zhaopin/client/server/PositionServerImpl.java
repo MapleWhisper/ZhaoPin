@@ -46,8 +46,8 @@ public class PositionServerImpl extends BaseServerImpl<Position> implements Posi
 	@Override
 	public List<Position> getPositionName() {
 		// TODO Auto-generated method stub
-		String hql="from Position as p order by createdate desc";
-		Query query=this.getSession().createQuery(hql);
+		String hql="from Position  p where p.endDate > ? order by p.createdate desc";
+		Query query=this.getSession().createQuery(hql).setDate(0, new Date());
 		query.setFirstResult(0);
 		query.setMaxResults(5);
 		return (List<Position>)query.list();

@@ -95,10 +95,10 @@
 								<h3 class="panel-title">最近岗位</h3>
 							</div>
 							<div class="panel-body" >
-								<c:forEach items="${positionName }" var="pn">
+								<c:forEach items="${positionName}" var="pn">
 								<ul style="margin-left: -25">
-								<li ><a href="position/show/id/${pn.id}">${pn.name}</a>
-								<span style="float: right;">${pn.scanNumber }天前</span>
+								<li ><a href="${pn.id}">${pn.name}</a>
+								<span style="float: right;">${pn.day }天前</span>
 								</li>
 								</ul > 
 								</c:forEach>

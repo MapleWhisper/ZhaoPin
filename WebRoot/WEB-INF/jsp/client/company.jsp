@@ -5,7 +5,7 @@
 	<%@ include file="header.jspf" %>
 	<title>公司介绍</title>
 	<style type="text/css">
-		#nav {position:fixed;width: 200px}
+		#nav {position:fixed;width: 250px}
 	</style>
 	<script>
 		$(function(){
@@ -19,13 +19,10 @@
 	</script>
   </head>
   
-  <body >
+  <body  style="background: url(${pageContext.request.contextPath}/image/index-bg.jpg) repeat;">
     	<div class="container">
     		<%@ include file="head.jsp" %>
-    		<div class="row" style="margin-top: 70px">
-    				<div class="row" style="margin-top: 100px">
-	  			<img alt="公司了解" src="../image/knowConpany.png">
-	  		</div>
+    		
 	  		<div class="page-header">
 	  			<h2 class=""></h2>
 	  		</div>
@@ -40,7 +37,9 @@
 					</ul>
 
 	  			</div><!--左侧的导航条 -->
-	  			<div class="col-sm-8">
+	  			
+	  			
+	  			<div class="col-sm-8" style="background-color: white;">
 	  				<div class="row">
 				  		<div class="page-header" style="margin-left: 30px" id="companyIntroduction">
 				  			<h2 class="head-leader">公司介绍</h2>

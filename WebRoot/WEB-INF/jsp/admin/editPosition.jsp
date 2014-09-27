@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
 
 
 <html>
@@ -79,8 +80,8 @@
 								<td class="info">工作经验</td>
 								<td>
 									<div class="input-group input-group-sm">
-										<select class="form-control" name="workExper">
-											<option value="不限" selected>不限</option>
+										<select class="form-control" path="position.workExper">
+											<option value="不限" >不限</option>
 											<option value="应届毕业生">应届毕业生</option>
 											<option value="一年以下">一年以下</option>
 											<option value="1-3年">1-3年</option>
@@ -99,14 +100,15 @@
 								<td class="info">最低学历</td>
 								<td>
 									<div class="input-group input-group-sm">
-										<select class="form-control" name="educationNeed">
-											<option value="不限" selected>不限</option>
-											<option value="高中">高中</option>
-											<option value="专科">专科</option>
-											<option value="本科">本科</option>
-											<option value="研究生">研究生</option>
-											<option value="博士">博士</option>
-										</select>
+										<f:select class="form-control" path="position.educationNeed">
+											
+											<f:option value="不限" >不限</f:option>
+											<f:option value="高中">高中</f:option>
+											<f:option value="专科">专科</f:option>
+											<f:option value="本科">本科</f:option>
+											<f:option value="研究生">研究生</f:option>
+											<f:option value="博士">博士</f:option>
+										</f:select>
 									</div>
 								</td>
 								<td class="info">薪资待遇</td>

@@ -9,7 +9,7 @@
 	
   </head>
   
-  <body style="background:url(../image/login-bg.jpg);">
+  <body style="background:url(${pageContext.request.contextPath}/image/login-bg.jpg);">
     	<div class="container">
     		<%@ include file="head.jsp" %>
     		
@@ -22,7 +22,7 @@
 							<h3 class="panel-title">登录</h3>
 						</div>
 						<div class="panel-body">
-							<form class="form-horizontal" role="form" action="login/login" method="post" style="margin-top: 20px" id="form1">
+							<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/client/login/login" method="post" style="margin-top: 20px" id="form1">
 								<div class="form-group" align="center">
 									<label  class="col-sm-3 control-label">邮箱:</label>
 									<div class="col-sm-9">
@@ -57,6 +57,15 @@
 										class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;立即注册</a>
 									</div>
 								</div>
+								<div class="form-group" id="e2">
+									<div class="col-sm-8 col-sm-offset-2">
+										<div class="alert alert-danger alert-dismissible" role="alert">
+  												<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+ 												 <span id="e1">${error}<span>
+										</div>
+									</div>
+								</div>
+								
 							</form>
 							<!--登陆表单 -->
 						</div>
@@ -91,6 +100,12 @@
 					}
 				}
 			});  
+		});
+		$(function(){
+			var p = $("#e1").text();
+			if( p.length==11){
+				$("#e2").remove();
+			}
 		});
 	
 	</script>

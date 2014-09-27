@@ -45,8 +45,8 @@
 						$(data).each(function(i,p){
 							//alert(p.name);
 							var data = $("<tr class='data'><td><a href='position/show/id/${p.id}'>"+
-										p.name+"</a></td><td>"+p.position+"</td><td>"+p.workPlace+"</td><td>"+
-										p.recruitNumber+"</td><td>"+p.endDate+"</td></tr>");
+										p.name+"</a></td><td>"+p.position+"</td><td>"+p.type+"</td><td>"+p.workPlace+"</td><td>"+
+										p.recruitNumber+"</td><td>"+p.endDate.substring(0,10)+"</td></tr>");
 							$("#table").append(data);
 							
 						});
@@ -55,6 +55,10 @@
 				});
 			});
 		});
+		$(function(){
+			$("td a").attr("target","_blank");
+			$(".panel-body a").attr("target","_blank");
+		})
 	</script>
 	
   </head>
@@ -67,7 +71,6 @@
 	<!--container -->
 	<div class="container">
 		<%@ include file="head.jsp" %>
-		
 		<div class="row" style="margin-top: 20px">
 			<div class="col-md-9">
 				<div class="panel panel-info">
@@ -136,9 +139,10 @@
 					<div class="panel-body">
 			<!-- 职业信息 -->
 						<table class="table table-striped table-hover" id="table">
-							<tr class="info">
+							<tr class="info" style="font-weight: bold;">
 								<td>职位名称</td>
 								<td>职位类别</td>
+								<td>职位类型</td>
 								<td>工作地点</td>
 								<td>招聘人数</td>
 								<td>截止日期</td>
@@ -147,9 +151,10 @@
 								<tr class="data">
 									<td><a href="position/show/id/${p.id}">${p.name}</a></td>
 									<td>${p.position }</td>
+									<td>${p.type }</td>
 									<td>${p.workPlace }</td>
 									<td>${p.recruitNumber }</td>
-									<td><fm:formatDate value="${p.endDate}"></fm:formatDate></td>
+									<td><fm:formatDate value="${p.endDate}" pattern="yyyy-MM-dd"></fm:formatDate></td>
 									
 								</tr>
 							</c:forEach>

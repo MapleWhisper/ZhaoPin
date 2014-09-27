@@ -48,9 +48,13 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<div class="col-sm-offset-2 col-sm-10">
+									<div class="col-sm-offset-2 col-sm-6">
 										<button type="submit" class="btn btn-warning"><span
-									class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;登陆</button>
+										class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;登陆</button>
+									</div>
+									<div class=" col-sm-4">
+										<a href="${pageContext.request.contextPath}/client/register" class="btn btn-primary btn-sm"><span
+										class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;立即注册</a>
 									</div>
 								</div>
 							</form>

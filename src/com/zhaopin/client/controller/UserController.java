@@ -83,7 +83,12 @@ public class UserController {
 			return "client/register";	//返回注册页面
 		}
 		
-		
+	}
+	
+	@RequestMapping("/login/logout")
+	public String logout(HttpSession session){
+		session.removeAttribute("user");
+		return "redirect:/client/index";
 	}
 	
 	

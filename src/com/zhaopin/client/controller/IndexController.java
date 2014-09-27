@@ -1,19 +1,12 @@
 package com.zhaopin.client.controller;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.zhaopin.client.server.PositionServer;
-import com.zhaopin.po.Position;
 
 /**
  * 
@@ -38,7 +31,7 @@ public class IndexController {
 	@RequestMapping("/index")
 	public String index(ModelMap map,HttpServletRequest req){
 		if(!map.containsAttribute("positionList")){
-			map.addAttribute("positionList",positionServer.findAll());	//把简历列表信息 加载到主页面
+			map.addAttribute("positionList",positionServer.getByEndDate());	//把简历列表信息 加载到主页面
 		}
 		ArrayList<Integer> list = new ArrayList<>();
 		list.add(1);

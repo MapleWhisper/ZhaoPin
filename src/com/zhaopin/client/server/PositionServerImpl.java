@@ -1,6 +1,7 @@
 package com.zhaopin.client.server;
 
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -27,24 +28,21 @@ public class PositionServerImpl extends BaseServerImpl<Position> implements Posi
 	
 	@Override
 	public List<Position> getByKey(HashMap<String,String> map) {
-		String hql = "from Position p ";
-		int index = 0;
+		String hql = "from Position p where p.endDate > ? ";
 		for(String key : map.keySet()){					//生成 hql 查询条件字符串
 			if( map.get(key)!=null && !map.get(key).equals("") && !map.get(key).equals("不限") ){
-				if(index==0){
-					hql+=" where p."+key+" = '"+map.get(key)+"' ";
-					index++;
-				}else{
-					hql+=" and  p."+key+" = '"+map.get(key)+"' ";
-				}
 				
+					hql+="  and p."+key+" = '"+map.get(key)+"' ";
 			}
 		}
 		System.out.println("hql语句:"+hql);
 		
-		return (List<Position>) getSession().createQuery(hql).list();
+		return (List<Position>) getSession().createQuery(hql).setDate(0, new Date()).list();
 	}
-
+	
+	/**
+	 * 根据时间倒叙 取得最近发布的5个职位
+	 */
 	@Override
 	public List<Position> getPositionName() {
 		// TODO Auto-generated method stub
@@ -53,5 +51,15 @@ public class PositionServerImpl extends BaseServerImpl<Position> implements Posi
 		query.setFirstResult(0);
 		query.setMaxResults(5);
 		return (List<Position>)query.list();
+	}
+	
+	/**
+	 * 查询所有未到截止日期的岗位
+	 */
+	@Override
+	public List<Position> getByEndDate() {
+		String hql = "from Position p where p.endDate > ?";
+		
+		return getSession().createQuery(hql).setDate(0, new Date()).list();
 	}
 }

@@ -99,4 +99,40 @@ public class ApplyController {
 		
 		return "redirect:/admin/apply";
 	}
+	
+	/**
+	 * 根据 id 接受审核
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping("apply/accept/{id}")
+	public String accept(@PathVariable int id){
+		
+		Apply apply = applyService.getById(id);
+		if(apply.getState().equals(ApplyState.待审核.toString())){
+			apply.setState(ApplyState.待答题.toString());
+		}
+		
+		applyService.updata(apply);
+		
+		return "redirect:/admin/apply";
+	}
+	
+	
+	/**
+	 * 根据 id 完成申请
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping("apply/finish/{id}")
+	public String finish(@PathVariable int id){
+		
+		Apply apply = applyService.getById(id);
+		if(apply.getState().equals(ApplyState.待批阅.toString())){
+			apply.setState(ApplyState.已完成.toString());
+		}
+		applyService.updata(apply);
+		
+		return "redirect:/admin/apply";
+	}
 }

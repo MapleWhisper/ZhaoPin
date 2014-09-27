@@ -17,6 +17,8 @@ import com.zhaopin.po.Position;
 @Transactional
 public interface PositionServer extends BaseServer<Position> {
 	
+	public List<Position> getByEndDate();
+	
 	/**
 	 * 根据查询条件返回对象列表
 	 */

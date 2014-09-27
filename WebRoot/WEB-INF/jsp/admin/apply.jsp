@@ -31,7 +31,8 @@
 							  <li><a href="#list5" title="已拒绝" role="tab" data-toggle="tab">已拒绝</a></li>
 							</ul><!-- 申请头 -->
 							
-							<!-- 申请表格 Ajax -->
+							
+							<!-- 待审核 -->
 							 	<div class="tab-content" style="margin-top: 20px">
 							 		<div class="tab-pane active" id="list1" >
 									 			<table class="table table-striped table-hover table-bordered" id="table1">
@@ -52,13 +53,16 @@
 											 			
 											 			<td>${a.applyDate }</td>
 											 			<td><a>简历<a></a></td>
-											 			<td><a href='#' class='btn btn-info '>接受</a></td>
+											 			<td><a href='apply/accept/${a.id }' class='btn btn-info '>接受</a></td>
 											 			<td><a href='apply/refuse/${a.id}' class='btn btn-danger '>拒绝</a></td>
 										 			</tr>
 										 					
 										 		</c:forEach>
 												</table>
-								   </div>
+								   </div><!-- 待审核 -->
+								   
+								   
+								   <!-- 待答题 -->
 								   <div class="tab-pane" id="list2" >
 								 		<table class="table table-striped table-hover table-bordered" id="table1">
 										 			<tr class="info">
@@ -79,7 +83,10 @@
 										 			</tr>
 										 		</c:forEach>
 												</table>
-									</div>
+									</div> <!-- 待答题 -->
+									
+									
+									 <!-- 待批阅 -->
 									<div class="tab-pane" id="list3" >
 								 		<table class="table table-striped table-hover table-bordered" id="table1">
 										 			<tr class="info">
@@ -97,12 +104,14 @@
 										 			<td><a target="_blank" href="position/show/id/${a.position.id}">${a.position.name }</a></td>
 										 			<td>${a.applyDate }</td>
 										 			<td><a>简历<a></a></td>
-										 			<td><a href='#' class='btn btn-info '>最终接受并完成招聘</a></td>
+										 			<td><a href='apply/finish/${a.id }' class='btn btn-info '>最终接受并完成招聘</a></td>
 										 			<td><a href='apply/refuse/${a.id}' class='btn btn-danger '>拒绝</a></td>
 										 			</tr>
 										 		</c:forEach>
 											</table>
-									</div>
+									</div><!-- 待批阅 -->
+									
+									<!-- 已完成 -->
 									<div class="tab-pane" id="list4" >
 								 		<table class="table table-striped table-hover table-bordered" id="table1">
 										 			<tr class="info">
@@ -121,7 +130,9 @@
 										 			</tr>
 										 		</c:forEach>
 												</table>
-									</div>
+									</div><!-- 已完成 -->
+									
+									<!-- 已拒绝 -->
 									<div class="tab-pane " id="list5" >
 								 		<table class="table table-striped table-hover table-bordered" id="table1">
 										 			<tr class="info">
@@ -140,8 +151,9 @@
 										 			</tr>
 										 		</c:forEach>
 												</table>
-									</div>
-							  </div>
+									</div><!-- 已拒绝 -->
+									
+							  </div><!-- 面板体 -->
 							 	
 						</div><!-- 申请列表 -->
     					

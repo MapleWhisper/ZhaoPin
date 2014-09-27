@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SimplePropertyPreFilter;
 import com.zhaopin.client.server.PositionServer;
 import com.zhaopin.client.server.UserServer;
 import com.zhaopin.po.Apply;
@@ -63,7 +64,11 @@ public class PositionController {
 		
 		List<Position> list = positionServer.getByKey(map);			//更需条件查询列表
 		
-		String positionList = JSON.toJSONStringWithDateFormat(list,"yyyy-MM-dd");	//查询列表转换成Json字符串
+		
+		
+		
+		String positionList = JSON.toJSONString(list, new SimplePropertyPreFilter(Apply.class,"applys") );	//查询列表转换成Json字符串
+		
 		//System.out.println(positionList);
 		resp.setCharacterEncoding("utf-8");
 		resp.setContentType("application/json");

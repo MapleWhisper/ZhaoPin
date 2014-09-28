@@ -54,7 +54,7 @@
 											 			<td>${a.applyDate }</td>
 											 			<td><a>简历<a></a></td>
 											 			<td><a href='apply/accept/${a.id }' class='btn btn-info '>接受</a></td>
-											 			<td><a href='apply/refuse/${a.id}' class='btn btn-danger '>拒绝</a></td>
+											 			<td><a href='apply/refuse/${a.id}' onclick="return confirm('确认要拒绝吗？')" class='btn btn-danger '>拒绝</a></td>
 										 			</tr>
 										 					
 										 		</c:forEach>
@@ -105,7 +105,7 @@
 										 			<td>${a.applyDate }</td>
 										 			<td><a>简历<a></a></td>
 										 			<td><a href='apply/finish/${a.id }' class='btn btn-info '>最终接受并完成招聘</a></td>
-										 			<td><a href='apply/refuse/${a.id}' class='btn btn-danger '>拒绝</a></td>
+										 			<td><a href='apply/refuse/${a.id}' onclick="return confirm('确认要拒绝吗？')" class='btn btn-danger '>拒绝</a></td>
 										 			</tr>
 										 		</c:forEach>
 											</table>

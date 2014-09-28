@@ -44,8 +44,7 @@ public class AdminController {
 			return "client/loginAdmin";
 		}
 		Admin a =adminServer.login(admin);
-		System.out.println(a==null);
-		
+		System.out.println("管理员登陆");
 		//登陆成功
 		if(a!=null){
 			session.setAttribute("admin", a);

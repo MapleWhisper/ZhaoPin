@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.zhaopin.client.server.UserServer;
 import com.zhaopin.po.User;
@@ -73,7 +74,13 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value="/register/save",method=RequestMethod.POST)
-	public String save(@ModelAttribute User user,Model model){
+	public String save(@ModelAttribute User user,Model model,@RequestParam String valifCode,HttpSession session){
+		//如果输入的验证码不正确
+		if( !valifCode.equals(session.getAttribute("valifCode") ))  {
+			model.addAttribute("error","验证码错误");
+			return "client/register";
+		}
+		
 		try {
 			userServer.save(user);
 			System.out.println(user.getName());

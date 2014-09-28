@@ -60,7 +60,16 @@
 											<input type="text" name="phoneNumber" class="form-control" id="phoneNumber">
 										</div>
 									</div>
-
+									
+									<div class="form-group" align="center">
+										<label for="" class="col-sm-3 control-label">验证码</label>
+										<div class="col-sm-5">
+											<input type="text" class="form-control" name="valifCode" id="valifCode" >
+										</div>
+										<div class="col-sm-3">
+											<img alt="验证码" class="control-label" src="${pageContext.request.contextPath}/client/valifImage">
+										</div>
+									</div>
 
 
 
@@ -110,8 +119,6 @@
 					},
 					phoneNumber: {
 						required:true,
-						digits:true,
-						length:11
 					}
 					
 				},
@@ -134,9 +141,7 @@
 						minlength:"姓名长度不可以小于2"
 					},
 					phoneNumber: {
-						required:"请输入手机号",
-						digits:"手机号必须为数字",
-						maxlength:"最大长度为11"
+						required:"请输入手机号"
 					}
 				}
 			});  

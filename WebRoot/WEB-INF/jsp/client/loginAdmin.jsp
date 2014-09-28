@@ -3,6 +3,7 @@
 <html>
   <head>
 	<%@ include file="header.jspf" %>
+	<script src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
 	<title>登陆后台</title>
   </head>
   
@@ -19,17 +20,17 @@
 						</div>
 						<div class="panel-body">
 					<!--表单 -->
-							<form action="${pageContext.request.contextPath}/client/loginAdmin/login" class="form-horizontal" role="form" style="margin-top: 20px" method="post">
+							<form action="${pageContext.request.contextPath}/client/loginAdmin/login" class="form-horizontal" role="form" id="form1" name="form1" style="margin-top: 20px" method="post">
 								<div class="form-group" align="center">
 									<label for="inputEmail3" class="col-sm-3 control-label">用户名:</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control" id="inputEmail3" name="username" placeholder="username">
+										<input type="text" class="form-control" id="username" name="username" >
 									</div>
 								</div>
 								<div class="form-group" align="center">
 									<label for="inputPassword3" class="col-sm-3 control-label">密码:</label>
 									<div class="col-sm-9">
-										<input type="password" class="form-control" name="password" id="inputPassword3" placeholder="password">
+										<input type="password" class="form-control" name="password" id="password" >
 									</div>
 								</div>
 								<div class="form-group" align="center">
@@ -44,10 +45,7 @@
 								
 								<div class="form-group">
 									<div class="col-sm-offset-3 col-sm-10">
-									  
 										<button type="submit" class="btn btn-warning">管理员登录</button>
-									
-<!-- 									<a href="../admin/admin.jsp" class="btn btn-primary" >管理员登陆</a> -->
 									</div>
 								</div>
 								
@@ -71,6 +69,27 @@
     	</div>
 <!--     	container -->
 		<script type="text/javascript">
+		$(function() {  
+			$("#form1").validate({
+				rules:{
+					username: {
+						required:true
+					},
+					password: {
+						required:true,
+						minlength:2
+					}
+					
+				},
+				messages:{
+					username:"请输入用户名",
+					password:{
+						required:"请输入密码",
+						minlength:"长度需要大于3"
+					}
+				}
+			});  
+		});
 		$(function(){
 			var p = $("#e1").text();
 			if( p.length==11){

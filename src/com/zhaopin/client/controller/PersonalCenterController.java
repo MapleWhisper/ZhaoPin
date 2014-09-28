@@ -1,6 +1,5 @@
 package com.zhaopin.client.controller;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;

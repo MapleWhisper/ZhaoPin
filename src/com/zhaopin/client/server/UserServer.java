@@ -3,7 +3,6 @@ package com.zhaopin.client.server;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.zhaopin.base.BaseServer;
-import com.zhaopin.filter.Admin;
 import com.zhaopin.po.User;
 
 /**

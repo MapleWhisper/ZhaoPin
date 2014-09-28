@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.zhaopin.base.BaseServerImpl;
-import com.zhaopin.filter.Admin;
+import com.zhaopin.po.Admin;
 
 /**
  * 管理员登陆服务实现类

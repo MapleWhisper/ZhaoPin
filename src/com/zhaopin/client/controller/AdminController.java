@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.zhaopin.client.server.AdminServer;
-import com.zhaopin.po.Admin;
+import com.zhaopin.filter.Admin;
 
 @Controller
 @RequestMapping("/client")

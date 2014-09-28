@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.zhaopin.client.server.AdminServer;
-import com.zhaopin.po.Admin;
+import com.zhaopin.filter.Admin;
 
 /**
  * 后台的管理员账号管理，可以查看列表，添加管理员，初始化密码，删除管理员，修改管理员信息

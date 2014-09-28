@@ -3,7 +3,7 @@ package com.zhaopin.test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.zhaopin.po.Admin;
+import com.zhaopin.filter.Admin;
 
 public class TestSpring {
 	

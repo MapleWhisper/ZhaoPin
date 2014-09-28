@@ -53,9 +53,10 @@ public class ResumeController  {
 	public String save( HttpServletRequest req , @ModelAttribute Resume resume,HttpServletRequest request,HttpSession session) throws IOException{
 		User user=(User)session.getAttribute("user");
 
-		boolean bool=saveFile(request, user);
-		if(bool){
-
+		String fileName []=saveFile(request, user);
+		
+		if(fileName!=null){
+			System.out.println("文件上传成功");
 			String e1[] = req.getParameterValues("e1");
 			String e2[] = req.getParameterValues("e2");
 			String e3[] = req.getParameterValues("e3");
@@ -80,6 +81,8 @@ public class ResumeController  {
 			resume .setCompany(ws[0]);
 			resume .setWorkTime(ws[1] );
 			resume .setMajor(ws[2]);
+			resume.setUserPicPath(fileName[0]);
+			resume.setResumePath(fileName[1]);
 
 			if(user!=null){
 				System.out.println(user.getId());
@@ -105,42 +108,59 @@ public class ResumeController  {
 	 */
 
 
-	private boolean saveFile(HttpServletRequest request, User user) {
-
+	private String[] saveFile(HttpServletRequest request, User user) {
+		String fileName [] = new String[2];
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;	
 		MultipartFile file = multipartRequest.getFile("pic");
 		MultipartFile file1 = multipartRequest.getFile("resumeFile");
 		String path = FilePath.userFilePath+user.getId()+"/";
 		new File(path).mkdirs();
-		if(file!=null && !"".equals(file.getOriginalFilename() )){
+		
+		if(file!=null && !"".equals(file.getOriginalFilename() )){		//图片上传部分
 			String  a=file.getOriginalFilename();
 			String [] s=new String[]{"bmp","jpg","gif","png"};
+			boolean flag = false;
 			for(int i=0;i<s.length;i++){
-				if(!a.endsWith(s[i])){
-					return false;
+				if(a.endsWith(s[i])){
+					flag=true;
+					break;
 				}
 			}
-			try {
-				Files.copy(file.getInputStream(), Paths.get( path+file.getOriginalFilename() )  );
-			} catch (IOException e) {
-				e.printStackTrace();
+			if(flag){	//文件后缀正确
+				try {
+					Files.copy(file.getInputStream(), Paths.get( path+file.getOriginalFilename() )  );
+					fileName[0] = path+file.getOriginalFilename();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}else{
+				return null;
 			}
+			
 		}
-		if(file1!=null && !"".equals(file1.getOriginalFilename() )){
+		if(file1!=null && !"".equals(file1.getOriginalFilename() )){	//简历上传部分
 
 			String  a=file1.getOriginalFilename();		
 			String [] s=new String[]{"doc","docx","pdf","jpg"}; 
+			boolean flag = false;
 			for(int i=0;i<s.length;i++){
-				if(!a.endsWith(s[i])){
-					return false;
+				if(a.endsWith(s[i])){
+					flag=true;
+					break;
 				}
 			}
-			try {
-				Files.copy(file1.getInputStream(), Paths.get( path+file1.getOriginalFilename() )  );
-			} catch (IOException e) {
-				e.printStackTrace();
+			if(flag){
+				try {
+					Files.copy(file1.getInputStream(), Paths.get( path+file1.getOriginalFilename() )  );
+					fileName[1] = path+file1.getOriginalFilename();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}else{
+				return null;
 			}
+			
 		}
-		return true;
+		return fileName;
 	}
 }

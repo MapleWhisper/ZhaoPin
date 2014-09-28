@@ -17,7 +17,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">个人信息简介</div>
 					<div class="panel-body">
-						<form action="resume/save" class="form-horizontal" role="form"
+						<form action="${pageContext.request.contextPath}/client/resume/save" class="form-horizontal" role="form"
 						 enctype="multipart/form-data"id="form" method="post">
 							<div class="row">
 
@@ -39,10 +39,11 @@
 												<label for="inputEmail3" class="col-sm-2 control-label">性别</label>
 
 
-												<label class="radio-inline"> <input type="radio"
-													name="sex" id="inlineRadio1" value="男"> 男
-												</label> <label class="radio-inline"> <input type="radio"
-													name="sex" id="inlineRadio1" value="女"> 女
+												<label class="radio-inline"> 
+													<input type="radio" name="sex" id="inlineRadio1" value="男"> 男
+												</label> 
+												<label class="radio-inline">
+													 <input type="radio"  name="sex" id="inlineRadio1" value="女"> 女
 												</label>
 											</div>
 											<br />

@@ -31,6 +31,7 @@ public class LoginFilter implements  Filter{
 		HttpServletRequest req =  (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
 		String path = req.getRequestURI();	//得到请求Url
+		System.out.println(path);
 		
 		HttpSession session = req.getSession();
 		if(session.getAttribute("admin")!=null){	//如果管理员登陆，继续

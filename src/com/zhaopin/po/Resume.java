@@ -52,27 +52,6 @@ public class Resume implements Serializable{
 	private String userPicPath;//用户图片路径
 	private String resumePath;//上传简历路径
 	
-	@Column(length=100)
-	public String getUserPicPath() {
-		return userPicPath;
-	}
-
-	
-	public void setUserPicPath(String userPicPath) {
-		this.userPicPath = userPicPath;
-	}
-
-	@Column(length=100)
-	public String getResumePath() {
-		return resumePath;
-	}
-
-
-	public void setResumePath(String resumePath) {
-		this.resumePath = resumePath;
-	}
-
-
 	@OneToOne(mappedBy="resume",fetch=FetchType.LAZY)
 	public User getUser() {
 		return user;
@@ -314,6 +293,26 @@ public class Resume implements Serializable{
 
 	public void setCompany(String company) {
 		this.company = company;
+	}
+
+
+	public String getUserPicPath() {
+		return userPicPath;
+	}
+
+
+	public void setUserPicPath(String userPicPath) {
+		this.userPicPath = userPicPath;
+	}
+
+
+	public String getResumePath() {
+		return resumePath;
+	}
+
+
+	public void setResumePath(String resumePath) {
+		this.resumePath = resumePath;
 	}
 	
 	

@@ -3,12 +3,11 @@ package com.zhaopin.client.controller;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.portlet.ModelAndView;
 
 import com.zhaopin.client.server.AdminServer;
 import com.zhaopin.po.Admin;
@@ -37,20 +36,24 @@ public class AdminController {
 	 * @return
 	 */
 	@RequestMapping("/loginAdmin/login")
-	public String login(@ModelAttribute Admin admin,HttpSession session){
+	public String login(@ModelAttribute Admin admin,HttpSession session, @RequestParam String valifCode,Model model){
 		
+		//如果输入的验证码不正确
+		if( !valifCode.equals(session.getAttribute("valifCode") ))  {
+			model.addAttribute("error","验证码错误");
+			return "client/loginAdmin";
+		}
 		Admin a =adminServer.login(admin);
 		System.out.println(a==null);
 		
 		//登陆成功
-		//重定向不受前缀后缀干扰，直接跳转到指定url
 		if(a!=null){
 			session.setAttribute("admin", a);
 			return "redirect:/admin/position";
 		}
 		//登陆失败
-		//重定向不受前缀后缀干扰，直接跳转到指定url
-		return "redirect:/client/loginAdmin";
+		model.addAttribute("error","账号或密码不正确");
+		return "client/loginAdmin";
 		
 	}
 

@@ -6,7 +6,7 @@
 	<title>登陆后台</title>
   </head>
   
-  <body style="background: url('../image/adm-login-bg.jpg');">
+  <body style="background: url('${pageContext.request.contextPath}/image/adm-login-bg.jpg');">
     	<div class="container">
     		<!--登陆表单 -->
     		<%@ include file="head.jsp" %>
@@ -19,7 +19,7 @@
 						</div>
 						<div class="panel-body">
 					<!--表单 -->
-							<form action="loginAdmin/login" class="form-horizontal" role="form" style="margin-top: 20px" method="post">
+							<form action="${pageContext.request.contextPath}/client/loginAdmin/login" class="form-horizontal" role="form" style="margin-top: 20px" method="post">
 								<div class="form-group" align="center">
 									<label for="inputEmail3" class="col-sm-3 control-label">用户名:</label>
 									<div class="col-sm-9">
@@ -32,6 +32,15 @@
 										<input type="password" class="form-control" name="password" id="inputPassword3" placeholder="password">
 									</div>
 								</div>
+								<div class="form-group" align="center">
+									<label for="" class="col-sm-3 control-label">验证码</label>
+									<div class="col-sm-5">
+										<input type="text" class="form-control" name="valifCode" id="valifCode" >
+									</div>
+									<div class="col-sm-3">
+										<img alt="验证码" class="control-label" src="${pageContext.request.contextPath}/client/valifImage">
+									</div>
+								</div>
 								
 								<div class="form-group">
 									<div class="col-sm-offset-3 col-sm-10">
@@ -39,6 +48,15 @@
 										<button type="submit" class="btn btn-warning">管理员登录</button>
 									
 <!-- 									<a href="../admin/admin.jsp" class="btn btn-primary" >管理员登陆</a> -->
+									</div>
+								</div>
+								
+								<div class="form-group" id="e2">
+									<div class="col-sm-8 col-sm-offset-2">
+										<div class="alert alert-danger alert-dismissible" role="alert">
+  												<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+ 												 <span id="e1">${error}<span>
+										</div>
 									</div>
 								</div>
 							</form>
@@ -52,7 +70,14 @@
     		
     	</div>
 <!--     	container -->
-		
+		<script type="text/javascript">
+		$(function(){
+			var p = $("#e1").text();
+			if( p.length==11){
+				$("#e2").remove();
+			}
+		});
+		</script>
     	
   </body>
 </html>

@@ -26,7 +26,8 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping("/login")
-	public String loginUI(){
+	public String loginUI(Model model){
+		model.addAttribute("error", "");
 		
 		
 		return "client/login";
@@ -38,7 +39,8 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping("/register")
-	public String registerUI(){
+	public String registerUI(Model model){
+		model.addAttribute("error", "");
 		
 		
 		return "client/register";
@@ -51,7 +53,6 @@ public class UserController {
 	 */
 	@RequestMapping(value="/login/login",method=RequestMethod.POST)
 	public String login(@ModelAttribute User user,HttpSession session,Model model){
-		System.out.println("ok");
 		User u =userServer.login(user);
 		
 		//登陆成功 
@@ -60,8 +61,8 @@ public class UserController {
 			return "redirect:/client/index";
 		}
 		//登陆失败
-		model.addAttribute("error", "error");
-		return "redirect:/client/login";		//返回到登陆页面
+		model.addAttribute("error", "用户名或密码错误");
+		return "client/login";		//返回到登陆页面
 		
 	}
 	
@@ -76,11 +77,11 @@ public class UserController {
 		try {
 			userServer.save(user);
 			System.out.println(user.getName());
-			return "client/login";
+			return "redirect:/client/login";
 		} catch (Exception e) {
 			e.printStackTrace();
 			//注册错误，可能是因为username冲突或其他问题
-			model.addAttribute("error","注册失败，用户名重复");
+			model.addAttribute("error","注册失败，可能是用户名重复");
 			return "client/register";	//返回注册页面
 		}
 		

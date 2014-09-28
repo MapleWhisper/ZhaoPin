@@ -3,11 +3,16 @@ package com.zhaopin.po;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
@@ -74,7 +79,12 @@ public class Admin implements Serializable{
 		this.name = name;
 	}
 	
-	@Transient
+	@ManyToMany(cascade={CascadeType.PERSIST,CascadeType.MERGE})
+	@JoinTable(
+			name="admin_privilege",
+			joinColumns=@JoinColumn(name="admin_id"),
+			inverseJoinColumns=@JoinColumn(name="privilege_id")
+	)
 	public Set<Privilege> getPrivileges() {
 		return privileges;
 	}

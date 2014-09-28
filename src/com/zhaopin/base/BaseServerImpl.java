@@ -61,6 +61,7 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 	@Override
 	public void save(E entry) {
 		getSession().save(entry);
+		getSession().flush();
 		
 	}
 

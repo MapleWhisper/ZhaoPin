@@ -33,19 +33,19 @@
 									<table class="table table-striped table-hover">
 										<tr>
 											<td>姓名</td>
-											<td>数据</td>
+											<td>${sessionScope.user.name}</td>
 											<td></td>
 											<td></td>
 										</tr>
 										<tr>
 											<td>邮箱</td>
-											<td>数据</td>
+											<td>${sessionScope.user.email}</td>
 											<td></td>
 											<td></td>
 										</tr>
 										<tr>
 											<td>手机号</td>
-											<td>数据</td>
+											<td>${sessionScope.user.phoneNumber}</td>
 											<td></td>
 											<td></td>
 										</tr>
@@ -77,24 +77,18 @@
 						<div class="panel-body">
 							<!-- 我的申请 -->
 							<!-- 我的申请 -->
-							<!-- 我的申请 -->
-							<!-- 我的申请 -->
 							<div class="table-responsive">
 								<table class="table table-striped table-hover">
 									<tr>
 										<td>职位名称</td>
-										<td>职业性质</td>
 										<td>工作地点</td>
-										<td>发布日期</td>
-										<td>截止日期</td>
+										<td>申请日期</td>
 										<td>申请状态</td>
 
 									</tr>
 									<tr>
 										<td>400</td>
 										<td>500</td>
-										<td></td>
-										<td></td>
 										<td></td>
 										<td></td>
 									</tr>

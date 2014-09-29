@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -51,12 +52,15 @@ public class Apply implements Serializable{
 	public void setPosition(Position position) {
 		this.position = position;
 	}
+	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
 	public Date getApplyDate() {
 		return applyDate;
 	}
 	public void setApplyDate(Date applyDate) {
 		this.applyDate = applyDate;
 	}
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
 	public Date getFinishDate() {
 		return finishDate;
 	}

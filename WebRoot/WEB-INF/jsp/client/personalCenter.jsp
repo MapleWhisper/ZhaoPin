@@ -91,14 +91,53 @@
 									<td>工作地点</td>
 									<td>申请日期</td>
 									<td>申请状态</td>
+									<td>申请进度</td>
 
 								</tr>
 								<c:forEach items="${appalyList}" var="al">
 								<tr class="data">									 
 									<td>${al.position.name }</td>
 									<td>${al.position.workPlace }</td>
-									<td>${as.applyDate}</td>
-									<td>${al.state }</td>
+									<td><fm:formatDate value="${al.applyDate}" pattern="yyyy-MM-dd HH:mm"></fm:formatDate></td>
+									<td>${al.state}</td>
+									<td>
+										<c:if test="${al.state =='待审核' }">
+											<div class="progress">
+												  <div id="" id="progress-bar" class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" 
+										  			style="width: 25%">25%
+										 		 </div>
+											</div>
+										</c:if>
+										<c:if test="${al.state =='待答题' }">
+											<div class="progress">
+												  <div id="" id="progress-bar" class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" 
+										  			style="width: 50%">50%
+										 		 </div>
+											</div>
+										</c:if>
+										<c:if test="${al.state =='待批阅' }">
+											<div class="progress">
+												  <div id="" id="progress-bar" class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" 
+										  			style="width: 75%">75%
+										 		 </div>
+											</div>
+										</c:if>
+										<c:if test="${al.state =='已完成' }">
+											<div class="progress">
+												  <div id="" id="progress-bar" class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" 
+										  			style="width: 100%">恭喜
+										 		 </div>
+											</div>
+										</c:if>
+										<c:if test="${al.state =='已拒绝' }">
+											<div class="progress">
+												  <div id="" id="progress-bar" class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" 
+										  			style="width: 100%">很遗憾
+										 		 </div>
+											</div>
+										</c:if>
+										
+									</td>
 								</tr>
 									
 								</c:forEach>

@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderBy;
 
 import org.springframework.stereotype.Component;
 
@@ -76,7 +77,9 @@ public class User implements Serializable{
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+	
 	@OneToMany(cascade={CascadeType.PERSIST,CascadeType.MERGE},mappedBy="user")
+	@OrderBy("applyDate")
 	public Set<Apply> getApplys() {
 		return applys;
 	}

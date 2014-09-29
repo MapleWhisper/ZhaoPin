@@ -1,4 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page import="java.text.*"%>
 <div class="tree well" style="position: fixed;">
 	<div style="margin-left: 15px">
@@ -15,36 +17,41 @@
 				<!-- 				岗位管理 -->
 				<li><span><i class="glyphicon glyphicon-minus-sign"></i>岗位管理</span>
 					<ul>
-						<li><span><i class="glyphicon glyphicon-leaf"></i><a
-								href="${pageContext.request.contextPath}/admin/position">岗位列表</a></span></li>
-						
-					</ul></li>
-
-				<!-- 				简历管理 -->
-				<li><span><i class="glyphicon glyphicon-minus-sign"></i>简历管理</span>
-					<ul>
-						<li><span><i class="glyphicon glyphicon-leaf"></i><a href="${pageContext.request.contextPath}/admin/apply
-						">申请审核</a></span>
+						<li>
+							<span><i class="glyphicon glyphicon-leaf"></i>
+							<a href="${pageContext.request.contextPath}/admin/position">岗位列表</a></span>
 						</li>
-
-					</ul></li>
-
+					</ul>
+				</li>
+						<!-- 				简历管理 -->
+						<li><span><i class="glyphicon glyphicon-minus-sign"></i>申请管理</span>
+							<ul>
+								<li><span><i class="glyphicon glyphicon-leaf"></i>
+								<a href="${pageContext.request.contextPath}/admin/apply">申请审核</a></span>
+								</li>
+							</ul>
+						</li>
 				<!-- 				试卷管理 -->
-				<li><span><i class="glyphicon glyphicon-minus-sign"></i>试卷管理</span>
+				<li><span><i class="glyphicon glyphicon-minus-sign"></i>试卷试题</span>
 					<ul>
 						<li><span><i class="glyphicon glyphicon-leaf"></i><a>试卷管理</a></span></li>
 						<li><span><i class="glyphicon glyphicon-leaf"></i><a href="${pageContext.request.contextPath}/admin/problem">试题管理</a></span></li>
-
-					</ul></li>
-
+					</ul>
+				</li>
+				
+				<!-- 如果是系统管理员，才显示页面 -->
+				<c:if test="${ sessionScope.admin.username == 'admin' }">
+				
+					<li><span><i class="glyphicon glyphicon-minus-sign"></i>系统管理</span>
+						<ul>
+							<li><span><i class="glyphicon glyphicon-leaf"></i>
+							<a href="${pageContext.request.contextPath}/admin/admin">管理员列表</a></span>
+							</li>
+						</ul>
+					</li>
+				</c:if>
 				<!-- 				系统管理 -->
-				<li><span><i class="glyphicon glyphicon-minus-sign"></i>系统管理</span>
-					<ul>
-						<li><span><i class="glyphicon glyphicon-leaf"></i><a
-								href="${pageContext.request.contextPath}/admin/admin">管理员列表</a></span></li>
-						
-
-					</ul></li>
+				
 			</ul></li>
 	</ul>
 	<!-- 主菜单 -->

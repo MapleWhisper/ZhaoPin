@@ -25,19 +25,19 @@ public class InitDB {
 		Privilege p4 = new Privilege();
 		Privilege p5 = new Privilege();
 		
-		p1.setName("管理员列表");
+		p1.setName("管理员管理");
 		p1.setUrl("/admin/admin");
 		
-		p2.setName("岗位列表");
+		p2.setName("岗位管理");
 		p2.setUrl("/admin/position");
 		
-		p3.setName("试卷列表");
+		p3.setName("试卷管理");
 		p3.setUrl("/admin/paper");
 		
-		p4.setName("试题列表");
+		p4.setName("试题管理");
 		p4.setUrl("/admin/problem");
 		
-		p5.setName("申请审核");
+		p5.setName("申请管理");
 		p5.setUrl("/admin/apply");
 		
 

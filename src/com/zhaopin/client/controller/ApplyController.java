@@ -57,6 +57,9 @@ public class ApplyController {
 		if(user==null || position==null){
 			return "redirect:/client/login";	//用户为空，返回登录页面
 		}
+		if(user.getResume()==null){
+			return "client/resume";			//如果用户简历为空，跳到简历页面
+		}
 		User u = userServer.getById(user.getId());
 		Apply apply = new Apply();
 		apply.setUser(u);

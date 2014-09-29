@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
@@ -35,8 +36,6 @@ public class ResumeController  {
 
 	@RequestMapping("/resume")
 	public String resume(){
-
-
 		return "client/resume";
 	}
 	/**
@@ -50,7 +49,7 @@ public class ResumeController  {
 	 */
 
 	@RequestMapping("/resume/save")
-	public String save( HttpServletRequest req , @ModelAttribute Resume resume,HttpServletRequest request,HttpSession session) throws IOException{
+	public String save( HttpServletRequest req , @ModelAttribute Resume resume,HttpServletRequest request,HttpSession session,Model model) throws IOException{
 		User user=(User)session.getAttribute("user");
 
 		String fileName []=saveFile(request, user);
@@ -84,7 +83,7 @@ public class ResumeController  {
 			resume.setUserPicPath(fileName[0]);
 			resume.setResumePath(fileName[1]);
 
-			if(user!=null){
+			if(user!=null){		//如果用户不为null
 				System.out.println(user.getId());
 				User u = userSever.getById(user.getId());
 				resume.setUser(u);
@@ -92,10 +91,11 @@ public class ResumeController  {
 
 				userSever.updata(u);;
 				return "redirect:/client/personalCenter";
-			}else{
-				return "redirect:/client/resume";
+			}else{		//如果用户为 null
+				return "redirect:/client/login";
 			}
 		}else {
+			model.addAttribute("error","提交简历失败,文件格式不正确");
 			return "client/resume";
 		}
 	}

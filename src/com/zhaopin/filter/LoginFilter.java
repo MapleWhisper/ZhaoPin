@@ -7,15 +7,28 @@ import java.util.List;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
+import com.zhaopin.client.server.UserServer;
+import com.zhaopin.client.server.UserServerImpl;
+import com.zhaopin.po.User;
+
+@Component
 public class LoginFilter implements  Filter{
-	private List<String> list;
+	
+	
+	private static List<String> list;
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 		list = new ArrayList<>();
@@ -23,6 +36,7 @@ public class LoginFilter implements  Filter{
 		list.add("/resume");
 		list.add("/apply");
 		list.add("/paper");
+	   
 		
 	}
 	@Override
@@ -32,6 +46,8 @@ public class LoginFilter implements  Filter{
 		HttpServletResponse resp = (HttpServletResponse) response;
 		String path = req.getRequestURI();	//得到请求Url
 		HttpSession session = req.getSession();
+		
+		
 		if(session.getAttribute("admin")!=null){	//如果管理员登陆，继续
 				chain.doFilter(request, response);
 				return;

@@ -1,6 +1,9 @@
 package com.zhaopin.client.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.zhaopin.client.server.UserServer;
 import com.zhaopin.po.User;
+import com.zhaopin.utils.ZhaoPinUtils;
 
 @Controller
 @RequestMapping("/client")
@@ -27,9 +31,33 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping("/login")
-	public String loginUI(Model model){
+	public String loginUI(Model model,HttpServletRequest req,HttpSession session){
 		model.addAttribute("error", "");
-		
+		//如果用户拥有cookie，那么就让用户可以登陆
+		if(session.getAttribute("user")==null){
+			
+			Cookie cookies [] =  req.getCookies();
+			User user = new User();
+			for(Cookie c : cookies){
+				if(c.getName().equals("uValue")){
+					user.setEmail(c.getValue());
+				}
+				if(c.getName().equals("pValue")){
+					user.setPassword(c.getValue());
+				}
+			}
+			//如果用户Cookie中有账号信息，那么登陆
+			if(user.getEmail()!=null && !"".equals(user.getEmail()) && user.getPassword()!=null &&!"".equals(user.getPassword())){
+				System.out.println(user.getEmail());
+				System.out.println(user.getPassword());
+				User u = userServer.loginWhitMd5(user);
+				if(u!=null){
+					System.out.println("登陆成功");
+					session.setAttribute("user", u);
+					return "redirect:/client/index";
+				}
+			}
+		}
 		
 		return "client/login";
 	}
@@ -53,12 +81,21 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value="/login/login",method=RequestMethod.POST)
-	public String login(@ModelAttribute User user,HttpSession session,Model model){
+	public String login(@ModelAttribute User user,HttpSession session,Model model,String remberPwd,HttpServletResponse response){
 		User u =userServer.login(user);
 		
 		//登陆成功 
 		if(u!=null){
 			session.setAttribute("user", u);	//把用户信息添加到session中，跳转到主页面
+			if(remberPwd!=null){
+				//如果用户需要记住密码
+				Cookie cookie = new Cookie("uValue", u.getEmail());
+				cookie.setMaxAge(60*60*24*3);	//保存3天
+				Cookie cookie2 = new Cookie("pValue", ZhaoPinUtils.MD5String(u.getPassword()));
+				cookie2.setMaxAge(60*60*24*3);	//保存3天
+				response.addCookie(cookie);
+				response.addCookie(cookie2);
+			}
 			return "redirect:/client/index";
 		}
 		//登陆失败
@@ -94,9 +131,19 @@ public class UserController {
 		
 	}
 	
+	/**
+	 * 
+	 * 用户退出登录
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping("/login/logout")
-	public String logout(HttpSession session){
+	public String logout(HttpSession session,HttpServletResponse response){
 		session.removeAttribute("user");
+		
+		//用户退出登录，清楚 cookie
+		response.addCookie(new Cookie("uValue", null));
+		response.addCookie(new Cookie("pValue", null));
 		return "redirect:/client/index";
 	}
 	

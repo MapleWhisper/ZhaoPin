@@ -24,18 +24,34 @@
 					</ul>
 				</li>
 						<!-- 				简历管理 -->
-						<li><span><i class="glyphicon glyphicon-minus-sign"></i>申请管理</span>
-							<ul>
-								<li><span><i class="glyphicon glyphicon-leaf"></i>
-								<a href="${pageContext.request.contextPath}/admin/apply">申请审核</a></span>
+						<c:forEach items="${sessionScope.admin.privileges}" var="p">
+							
+							<c:if test="${p.name == '申请管理' }">
+								<li><span><i class="glyphicon glyphicon-minus-sign"></i>申请管理</span>
+									<ul>
+										<li><span><i class="glyphicon glyphicon-leaf"></i>
+										<a href="${pageContext.request.contextPath}/admin/apply">申请审核</a></span>
+										</li>
+									</ul>
 								</li>
-							</ul>
-						</li>
+							</c:if>
+							
+						</c:forEach>
+						
 				<!-- 				试卷管理 -->
 				<li><span><i class="glyphicon glyphicon-minus-sign"></i>试卷试题</span>
 					<ul>
-						<li><span><i class="glyphicon glyphicon-leaf"></i><a>试卷管理</a></span></li>
-						<li><span><i class="glyphicon glyphicon-leaf"></i><a href="${pageContext.request.contextPath}/admin/problem">试题管理</a></span></li>
+						<c:forEach items="${sessionScope.admin.privileges}" var="p">
+							
+							<c:if test="${p.name == '试卷管理' }">
+								<li><span><i class="glyphicon glyphicon-leaf"></i><a>试卷管理</a></span></li>
+							</c:if>
+							<c:if test="${p.name == '试题管理' }">
+								<li><span><i class="glyphicon glyphicon-leaf"></i><a href="${pageContext.request.contextPath}/admin/problem">试题管理</a></span></li>
+							</c:if>
+						</c:forEach>
+						
+						
 					</ul>
 				</li>
 				

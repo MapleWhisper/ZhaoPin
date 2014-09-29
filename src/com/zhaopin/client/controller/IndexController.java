@@ -2,20 +2,23 @@ package com.zhaopin.client.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.zhaopin.client.server.PositionServer;
+import com.zhaopin.client.server.UserServer;
 import com.zhaopin.po.Position;
+import com.zhaopin.po.User;
 
 /**
  * 
@@ -30,6 +33,8 @@ public class IndexController {
 	@Resource(name="positionServerImpl")
 	private PositionServer positionServer;
 
+	@Resource(name="userServerImpl")
+	private UserServer userServer;
 
 	/**
 	 * 此方法是用来加载主页数据，然后跳转到主页上的
@@ -38,7 +43,9 @@ public class IndexController {
 	 * @return	返回到主页 index页面上
 	 */
 	@RequestMapping("/index")
-	public String index(ModelMap map,HttpServletRequest req){
+	public String index(ModelMap map,HttpServletRequest req,HttpSession session){
+				
+		
 		if(!map.containsAttribute("positionList")){
 			map.addAttribute("positionList",positionServer.getByEndDate());	//把简历列表信息 加载到主页面
 		}

@@ -38,7 +38,7 @@
 								<div class="form-group">
 									<div class="col-sm-offset-2 col-sm-6">
 										<div class="checkbox">
-											<label> <input type="checkbox">记住密码</label>
+											<label> <input type="checkbox" name="remberPwd" value="true">记住密码</label>
 										</div>
 									</div>
 									<div class="col-sm-4">

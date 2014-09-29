@@ -24,5 +24,7 @@ public interface UserServer extends BaseServer<User> {
 	 * @return 登陆得到的对象，可以判断是否为空来确认用户名和密码是否正确
 	 */
 	public User login(User user);
+
+	public User loginWhitMd5(User user);
 	
 }

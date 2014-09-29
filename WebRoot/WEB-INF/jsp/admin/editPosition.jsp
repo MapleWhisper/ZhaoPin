@@ -6,7 +6,10 @@
 <head>
 <%@ include file="header.jspf"%>
 
-<script language="javascript" type="text/javascript" src="${pageContext.request.contextPath}/js/My97DatePicker/WdatePicker.js">
+<script language="javascript" type="text/javascript" src="${pageContext.request.contextPath}/js/My97DatePicker/WdatePicker.js"></script>
+<link rel="stylesheet"  href="${pageContext.request.contextPath}/js/kindeditor/themes/simple/simple.css" />
+<script charset="utf-8" src="${pageContext.request.contextPath}/js/kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="${pageContext.request.contextPath}/js/kindeditor/lang/zh_CN.js"></script>
 </script>
 
 </head>
@@ -156,7 +159,7 @@
 							<div class="panel-body"
 								style="padding-top:10px;padding-bottom: 10px">
 								<div class="questArea">
-									<textarea class="form-control" name="positionInfo" rows="10" >${position.positionInfo }</textarea>
+									<textarea class="form-control" id="editor" name="positionInfo" rows="15" >${position.positionInfo }</textarea>
 								</div>
 							</div>
 							<div class="panel-footer">
@@ -175,5 +178,19 @@
 
 	<!--container -->
 	<%@ include file="buttom.jsp"%>
+	<script type="text/javascript">
+		KindEditor.ready(function(K) {
+			editor = K.create('#editor', {
+				resizeType : 1,
+				allowPreviewEmoticons : false,
+				allowImageUpload : false,
+				items : [
+					'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+					'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+					'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+			});
+
+		});
+	</script>
 </body>
 </html>

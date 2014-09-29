@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -106,8 +107,6 @@ public class ResumeController  {
 	 * @param user
 	 * @return
 	 */
-
-
 	private String[] saveFile(HttpServletRequest request, User user) {
 		String fileName [] = new String[2];
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;	
@@ -162,5 +161,16 @@ public class ResumeController  {
 			
 		}
 		return fileName;
+	}
+	
+	
+	/**
+	 * 根据Url Id 来加载 用户建立数据，显示到 showResume.jsp页面上
+	 * 并实现Jsp页面上下载简历
+	 * @return
+	 */
+	@RequestMapping("/resume/show/id/{id}")
+	public String showResume(@PathVariable int id){
+		return "client/showResume";
 	}
 }

@@ -69,6 +69,7 @@ public class ApplyController {
 		apply.setPosition(position);
 		applyService.save(apply);
 		
+		//MailSender.sendToCheck("1170192782@qq.com",apply);
 		MailSender.sendToCheck("827605162@qq.com",apply);
 		
 		return "redirect:/client/personalCenter";

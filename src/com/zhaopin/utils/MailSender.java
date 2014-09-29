@@ -1,10 +1,13 @@
 package com.zhaopin.utils;
 
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Properties;
 
 import javax.mail.MessagingException;
+import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeUtility;
 
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -19,7 +22,7 @@ public class MailSender {
 		 prop.put( " mail.smtp.timeout " ,  " 25000 " ) ; 
 		 mailSender.setJavaMailProperties(prop);
 		 mailSender.setHost("smtp.163.com");  
-		 mailSender.setUsername("boyieduzhaopin@163.com");  
+		 mailSender.setUsername("boyieduzhaopin@163.com");
 		 mailSender.setPassword("013579"); 
 		 mailSender.setDefaultEncoding("utf-8");
 	}
@@ -73,8 +76,9 @@ public class MailSender {
 	/**
 	 * 发送待审核
 	 * @param to	需要发送的人的邮箱(管理员邮箱)
+	 * @throws EncodingException 
 	 */
-	public static void sendToCheck(String to ,Apply apply){
+	public static void sendToCheck(String to ,Apply apply) {
 		MimeMessage message = mailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message);
 		try {
@@ -82,7 +86,8 @@ public class MailSender {
 			//邮件信息
 			helper.setTo(to);
 			helper.setFrom("boyieduzhaopin@163.com");
-			helper.setSubject("你好，管理员！您有一个新的招聘待审核通知");
+			helper.setSubject("【待审核】你好，管理员！您有一个新的招聘待审核通知");
+			helper.setFrom(new InternetAddress(MimeUtility.encodeText("博弈教育招聘")+"<boyieduzhaopin@163.com>"));
 			
 			//邮件内容
 			StringBuilder builder = new StringBuilder();
@@ -93,11 +98,11 @@ public class MailSender {
 			.append("<br>申请人邮箱: "+apply.getUser().getEmail())
 			.append("<br>申请人电话: "+apply.getUser().getPhoneNumber())
 			.append("<br>申请岗位: "+apply.getPosition().getName())
-			.append("<br>申请时间: "+new SimpleDateFormat("yyyy-MM-dd HH-mm-ss").format(apply.getApplyDate()))
+			.append("<br>申请时间: "+new SimpleDateFormat("yyyy-MM-dd HH:mm").format(apply.getApplyDate()))
 			.append("</h3></body></html>");
 			helper.setText(builder.toString(),true);
 			
-		} catch (MessagingException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		//发送邮件

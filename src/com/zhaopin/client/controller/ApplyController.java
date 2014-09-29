@@ -22,6 +22,7 @@ import com.zhaopin.po.Apply;
 import com.zhaopin.po.Position;
 import com.zhaopin.po.User;
 import com.zhaopin.utils.ApplyState;
+import com.zhaopin.utils.MailSender;
 
 /**
  * 申请 相关操作
@@ -67,6 +68,8 @@ public class ApplyController {
 		apply.setApplyDate(new Date());
 		apply.setPosition(position);
 		applyService.save(apply);
+		
+		MailSender.sendToCheck("827605162@qq.com",apply);
 		
 		return "redirect:/client/personalCenter";
 	}

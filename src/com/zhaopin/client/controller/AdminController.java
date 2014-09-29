@@ -28,8 +28,12 @@ public class AdminController {
 	 * @return
 	 */
 	@RequestMapping("/loginAdmin")
-	public String loginAdmin(){
+	public String loginAdmin(HttpSession session){
 		//直接返回  前缀加 字符串+jsp的页面
+		if(session.getAttribute("admin")!=null){
+			//如果管理员已经登陆
+			return "redirect:/admin/position";
+		}
 		return "client/loginAdmin";
 	}
 	

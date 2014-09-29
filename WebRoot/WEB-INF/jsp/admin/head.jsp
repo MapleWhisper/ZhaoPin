@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 	<!--导航条 -->
 		<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+			
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
@@ -24,9 +25,10 @@
 						
 					</form>
 					<ul class="nav navbar-nav navbar-right">
-						<li class="active"><p class="navbar-text" >你好，超级管理员</p></li>
+						<li ><p class="navbar-text" >你好，超级管理员</p></li>
 						
-						<li class="active"><a href="${pageContext.request.contextPath}/admin/admin/logout"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;退出登陆</a></li>
+						<li ><a href="${pageContext.request.contextPath}/admin/position/resetPwdUI">修改密码</a></li>
+						<li class="active"><a href="${pageContext.request.contextPath}/admin/position/logout"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;退出登陆</a></li>
 						
 					</ul>
 				</div>
@@ -35,3 +37,5 @@
 			<!-- /.container-fluid -->
 		</nav>
 		<!--导航条 -->
+		
+		

@@ -179,6 +179,7 @@
 	<!--container -->
 	<%@ include file="buttom.jsp"%>
 	<script type="text/javascript">
+		//Html editor
 		KindEditor.ready(function(K) {
 			editor = K.create('#editor', {
 				resizeType : 1,

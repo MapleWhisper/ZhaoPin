@@ -131,32 +131,8 @@ public class AdminController {
 		return "redirect:/admin/admin";	//跳到管理员列表页面
 	}
 	
-	/**
-	 * 
-	 * 初始化管理员密码
-	 * @param id
-	 * @return
-	 */
-	@RequestMapping("/admin/initPassword/id/{id}")
-	public String initPassword(@PathVariable int id){
-		Admin a = adminServer.getById(id);
-		a.setPassword("1234");
-		adminServer.updata(a);
-		return "redirect:/admin/position";
-	}
 	
-	/**
-	 *  退出管理员登陆
-	 * @param session
-	 * @return
-	 */
-	@RequestMapping("/admin/logout")
-	public String logout(HttpSession session){
-		
-		session.removeAttribute("admin");	//将管理员信息从session中移除
-		
-		return "redirect:/client/loginAdmin";
-	}
+	
 	
 	
 

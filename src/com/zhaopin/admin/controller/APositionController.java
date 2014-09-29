@@ -3,6 +3,7 @@ package com.zhaopin.admin.controller;
 import java.util.Date;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -10,7 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
 
+import com.zhaopin.client.server.AdminServer;
 import com.zhaopin.client.server.PositionServer;
+import com.zhaopin.po.Admin;
 import com.zhaopin.po.Position;
 
 /**
@@ -26,6 +29,9 @@ public class APositionController {
 	
 	@Resource(name="positionServerImpl")
 	private PositionServer positionServer;	//注入position服务
+	
+	@Resource(name="adminServerImpl")
+	private AdminServer adminServer;	//注入admin服务	adminServerImpl
 	
 	/**
 	 * 
@@ -108,6 +114,8 @@ public class APositionController {
 		model.addAttribute("position",position);
 		return "admin/editPosition";
 	}
+	
+	
 	@RequestMapping("/position/update")
 	public String update(Position position){
 		Position p=positionServer.getById(position.getId());
@@ -124,6 +132,53 @@ public class APositionController {
 		p.setWorkPlace(position.getWorkPlace());
 		positionServer.updata(p);
 		return "redirect:/admin/position";
+	}
+	
+	/**
+	 * 
+	 * 修改管理员密码 页面
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping("/position/resetPwdUI")
+	public String resetPwdUI(){
+		
+		return "admin/resetPwd";
+	}
+	
+	/**
+	 * 
+	 * 修改管理员密码
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping("/position/resetPwd")
+	public String resetPwd( int id ,String pwd,String oldPwd){
+		
+		Admin a = adminServer.getById(id);
+		if(a.getPassword().equals(oldPwd)){
+			a.setPassword(pwd);
+			adminServer.updata(a);
+			
+			return "redirect:/client/loginAdmin";
+		}else{
+			return "redirect:/admin/position/resetPwd";
+		}
+		
+		
+	}
+	
+	/**
+	 *  退出管理员登陆
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping("/position/logout")
+	public String logout(HttpSession session){
+		
+		session.removeAttribute("admin");	//将管理员信息从session中移除
+		
+		return "redirect:/client/loginAdmin";
 	}
 	
 }

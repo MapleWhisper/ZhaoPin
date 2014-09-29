@@ -52,7 +52,7 @@
 					
 	<!-- 		用户没有登陆 -->
 					<c:if test="${sessionScope.user==null}">
-						<li><a href="${pageContext.request.contextPath}/client/loginAdmin">登陆后台</a></li>
+						
 						<li><a href="${pageContext.request.contextPath}/client/login"><span
 								class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;登陆</a></li>
 						<li><a href="${pageContext.request.contextPath}/client/register"><span

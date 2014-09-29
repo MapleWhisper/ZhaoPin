@@ -25,7 +25,7 @@
 									
 									<label for="inputEmail3" class="col-sm-3 control-label">管理员账号</label>
 									<div class="col-sm-9">
-										<input type="text" class="form-control inputxt" name="username" id="username" placeholder="username">
+										<input type="text" class="form-control inputxt" name="username" id="username" >
 									</div>
 								</div>
 								
@@ -56,15 +56,11 @@
 								<div class="form-group" data-toggle="tooltip" data-placement="top" title="可多选" onmouseover="$(this).tooltip('show')">
 									<label for="inputEmail3" class="col-sm-3 control-label">权限</label>
 									<div class="col-sm-9">
-										<label class="checkbox-inline">
-										  <input type="checkbox" id="inlineCheckbox1" value="option1"> 岗位管理
-										</label>
-										<label class="checkbox-inline">
-										  <input type="checkbox" id="inlineCheckbox2" value="option2"> 试卷管理
-										</label>
-										<label class="checkbox-inline">
-										  <input type="checkbox" id="inlineCheckbox3" value="option3"> 试卷管理
-										</label>
+										<c:forEach items="${privilegeList}" var="p">
+											<label class="checkbox-inline">
+											  <input type="checkbox"  name="privilegeIds" value="${p.id}"/> ${p.name}
+											</label>
+										</c:forEach>
 									</div>
 								</div>
 								<div>

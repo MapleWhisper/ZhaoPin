@@ -1,5 +1,7 @@
 package com.zhaopin.admin.controller;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -11,8 +13,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.zhaopin.admin.server.PrivilegeService;
 import com.zhaopin.client.server.AdminServer;
 import com.zhaopin.po.Admin;
+import com.zhaopin.po.Privilege;
 
 /**
  * 后台的管理员账号管理，可以查看列表，添加管理员，初始化密码，删除管理员，修改管理员信息
@@ -28,6 +32,9 @@ public class AdminController {
 	@Resource(name="adminServerImpl")
 	private AdminServer adminServer;	//注入admin服务	adminServerImpl
 	
+	@Resource(name="privilegeServiceImpl")
+	private PrivilegeService privilegeService;
+	
 	/**
 	 * 显示管理员列表页面
 	 * @return
@@ -41,13 +48,12 @@ public class AdminController {
 	}
 	
 	/**
-	 * 显示 管理员增加页面
+	 * 增加管理员页面
 	 * @return
 	 */
 	@RequestMapping("/admin/add")
 	public String addAdmin(Model model){
-		model.addAttribute("action", "save");
-		
+		model.addAttribute("privilegeList", privilegeService.findAll());		
 		return "admin/addAdmin";	//转到添加页面
 	}
 	
@@ -57,6 +63,12 @@ public class AdminController {
 	 */
 	@RequestMapping("/admin/save")
 	public String save(@ModelAttribute Admin admin){
+		Integer[] a = admin.getPrivilegeIds();
+		HashSet<Privilege> set = new HashSet<>();
+		for(int i:a){
+			set.add(privilegeService.getById(i));
+		}
+		admin.setPrivileges(set);
 		adminServer.save(admin);
 		return "redirect:/admin/admin";	//保存完成后  跳转到管理员列表页面
 	}
@@ -67,8 +79,19 @@ public class AdminController {
 	 */
 	@RequestMapping("/admin/edit/id/{id}")
 	public String editAdmin(@PathVariable int id,Model model){
-		model.addAttribute("admin",adminServer.getById(id));
-		model.addAttribute("action", "update");
+		
+		Admin admin = adminServer.getById(id);
+		Integer [] ids = new Integer[5];
+		Arrays.fill(ids, 0);
+		int index = 0 ;
+		if(admin.getPrivileges()!=null){
+			for(Privilege p : admin.getPrivileges()){
+				ids[index++]=p.getId();
+			}
+		}
+		admin.setPrivilegeIds(ids);
+		model.addAttribute("privilegeList", privilegeService.findAll());	
+		model.addAttribute("admin",admin);
 		model.addAttribute("id", id);
 		
 		return "admin/editAdmin";	//转到修改页面
@@ -82,9 +105,15 @@ public class AdminController {
 	public String update(Admin admin){
 		//修改流程	先根据id 从数据库中获取到数据，然后插入要修改的数据，再保存进数据库
 		Admin a = adminServer.getById(admin.getId());
+		Integer[] ids = admin.getPrivilegeIds();
+		HashSet<Privilege> set = new HashSet<>();
+		for(int i:ids){
+			set.add(privilegeService.getById(i));
+		}
 		a.setUsername(admin.getUsername());
 		a.setName(admin.getName());
 		a.setPosition(admin.getPosition());
+		a.setPrivileges(set);
 		adminServer.updata(a);
 		return "redirect:/admin/admin";	//跳到管理员列表页面
 	}

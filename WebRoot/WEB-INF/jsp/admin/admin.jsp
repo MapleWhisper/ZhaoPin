@@ -24,16 +24,17 @@
 					<div class="panel-body">
 						<table class="table table-hover table-striped table-bordered">
 							<tr>
-								<td>管理员姓名</td>
 								<td>管理员账号</td>
+								<td>管理员姓名</td>
 								<td>管理员职位</td>
 								<td>操作</td>
 								<td>操作</td>
 							</tr>
 						 <c:forEach items="${adminList}" var="admin">
 						 	<tr>
-								<td>${admin.name }</td>
+								
 								<td>${admin.username }</td>
+								<td>${admin.name }</td>
 								<td>${admin.position }</td>
 								<td><a href="admin/edit/id/${admin.id }" class="btn btn-info"><span class=" glyphicon glyphicon-edit"></span>&nbsp;&nbsp;修改</a></td>
 								<td><a href="admin/delete/id/${admin.id}" class="btn btn-danger" onclick="return confirm('确认要删除吗？')"><span class=" glyphicon  glyphicon-trash"></span>&nbsp;&nbsp;删除</a></td>

@@ -42,7 +42,7 @@ public class PersonalCenterController {
 		if(user!=null){
 			
 			User u = userServer.getById(user.getId());
-			Set<Apply> as=user.getApplys();
+			Set<Apply> as=u.getApplys();
 			List<Apply> al=new ArrayList<Apply>(as);
 
 			model.addAttribute("appalyList",al);

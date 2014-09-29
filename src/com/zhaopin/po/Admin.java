@@ -3,11 +3,16 @@ package com.zhaopin.po;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
@@ -30,6 +35,8 @@ public class Admin implements Serializable{
 	private String password;				//密码	长度不能超过20
 	private String position;				//职位	长度不能超过30
 	private Set<Privilege> privileges;		//管理员拥有的权限
+	
+	private Integer[] privilegeIds;			//管理员的权限ids
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -74,12 +81,26 @@ public class Admin implements Serializable{
 		this.name = name;
 	}
 	
-	@Transient
+	@ManyToMany(cascade={CascadeType.PERSIST,CascadeType.MERGE},fetch=FetchType.EAGER)
+	@JoinTable(
+			name="admin_privilege",
+			joinColumns=@JoinColumn(name="admin_id"),
+			inverseJoinColumns=@JoinColumn(name="privilege_id")
+	)
 	public Set<Privilege> getPrivileges() {
 		return privileges;
 	}
 	public void setPrivileges(Set<Privilege> privileges) {
 		this.privileges = privileges;
 	}
+	
+	@Transient
+	public Integer[] getPrivilegeIds() {
+		return privilegeIds;
+	}
+	public void setPrivilegeIds(Integer[] privilegeIds) {
+		this.privilegeIds = privilegeIds;
+	}
+	
 	
 }

@@ -28,8 +28,12 @@ public class AdminInterceptor implements HandlerInterceptor{
         HttpSession session = request.getSession();
         Admin admin = (Admin) session.getAttribute("admin");
         if(admin ==null){
-        	response.sendRedirect(contextPath+"/client/loginAdmin");
+        	response.sendRedirect(contextPath+"/client/loginAdmin");	//如果用户为空，跳转到
         }
+        if(admin.getName().equals("admin")){	//如果用户为超级管理员
+        	return true;
+        }
+        
         System.out.println(url);
         Set<Privilege> set = admin.getPrivileges();
         boolean flag = false;

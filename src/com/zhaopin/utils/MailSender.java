@@ -1,6 +1,5 @@
 package com.zhaopin.utils;
 
-import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Properties;
 

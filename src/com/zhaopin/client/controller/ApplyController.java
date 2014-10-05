@@ -62,15 +62,20 @@ public class ApplyController {
 			return "client/resume";			//如果用户简历为空，跳到简历页面
 		}
 		User u = userServer.getById(user.getId());
-		Apply apply = new Apply();
-		apply.setUser(u);
-		apply.setState(ApplyState.待审核.toString());
-		apply.setApplyDate(new Date());
-		apply.setPosition(position);
-		applyService.save(apply);
+		
+		if(u!=null){		//如果用户不为空
+			Apply apply = new Apply();
+			apply.setUser(u);
+			apply.setState(ApplyState.待审核.toString());
+			apply.setApplyDate(new Date());
+			apply.setPosition(position);
+			applyService.save(apply);
+			MailSender.sendToCheck("1170192782@qq.com",apply);
+		}
+		
 		
 		//MailSender.sendToCheck("1170192782@qq.com",apply);
-		MailSender.sendToCheck("827605162@qq.com",apply);
+		
 		
 		return "redirect:/client/personalCenter";
 	}

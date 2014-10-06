@@ -65,9 +65,8 @@
 
 							</div>
 
-							<div class="col-md-4">照片
-								${user.resume.userPicPath}
-								<img alt="我的头像" src="${user.resume.userPicPath}">
+							<div class="col-md-4">
+ 								<img alt="我的头像" height="200px" width="200px" src="${pageContext.request.contextPath}/${user.resume.userPicPath}"> 
 							</div>
 						</div>
 

@@ -75,12 +75,12 @@ public class ResumeController  {
 				ws[1]=ws[1]+w2[i]+"&";
 				ws[2]=ws[2]+w3[i]+"&";
 			}
-			resume .setGraduateSchool(es[0]);
-			resume .setEducatinBackground(es[1] );
-			resume .setMajor(es[2]);
-			resume .setCompany(ws[0]);
-			resume .setWorkTime(ws[1] );
-			resume .setMajor(ws[2]);
+			resume.setGraduateSchool(es[0]);
+			resume.setEducatinBackground(es[1] );
+			resume.setMajor(es[2]);
+			resume.setCompany(ws[0]);
+			resume.setWorkTime(ws[1] );
+			resume.setMajor(ws[2]);
 			resume.setUserPicPath(fileName[0]);
 			resume.setResumePath(fileName[1]);
 
@@ -112,7 +112,7 @@ public class ResumeController  {
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;	
 		MultipartFile file = multipartRequest.getFile("pic");
 		MultipartFile file1 = multipartRequest.getFile("resumeFile");
-		String path = FilePath.userFilePath+user.getId()+"/";
+		String path = "E:/GitHub/ZhaoPin/WebRoot/image/user/"+user.getId()+"/";
 		new File(path).mkdirs();
 		
 		if(file!=null && !"".equals(file.getOriginalFilename() )){		//图片上传部分
@@ -127,9 +127,10 @@ public class ResumeController  {
 			}
 			if(flag){	//文件后缀正确
 				try {
-					String p1= path+user.getName()+"头像"+file.getOriginalFilename().substring(file.getOriginalFilename().indexOf("."));
+					String p1= path+"Pic"+user.getId()+file.getOriginalFilename().substring(file.getOriginalFilename().indexOf("."));
+					
 					Files.copy(file.getInputStream(), Paths.get( p1 )  );
-					fileName[0] = p1;
+					fileName[0] = "image/user/"+user.getId()+"/Pic"+user.getId()+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -151,9 +152,9 @@ public class ResumeController  {
 			}
 			if(flag){
 				try {
-					String p1= path+user.getName()+"简历"+file1.getOriginalFilename().substring(file1.getOriginalFilename().indexOf("."));
+					String p1= path+"Resume"+user.getId()+file1.getOriginalFilename().substring(file1.getOriginalFilename().indexOf("."));
 					Files.copy(file1.getInputStream(), Paths.get( p1 )  );
-					fileName[1] = p1;
+					fileName[1] = "image/user/"+user.getId()+"/Resume"+user.getId()+file1.getOriginalFilename().substring(file1.getOriginalFilename().lastIndexOf("."));
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

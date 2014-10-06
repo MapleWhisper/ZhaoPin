@@ -3,7 +3,7 @@
 <html>
   <head>
 	<%@ include file="header.jspf" %>
-	<title>职位详情</title>
+	<title>职位详情|${position.name }</title>
 	<style type="text/css">
 		td.info {text-align: right;}
 	</style>
@@ -18,11 +18,14 @@
 					  <div class="panel-heading">
 					    <h3 class="panel-title">
 					    	<div class="row">
-					    		<div class="col-sm-8">
+					    		<div class="col-sm-7">
 					    			${position.name }
 					    		</div>
-					    		<div class="col-sm-4">
-					    			招聘截止日期:<fm:formatDate value="${position.endDate }"/>
+					    		<div class="col-sm-2">
+					    			浏览次数:${position.scanNumber }
+					    		</div>
+					    		<div class="col-sm-3">
+					    			截止日期:<fm:formatDate value="${position.endDate }"/>
 					    		</div>
 					    	</div>
 					     </h3>
@@ -70,7 +73,8 @@
 						  		</table>
 						  		<div class="panel panel-info">
 								  <div class="panel-heading">
-								  	岗位要求
+								  		岗位要求
+								  		<span style="float: right;">申请人数:${position.applyNumber }</span>
 								  </div>
 								  <div class="panel-body" style="padding-top: 50px;padding-bottom: 50px">
 								   			${position.positionInfo }

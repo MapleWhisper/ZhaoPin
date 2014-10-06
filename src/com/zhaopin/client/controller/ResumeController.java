@@ -127,8 +127,9 @@ public class ResumeController  {
 			}
 			if(flag){	//文件后缀正确
 				try {
-					Files.copy(file.getInputStream(), Paths.get( path+file.getOriginalFilename() )  );
-					fileName[0] = path+file.getOriginalFilename();
+					String p1= path+user.getName()+"头像"+file.getOriginalFilename().substring(file.getOriginalFilename().indexOf("."));
+					Files.copy(file.getInputStream(), Paths.get( p1 )  );
+					fileName[0] = p1;
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -150,8 +151,9 @@ public class ResumeController  {
 			}
 			if(flag){
 				try {
-					Files.copy(file1.getInputStream(), Paths.get( path+file1.getOriginalFilename() )  );
-					fileName[1] = path+file1.getOriginalFilename();
+					String p1= path+user.getName()+"简历"+file1.getOriginalFilename().substring(file1.getOriginalFilename().indexOf("."));
+					Files.copy(file1.getInputStream(), Paths.get( p1 )  );
+					fileName[1] = p1;
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

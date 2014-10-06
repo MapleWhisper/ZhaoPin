@@ -50,7 +50,9 @@ public class ApplyController {
 	@RequestMapping("/apply/{positionId}")
 	public String apply(@PathVariable int positionId,HttpSession session){
 		Position position = positionServer.getById(positionId);
-		
+		if(position==null){			//如果岗位为空，跳转到主页面
+			return "redirect:/client/index";
+		}
 		position.setApplyNumber(position.getApplyNumber()==null?1:position.getApplyNumber()+1);		//申请次数加一
 		
 		User user = (User) session.getAttribute("user");
@@ -72,10 +74,6 @@ public class ApplyController {
 			applyService.save(apply);
 			MailSender.sendToCheck("1170192782@qq.com",apply);
 		}
-		
-		
-		//MailSender.sendToCheck("1170192782@qq.com",apply);
-		
 		
 		return "redirect:/client/personalCenter";
 	}

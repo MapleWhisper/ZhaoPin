@@ -65,7 +65,10 @@
 
 							</div>
 
-							<div class="col-md-4">照片</div>
+							<div class="col-md-4">照片
+								${user.resume.userPicPath}
+								<img alt="我的头像" src="${user.resume.userPicPath}">
+							</div>
 						</div>
 
 					</div>

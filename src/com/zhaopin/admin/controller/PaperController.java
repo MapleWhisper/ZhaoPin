@@ -1,16 +1,32 @@
 package com.zhaopin.admin.controller;
 
+import java.util.List;
+
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.zhaopin.admin.server.PaperService;
+import com.zhaopin.admin.server.ProblemService;
+import com.zhaopin.po.Problem;
 
 /**
  * 试卷控制
  *
  */
-@RequestMapping("/admin")
 @Controller
+@RequestMapping("/admin")
+
 public class PaperController {
+	
+	@Resource(name="paperServiceImpl")
+	private PaperService paperService;
+	
+	@Resource(name="problemServiceImpl")
+	private ProblemService problemService;
 	
 	/**
 	 * 显示试卷列表页面
@@ -36,20 +52,32 @@ public class PaperController {
 	}
 	
 	/**
-	 * 增加试卷页面
+	 * 组成试卷页面
 	 * @return
 	 */
-	@RequestMapping("paper/add")
-	public String addPaper(){
+	@RequestMapping("paper/item/{id}")
+	public String addPaper(@PathVariable int id,Model model){
+		List<Problem> problemList = problemService.findAll();
+		model.addAttribute("problemList",problemList);
 		
-		return "admin/addPaper";
+		return "admin/problemList";
+	}
+	
+	/**
+	 * 试卷购物车
+	 * @return
+	 */
+	@RequestMapping("paper/cart")
+	public String paperCart(){
+		
+		return "admin/paperCart";
 	}
 	
 	/**
 	 * 保存试卷
 	 * @return
 	 */
-	@RequestMapping("paper/add")
+	@RequestMapping("paper/save")
 	public String save(){
 		
 		return "redirect:/admin/paper";
@@ -70,7 +98,7 @@ public class PaperController {
 	 * 修改试卷
 	 * @return
 	 */
-	@RequestMapping("paper/edit")
+	@RequestMapping("paper/update")
 	public String update(){
 		
 		return "admin/editPaper";

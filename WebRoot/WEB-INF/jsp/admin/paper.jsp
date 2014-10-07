@@ -13,24 +13,34 @@
 					<%@ include file="left.jsp" %>
     			</div>
     			<div class="col-sm-9">
-    			
-    					<div class="panel panel-default">
-						  <div class="panel-heading">
-						    <h3 class="panel-title">浏览所有试卷</h3>
-						  </div>
-						  <div class="panel-body">
-						    	<a class="btn btn-primary btn-lg">浏览试卷</a>
-						  </div>
-						</div>
-						
-						<div class="panel panel-default">
+    					<!-- 生成试卷 -->
+    					<div class="panel panel-primary">
 						  <div class="panel-heading">
 						    <h3 class="panel-title">生成试卷</h3>
 						  </div>
 						  <div class="panel-body">
-						   	 <a class="btn btn-primary btn-lg">生成试卷</a>
+						   	 <center><a href="${pageContext.request.contextPath}/admin/paper/item/1" class="btn btn-info btn-lg">生成试卷</a></center>
 						  </div>
-						</div>
+						</div><!-- 生成试卷 -->
+						
+						
+						<!-- 试卷列表 -->
+    					<div class="panel panel-primary">
+						  <div class="panel-heading">
+						    <h3 class="panel-title">试卷列表</h3>
+						  </div>
+						  <div class="panel-body">
+						    	<table class="table table-hover table-striped table-bordered">
+						    		<tr>
+						    			<td>试卷标题</td>
+						    			<td>试卷标签</td>
+						    			<td>生成时间</td>
+						    		</tr>
+						    	</table>
+						  </div>
+						</div><!-- 试卷列表 -->
+						
+						
     			</div>
     		</div>
     		

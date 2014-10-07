@@ -1,6 +1,7 @@
 package com.zhaopin.po;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -24,6 +26,7 @@ public class Problem implements Serializable{
 	private String answer;			//答案		问题答案
 	private String difficulty;	//题目难度	简单，中等， 困难
 	private String label;		//题目标签  	便于搜索
+	private Date createDate;	//入库试卷
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -87,6 +90,14 @@ public class Problem implements Serializable{
 	}
 	public void setLabel(String label) {
 		this.label = label;
+	}
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	public Date getCreateDate() {
+		return createDate;
+	}
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 	
 	

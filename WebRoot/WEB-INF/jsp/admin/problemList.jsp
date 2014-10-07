@@ -3,6 +3,7 @@
 <html>
   <head>
 	<%@ include file="header.jspf" %>
+	
   </head>
   
   <body>
@@ -35,19 +36,19 @@
 						<c:forEach items="${problemList}" var="pro">
 						
     					<div style="background-color: gray;">
-    						<div class="panel panel-default">
+    						<div class="panel panel-default item">
 							  <div class="panel-heading">
 							  	<div class="row">
 							  		<div class="col-sm-4">试题难度:${pro.difficulty}</div>
 							  		<div class="col-sm-3">入库时间:${pro.createDate}</div>
 							  		<div class="col-sm-3">试卷类型:${pro.type }</div>
-							  		<div class="col-sm-2"><button class="btn btn-primary">添加到试卷篮</button></div>
+							  		<div class="col-sm-2"><button class="btn btn-primary add" >添加到试卷篮</button></div>
 							  	</div>
 							  		
 							  </div>
 							  <div class="panel-body">
 							  	<c:if test="${ pro.type == '单选题' || pro.type == '多选题' }">
-								  	题目:${pro.title}<hr>
+								  	<span style="color: blue;">题目:${pro.title}</span><hr>
 								    A:${pro.optA }<br>
 								    B:${pro.optB }<br>
 								    C:${pro.optC }<br>
@@ -60,7 +61,7 @@
 							   
 							    <button class="btn btn-sm btn-info" onClick="$(this).siblings('div').toggle();">答案</button>
 							    <span style="float: right"></span>
-							    <div >
+							    <div style="color: red; ">
 							    	${pro.answer}
 							    </div>
 							  </div>
@@ -89,5 +90,18 @@
     		
     	</div>
     	<%@ include file="buttom.jsp" %>
+    	<script type="text/javascript">
+    		$(function(){
+    			$(".add").click(function(){
+        			$(this).parents("div .item").toggleClass("well");
+        			if ( $(this).html()=='添加到试卷篮' ){
+        				$(this).html('已添加');
+        			}else{
+        				$(this).html('添加到试卷篮');
+        			}
+        		});
+    		});
+    	
+    	</script>
   </body>
 </html>

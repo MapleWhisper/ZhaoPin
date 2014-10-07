@@ -151,7 +151,21 @@ public class UserController {
 		return "redirect:/client/index";
 	}
 	
-	
+	/**
+	 * 
+	 * 修改用户密码 页面
+	 * @param 
+	 * @return
+	 */
+	@RequestMapping("/resetPwdUI")
+	public String resetPwdUI(HttpSession session){
+		
+		if(session.getAttribute("user")==null){
+			return "redirect:/client/login";
+		}
+		
+		return "client/resetPwd";
+	}
 	
 	
 }

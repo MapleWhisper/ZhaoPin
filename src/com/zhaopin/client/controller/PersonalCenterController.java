@@ -3,8 +3,11 @@ package com.zhaopin.client.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,5 +59,34 @@ public class PersonalCenterController {
 		
 		
 		return "redirect:/client/resume";
+	}
+	
+	/**
+	 * 修改密码
+	 * @param model
+	 * @param session
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("/updatePwd")
+	public String updatePwd(Model model,HttpSession session,HttpServletRequest request){
+		
+		User user=(User)session.getAttribute("user");
+		if(user==null){
+			return "redirect:/client/login";
+		}
+		User u=userServer.getById(user.getId());
+		
+		String oldPwd=request.getParameter("oldPwd");
+		String newPwd=request.getParameter("newPwd");
+		
+		if(!u.getPassword().equals(oldPwd)){
+			model.addAttribute("error", "输入原密码错误");
+			return "client/personalCenter";
+		}else{
+			u.setPassword(newPwd);
+			userServer.updata(u);
+			return "redirect:/client/personalCenter";
+		}
 	}
 }

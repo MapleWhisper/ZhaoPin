@@ -1,6 +1,7 @@
 package com.zhaopin.admin.controller;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -49,12 +50,13 @@ public class ProblemController {
 	public String save(@ModelAttribute Problem problem ,Model model){
 		
 		System.out.println("ok");
-		
+		problem.setCreateDate(new Date());
 		problemService.save(problem);
 		
 		model.addAttribute("mes", "addSuccess");//添加数据成功
 		return "redirect:/admin/problem";
 	}
+	
 	
 	@RequestMapping("/problem/list/json")
 	public void list(HttpServletResponse response){

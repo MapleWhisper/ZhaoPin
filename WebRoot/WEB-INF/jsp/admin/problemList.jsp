@@ -32,30 +32,41 @@
 						
 						
 						<!--试题列表 -->
+						<c:forEach items="${problemList}" var="pro">
+						
     					<div style="background-color: gray;">
     						<div class="panel panel-default">
 							  <div class="panel-heading">
 							  	<div class="row">
-							  		<div class="col-sm-5">${pro.difficulty}</div>
-							  		<div class="col-sm-4">${pro.createDate}</div>
-							  		<div class="col-sm-3"><button class="btn btn-primary">添加到试卷篮</button></div>
+							  		<div class="col-sm-4">试题难度:${pro.difficulty}</div>
+							  		<div class="col-sm-3">入库时间:${pro.createDate}</div>
+							  		<div class="col-sm-3">试卷类型:${pro.type }</div>
+							  		<div class="col-sm-2"><button class="btn btn-primary">添加到试卷篮</button></div>
 							  	</div>
 							  		
 							  </div>
 							  <div class="panel-body">
-							  	题目:${pro.title}<hr>
-							    A:${pro.optA }<br>
-							    B:${pro.optB }<br>
-							    C:${pro.optC }<br>
-							    D:${pro.optD }<hr>
+							  	<c:if test="${ pro.type == '单选题' || pro.type == '多选题' }">
+								  	题目:${pro.title}<hr>
+								    A:${pro.optA }<br>
+								    B:${pro.optB }<br>
+								    C:${pro.optC }<br>
+								    D:${pro.optD }<hr>
+							    </c:if>
+							    <c:if test="${ pro.type == '判断题' || pro.type == '简答题'  }">
+								  	题目:${pro.title}<hr>
+																	    
+							    </c:if>
+							   
 							    <button class="btn btn-sm btn-info" onClick="$(this).siblings('div').toggle();">答案</button>
-							    <span style="float: right">试卷类型:${pro.type }</span>
-							    <div style="display: none;">
-							    	:${pro.ans }1111111111
+							    <span style="float: right"></span>
+							    <div >
+							    	${pro.answer}
 							    </div>
 							  </div>
 							</div>
     					</div>	<!--试题列表 -->
+    					</c:forEach>
     					
     					<!-- 试卷导航栏 -->
     					<ul class="pagination">

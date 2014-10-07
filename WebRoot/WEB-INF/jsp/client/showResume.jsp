@@ -246,16 +246,7 @@
 							</div>
 					</div>
 
-					<div class="form-group" id="e2">
-						<div class="col-sm-8 col-sm-offset-2">
-							<div class="alert alert-danger alert-dismissible" role="alert">
-								<button type="button" class="close" data-dismiss="alert">
-									<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-								</button>
-								<span id="e1">${error}<span>
-							</div>
-						</div>
-					</div>
+					
 				</div>
 
 				</form>
@@ -268,13 +259,5 @@
 
 
 	<%@ include file="buttom.jsp"%>
-	<script type="text/javascript">
-		$(function(){
-			var p = $("#e1").text();
-			if( p.length==11){
-				$("#e2").remove();
-			}
-		});
-	</script>
 </body>
 </html>

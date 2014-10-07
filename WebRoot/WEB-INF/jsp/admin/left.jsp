@@ -44,7 +44,7 @@
 						<c:forEach items="${sessionScope.admin.privileges}" var="p">
 							
 							<c:if test="${p.name == '试卷管理' }">
-								<li><span><i class="glyphicon glyphicon-leaf"></i><a>试卷管理</a></span></li>
+								<li><span><i class="glyphicon glyphicon-leaf"></i><a href="${pageContext.request.contextPath}/admin/paper">试卷管理</a></span></li>
 							</c:if>
 							<c:if test="${p.name == '试题管理' }">
 								<li><span><i class="glyphicon glyphicon-leaf"></i><a href="${pageContext.request.contextPath}/admin/problem">试题管理</a></span></li>

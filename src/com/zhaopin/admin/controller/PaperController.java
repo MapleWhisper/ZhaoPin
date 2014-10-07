@@ -1,5 +1,6 @@
 package com.zhaopin.admin.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *
  */
 @RequestMapping("/admin")
+@Controller
 public class PaperController {
 	
 	/**
@@ -17,7 +19,6 @@ public class PaperController {
 	 */
 	@RequestMapping("/paper")
 	public String paper(){
-		
 		
 		return "admin/paper";
 	}

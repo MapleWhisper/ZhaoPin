@@ -13,4 +13,16 @@ public class CompanyController {
 		
 		return "client/company";
 	}
+	 
+	
+	@RequestMapping("/companyProfession")
+	public String companyBrief(Model model){
+		
+		return "client/companyProfession";
+	}
+	@RequestMapping("/companyHistory")
+	public String companyHistory(Model model){
+		
+		return "client/companyHistory";
+	}
 }

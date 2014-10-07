@@ -143,6 +143,7 @@ public class ResumeController  {
 					}
 					Files.copy(file.getInputStream(), Paths.get( p1 )  );
 					fileName[0] = "image/user/"+user.getId()+"/Pic"+user.getId()+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+					System.out.println("上传头像成功"+fileName[0]);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -171,6 +172,7 @@ public class ResumeController  {
 					}
 					Files.copy(file1.getInputStream(), Paths.get( p1 )  );
 					fileName[1] = "image/user/"+user.getId()+"/"+user.getName()+"的简历"+file1.getOriginalFilename().substring(file1.getOriginalFilename().lastIndexOf("."));
+					System.out.println("上传简历成功"+fileName[1]);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -242,6 +244,13 @@ public class ResumeController  {
         bos.close();  
 	}
 	
+	/**
+	 * 
+	 * 根据Id 显示修改页面
+	 * @param id
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/resume/edit/{id}")
 	public String editResume(@PathVariable int id,Model model){
 		Resume resume  = resumeService.getById(id);
@@ -252,6 +261,14 @@ public class ResumeController  {
 		return "client/editResume";
 	}
 	
+	/**
+	 * 更新用户信息
+	 * @param resume
+	 * @param model
+	 * @param request
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping("/resume/update")
 	public String update(@ModelAttribute Resume resume,Model model,HttpServletRequest request, HttpSession session){
 		Resume r = resumeService.getById(resume.getId());
@@ -272,14 +289,16 @@ public class ResumeController  {
 		r.setReward(resume.getReward());
 		
 		String fileName [] = this.saveFile(request, (User) session.getAttribute("user"));
+		
 		if(fileName[0]!=null && !"".equals(fileName[0])){
-			resume.setUserPicPath(fileName[0]);
+			r.setUserPicPath(fileName[0]);
 		}
 		if(fileName[1]!=null && !"".equals(fileName[1])){
-			resume.setResumePath(fileName[1]);
+			r.setResumePath(fileName[1]);
 		}
 		
 		resumeService.updata(r);
+		session.setAttribute("user", r.getUser());
 		return "redirect:/client/personalCenter";
 	}
 }

@@ -181,7 +181,7 @@
 									<div class="panel panel-primary">
 									  <div class="panel-heading">简历下载</div>
 									  <div class="panel-body">
-									    	<a href="${pageContext.request.contextPath}/client/resume/download/${resume.id}">用户简历</a>
+									    	<a href="${pageContext.request.contextPath}/client/resume/download/${resume.id}">${resume.name}的简历</a>
 									  </div>
 									</div>
 

@@ -52,7 +52,7 @@
 											 			<td><a target="_blank" href="position/show/id/${a.position.id}">${a.position.name }</a></td>
 											 			
 											 			<td>${a.applyDate }</td>
-											 			<td><a target="_blank" href="${pageContext.request.contextPath}/client/resume/show/id/${a.id }">简历</a></td>
+											 			<td><a target="_blank" href="${pageContext.request.contextPath}/client/resume/show/${a.user.resume.id}">简历</a></td>
 											 			<td><a href='apply/accept/${a.id }' class='btn btn-info '>接受</a></td>
 											 			<td><a href='apply/refuse/${a.id}' onclick="return confirm('确认要拒绝吗？')" class='btn btn-danger '>拒绝</a></td>
 										 			</tr>
@@ -78,7 +78,7 @@
 											 				onmouseover="$(this).popover('show')" onmouseout="$(this).popover('hide')">${a.user.name}</a></td>
 										 			<td><a target="_blank" href="position/show/id/${a.position.id}">${a.position.name }</a></td>
 										 			<td>${a.applyDate }</td>
-										 			<td><a target="_blank" href="${pageContext.request.contextPath}/client/resume/show/id/${a.id }">简历</a></td>
+										 			<td><a target="_blank" href="${pageContext.request.contextPath}/client/resume/show/${a.user.resume.id}">简历</a></td>
 										 			<td><a href='#' class='btn btn-info '>提醒用户答题</a></td>
 										 			</tr>
 										 		</c:forEach>
@@ -103,7 +103,7 @@
 											 				onmouseover="$(this).popover('show')" onmouseout="$(this).popover('hide')">${a.user.name}</a></td>
 										 			<td><a target="_blank" href="position/show/id/${a.position.id}">${a.position.name }</a></td>
 										 			<td>${a.applyDate }</td>
-										 			<td><a target="_blank" href="${pageContext.request.contextPath}/client/resume/show/id/${a.id }">简历</a></td>
+										 			<td><a target="_blank" href="${pageContext.request.contextPath}/client/resume/show/${a.user.resume.id}">简历</a></td>
 										 			<td><a href='apply/finish/${a.id }' class='btn btn-info '>最终接受并完成招聘</a></td>
 										 			<td><a href='apply/refuse/${a.id}' onclick="return confirm('确认要拒绝吗？')" class='btn btn-danger '>拒绝</a></td>
 										 			</tr>
@@ -126,7 +126,7 @@
 											 				onmouseover="$(this).popover('show')" onmouseout="$(this).popover('hide')">${a.user.name}</a></td>
 										 			<td><a target="_blank" href="position/show/id/${a.position.id}">${a.position.name }</a></td>
 										 			<td>${a.applyDate }</td>
-										 			<td><a target="_blank" href="${pageContext.request.contextPath}/client/resume/show/id/${a.id }">简历</a></td>
+										 			<td><a target="_blank" href="${pageContext.request.contextPath}/client/resume/show/${a.user.resume.id}">简历</a></td>
 										 			</tr>
 										 		</c:forEach>
 												</table>
@@ -147,7 +147,7 @@
 											 				onmouseover="$(this).popover('show')" onmouseout="$(this).popover('hide')">${a.user.name}</a></td>
 										 			<td><a target="_blank" href="position/show/id/${a.position.id}">${a.position.name }</a></td>
 										 			<td>${a.applyDate }</td>
-										 			<td><a target="_blank" href="${pageContext.request.contextPath}/client/resume/show/id/${a.id }">简历</a></td>
+										 			<td><a target="_blank" href="${pageContext.request.contextPath}/client/resume/show/${a.user.resume.id}">简历</a></td>
 										 			</tr>
 										 		</c:forEach>
 												</table>

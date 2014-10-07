@@ -18,7 +18,7 @@
 					<div class="panel-heading">个人信息简介</div>
 					<div class="panel-body">
 						<form action="${pageContext.request.contextPath}/client/resume/update" class="form-horizontal" role="form"
-								 enctype="multipart/form-data"id="form" method="post">
+								 enctype="multipart/form-data" id="form" method="post">
 							<div class="row">
 
 								<div class="col-sm-8 ">

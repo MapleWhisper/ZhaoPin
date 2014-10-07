@@ -54,10 +54,10 @@
 											<button class="btn btn-info btn-lg" style="border-top:1px">修改密码</button>
 										</td>
 										<td>
-											<td><a target="_blank" class="btn btn-info btn-lg" href="${pageContext.request.contextPath}/client/resume/show/id/${sessionScope.user.resume.id}">查看我的简历</a></td>
+											<td><a target="_blank" class="btn btn-info btn-lg" href="${pageContext.request.contextPath}/client/resume/show/${sessionScope.user.resume.id}">查看我的简历</a></td>
 										</td>
 										<td>
-											<a href="${pageContext.request.contextPath}/client/resume" class="btn btn-info btn-lg"  style="border-top:1px">个人简历完善</a>	
+											<a href="${pageContext.request.contextPath}/client/resume/edit/${sessionScope.user.resume.id}" class="btn btn-info btn-lg"  style="border-top:1px">个人简历完善</a>	
 										</td>
 										<td></td>
 									</tr>

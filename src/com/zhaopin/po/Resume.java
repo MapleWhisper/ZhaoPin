@@ -35,13 +35,14 @@ public class Resume implements Serializable{
 	private String idType;//证件类型
 	private String idNumber;//证件号码
 	private String marry;//婚姻状况
-	private Integer workAge;//工作年限
+	private String workAge;//工作年限
 	private String phoneNumber;//电话
 	private String email;//电子邮件
 	private String livePlace;//居住地点
 	private String schoolName;//现任学校名字
 	private String teach;//在学校所教授课程
-	private Integer exceptSalary;//期待工资待遇
+	private String exceptSalary;//期待工资待遇
+	private String exceptClass;//期待课程
 	private String graduateSchool;//毕业学校
 	private String educatinBackground;//毕业学历
 	private String major;//专业名称
@@ -122,12 +123,12 @@ public class Resume implements Serializable{
 	}
 
 	@Column(length=10,nullable=true)
-	public Integer getWorkAge() {
+	public String getWorkAge() {
 		return workAge;
 	}
 
 
-	public void setWorkAge(Integer workAge) {
+	public void setWorkAge(String workAge) {
 		this.workAge = workAge;
 	}
 
@@ -268,12 +269,12 @@ public class Resume implements Serializable{
 	}
 
 	@Column(length=10,nullable=true)
-	public Integer getExceptSalary() {
+	public String getExceptSalary() {
 		return exceptSalary;
 	}
 
 
-	public void setExceptSalary(Integer exceptSalary) {
+	public void setExceptSalary(String exceptSalary) {
 		this.exceptSalary = exceptSalary;
 	}
 
@@ -316,6 +317,16 @@ public class Resume implements Serializable{
 
 	public void setResumePath(String resumePath) {
 		this.resumePath = resumePath;
+	}
+
+
+	public String getExceptClass() {
+		return exceptClass;
+	}
+
+
+	public void setExceptClass(String exceptClass) {
+		this.exceptClass = exceptClass;
 	}
 	
 	

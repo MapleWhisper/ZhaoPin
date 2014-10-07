@@ -2,13 +2,18 @@ package com.zhaopin.client.controller;
 
 
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.CopyOption;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -16,6 +21,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -23,7 +29,6 @@ import com.zhaopin.client.server.ResumeService;
 import com.zhaopin.client.server.UserServer;
 import com.zhaopin.po.Resume;
 import com.zhaopin.po.User;
-import com.zhaopin.utils.FilePath;
 
 @Controller()
 @RequestMapping("/client")
@@ -128,7 +133,10 @@ public class ResumeController  {
 			if(flag){	//文件后缀正确
 				try {
 					String p1= path+"Pic"+user.getId()+file.getOriginalFilename().substring(file.getOriginalFilename().indexOf("."));
-					
+					File f = new File(p1);	//如果文件存在，那么删除文件
+					if(f.exists()){
+						f.delete();
+					}
 					Files.copy(file.getInputStream(), Paths.get( p1 )  );
 					fileName[0] = "image/user/"+user.getId()+"/Pic"+user.getId()+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
 				} catch (IOException e) {
@@ -152,9 +160,13 @@ public class ResumeController  {
 			}
 			if(flag){
 				try {
-					String p1= path+"Resume"+user.getId()+file1.getOriginalFilename().substring(file1.getOriginalFilename().indexOf("."));
+					String p1= path+user.getName()+"的简历"+file1.getOriginalFilename().substring(file1.getOriginalFilename().indexOf("."));
+					File f = new File(p1);
+					if(f.exists()){
+						f.delete();
+					}
 					Files.copy(file1.getInputStream(), Paths.get( p1 )  );
-					fileName[1] = "image/user/"+user.getId()+"/Resume"+user.getId()+file1.getOriginalFilename().substring(file1.getOriginalFilename().lastIndexOf("."));
+					fileName[1] = "image/user/"+user.getId()+"/"+user.getName()+"的简历"+file1.getOriginalFilename().substring(file1.getOriginalFilename().lastIndexOf("."));
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -172,8 +184,86 @@ public class ResumeController  {
 	 * 并实现Jsp页面上下载简历
 	 * @return
 	 */
-	@RequestMapping("/resume/show/id/{id}")
-	public String showResume(@PathVariable int id){
+	@RequestMapping("/resume/show/{id}")
+	public String showResume(@PathVariable int id,Model model){
+		
+		Resume resume = resumeService.getById(id);
+		if(resume==null){
+			return "redirect:/client/index";
+		}
+		model.addAttribute("resume", resume);
 		return "client/showResume";
+	}
+	
+	/**
+	 * 
+	 * 简历下载
+	 * @param id
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/resume/download/{id}")
+	public void resumeDownload(@PathVariable int id,HttpServletResponse response,HttpServletRequest request) throws Exception{
+		Resume resume = resumeService.getById(id);
+		String resumePath = resume.getResumePath();
+		if(resumePath==null){
+			return ;
+		}
+		String fileName = resumePath.substring(resumePath.lastIndexOf("/")+1);
+		System.out.println(fileName);
+		response.setCharacterEncoding("utf-8");
+		response.addHeader("Content-Disposition", "attachment;filename="+new String(fileName.getBytes("gbk"),"8859_1"));
+		String path = request.getServletContext().getRealPath("/");
+		System.out.println(path+resumePath);
+		
+		BufferedInputStream bis = null;  
+        BufferedOutputStream bos = null;  
+        bis = new BufferedInputStream(new FileInputStream(path+resumePath) );  
+        bos = new BufferedOutputStream(response.getOutputStream());  
+        byte[] buff = new byte[1024];  
+        int bytesRead;  
+        while (-1 != (bytesRead = bis.read(buff))) {  
+            bos.write(buff, 0, bytesRead);  
+        }  
+        bis.close();  
+        bos.close();  
+	}
+	
+	@RequestMapping("/resume/edit/{id}")
+	public String editResume(@PathVariable int id,Model model){
+		Resume resume  = resumeService.getById(id);
+		model.addAttribute("resume", resume);
+		return "client/editResume";
+	}
+	
+	@RequestMapping("/resume/update")
+	public String update(@ModelAttribute Resume resume,Model model,HttpServletRequest request, HttpSession session){
+		Resume r = resumeService.getById(resume.getId());
+		r.setName(resume.getName());
+		r.setBirthday(resume.getBirthday());
+		r.setSex(resume.getSex());
+		r.setMarry(resume.getMarry());
+		r.setPhoneNumber(resume.getPhoneNumber());
+		r.setIdType(resume.getIdType());
+		r.setIdNumber(resume.getIdNumber());
+		r.setWorkAge(resume.getWorkAge());
+		r.setEmail(resume.getEmail());
+		r.setLivePlace(resume.getLivePlace());
+		r.setSchoolName(resume.getSchoolName());
+		r.setTeach(resume.getTeach());
+		r.setExceptClass(resume.getExceptClass());
+		r.setExceptSalary(resume.getExceptSalary());
+		r.setReward(resume.getReward());
+		
+		String fileName [] = this.saveFile(request, (User) session.getAttribute("user"));
+		if(fileName[0]!=null && !"".equals(fileName[0])){
+			resume.setUserPicPath(fileName[0]);
+		}
+		if(fileName[1]!=null && !"".equals(fileName[1])){
+			resume.setResumePath(fileName[1]);
+		}
+		
+		resumeService.updata(r);
+		return "redirect:/client/personalCenter";
 	}
 }

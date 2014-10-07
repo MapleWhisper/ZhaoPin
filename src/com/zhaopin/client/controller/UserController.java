@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,14 +39,17 @@ public class UserController {
 			
 			Cookie cookies [] =  req.getCookies();
 			User user = new User();
-			for(Cookie c : cookies){
-				if(c.getName().equals("uValue")){
-					user.setEmail(c.getValue());
-				}
-				if(c.getName().equals("pValue")){
-					user.setPassword(c.getValue());
+			if(cookies!=null){
+				for(Cookie c : cookies){
+					if(c.getName().equals("uValue")){
+						user.setEmail(c.getValue());
+					}
+					if(c.getName().equals("pValue")){
+						user.setPassword(c.getValue());
+					}
 				}
 			}
+			
 			//如果用户Cookie中有账号信息，那么登陆
 			if(user.getEmail()!=null && !"".equals(user.getEmail()) && user.getPassword()!=null &&!"".equals(user.getPassword())){
 				System.out.println(user.getEmail());

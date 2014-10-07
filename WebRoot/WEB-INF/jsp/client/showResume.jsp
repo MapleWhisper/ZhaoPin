@@ -105,46 +105,66 @@
 										<label   class="col-sm-2 control-label">${resume.exceptSalary}</label>
 									</div>
 									<h3>教育经历</h3>
-									<table class="table table-bordered table-hover table-striped">
+									<table class="table table-bordered table-striped table-hover">
 										<tr>
 											<td>毕业学校</td>
 											<td>学历</td>
 											<td>专业名称</td>
-											
 										</tr>
-										<tr>
-											<td>${resume.graduateSchool}</td>
-										</tr>
-										<tr>
-											<td>${resume.major}</td>
-										</tr>
-										<tr>
-										</tr>
-										
-									
+										 	<tr>
+												<td>${graduateSchool[0] }</td>
+												<td>${educatinBackground[0] }</td>
+												<td>${major[0] }</td>
+											</tr>
+										 	<tr>
+												<td>${graduateSchool[1] }</td>
+												<td>${educatinBackground[1] }</td>
+												<td>${major[1] }</td>
+											</tr>
+											 <tr>
+												<td>${graduateSchool[2] }</td>
+												<td>${educatinBackground[2] }</td>
+												<td>${major[2] }</td>
+											 </tr>
+										 	<tr>
+												<td>${graduateSchool[3] }</td>
+												<td>${educatinBackground[3] }</td>
+												<td>${major[3] }</td>
+											</tr>
 									</table>
+									
 									<h3>工作经历</h3>
-									<table class="table table-bordered table-hover table-striped">
+									<table class="table table-bordered table-striped table-hover">
 										<tr>
 											<td>工作单位名称</td>
 											<td>任职时间</td>
 											<td>职位描述</td>
 										</tr>
 										<tr>
-											<td>${resume.company}</td>
+											<td>${company[0] }</td>
+											<td>${workTime[0] }</td>
+											<td>${workDescribe[0] }</td>
 										</tr>
 										<tr>
-											<td>${resume.workTime}</td>
+											<td>${company[1] }</td>
+											<td>${workTime[1] }</td>
+											<td>${workDescribe[1] }</td>						
+										<tr>
+											<td>${company[2] }</td>
+											<td>${workTime[2] }</td>
+											<td>${workDescribe[2] }</td>
 										</tr>
 										<tr>
-											<td>${resume.workDescribe}</td>
+											<td>${company[3] }</td>
+											<td>${workTime[3] }</td>
+											<td>${workDescribe[3] }</td>
 										</tr>
-									
 									</table>
+									
 									<h5>
 										<strong>获取奖励</strong>
 									</h5>
-									<textarea class="form-control" rows="5" >${resume.reward }</textarea>
+									<textarea class="form-control" rows="5" >${resume.reward}</textarea>
 								</div>
 
 								

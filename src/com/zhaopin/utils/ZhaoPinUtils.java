@@ -67,4 +67,14 @@ public class ZhaoPinUtils {
 		
 		return md5.toString();
 	}
+	public static String[] spiltString(String str){
+		String s[] = new String[5];
+		s = str.split("&");
+		for(String s1:s){
+			if(s1==null){
+				s1=" ";
+			}
+		}
+		return s;
+	}
 }

@@ -108,9 +108,6 @@ public class Resume implements Serializable{
 		this.birthday = birthday;
 	}
 
-	
-
-	
 
 	@Column(length=10,nullable=true)
 	public String getMarry() {

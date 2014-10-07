@@ -29,6 +29,7 @@ import com.zhaopin.client.server.ResumeService;
 import com.zhaopin.client.server.UserServer;
 import com.zhaopin.po.Resume;
 import com.zhaopin.po.User;
+import com.zhaopin.utils.ZhaoPinUtils;
 
 @Controller()
 @RequestMapping("/client")
@@ -80,12 +81,14 @@ public class ResumeController  {
 				ws[1]=ws[1]+w2[i]+"&";
 				ws[2]=ws[2]+w3[i]+"&";
 			}
-			resume.setGraduateSchool(es[0]);
-			resume.setEducatinBackground(es[1] );
-			resume.setMajor(es[2]);
-			resume.setCompany(ws[0]);
-			resume.setWorkTime(ws[1] );
-			resume.setMajor(ws[2]);
+			resume.setGraduateSchool(es[0]);	//毕业学校
+			resume.setEducatinBackground(es[1] );	//学历
+			resume.setMajor(es[2]);				//专业名称
+			
+			resume.setCompany(ws[0]);			//公司名称
+			resume.setWorkTime(ws[1] );			//工作时间
+			resume.setWorkDescribe(ws[2]);		//工作描述
+			
 			resume.setUserPicPath(fileName[0]);
 			resume.setResumePath(fileName[1]);
 
@@ -96,6 +99,7 @@ public class ResumeController  {
 				u.setResume(resume);
 
 				userSever.updata(u);;
+				session.setAttribute("user", u);
 				return "redirect:/client/personalCenter";
 			}else{		//如果用户为 null
 				return "redirect:/client/login";
@@ -192,6 +196,15 @@ public class ResumeController  {
 			return "redirect:/client/index";
 		}
 		model.addAttribute("resume", resume);
+		
+		model.addAttribute("graduateSchool",ZhaoPinUtils.spiltString(resume.getGraduateSchool().substring(4)));
+		//model.addAttribute("educatinBackground",ZhaoPinUtils.spiltString(resume.getEducatinBackground().substring(4)));
+		model.addAttribute("major",ZhaoPinUtils.spiltString(resume.getMajor().substring(4)));
+		
+		model.addAttribute("company", ZhaoPinUtils.spiltString(resume.getCompany().substring(4)));
+		model.addAttribute("workTime",ZhaoPinUtils.spiltString(resume.getWorkTime().substring(4)));
+		model.addAttribute("workDescribe",ZhaoPinUtils.spiltString(resume.getWorkDescribe().substring(4)));
+		
 		return "client/showResume";
 	}
 	
@@ -232,6 +245,9 @@ public class ResumeController  {
 	@RequestMapping("/resume/edit/{id}")
 	public String editResume(@PathVariable int id,Model model){
 		Resume resume  = resumeService.getById(id);
+		if(resume==null){
+			return "redirect:/client/index";
+		}
 		model.addAttribute("resume", resume);
 		return "client/editResume";
 	}

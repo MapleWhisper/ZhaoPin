@@ -21,15 +21,23 @@
 					  </div>
 					  <div class="panel-body">
 					    	<!-- 试卷导航栏 -->
-    					<ul class="pagination">
-						  <li><a href="#">&laquo;</a></li>
-						  <li><a href="#">1</a></li>
-						  <li><a href="#">2</a></li>
-						  <li><a href="#">3</a></li>
-						  <li><a href="#">4</a></li>
-						  <li><a href="#">5</a></li>
-						  <li><a href="#">&raquo;</a></li>
-						</ul>	<!-- 试卷导航栏 -->
+					    <div class="row">
+					    	<div class="col-sm-8">
+					    		<ul class="pagination">
+								  <li><a href="#">&laquo;</a></li>
+								  <li><a href="#">1</a></li>
+								  <li><a href="#">2</a></li>
+								  <li><a href="#">3</a></li>
+								  <li><a href="#">4</a></li>
+								  <li><a href="#">5</a></li>
+								  <li><a href="#">&raquo;</a></li>
+								</ul>	<!-- 试卷导航栏 -->
+					    	</div>
+					    	<div class="col-sm-4">
+					    		<a href='${pageContext.request.contextPath}/admin/paperCart' target="_blank" class="btn btn-lg btn-primary">进入试卷篮，生成试卷</a>
+					    	</div>
+					    </div>
+    					
 						
 						
 						<!--试题列表 -->
@@ -42,7 +50,7 @@
 							  		<div class="col-sm-4">试题难度:${pro.difficulty}</div>
 							  		<div class="col-sm-3">入库时间:${pro.createDate}</div>
 							  		<div class="col-sm-3">试卷类型:${pro.type }</div>
-							  		<div class="col-sm-2"><button class="btn btn-primary add" >添加到试卷篮</button></div>
+							  		<div class="col-sm-2"><button class="btn btn-primary add" id="${pro.id}">添加到试卷篮</button></div>
 							  	</div>
 							  		
 							  </div>
@@ -94,14 +102,18 @@
     		$(function(){
     			$(".add").click(function(){
         			$(this).parents("div .item").toggleClass("well");
+        			var id = $(this).attr('id');
         			if ( $(this).html()=='添加到试卷篮' ){
+        				//想session中添加试题
+        				$.post("/ZhaoPin/admin/paperCart/action/add",{"id":id});
         				$(this).html('已添加');
         			}else{
+        				$.post("/ZhaoPin/admin/paperCart/action/remove",{"id":id});
         				$(this).html('添加到试卷篮');
         			}
         		});
     		});
-    	
+    		
     	</script>
   </body>
 </html>

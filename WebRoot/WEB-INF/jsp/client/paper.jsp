@@ -9,7 +9,7 @@
 		.questArea {margin-top: 10px;padding-left: 50px}
 		.nav-left {position: fixed;width: 150px;height: 100px}
 	</style>
-	<script>
+	<script type="text/javascript">
 			$(function(){
 				$(".pre").click(function(){
 					//alert("ok");

@@ -139,13 +139,12 @@
 							
 							<c:if test="${sessionScope.user.resume.userPicPath !=null}">
 							<div class="col-sm-3" style="mamargin-right:100px">
-							
-								<img height="190px" width="190px" src="${pageContext.request.contextPath}/${sessionScope.user.resume.userPicPath}" style="mamargin-right:100px"/>
+								<img height="200px" width="200px" src="${pageContext.request.contextPath}/${sessionScope.user.resume.userPicPath}" style="mamargin-right:100px"/>
 							</div>
 							</c:if>
 							<c:if test="${sessionScope.user.resume.userPicPath ==null}">
 							<div class="col-sm-3" style="mamargin-right:100px">
-								<img height="190px" width="190px" src="${pageContext.request.contextPath}/image/User_default_pic.jpg" style="mamargin-right:100px"/>
+								<img height="200px" width="200px" src="${pageContext.request.contextPath}/image/User_default_pic.jpg" style="mamargin-right:100px"/>
 							</div>
 							</c:if>
 				

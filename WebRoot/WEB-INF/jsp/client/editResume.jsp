@@ -17,6 +17,15 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">个人信息简介</div>
 					<div class="panel-body">
+						<!-- 错误提示-->
+						<div class="form-group" id="e2">
+									<div class="col-sm-8 col-sm-offset-2">
+										<div class="alert alert-danger alert-dismissible" role="alert">
+  												<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+ 												 <span id="e1">${error}<span>
+										</div>
+									</div>
+						</div>
 						<form action="${pageContext.request.contextPath}/client/resume/update" class="form-horizontal" role="form"
 								 enctype="multipart/form-data" id="form" method="post">
 							<div class="row">
@@ -185,14 +194,7 @@
 
 									</div>
 							</div>
-							<div class="form-group" id="e2">
-									<div class="col-sm-8 col-sm-offset-2">
-										<div class="alert alert-danger alert-dismissible" role="alert">
-  												<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
- 												 <span id="e1">${error}<span>
-										</div>
-									</div>
-							</div>
+							
 
 						</form>
 					</div>

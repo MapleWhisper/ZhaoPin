@@ -60,6 +60,9 @@ public class ResumeController  {
 		User user=(User)session.getAttribute("user");
 
 		String fileName []=saveFile(request, user);
+		if(request.getAttribute("error")!=null){
+			return "client/editResume";
+		}
 		
 		if(fileName!=null){
 			System.out.println("文件上传成功");
@@ -125,7 +128,7 @@ public class ResumeController  {
 		new File(path).mkdirs();
 		
 		if(file!=null && !"".equals(file.getOriginalFilename() )){		//图片上传部分
-			String  a=file.getOriginalFilename();
+			String  a=file.getOriginalFilename().toLowerCase();
 			String [] s=new String[]{"bmp","jpg","gif","png"};
 			boolean flag = false;
 			for(int i=0;i<s.length;i++){
@@ -134,8 +137,17 @@ public class ResumeController  {
 					break;
 				}
 			}
-			if(flag){	//文件后缀正确
-				try {
+			if(!flag){//文件后缀不正确
+				request.setAttribute("error", "文件格式不正确");
+				return fileName;
+			}
+			if(file.getSize() > 1024*1024*8){	//如果文件大于1M，返回
+				request.setAttribute("error", "图片大太，小于1MB");
+				return fileName;
+			}
+			
+			
+			try {
 					String p1= path+"Pic"+user.getId()+file.getOriginalFilename().substring(file.getOriginalFilename().indexOf("."));
 					File f = new File(p1);	//如果文件存在，那么删除文件
 					if(f.exists()){
@@ -147,14 +159,12 @@ public class ResumeController  {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-			}else{
-				return null;
-			}
+			
 			
 		}
 		if(file1!=null && !"".equals(file1.getOriginalFilename() )){	//简历上传部分
 
-			String  a=file1.getOriginalFilename();		
+			String  a=file1.getOriginalFilename().toLowerCase();		
 			String [] s=new String[]{"doc","docx","pdf","jpg"}; 
 			boolean flag = false;
 			for(int i=0;i<s.length;i++){
@@ -163,7 +173,14 @@ public class ResumeController  {
 					break;
 				}
 			}
-			if(flag){
+			if(!flag){//文件后缀不正确
+				request.setAttribute("error", "文件格式不正确");
+				return fileName;
+			}	
+			if(file.getSize() > 1024*1024*8*5){	//如果文件大于5M，返回
+				request.setAttribute("error", "简历大太，小于5MB");
+				return fileName;
+			}
 				try {
 					String p1= path+user.getName()+"的简历"+file1.getOriginalFilename().substring(file1.getOriginalFilename().indexOf("."));
 					File f = new File(p1);
@@ -176,9 +193,6 @@ public class ResumeController  {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-			}else{
-				return null;
-			}
 			
 		}
 		return fileName;
@@ -289,6 +303,10 @@ public class ResumeController  {
 		r.setReward(resume.getReward());
 		
 		String fileName [] = this.saveFile(request, (User) session.getAttribute("user"));
+		
+		if(request.getAttribute("error")!=null){
+			return "client/editResume";
+		}
 		
 		if(fileName[0]!=null && !"".equals(fileName[0])){
 			r.setUserPicPath(fileName[0]);

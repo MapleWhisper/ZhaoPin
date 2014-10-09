@@ -24,10 +24,10 @@ public class Paper implements Serializable{
 	
 	private Date createDate;		//试卷的生成日期
 	
-	private Integer[] singles;		//单选题的题号Id数组
-	private Integer[] MultChoices;	//多选题的题号Id数组
-	private Integer[] judges;		//判断题的题号Id数组
-	private Integer[] questions;	//简答题的题号Id数组
+	private List<Integer> singles;		//单选题的题号Id数组
+	private List<Integer> MultChoices;	//多选题的题号Id数组
+	private List<Integer> judges;		//判断题的题号Id数组
+	private List<Integer> questions;	//简答题的题号Id数组
 	
 	private Integer singleNUmber;		//单选题数目
 	private Integer MultChoiceNumber;	//多选题数目
@@ -50,6 +50,104 @@ public class Paper implements Serializable{
 	private String multChoice;			//需要被保存进数据库的多选题 Id的 Json字符串
 	private String judege;				//需要被保存进数据库的判断题 Id的 Json字符串
 	private String question;			//需要被保存进数据库的简答题 Id的 Json字符串
+	
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getLabel() {
+		return label;
+	}
+	public void setLabel(String label) {
+		this.label = label;
+	}
+	public Date getCreateDate() {
+		return createDate;
+	}
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+	public List<Integer> getSingles() {
+		return singles;
+	}
+	public void setSingles(List<Integer> singles) {
+		this.singles = singles;
+	}
+	public List<Integer> getMultChoices() {
+		return MultChoices;
+	}
+	public void setMultChoices(List<Integer> multChoices) {
+		MultChoices = multChoices;
+	}
+	public List<Integer> getJudges() {
+		return judges;
+	}
+	public void setJudges(List<Integer> judges) {
+		this.judges = judges;
+	}
+	public List<Integer> getQuestions() {
+		return questions;
+	}
+	public void setQuestions(List<Integer> questions) {
+		this.questions = questions;
+	}
+	public Integer getSingleNUmber() {
+		return singleNUmber;
+	}
+	public void setSingleNUmber(Integer singleNUmber) {
+		this.singleNUmber = singleNUmber;
+	}
+	public Integer getMultChoiceNumber() {
+		return MultChoiceNumber;
+	}
+	public void setMultChoiceNumber(Integer multChoiceNumber) {
+		MultChoiceNumber = multChoiceNumber;
+	}
+	public Integer getJudgeNumber() {
+		return judgeNumber;
+	}
+	public void setJudgeNumber(Integer judgeNumber) {
+		this.judgeNumber = judgeNumber;
+	}
+	public Integer getQuestionNumber() {
+		return questionNumber;
+	}
+	public void setQuestionNumber(Integer questionNumber) {
+		this.questionNumber = questionNumber;
+	}
+	public String getSingle() {
+		return single;
+	}
+	public void setSingle(String single) {
+		this.single = single;
+	}
+	public String getMultChoice() {
+		return multChoice;
+	}
+	public void setMultChoice(String multChoice) {
+		this.multChoice = multChoice;
+	}
+	public String getJudege() {
+		return judege;
+	}
+	public void setJudege(String judege) {
+		this.judege = judege;
+	}
+	public String getQuestion() {
+		return question;
+	}
+	public void setQuestion(String question) {
+		this.question = question;
+	}
 	
 	
 	

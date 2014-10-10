@@ -9,24 +9,15 @@
 		.questArea {margin-top: 10px;padding-left: 50px}
 		.nav-left {position: fixed;width: 150px;height: 100px}
 	</style>
-	<script type="text/javascript">
-			$(function(){
-				$(".pre").click(function(){
-					//alert("ok");
-					$(this).addClass("active");
-					$(this).siblings().removeClass("active");
-				});
-			});
-			
-	</script>
+	
   </head>
   
   <body>
     	<div class="container">
     		<%@ include file="head.jsp" %>
     		<div class="page-header " style="text-align: center;margin-top: 100px">
-			<h1 >招聘问卷试题</h1>
-		</div>
+				<h1 >招聘问卷试题</h1>
+			</div>
 		<div class="row">
 			<!--左侧的导航条 -->
 		  <div class="col-sm-2">
@@ -124,6 +115,16 @@
 		</div> <!-- 第一行结束 -->
     		
     	</div>
+    	<script type="text/javascript">
+			$(function(){
+				$(".pre").click(function(){
+					//alert("ok");
+					$(this).addClass("active");
+					$(this).siblings().removeClass("active");
+				});
+			});
+			
+		</script>
     	<%@ include file="buttom.jsp" %>
   </body>
 </html>

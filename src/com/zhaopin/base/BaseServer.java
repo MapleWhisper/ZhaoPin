@@ -40,12 +40,14 @@ public interface BaseServer<T> {
 	 */
 	public  T getById(Integer id);
 	
+	
 	/**
 	 * 根据Id数据返回多个实例
 	 * @param id 实例Id
 	 * @return
 	 */
 	public  List<T> getByIds(Integer ids[]);
+	public List<T> getByIds(List<Integer> ids);
 	/**
 	 * 获取所有实例
 	 * @return

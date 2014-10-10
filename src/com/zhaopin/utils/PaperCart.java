@@ -1,11 +1,14 @@
 package com.zhaopin.utils;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.alibaba.fastjson.JSON;
+import com.zhaopin.po.Paper;
 import com.zhaopin.po.Problem;
 
 @Component
@@ -134,6 +137,23 @@ public class PaperCart {
 		}
 		return i;
 		
+	}
+	
+	public Paper toPaper(PaperCart cart){
+		Paper paper = new Paper();
+		
+		paper.setCreateDate(new Date());
+		
+		paper.setSingleNumber(cart.getsingleNumber());
+		paper.setMultChoiceNumber(cart.getMultChoiceNumber());
+		paper.setJudgeNumber(cart.getJudgeNumber());
+		paper.setQuestionNumber(cart.getQuestionNumber());
+		
+		paper.setSingle(JSON.toJSONString(cart.getSingles()));
+		paper.setMultChoice(JSON.toJSONString(cart.getMultChoices()));
+		paper.setJudege(JSON.toJSONString(cart.getJudges()));
+		paper.setQuestion(JSON.toJSONString(cart.getQuestions()));
+		return paper;
 	}
 	
 }

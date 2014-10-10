@@ -33,9 +33,18 @@
 						    	<table class="table table-hover table-striped table-bordered">
 						    		<tr>
 						    			<td>试卷标题</td>
+						    			<td>试卷作者</td>
 						    			<td>试卷标签</td>
 						    			<td>生成时间</td>
 						    		</tr>
+						    		<c:forEach items="${paperList }" var="p">
+						    			<tr>
+						    				<td><a href="${pageContext.request.contextPath}/admin/paper/show/${p.id}">${p.title }</a></td>
+						    				<td>${p.auther }</td>
+						    				<td>${p.label }</td>
+						    				<td><fm:formatDate value="${p.createDate}" pattern="yyyy-MM-dd"/></td>
+						    			</tr>
+						    		</c:forEach>
 						    	</table>
 						  </div>
 						</div><!-- 试卷列表 -->

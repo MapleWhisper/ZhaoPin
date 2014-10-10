@@ -18,6 +18,7 @@
 	<mapping class="com.zhaopin.po.User" />
 	<mapping class="com.zhaopin.po.Resume" />
 	<mapping class="com.zhaopin.po.Problem" />
+	<mapping class="com.zhaopin.po.Paper" />
 	
 
 

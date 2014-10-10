@@ -188,7 +188,7 @@
 		      
 		      <!-- 模态表单体 -->
 		      <div class="modal-body">
-		        	<form class="form-horizontal" role="form" method="post">
+		        	<form class="form-horizontal" action="${pageContext.request.contextPath}/admin/paper/save" role="form" method="post">
 					  <div class="form-group">
 					    <label  class="col-sm-2 control-label">试卷标题</label>
 					    <div class="col-sm-10">

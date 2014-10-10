@@ -2,7 +2,6 @@ package com.zhaopin.base;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -133,6 +132,19 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 		return query.list();
 	}
 	
+	/**
+	 * 
+	 * 通过 Id 集合来查找实例
+	 */
+	@Override
+	public List<E> getByIds(List<Integer> ids) {
+		if( ids==null || ids.size()==0){
+			return new ArrayList<E>();
+		}
+		Query query = getSession().createQuery("from "+clazz.getSimpleName() +" where id in (:ids)");
+		query.setParameterList("ids", ids);
+		return query.list();
+	}
 	
 	/**
 	 * 获取SessionFactory工厂

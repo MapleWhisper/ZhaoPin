@@ -39,8 +39,10 @@ public class PaperController {
 	 * @return
 	 */
 	@RequestMapping("/paper")
-	public String paper(){
+	public String paper(Model model){
 		
+		List<Paper> paperList = paperService.findAll();
+		model.addAttribute("paperList", paperList);
 		return "admin/paper";
 	}
 	
@@ -51,8 +53,19 @@ public class PaperController {
 	 * @return
 	 */
 	@RequestMapping("paper/show/{id}")
-	public String show(@PathVariable int id){
+	public String show(@PathVariable int id,Model model){
 		
+		Paper paper = paperService.getById(id);
+		if(paper==null){
+			return "redirect:/admin/paper";
+		}
+		
+		paper.setSingleList(problemService.getByIds( JSON.parseArray(paper.getSingle(), Integer.class) ) );
+		paper.setMultChoiceList(problemService.getByIds(JSON.parseArray(paper.getMultChoice(), Integer.class)));
+		paper.setJudegeList(problemService.getByIds(JSON.parseArray(paper.getJudege(), Integer.class)));
+		paper.setQuestionList(problemService.getByIds(JSON.parseArray(paper.getQuestion(), Integer.class)));
+		
+		model.addAttribute("paper", paper);
 		return "admin/showPaper";
 	}
 	
@@ -76,23 +89,16 @@ public class PaperController {
 	 */
 	@RequestMapping("paper/save")
 	public String save(String title ,String auther,HttpSession session){
-		Paper paper = new Paper();
+		
 		PaperCart cart = (PaperCart) session.getAttribute("paperCart");
 		if(cart==null){
 			return "redirect:/admin/paper/item/1";
 		}
+		Paper paper = cart.toPaper(cart);		//根据试题篮 生成试卷
 		paper.setTitle(title);
 		paper.setAuther(auther);
-		paper.setCreateDate(new Date());
 		
-		paper.setSingleNumber(cart.getsingleNumber());
-		paper.setMultChoiceNumber(cart.getMultChoiceNumber());
-		paper.setJudgeNumber(cart.getJudgeNumber());
-		paper.setQuestionNumber(cart.getQuestionNumber());
-		
-		paper.setJudege(JSON.toJSONString(cart.getSingles()));
-		paper.setMultChoice(JSON.toJSONString(cart.getMultChoices()));
-		
+		paperService.save(paper);
 		
 		return "redirect:/admin/paper";
 	}

@@ -3,6 +3,7 @@
 <html>
   <head>
 	<%@ include file="header.jspf" %>
+	<title>试卷管理</title>
   </head>
   
   <body>

@@ -1,15 +1,19 @@
 package com.zhaopin.admin.controller;
 
-import java.util.Date;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.collections.map.HashedMap;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.alibaba.fastjson.JSON;
 import com.zhaopin.admin.server.PaperService;
@@ -43,6 +47,7 @@ public class PaperController {
 		
 		List<Paper> paperList = paperService.findAll();
 		model.addAttribute("paperList", paperList);
+		
 		return "admin/paper";
 	}
 	
@@ -53,7 +58,7 @@ public class PaperController {
 	 * @return
 	 */
 	@RequestMapping("paper/show/{id}")
-	public String show(@PathVariable int id,Model model){
+	public String show(@PathVariable int id,Model model,HttpSession session){
 		
 		Paper paper = paperService.getById(id);
 		if(paper==null){
@@ -65,6 +70,23 @@ public class PaperController {
 		paper.setJudegeList(problemService.getByIds(JSON.parseArray(paper.getJudege(), Integer.class)));
 		paper.setQuestionList(problemService.getByIds(JSON.parseArray(paper.getQuestion(), Integer.class)));
 		
+		String ans = (String) session.getAttribute("ans");		//从Session中取出答案
+		if(ans!=null){
+			HashMap<String, String> map =  JSON.parseObject(ans, HashMap.class);
+			
+			for(Problem p : paper.getSingleList()){				//把答案放到题目中，送到前台
+				p.setUserAns(map.get(p.getId()+""));
+			}
+			for(Problem p : paper.getMultChoiceList()){
+				p.setUserAns(map.get(p.getId()+""));
+			}
+			for(Problem p : paper.getJudegeList()){
+				p.setUserAns(map.get(p.getId()+""));
+			}
+			for(Problem p : paper.getQuestionList()){
+				p.setUserAns(map.get(p.getId()+""));
+			}
+		}
 		model.addAttribute("paper", paper);
 		return "admin/showPaper";
 	}
@@ -131,6 +153,34 @@ public class PaperController {
 	@RequestMapping("paper/delete/{id}")
 	public String delete(@PathVariable int id){
 		
+		return "redirect:/admin/paper";
+	}
+	
+	/**
+	 * 提交答案
+	 * @return
+	 */
+	@RequestMapping("/paper/answer")
+	public String answer( @RequestParam int id,HttpServletRequest request){
+		Paper paper = paperService.getById(id);
+		if(paper==null){
+			return "redirect:/admin/paper";
+		}
+		HashMap<String,String> answer = new HashMap<String,String>();
+		for( Integer i : JSON.parseArray(paper.getSingle(), Integer.class) ){
+			answer.put(i+"", request.getParameter(i+""));
+		}
+		for( Integer i : JSON.parseArray(paper.getMultChoice(), Integer.class) ){
+			answer.put(i+"", Arrays.toString((request.getParameterValues(i+""))) );
+		}
+		for( Integer i : JSON.parseArray(paper.getJudege(), Integer.class) ){
+			answer.put(i+"", request.getParameter(i+""));
+		}
+		for( Integer i : JSON.parseArray(paper.getQuestion(), Integer.class) ){
+			answer.put(i+"", request.getParameter(i+""));
+		}
+		String ans  = JSON.toJSONString(answer);
+		request.getSession().setAttribute("ans", ans);
 		return "redirect:/admin/paper";
 	}
 	

@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
@@ -27,6 +28,7 @@ public class Problem implements Serializable{
 	private String difficulty;	//题目难度	简单，中等， 困难
 	private String label;		//题目标签  	便于搜索
 	private Date createDate;	//入库试卷
+	
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -99,6 +101,19 @@ public class Problem implements Serializable{
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
+	
+	private String userAns;
+
+	@Transient
+	public String getUserAns() {
+		return userAns;
+	}
+	public void setUserAns(String userAns) {
+		this.userAns = userAns;
+	}		//用户答案
+	
+	
+	
 	
 	
 }

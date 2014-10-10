@@ -238,8 +238,8 @@
 								<div class="panel panel-primary">
 									<div class="panel-heading">简历下载</div>
 									<div class="panel-body">
-										<a
-											href="${pageContext.request.contextPath}/client/resume/download/${resume.id}">用户简历</a>
+										<a class="btn btn-info btn-lg" href="${pageContext.request.contextPath}/client/resume/download/${resume.id}">
+											<span class="glyphicon glyphicon-save">点此下载${resume.name}的简历</span></a>
 									</div>
 								</div>
 

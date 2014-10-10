@@ -24,10 +24,10 @@ public class Apply implements Serializable{
 	private Date applyDate;			//申请时间
 	private Date finishDate;		//完成时间
 	private String state;			//申请状态	待审核，待答卷，待批阅，已完成，已拒绝
-	/*
-	private Paper paper;			//试卷
-	private Answer answer;			//答案
-	*/
+	
+	private Paper paper;			//用户答题试卷
+	private String answer;			//用户答案
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public Integer getId() {
@@ -72,6 +72,22 @@ public class Apply implements Serializable{
 	}
 	public void setState(String state) {
 		this.state = state;
+	}
+	
+	@ManyToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE})
+	@JoinColumn(name="paper_id")
+	public Paper getPaper() {
+		return paper;
+	}
+	public void setPaper(Paper paper) {
+		this.paper = paper;
+	}
+	
+	public String getAnswer() {
+		return answer;
+	}
+	public void setAnswer(String answer) {
+		this.answer = answer;
 	}
 	
 	

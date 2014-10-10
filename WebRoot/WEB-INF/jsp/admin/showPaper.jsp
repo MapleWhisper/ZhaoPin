@@ -3,6 +3,7 @@
 <html>
   <head>
 	<%@ include file="header.jspf" %>
+	<title>试卷显示|${paper.title}</title>
 	<style type="text/css">
 		.quest {font-size: medium;margin-top: 20px}
 		.questArea {margin-top: 10px;padding-left: 50px}
@@ -33,7 +34,8 @@
 					  </div><!--左侧的导航条 -->
 					  <div class="col-sm-10">
 					  
-					   <form action="" method="post">
+					   <form action="${pageContext.request.contextPath}/admin/paper/answer" method="post">
+					   		<input type="hidden" name="id" value="${paper.id}">
 						<!--单选题 -->
 						<div class="panel panel-primary" id="part1">
 						  <div class="panel-heading">
@@ -43,10 +45,10 @@
 						  		<c:forEach items="${paper.singleList}" var="pro" varStatus="s">
 							  		<div style="margin-left: 50px">
 								  		<div class="quest"><code>第${s.count}题</code> ${pro.title }</div>
-										<div class="radio"><label><input type="radio" value="1" name="s${pro.id}">A:${pro.optA }</label></div>
-										<div class="radio"><label><input type="radio" value="2" name="s${pro.id}">B:${pro.optB }</label></div>
-										<div class="radio"><label><input type="radio" value="3" name="s${pro.id}">C:${pro.optC }</label></div>
-										<div class="radio"><label><input type="radio" value="4" name="s${pro.id}">D:${pro.optD }</label></div>
+										<div class="radio"><label><input type="radio" value="A" name="${pro.id}">A:${pro.optA }</label></div>
+										<div class="radio"><label><input type="radio" value="B" name="${pro.id}">B:${pro.optB }</label></div>
+										<div class="radio"><label><input type="radio" value="C" name="${pro.id}">C:${pro.optC }</label></div>
+										<div class="radio"><label><input type="radio" value="D" name="${pro.id}">D:${pro.optD }</label></div>
 									</div>
 								</c:forEach>
 						  </div>
@@ -61,10 +63,10 @@
 						  		<c:forEach items="${paper.multChoiceList}" var="pro" varStatus="s">
 						    	<div style="margin-left: 50px">
 								  		<div class="quest"><code>第${s.count}题</code> ${pro.title }</div>
-										<div class="checkBox"><label><input type="checkBox" value="1" name="m${pro.id}">A:${pro.optA }</label></div>
-										<div class="checkBox"><label><input type="checkBox" value="2" name="m${pro.id}">B:${pro.optB }</label></div>
-										<div class="checkBox"><label><input type="checkBox" value="3" name="m${pro.id}">C:${pro.optC }</label></div>
-										<div class="checkBox"><label><input type="checkBox" value="4" name="m${pro.id}">D:${pro.optD }</label></div>
+										<div class="checkBox"><label><input type="checkBox" value="A" name="${pro.id}">A:${pro.optA }</label></div>
+										<div class="checkBox"><label><input type="checkBox" value="B" name="${pro.id}">B:${pro.optB }</label></div>
+										<div class="checkBox"><label><input type="checkBox" value="C" name="${pro.id}">C:${pro.optC }</label></div>
+										<div class="checkBox"><label><input type="checkBox" value="D" name="${pro.id}">D:${pro.optD }</label></div>
 								</div>
 								</c:forEach>
 						  </div>
@@ -79,8 +81,8 @@
 						  		<c:forEach items="${paper.judegeList}" var="pro" varStatus="s">
 						    	<div style="margin-left: 50px">
 							  		<div class="quest"><code>第${s.count}题</code> ${pro.title }</div>
-									<div class="radio"><label><input type="radio" value="对" name="j${pro.id}">A:对</label></div>
-									<div class="radio"><label><input type="radio" value="错" name="j${pro.id}">B:错</label></div>
+									<div class="radio"><label><input type="radio" value="对" name="${pro.id}">A:对</label></div>
+									<div class="radio"><label><input type="radio" value="错" name="${pro.id}">B:错</label></div>
 								</div>
 								</c:forEach>
 						  </div>
@@ -93,14 +95,17 @@
 						  </div>
 						  <div class="panel-body">
 						 		 <c:forEach items="${paper.questionList}" var="pro" varStatus="s">
+						 		 	<c:set var="id" value="${pro.id}"/>
 							    	<div class="quest"><code>第${s.count}题</code> ${pro.title } </div>
 							    	<div class="questArea">
-							    		<textarea class="form-control" rows="6" name="q${pro.id}"></textarea>
+							    		<textarea class="form-control" rows="6" name="${pro.id}">${ pro.userAns }</textarea>
 							    	</div>
 						    	</c:forEach>
 						  </div>
 						</div>
-						
+						<div>
+							<input type="submit" value="提交试卷" class="btn btn-primary"/>
+						</div>
 					   </form>
 					   </div>
 					</div> <!-- 第一行结束 -->

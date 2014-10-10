@@ -65,6 +65,7 @@ public class Paper implements Serializable{
 	private String question;			//需要被保存进数据库的简答题 Id的 Json字符串
 	
 	
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public Integer getId() {

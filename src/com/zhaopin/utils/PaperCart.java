@@ -1,7 +1,6 @@
 package com.zhaopin.utils;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
@@ -113,17 +112,27 @@ public class PaperCart {
 			this.singleNumber = singles.size();
 		}
 		if(type.equals("多选题") ){
-			multChoices.add(problem.getId());
+			multChoices.remove(problem.getId());
 			this.MultChoiceNumber = multChoices.size();
 		}
 		if(type.equals("判断题") ){
-			singles.add(problem.getId());
+			singles.remove(problem.getId());
 			this.judgeNumber= judges.size();
 		}
 		if(type.equals("简答题") ){
-			questions.add(problem.getId());
+			questions.remove(problem.getId());
 			this.questionNumber = questions.size();
 		}
+		
+	}
+	
+	public Integer[] toArray(List<Integer> list){
+		Integer []i = new Integer[list.size()];
+		int index = 0 ;
+		for(Integer tem : list){
+			i[index++] = tem;
+		}
+		return i;
 		
 	}
 	

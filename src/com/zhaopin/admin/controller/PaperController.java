@@ -1,17 +1,22 @@
 package com.zhaopin.admin.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.alibaba.fastjson.JSON;
 import com.zhaopin.admin.server.PaperService;
 import com.zhaopin.admin.server.ProblemService;
+import com.zhaopin.po.Paper;
 import com.zhaopin.po.Problem;
+import com.zhaopin.utils.PaperCart;
 
 /**
  * 试卷控制
@@ -63,22 +68,31 @@ public class PaperController {
 		return "admin/problemList";
 	}
 	
-	/**
-	 * 试卷购物车
-	 * @return
-	 */
-	@RequestMapping("paper/cart")
-	public String paperCart(){
-		
-		return "admin/paperCart";
-	}
+	
 	
 	/**
 	 * 保存试卷
 	 * @return
 	 */
 	@RequestMapping("paper/save")
-	public String save(){
+	public String save(String title ,String auther,HttpSession session){
+		Paper paper = new Paper();
+		PaperCart cart = (PaperCart) session.getAttribute("paperCart");
+		if(cart==null){
+			return "redirect:/admin/paper/item/1";
+		}
+		paper.setTitle(title);
+		paper.setAuther(auther);
+		paper.setCreateDate(new Date());
+		
+		paper.setSingleNumber(cart.getsingleNumber());
+		paper.setMultChoiceNumber(cart.getMultChoiceNumber());
+		paper.setJudgeNumber(cart.getJudgeNumber());
+		paper.setQuestionNumber(cart.getQuestionNumber());
+		
+		paper.setJudege(JSON.toJSONString(cart.getSingles()));
+		paper.setMultChoice(JSON.toJSONString(cart.getMultChoices()));
+		
 		
 		return "redirect:/admin/paper";
 	}

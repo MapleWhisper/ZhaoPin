@@ -3,6 +3,7 @@
 <html>
   <head>
 	<%@ include file="header.jspf" %>
+	<title>试卷篮</title>
 	<style type="text/css">
 		.num {margin-left: 20px}
 		.quest {font-size: medium;margin-top: 10px}
@@ -48,83 +49,112 @@
 								  <div class="panel-body">
 								    	
 									  <div class="col-sm-11">
-		  
-								<!-- 		   	单选题 -->
+											<!--单选题 -->
 											<div class="panel panel-primary" id="part1">
 											  <div class="panel-heading">
 											    <h3 class="panel-title">第一部分 单选题</h3>
 											  </div>
-											  <div class="panel-body">
-											  		<div style="margin-left: 50px">
-												  		<div class="quest"><code>第1题</code> 位于祖国正北方内蒙古自治区中部，简称为二连的是哪个市 </div>
-														<div class="radio"><label><input type="radio" value="1">A:二连浩特</label></div>
-														<div class="radio"><label><input type="radio" value="2">B:二连浩特</label></div>
-														<div class="radio"><label><input type="radio" value="3">C:二连浩特</label></div>
-														<div class="radio"><label><input type="radio" value="4">D:二连浩特</label></div>
+											  
+											  <c:forEach items="${ singles}" var="pro" varStatus="s">
+												  <div style="background-color: gray;" class="pro">
+						    						<div class="panel panel-default item">
+													  <div class="panel-heading">
+													  	<div class="row">
+													  		<div class="col-sm-2 ">第${ s.count }题</div>
+													  		<div class="col-sm-4">试题难度:${pro.difficulty}</div>
+													  		<div class="col-sm-4">试题标签:${pro.label}</div>
+													  		<div class="col-sm-2"><button class="btn btn-primary remove" id="${pro.id}">删除</button></div>
+													  	</div>
+													  </div>
+													  <div class="panel-body">
+														  	<span style="color: blue;">题目:${pro.title}</span><hr>
+														    A:${pro.optA }<br>
+														    B:${pro.optB }<br>
+														    C:${pro.optC }<br>
+														    D:${pro.optD }<br>
+													  </div>
 													</div>
-													
-													<div style="margin-left: 50px">
-												  		<div class="quest"><code>第2题</code> 位于祖国正北方内蒙古自治区中部，简称为二连的是哪个市 </div>
-														<div class="radio"><label><input type="radio" value="1">A:二连浩特</label></div>
-														<div class="radio"><label><input type="radio" value="2">B:二连浩特</label></div>
-														<div class="radio"><label><input type="radio" value="3">C:二连浩特</label></div>
-														<div class="radio"><label><input type="radio" value="4">D:二连浩特</label></div>
-													</div>
-											  </div>
-											</div>
+						    					  </div>
+					    					  </c:forEach>	
+											</div><!--单选题 -->
 											
-								<!-- 			多选题 -->
-											<div class="panel panel-primary" id="part2">
+											<!-- 多选题 -->
+											<div class="panel panel-primary" id="part1">
 											  <div class="panel-heading">
 											    <h3 class="panel-title">第二部分 多选题</h3>
 											  </div>
-											  <div class="panel-body">
-											    	<div style="margin-left: 50px">
-												  		<div class="quest"><code>第1题</code> 位于祖国正北方内蒙古自治区中部，简称为二连的是哪个市 </div>
-														<div class="checkbox"><label><input type="checkbox" value="1">A:二连浩特</label></div>
-														<div class="checkbox"><label><input type="checkbox" value="2">B:二连浩特</label></div>
-														<div class="checkbox"><label><input type="checkbox" value="3">C:二连浩特</label></div>
-														<div class="checkbox"><label><input type="checkbox" value="4">D:二连浩特</label></div>
-													</div>
-											  </div>
-											</div>
+											  <c:forEach items="${multChoices}" var="pro" varStatus="s">
+											  <div style="background-color: gray;" class="pro">
+					    						<div class="panel panel-default item">
+												  <div class="panel-heading">
+												  	<div class="row">
+												  		<div class="col-sm-2">第${ s.count }题</div>
+												  		<div class="col-sm-4">试题难度:${pro.difficulty}</div>
+												  		<div class="col-sm-4">试题标签:${pro.label}</div>
+												  		<div class="col-sm-2"><button class="btn btn-primary remove" id="${pro.id}">删除</button></div>
+												  	</div>
+												  </div>
+												  <div class="panel-body">
+													  	<span style="color: blue;">题目:${pro.title}</span><hr>
+													    A:${pro.optA }<br>
+													    B:${pro.optB }<br>
+													    C:${pro.optC }<br>
+													    D:${pro.optD }<br>
+												  </div>
+												</div>
+					    					  </div>	
+					    					  </c:forEach>
+											</div><!--多选题  -->
 											
-								<!-- 			判断题 -->
-											<div class="panel panel-primary" id="part3">
+											<!-- 多选题 -->
+											<div class="panel panel-primary" id="part1" >
 											  <div class="panel-heading">
 											    <h3 class="panel-title">第三部分 判断题</h3>
 											  </div>
-											  <div class="panel-body">
-											    	<div style="margin-left: 50px">
-												  		<div class="quest"><code>第1题</code> 位于祖国正北方内蒙古自治区中部，简称为二连的是哪个市 </div>
-														<div class="radio"><label><input type="radio" value="1">A:对</label></div>
-														<div class="radio"><label><input type="radio" value="2">B:错</label></div>
-													</div>
-													<div style="margin-left: 50px">
-												  		<div class="quest"><code>第2题</code> 位于祖国正北方内蒙古自治区中部，简称为二连的是哪个市 </div>
-														<div class="radio"><label><input type="radio" value="1">A:对</label></div>
-														<div class="radio"><label><input type="radio" value="2">B:错</label></div>
-													</div>
-											  </div>
-											</div>
+											  <c:forEach items="${judges}" var="pro" varStatus="s">
+											  <div style="background-color: gray;" class="pro">
+					    						<div class="panel panel-default item">
+												  <div class="panel-heading">
+												  	<div class="row">
+												  		<div class="col-sm-2">第${ s.count }题</div>
+												  		<div class="col-sm-4">试题难度:${pro.difficulty}</div>
+												  		<div class="col-sm-4">试题标签:${pro.label}</div>
+												  		<div class="col-sm-2"><button class="btn btn-primary remove" id="${pro.id}">删除</button></div>
+												  	</div>
+												  </div>
+												  <div class="panel-body">
+													  	<span style="color: blue;">题目:${pro.title}</span>
+												  </div>
+												</div>
+					    					  </div>	
+					    					  </c:forEach>
+											</div><!--多选题  -->
 											
-								<!-- 			 问答题 -->
-											<div class="panel panel-primary" id="part4">
+											<!-- 简答题 -->
+											<div class="panel panel-primary" id="part1" >
 											  <div class="panel-heading">
-											    <h3 class="panel-title">第四部分 问答题</h3>
+											    <h3 class="panel-title">第四部分 简答题</h3>
 											  </div>
-											  <div class="panel-body">
-											    	<div class="quest"><code>第1题</code> 白居易的《暮江吟》中，“可怜九月初三夜”的下一句是什么？ </div>
-											    	<div class="questArea">
-											    		<textarea class="form-control" >露似珍珠月似弓</textarea>
-											    	</div>
-											    	
-											    	<div class="quest"><code>第2题</code> 白居易的《暮江吟》中，“可怜九月初三夜”的下一句是什么？ </div>
-											    	<div class="questArea">
-											    		<textarea class="form-control" >露似珍珠月似弓</textarea>
-											    	</div>
-											  </div>
-											</div>
+											  <c:forEach items="${questions}" var="pro" varStatus="s">
+											  <div style="background-color: gray;" class="pro">
+					    						<div class="panel panel-default item">
+												  <div class="panel-heading">
+												  	<div class="row">
+												  		<div class="col-sm-2">第${ s.count }题</div>
+												  		<div class="col-sm-4">试题难度:${pro.difficulty}</div>
+												  		<div class="col-sm-4">试题标签:${pro.label}</div>
+												  		<div class="col-sm-2"><button class="btn btn-primary remove" id="${pro.id}">删除</button></div>
+												  	</div>
+												  </div>
+												  <div class="panel-body">
+													  	<span style="color: blue;">题目:${pro.title}</span>
+												  </div>
+												</div>
+					    					  </div>	
+					    					  </c:forEach>
+											</div><!-- 简答题 -->
+											<center><a href="#"  class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+													生成试卷</a></center>
 											
 											
 										   </div><!-- col-sm-11 -->
@@ -146,8 +176,61 @@
     		</div>
     		
     	</div>
+    	
+    	<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		        <h3 class="modal-title" id="myModalLabel">确定要生成试卷吗？试卷一旦生成，不可修改</h4>
+		      </div>
+		      
+		      <!-- 模态表单体 -->
+		      <div class="modal-body">
+		        	<form class="form-horizontal" role="form" method="post">
+					  <div class="form-group">
+					    <label  class="col-sm-2 control-label">试卷标题</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" id="" name="title">
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label  class="col-sm-2 control-label">作者</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" id="" name="auther">
+					    </div>
+					  </div>
+					  
+					 
+					  <div class="form-group">
+					    <div class="col-sm-6">
+			  				<ul class="list-group">
+							  <li class="list-group-item">单选题：<span class="label label-danger num">${paperCart.singleNumber}个</span></li>
+							  <li class="list-group-item">多选题：<span class="label label-danger num">${paperCart.multChoiceNumber}个</span></li>
+							  <li class="list-group-item">判断题：<span class="label label-danger num">${paperCart.judgeNumber}个</span></li>
+							  <li class="list-group-item">简答题：<span class="label label-danger num">${paperCart.questionNumber}个</span></li>
+							</ul>
+						</div>
+						<div class="col-sm-6">
+							<button type="submit" class="btn btn-warning btn-lg">提交试卷</button>
+						</div>
+					  </div>
+					  
+					</form>
+					
+		      </div><!-- 模态表单体 -->
+		       <div class="modal-footer">
+		        <button type="button" class="btn btn-primary" data-dismiss="modal">关闭并返回修改</button>
+		      </div>
+		    </div>
+		  </div>
+		</div><!-- Modal -->
+		
+		
     	<%@ include file="buttom.jsp" %>
     	<script type="text/javascript">
+    		//右侧 选择框控制
 			$(function(){
 				$(".pre").click(function(){
 					//alert("ok");
@@ -155,7 +238,14 @@
 					$(this).siblings().removeClass("active");
 				});
 			});
-			
+    		
+			$(function(){
+    			$(".remove").click(function(){
+        			var id = $(this).attr('id');
+        			$.post("/ZhaoPin/admin/paperCart/action/remove",{"id":id});
+        			$(this).parents(".pro").remove();
+        		});
+    		});
 	</script>
   </body>
 </html>

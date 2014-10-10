@@ -125,6 +125,9 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 	 */
 	@Override
 	public List<E> getByIds(Integer[] ids) {
+		if( ids==null || ids.length==0){
+			return new ArrayList<E>();
+		}
 		Query query = getSession().createQuery("from "+clazz.getSimpleName() +" where id in (:ids)");
 		query.setParameterList("ids", ids);
 		return query.list();

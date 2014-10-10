@@ -23,13 +23,14 @@ public class Paper implements Serializable{
 	private String label;			//试卷的标签，方便检索该试卷
 	
 	private Date createDate;		//试卷的生成日期
+	private String auther;			//试卷生成人
 	
 	private List<Integer> singles;		//单选题的题号Id数组
 	private List<Integer> MultChoices;	//多选题的题号Id数组
 	private List<Integer> judges;		//判断题的题号Id数组
 	private List<Integer> questions;	//简答题的题号Id数组
 	
-	private Integer singleNUmber;		//单选题数目
+	private Integer singleNumber;		//单选题数目
 	private Integer MultChoiceNumber;	//多选题数目
 	private Integer judgeNumber;		//判断题数目
 	private Integer questionNumber;		//问答题数目
@@ -100,12 +101,7 @@ public class Paper implements Serializable{
 	public void setQuestions(List<Integer> questions) {
 		this.questions = questions;
 	}
-	public Integer getSingleNUmber() {
-		return singleNUmber;
-	}
-	public void setSingleNUmber(Integer singleNUmber) {
-		this.singleNUmber = singleNUmber;
-	}
+	
 	public Integer getMultChoiceNumber() {
 		return MultChoiceNumber;
 	}
@@ -147,6 +143,18 @@ public class Paper implements Serializable{
 	}
 	public void setQuestion(String question) {
 		this.question = question;
+	}
+	public String getAuther() {
+		return auther;
+	}
+	public void setAuther(String auther) {
+		this.auther = auther;
+	}
+	public Integer getSingleNumber() {
+		return singleNumber;
+	}
+	public void setSingleNumber(Integer singleNumber) {
+		this.singleNumber = singleNumber;
 	}
 	
 	

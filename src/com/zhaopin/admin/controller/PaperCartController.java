@@ -1,9 +1,12 @@
 package com.zhaopin.admin.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -29,7 +32,23 @@ public class PaperCartController {
 	 * @return
 	 */
 	@RequestMapping("/paperCart")
-	public String paperCart(){
+	public String paperCart(HttpSession session,Model model){
+		
+		PaperCart cart = (PaperCart) session.getAttribute("paperCart");
+		if(cart==null){		//	如果试卷篮为空，创建 添加到session
+			cart = new PaperCart();
+			session.setAttribute("paperCart", cart);
+		}
+		List<Problem> singles = problemService.getByIds(  cart.toArray(cart.getSingles()) );
+		List<Problem> multChoices = problemService.getByIds(  cart.toArray(cart.getMultChoices()) );
+		List<Problem> judges = problemService.getByIds( cart.toArray(cart.getJudges()) );
+		List<Problem> questions = problemService.getByIds( cart.toArray(cart.getQuestions()));
+		
+		model.addAttribute("singles", singles);
+		model.addAttribute("multChoices", multChoices);
+		model.addAttribute("judges", judges);
+		model.addAttribute("questions", questions);
+		
 		return "admin/paperCart";
 	}
 	

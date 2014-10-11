@@ -24,6 +24,7 @@ public class Apply implements Serializable{
 	private Position position;		//申请岗位
 	private Date applyDate;			//申请时间
 	private Date finishDate;		//完成时间
+	private Date startAnswerDate;	//用户开始答题时间
 	private String state;			//申请状态	待审核，待答卷，待批阅，已完成，已拒绝
 	
 	private Paper paper;			//用户答题试卷
@@ -55,7 +56,7 @@ public class Apply implements Serializable{
 	public void setPosition(Position position) {
 		this.position = position;
 	}
-	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
+	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	public Date getApplyDate() {
 		return applyDate;
 	}
@@ -63,13 +64,22 @@ public class Apply implements Serializable{
 		this.applyDate = applyDate;
 	}
 	
-	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
+	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	public Date getFinishDate() {
 		return finishDate;
 	}
 	public void setFinishDate(Date finishDate) {
 		this.finishDate = finishDate;
 	}
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	public Date getStartAnswerDate() {
+		return startAnswerDate;
+	}
+	public void setStartAnswerDate(Date startAnswerDate) {
+		this.startAnswerDate = startAnswerDate;
+	}
+	
 	public String getState() {
 		return state;
 	}

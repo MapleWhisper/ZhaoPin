@@ -26,11 +26,12 @@
 					  <li role="presentation" class="pre"><a href="#part2" >多选题</a></li>
 					  <li role="presentation" class="pre"><a href="#part3" >判断题</a></li>
 					  <li role="presentation" class="pre"><a href="#part4" >问答题</a></li>
+					  <li role="presentation" class="alert alert-danger">剩余时间: <span id="time">${timeLeft}</span></li>
 				</ul>
 		  </div><!--左侧的导航条 -->
 		  <div class="col-sm-10">
 		  
-		   <form action="${pageContext.request.contextPath}/client/paper/answer" method="post">
+		   <form action="${pageContext.request.contextPath}/client/paper/answer" method="post" id="form1">
 					   		<input type="hidden" name="id" value="${paper.id}">
 					   		<input type="hidden" name="applyId" value="${applyId}">
 						<!--单选题 -->
@@ -101,7 +102,7 @@
 						  </div>
 						</div>
 						<center>
-							<input type="submit" value="提交试卷" class="btn btn-primary btn-lg"/>
+							<input type="submit" value="提交试卷" onClick="return confirm('确定要提交吗？试卷一旦提交，不可再修改')" class="btn btn-primary btn-lg"/>
 						</center>
 					   </form>
 		   </div>
@@ -116,7 +117,31 @@
 					$(this).siblings().removeClass("active");
 				});
 			});
-			
+			$(function(){
+				$(document).bind("contextmenu",function(){return false;});  
+			    $(document).bind("selectstart",function(){return false;}); 
+			    $(document).bind("selectstart",function(){return false;}); 
+			    $(document).bind("paste",function(){return false;}); 
+			    $(document).bind("copy",function(){return false;}); 
+			    $(document).bind("cut",function(){return false;}); 
+			});
+			var cnt = setInterval("count()", 1000);
+			function count(){
+				var time = $("#time").html();
+				var min = parseInt( time.split(':')[0]);
+				var sec = parseInt( time.split(':')[1]);
+				if(min<=0 && sec<= 1){
+					$("#form1").submit();
+					clearInterval(cnt);
+				}
+				if(sec==0){
+					sec=59;
+					min--;
+				}else{
+					sec--;
+				}
+				$("#time").html(min+":"+sec);
+			}
 		</script>
     	<%@ include file="buttom.jsp" %>
   </body>

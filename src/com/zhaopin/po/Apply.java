@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -36,6 +37,7 @@ public class Apply implements Serializable{
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
 	@ManyToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE})
 	@JoinColumn(name="user_id")
 	public User getUser() {
@@ -44,6 +46,7 @@ public class Apply implements Serializable{
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
 	@ManyToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE})
 	@JoinColumn(name="position_id")
 	public Position getPosition() {
@@ -83,6 +86,7 @@ public class Apply implements Serializable{
 		this.paper = paper;
 	}
 	
+	@Column(length=65500)
 	public String getAnswer() {
 		return answer;
 	}

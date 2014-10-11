@@ -16,7 +16,7 @@
 					<%@ include file="left.jsp" %>
     			</div>
     			<div class="col-sm-9">
-			<!-- 面板 -->
+				<!-- 面板 -->
     				<div class="panel panel-primary">
     					<div class="panel-heading">
     						<h3 class="panel-title">申请审核</h3>
@@ -51,10 +51,12 @@
 											 			
 											 			<td><a target="_blank" href="position/show/id/${a.position.id}">${a.position.name }</a></td>
 											 			
-											 			<td>${a.applyDate }</td>
+											 			<td><fm:formatDate pattern="yyyy-MM-dd HH:mm" value="${a.applyDate }"/></td>
 											 			<td><a target="_blank" href="${pageContext.request.contextPath}/client/resume/show/${a.user.resume.id}">简历</a></td>
-											 			<td><a href='apply/accept/${a.id }' class='btn btn-info '>接受</a></td>
-											 			<td><a href='apply/refuse/${a.id}' onclick="return confirm('确认要拒绝吗？')" class='btn btn-danger '>拒绝</a></td>
+											 			
+											 			<td><a  href="${pageContext.request.contextPath}/admin/paper/${a.id}" class='btn btn-info' >接受并选择试卷</a></td>
+											 			
+											 			<td><a href='${pageContext.request.contextPath}/admin/apply/refuse/${a.id}' onclick="return confirm('确认要拒绝吗，拒绝后不可恢复？')" class='btn btn-danger '>拒绝</a></td>
 										 			</tr>
 										 					
 										 		</c:forEach>
@@ -77,7 +79,7 @@
 										 			<td><a  title="用户信息" data-content="邮箱:${a.user.email}  电话:${a.user.phoneNumber} " 
 											 				onmouseover="$(this).popover('show')" onmouseout="$(this).popover('hide')">${a.user.name}</a></td>
 										 			<td><a target="_blank" href="position/show/id/${a.position.id}">${a.position.name }</a></td>
-										 			<td>${a.applyDate }</td>
+										 			<td><fm:formatDate pattern="yyyy-MM-dd HH:mm" value="${a.applyDate }"/></td>
 										 			<td><a target="_blank" href="${pageContext.request.contextPath}/client/resume/show/${a.user.resume.id}">简历</a></td>
 										 			<td><a href='#' class='btn btn-info '>提醒用户答题</a></td>
 										 			</tr>
@@ -102,10 +104,10 @@
 										 			<td><a  title="用户信息" data-content="邮箱:${a.user.email}  电话:${a.user.phoneNumber} " 
 											 				onmouseover="$(this).popover('show')" onmouseout="$(this).popover('hide')">${a.user.name}</a></td>
 										 			<td><a target="_blank" href="position/show/id/${a.position.id}">${a.position.name }</a></td>
-										 			<td>${a.applyDate }</td>
+										 			<td><fm:formatDate pattern="yyyy-MM-dd HH:mm" value="${a.applyDate }"/></td>
 										 			<td><a target="_blank" href="${pageContext.request.contextPath}/client/resume/show/${a.user.resume.id}">简历</a></td>
-										 			<td><a href='apply/finish/${a.id }' class='btn btn-info '>最终接受并完成招聘</a></td>
-										 			<td><a href='apply/refuse/${a.id}' onclick="return confirm('确认要拒绝吗？')" class='btn btn-danger '>拒绝</a></td>
+										 			<td><a target="_blank" href='${pageContext.request.contextPath}/admin/apply/check/${a.id }' class='btn btn-info '>查看试卷</a></td>
+										 			<td><a href='${pageContext.request.contextPath}/admin/apply/refuse/${a.id}' onclick="return confirm('确认要拒绝吗？')" class='btn btn-danger '>拒绝</a></td>
 										 			</tr>
 										 		</c:forEach>
 											</table>
@@ -118,15 +120,17 @@
 										 			<td>申请人</td>
 										 			<td>申请岗位</td>
 										 			<td>申请时间</td>
+										 			<td>完成时间</td>
 										 			<td>查看简历</td>
 										 			</tr>
 										 		<c:forEach items="${ list4}" var="a">
 										 			<tr class="data">
-										 			<td><a  title="用户信息" data-content="邮箱:${a.user.email}  电话:${a.user.phoneNumber} " 
-											 				onmouseover="$(this).popover('show')" onmouseout="$(this).popover('hide')">${a.user.name}</a></td>
-										 			<td><a target="_blank" href="position/show/id/${a.position.id}">${a.position.name }</a></td>
-										 			<td>${a.applyDate }</td>
-										 			<td><a target="_blank" href="${pageContext.request.contextPath}/client/resume/show/${a.user.resume.id}">简历</a></td>
+											 			<td><a  title="用户信息" data-content="邮箱:${a.user.email}  电话:${a.user.phoneNumber} " 
+												 				onmouseover="$(this).popover('show')" onmouseout="$(this).popover('hide')">${a.user.name}</a></td>
+											 			<td><a target="_blank" href="position/show/id/${a.position.id}">${a.position.name }</a></td>
+											 			<td><fm:formatDate pattern="yyyy-MM-dd HH:mm" value="${a.applyDate }"/></td>
+											 			<td><fm:formatDate pattern="yyyy-MM-dd HH:mm" value="${a.finishDate }"/></td>
+											 			<td><a target="_blank" href="${pageContext.request.contextPath}/client/resume/show/${a.user.resume.id}">简历</a></td>
 										 			</tr>
 										 		</c:forEach>
 												</table>
@@ -139,6 +143,7 @@
 										 			<td>申请人</td>
 										 			<td>申请岗位</td>
 										 			<td>申请时间</td>
+										 			<td>拒绝时间</td>
 										 			<td>查看简历</td>
 										 			</tr>
 										 		<c:forEach items="${ list5}" var="a">
@@ -146,7 +151,8 @@
 										 			<td><a  title="用户信息" data-content="邮箱:${a.user.email}  电话:${a.user.phoneNumber} " 
 											 				onmouseover="$(this).popover('show')" onmouseout="$(this).popover('hide')">${a.user.name}</a></td>
 										 			<td><a target="_blank" href="position/show/id/${a.position.id}">${a.position.name }</a></td>
-										 			<td>${a.applyDate }</td>
+										 			<td><fm:formatDate pattern="yyyy-MM-dd HH:mm" value="${a.applyDate }"/></td>
+											 		<td><fm:formatDate pattern="yyyy-MM-dd HH:mm" value="${a.finishDate }"/></td>
 										 			<td><a target="_blank" href="${pageContext.request.contextPath}/client/resume/show/${a.user.resume.id}">简历</a></td>
 										 			</tr>
 										 		</c:forEach>
@@ -160,8 +166,7 @@
     				</div><!-- 面板 -->
     					
     			</div>
-    		</div>
-    			
+    		</div> <!-- row end -->
     		
     	</div>
     	<%@ include file="buttom.jsp" %>

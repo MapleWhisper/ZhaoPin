@@ -40,10 +40,15 @@
 						    		</tr>
 						    		<c:forEach items="${paperList }" var="p">
 						    			<tr>
-						    				<td><a href="${pageContext.request.contextPath}/admin/paper/show/${p.id}">${p.title }</a></td>
+						    				<td><a target="_blank" href="${pageContext.request.contextPath}/admin/paper/show/${p.id}">${p.title }</a></td>
 						    				<td>${p.auther }</td>
 						    				<td>${p.label }</td>
 						    				<td><fm:formatDate value="${p.createDate}" pattern="yyyy-MM-dd"/></td>
+						    				<c:if test="${resumeId !=null }">
+						    					<td><a href="${pageContext.request.contextPath}/admin/apply/accept/${resumeId}/${p.id}" 
+						    							class='btn btn-danger ' onClick="return confirm('确定要要使用这个试卷并发给用户答题吗，一旦确定，不可修改试卷')">使用该试卷， 并通过用户简历审核</a></td>
+						    				</c:if>
+						    				
 						    			</tr>
 						    		</c:forEach>
 						    	</table>

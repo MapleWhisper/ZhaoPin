@@ -176,47 +176,53 @@
 									<td>申请进度</td>
 
 								</tr>
-								<c:forEach items="${appalyList}" var="al">
+								<c:forEach items="${appalyList}" var="apply">
 								<tr class="data">									 
-									<td><a href="position/show/id/${al.position.id}">${al.position.name }</a></td>
-									<td>${al.position.workPlace }</td>
-									<td><fm:formatDate value="${al.applyDate}" pattern="yyyy-MM-dd HH:mm"></fm:formatDate></td>
-									<td>${al.state}</td>
-									<td>
-										<c:if test="${al.state =='待审核' }">
-											<div class="progress">
+									<td><a href="${pageContext.request.contextPath}/client/position/show/id/${apply.position.id}">${apply.position.name }</a></td>
+									<td>${apply.position.workPlace }</td>
+									<td><fm:formatDate value="${apply.applyDate}" pattern="yyyy-MM-dd HH:mm"></fm:formatDate></td>
+									
+										<c:if test="${apply.state =='待审核' }">
+											<td>${apply.state}</td>
+											<td><div class="progress">
 												  <div id="" id="progress-bar" class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" 
 										  			style="width: 25%">25%
 										 		 </div>
-											</div>
+											</div></td>
 										</c:if>
-										<c:if test="${al.state =='待答题' }">
-											<div class="progress">
+										
+										<c:if test="${apply.state =='待答题' }">
+											<td><a href="${pageContext.request.contextPath}/client/paper/startAnswer/${apply.id}/${apply.paper.id}" target="_blank" 
+													class="btn btn-danger">点我去答题！</a></td>
+											<td><div class="progress">
 												  <div id="" id="progress-bar" class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" 
 										  			style="width: 50%">50%
 										 		 </div>
-											</div>
+											</div></td>
 										</c:if>
-										<c:if test="${al.state =='待批阅' }">
-											<div class="progress">
+										<c:if test="${apply.state =='待批阅' }">
+											<td>${apply.state}</td>
+											<td><div class="progress">
 												  <div id="" id="progress-bar" class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" 
 										  			style="width: 75%">75%
 										 		 </div>
-											</div>
+											</div></td>
 										</c:if>
-										<c:if test="${al.state =='已完成' }">
-											<div class="progress">
+										<c:if test="${apply.state =='已完成' }">
+											<td>${apply.state}</td>
+											<td><div class="progress">
 												  <div id="" id="progress-bar" class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" 
 										  			style="width: 100%">恭喜
 										 		 </div>
-											</div>
+											</div></td>
 										</c:if>
-										<c:if test="${al.state =='已拒绝' }">
-											<div class="progress">
+										<c:if test="${apply.state =='已拒绝' }">
+											<td>${apply.state}</td>
+											<td><div class="progress">
 												  <div id="" id="progress-bar" class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" 
 										  			style="width: 100%">很遗憾
 										 		 </div>
-											</div>
+											</div></td>
 										</c:if>
 										
 									</td>

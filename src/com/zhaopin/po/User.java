@@ -78,7 +78,7 @@ public class User implements Serializable{
 		this.phoneNumber = phoneNumber;
 	}
 	
-	@OneToMany(cascade={CascadeType.PERSIST,CascadeType.MERGE},mappedBy="user")
+	@OneToMany(cascade={CascadeType.ALL},mappedBy="user")
 	@OrderBy("applyDate")
 	public Set<Apply> getApplys() {
 		return applys;

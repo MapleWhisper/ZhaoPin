@@ -53,6 +53,22 @@ public class PaperController {
 	
 	/**
 	 * 
+	 * 根据简历Id 选择试题，确认提交
+	 * @return
+	 */
+	@RequestMapping("/paper/{resumeId}")
+	public String paper(Model model,@PathVariable int resumeId){
+		
+		List<Paper> paperList = paperService.findAll();
+		model.addAttribute("paperList", paperList);
+		
+		model.addAttribute("resumeId",resumeId);
+		
+		return "admin/paper";
+	}
+	
+	/**
+	 * 
 	 * 根据Id 显示试卷
 	 * @param id
 	 * @return
@@ -70,6 +86,7 @@ public class PaperController {
 		paper.setJudegeList(problemService.getByIds(JSON.parseArray(paper.getJudege(), Integer.class)));
 		paper.setQuestionList(problemService.getByIds(JSON.parseArray(paper.getQuestion(), Integer.class)));
 		
+		/*
 		String ans = (String) session.getAttribute("ans");		//从Session中取出答案
 		if(ans!=null){
 			HashMap<String, String> map =  JSON.parseObject(ans, HashMap.class);
@@ -87,9 +104,12 @@ public class PaperController {
 				p.setUserAns(map.get(p.getId()+""));
 			}
 		}
+		*/
 		model.addAttribute("paper", paper);
 		return "admin/showPaper";
 	}
+	
+	
 	
 	/**
 	 * 组成试卷页面
@@ -183,5 +203,6 @@ public class PaperController {
 		request.getSession().setAttribute("ans", ans);
 		return "redirect:/admin/paper";
 	}
+	
 	
 }

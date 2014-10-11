@@ -77,7 +77,7 @@
 									  <div class="tab-pane active" id="single">
 									  		
 									  		
-									  		<form class="form-horizontal" role="form" action="problem/save" method="post" >
+									  		<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/admin/${pageContext.request.contextPath}/admin/problem/save" method="post" >
 											  <div class="form-group">
 											    <label for="inputEmail3" class="col-sm-2 control-label">题目</label>
 											    <div class="col-sm-10">
@@ -148,7 +148,7 @@
 									  
 									  <!--多选题 -->
 									  <div class="tab-pane" id="Multiple">
-									  		<form class="form-horizontal" role="form" action="problem/save" method="post"  >
+									  		<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/admin/problem/save" method="post"  >
 											  <div class="form-group">
 											    <label for="inputEmail3" class="col-sm-2 control-label">题目</label>
 											    <div class="col-sm-10">
@@ -219,15 +219,14 @@
 									  
 									  <!--判断题 -->
 									  <div class="tab-pane" id="juedge">
-									  		<form class="form-horizontal" role="form" action="problem/save" method="post" >
+									  		<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/admin/problem/save" method="post" >
 											  <div class="form-group">
 											    <label for="inputEmail3" class="col-sm-2 control-label">题目</label>
 											    <div class="col-sm-10">
 											      <textarea type="text" class="form-control"  rows="3" name="title"></textarea>
-											      <input type="hidden" name="type" value="多选题">
+											      <input type="hidden" name="type" value="判断题">
 											    </div>
 											  </div>
-											
 											 
 											  <div class="form-group" >
 											    <label for="inputPassword3" class="col-sm-2 control-label">答案</label>
@@ -265,7 +264,7 @@
 									  
 									  <!--简答题 -->
 									  <div class="tab-pane" id="question">
-									  			<form class="form-horizontal" role="form" action="problem/save" method="post" >
+									  			<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/admin/problem/save" method="post" >
 												  <div class="form-group">
 												    <label for="inputEmail3" class="col-sm-2 control-label">题目</label>
 												    <div class="col-sm-10">
@@ -273,8 +272,6 @@
 												      <input type="hidden" name="type" value="简答题">
 												    </div>
 												  </div>
-												
-												 
 												  <div class="form-group" >
 												    <label for="inputPassword3" class="col-sm-2 control-label">参考答案</label>
 												    <div class="col-sm-10" >

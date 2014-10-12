@@ -45,7 +45,7 @@ public class ProblemServiceImpl extends BaseServerImpl<Problem> implements Probl
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Problem> search(String key) {
-		return	getSession().createQuery("from Problem p  where p.title like ? or p.label like ? order by p.id desc")
+		return	getSession().createQuery("from Problem p  where p.title like ? or p.label like ? ")
 				.setParameter(0, "%"+key+"%")
 				.setParameter(1, "%"+key+"%").list();
 		 

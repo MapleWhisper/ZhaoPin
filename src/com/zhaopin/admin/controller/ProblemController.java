@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.alibaba.fastjson.JSON;
 import com.zhaopin.admin.server.ProblemService;
@@ -73,8 +74,16 @@ public class ProblemController {
 		}
 	}
 	
+	/**
+	 * 根据关键字 搜索试题
+	 * @param key
+	 * @param response
+	 */
 	@RequestMapping("/problem/search/json")
-	public void search(String key,HttpServletResponse response){
+	public void search(@RequestParam String key,HttpServletResponse response){
+		
+		System.out.println("key"+key);
+		
 		List<Problem> problemList =  problemService.search(key);
 		String list = JSON.toJSONString(problemList);
 		response.setContentType("application/json");
@@ -82,7 +91,6 @@ public class ProblemController {
 		try {
 			response.getWriter().println(list);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

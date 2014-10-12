@@ -34,7 +34,6 @@ public class AdminInterceptor implements HandlerInterceptor{
         	return true;
         }
         
-        System.out.println(url);
         Set<Privilege> set = admin.getPrivileges();
         boolean flag = false;
         for(Privilege p :  set ){
@@ -42,7 +41,6 @@ public class AdminInterceptor implements HandlerInterceptor{
         		flag= true;
         	}
         }
-        System.out.println(flag);
         if(!flag){
         	response.sendRedirect(contextPath+"/admin/position");
         }

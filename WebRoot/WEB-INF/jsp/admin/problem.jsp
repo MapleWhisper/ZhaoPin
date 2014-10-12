@@ -26,7 +26,7 @@
     						 			<input type="text" id="key" class="form-control" placeholder="输入试卷标题 标签 关键字">
     						 		</div>
     						 		<div class="col-sm-2">
-    						 			 <button type="submit" id="problemList" class="btn btn-default">搜索试题</button>
+    						 			 <button  id="problemList" class="btn btn-default">搜索试题</button>
     						 		</div>
     						 		<div class="col-sm-2">
     						 			 <a  href="${pageContext.request.contextPath}/admin/paper/item/1" class="btn btn-default" >
@@ -326,9 +326,8 @@
 		$(function(){
 			$("#problemList").click(function(){
 				$(".data").remove();
-				var key = $("#key").html();
-				alert(key);
-				$.post("problem/search/json","key:"+key,function(data){
+				var key = $("#key").val();
+				$.post("problem/search/json",{"key":key},function(data){
 					$(data).each(function(){
 						
 						var tr = $("<tr class='data'><td>"+this.type+"</td><td>"+this.title+ "</td><td>"+this.optA+ "</td><td>"+this.optB+ "</td><td>"+this.optC+ "</td><td>"+this.optD+ "</td><td>"+this.answer+ "</td></tr>")

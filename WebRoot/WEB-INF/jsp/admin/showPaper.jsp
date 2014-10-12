@@ -103,9 +103,7 @@
 						    	</c:forEach>
 						  </div>
 						</div>
-						<div>
-							<input type="submit" value="提交试卷" class="btn btn-primary"/>
-						</div>
+						
 					   </form>
 					   </div>
 					</div> <!-- 第一行结束 -->

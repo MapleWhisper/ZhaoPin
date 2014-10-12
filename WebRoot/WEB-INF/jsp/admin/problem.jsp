@@ -3,23 +3,7 @@
 <html>
   <head>
 	<%@ include file="header.jspf" %>
-	<script type="text/javascript">
-		$(function(){
-			$("#problemList").click(function(){
-				$(".data").remove();
-				$.post("problem/list/json",function(data){
-					$(data).each(function(){
-						
-						var tr = $("<tr class='data'><td>"+this.type+"</td><td>"+this.title+ "</td><td>"+this.optA+ "</td><td>"+this.optB+ "</td><td>"+this.optC+ "</td><td>"+this.optD+ "</td><td>"+this.answer+ "</td></tr>")
-						$("#table1").append(tr);
-						
-					});
-				});
-				$('#myModal').modal('toggle');
-				
-			});
-		});
-	</script>
+	<title>试题管理</title>
   </head>
   
   <body>
@@ -39,14 +23,14 @@
     						 <div class="form-group">
     						 	<div class=row>
     						 		<div class="col-sm-8">
-    						 			<input type="text" class="form-control" placeholder="输入试题标签">
+    						 			<input type="text" id="key" class="form-control" placeholder="输入试卷标题 标签 关键字">
     						 		</div>
     						 		<div class="col-sm-2">
-    						 			 <button type="submit" class="btn btn-default">搜索试题</button>
+    						 			 <button type="submit" id="problemList" class="btn btn-default">搜索试题</button>
     						 		</div>
     						 		<div class="col-sm-2">
-    						 			 <button type="submit" id="problemList" class="btn btn-default" >
-    						 			 	浏览所有试题</button>
+    						 			 <a  href="${pageContext.request.contextPath}/admin/paper/item/1" class="btn btn-default" >
+    						 			 	浏览所有试题</a>
     						 		</div>
     						 	</div>
     						 	
@@ -338,5 +322,24 @@
 		</div><!--  模态框 -->
     	
     	<%@ include file="buttom.jsp" %>
+    	<script type="text/javascript">
+		$(function(){
+			$("#problemList").click(function(){
+				$(".data").remove();
+				var key = $("#key").html();
+				alert(key);
+				$.post("problem/search/json","key:"+key,function(data){
+					$(data).each(function(){
+						
+						var tr = $("<tr class='data'><td>"+this.type+"</td><td>"+this.title+ "</td><td>"+this.optA+ "</td><td>"+this.optB+ "</td><td>"+this.optC+ "</td><td>"+this.optD+ "</td><td>"+this.answer+ "</td></tr>")
+						$("#table1").append(tr);
+						
+					});
+				});
+				$('#myModal').modal('toggle');
+				
+			});
+		});
+		</script>
   </body>
 </html>

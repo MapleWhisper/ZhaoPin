@@ -71,8 +71,20 @@ public class ProblemController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+	}
+	
+	@RequestMapping("/problem/search/json")
+	public void search(String key,HttpServletResponse response){
+		List<Problem> problemList =  problemService.search(key);
+		String list = JSON.toJSONString(problemList);
+		response.setContentType("application/json");
+		response.setCharacterEncoding("utf-8");
+		try {
+			response.getWriter().println(list);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
 

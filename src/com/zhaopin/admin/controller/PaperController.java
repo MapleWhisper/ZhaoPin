@@ -20,7 +20,9 @@ import com.zhaopin.admin.server.PaperService;
 import com.zhaopin.admin.server.ProblemService;
 import com.zhaopin.po.Paper;
 import com.zhaopin.po.Problem;
+import com.zhaopin.utils.Page;
 import com.zhaopin.utils.PaperCart;
+import com.zhaopin.utils.SystemConstant;
 
 /**
  * 试卷控制
@@ -44,6 +46,8 @@ public class PaperController {
 	 */
 	@RequestMapping("/paper")
 	public String paper(Model model){
+		
+		
 		
 		List<Paper> paperList = paperService.findAll();
 		model.addAttribute("paperList", paperList);
@@ -86,25 +90,6 @@ public class PaperController {
 		paper.setJudegeList(problemService.getByIds(JSON.parseArray(paper.getJudege(), Integer.class)));
 		paper.setQuestionList(problemService.getByIds(JSON.parseArray(paper.getQuestion(), Integer.class)));
 		
-		/*
-		String ans = (String) session.getAttribute("ans");		//从Session中取出答案
-		if(ans!=null){
-			HashMap<String, String> map =  JSON.parseObject(ans, HashMap.class);
-			
-			for(Problem p : paper.getSingleList()){				//把答案放到题目中，送到前台
-				p.setUserAns(map.get(p.getId()+""));
-			}
-			for(Problem p : paper.getMultChoiceList()){
-				p.setUserAns(map.get(p.getId()+""));
-			}
-			for(Problem p : paper.getJudegeList()){
-				p.setUserAns(map.get(p.getId()+""));
-			}
-			for(Problem p : paper.getQuestionList()){
-				p.setUserAns(map.get(p.getId()+""));
-			}
-		}
-		*/
 		model.addAttribute("paper", paper);
 		return "admin/showPaper";
 	}
@@ -112,14 +97,19 @@ public class PaperController {
 	
 	
 	/**
-	 * 组成试卷页面
+	 * 组成试卷页面  试题列表
 	 * @return
 	 */
-	@RequestMapping("paper/item/{id}")
-	public String addPaper(@PathVariable int id,Model model){
-		List<Problem> problemList = problemService.findAll();
-		model.addAttribute("problemList",problemList);
+	@RequestMapping("paper/item/{cur}")
+	public String addPaper(@PathVariable int cur,Model model){
 		
+		Page page = new Page();
+		page.setAmount(SystemConstant.ProblemAmount_PerPage);		//每页页数
+		page.setCur(cur);											//当前第几页
+		page.setSum( problemService.getMaxPageNum(page));			//一共多少页
+		List<Problem> problemList = problemService.findAll(page);	//数据
+		model.addAttribute("problemList",problemList);
+		model.addAttribute("page", page);
 		return "admin/problemList";
 	}
 	

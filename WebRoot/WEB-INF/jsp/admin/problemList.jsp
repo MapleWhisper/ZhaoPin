@@ -24,15 +24,9 @@
 					    	<!-- 试卷导航栏 -->
 					    <div class="row">
 					    	<div class="col-sm-8">
-					    		<ul class="pagination">
-								  <li><a href="#">&laquo;</a></li>
-								  <li><a href="#">1</a></li>
-								  <li><a href="#">2</a></li>
-								  <li><a href="#">3</a></li>
-								  <li><a href="#">4</a></li>
-								  <li><a href="#">5</a></li>
-								  <li><a href="#">&raquo;</a></li>
-								</ul>	<!-- 试卷导航栏 -->
+							  <!--分页 -->
+					    		<%@ include file="page.jsp"%>
+					    	  <!--分页 -->
 					    	</div>
 					    	<div class="col-sm-4">
 					    		<a href='${pageContext.request.contextPath}/admin/paperCart' target="_blank" class="btn btn-lg btn-primary">进入试卷篮，生成试卷</a>
@@ -42,15 +36,16 @@
 						
 						
 						<!--试题列表 -->
-						<c:forEach items="${problemList}" var="pro">
+						<c:forEach items="${problemList}" var="pro" varStatus="s">
 						
     					<div style="background-color: gray;">
     						<div class="panel panel-default item">
 							  <div class="panel-heading">
 							  	<div class="row">
-							  		<div class="col-sm-4">试题难度:${pro.difficulty}</div>
+							  		<div class="col-sm-2">第  <code>${s.count }</code> 题</div>
+							  		<div class="col-sm-3">试题难度:${pro.difficulty}</div>
 							  		<div class="col-sm-3">入库时间:${pro.createDate}</div>
-							  		<div class="col-sm-3">试卷类型:${pro.type }</div>
+							  		<div class="col-sm-2">试卷类型:${pro.type }</div>
 							  		<div class="col-sm-2"><button class="btn btn-primary add" id="${pro.id}">添加到试卷篮</button></div>
 							  	</div>
 							  		
@@ -78,16 +73,10 @@
     					</div>	<!--试题列表 -->
     					</c:forEach>
     					
-    					<!-- 试卷导航栏 -->
-    					<ul class="pagination">
-						  <li><a href="#">&laquo;</a></li>
-						  <li><a href="#">1</a></li>
-						  <li><a href="#">2</a></li>
-						  <li><a href="#">3</a></li>
-						  <li><a href="#">4</a></li>
-						  <li><a href="#">5</a></li>
-						  <li><a href="#">&raquo;</a></li>
-						</ul>	<!-- 试卷导航栏 -->
+    					 <!--分页 -->
+					    	<%@ include file="page.jsp"%>
+					     <!--分页 -->
+					     
 					  </div> <!-- panel-body -->
 					  
 					</div><!--  试题列表 panel-->

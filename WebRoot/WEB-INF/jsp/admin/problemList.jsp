@@ -1,3 +1,4 @@
+
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
 <html>
@@ -43,29 +44,33 @@
 							  <div class="panel-heading">
 							  	<div class="row">
 							  		<div class="col-sm-2">第  <code>${s.count }</code> 题</div>
-							  		<div class="col-sm-3 dif">试题难度:${pro.difficulty}</div>
+							  		<div class="col-sm-2 dif">试题难度:${pro.difficulty}</div>
 							  		<div class="col-sm-3 create">入库日期:<fm:formatDate pattern="yyyy-MM-dd" value="${pro.createDate}" /></div>
 							  		<div class="col-sm-2 type">试卷类型:${pro.type }</div>
-							  		<div class="col-sm-2"><button class="btn btn-primary add" id="${pro.id}">添加到试卷篮</button></div>
+							  		<div class="col-sm-3"><button class="btn btn-primary btn-lg add" id="${pro.id}">添加到试卷篮</button></div>
 							  	</div>
 							  		
 							  </div>
 							  <div class="panel-body">
 							  	<c:if test="${ pro.type == '单选题' || pro.type == '多选题' }">
-								  	题目:<span class="title" style="color: blue;">${pro.title}</span><hr>
-								    A:<span class="A">${pro.optA }</span><br>
-								    B:<span class="B">${pro.optB }</span><br>
-								    C:<span class="C">${pro.optC }</span><br>
-								    D:<span class="D">${pro.optD }</span><hr>
+								  	题目:<span id="${pro.id}title" style="color: blue;">${pro.title}</span><hr>
+								    A:<span id="${pro.id}A">${pro.optA }</span><br>
+								    B:<span id="${pro.id}B">${pro.optB }</span><br>
+								    C:<span id="${pro.id}C">${pro.optC }</span><br>
+								    D:<span id="${pro.id}D">${pro.optD }</span><hr>
 							    </c:if>
 							    <c:if test="${ pro.type == '判断题' || pro.type == '简答题'  }">
-								  	<span class="title" style="color: blue;">题目:${pro.title}</span><hr>
+								  	题目:<span id="${pro.id}title" style="color: blue;">${pro.title}</span><hr>
 							    </c:if>
 							   
 							    <button class="btn btn-sm btn-info" onClick="$(this).siblings('div').toggle();">答案</button>
-							    <span style="float: right"><button class="btn btn-sm btn-info edit" >修改试题</button></span>
+							    
+							    <span style="float: right">
+							    	<button name="${pro.id}" class="btn btn-sm btn-warning delete" onClick="return confirm('你确定要删除吗？？')">删除试题</button>
+							    	<button name="${pro.id}" class="btn btn-sm btn-info edit" >修改试题</button>
+							    </span>
 							    <div style="color: red; ">
-							    	<span class="ans">${pro.answer}</span>
+							    	<span id="${pro.id}ans">${pro.answer}</span>
 							    </div>
 							  </div>
 							</div>
@@ -96,12 +101,12 @@
 				      
 				      <!-- 模态表单体 -->
 				      <div class="modal-body">
-				        	<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/admin/problem/save" method="post" >
+				        	<form class="form-horizontal" role="form" id="form2" method="post" >
 								  <div class="form-group">
 								    <label   class="col-sm-2 control-label">题目</label>
 								    <div class="col-sm-10">
 								      <textarea id="title" type="text" class="form-control"  rows="3" name="title" required></textarea>
-								      <input type="hidden" name="type" value="单选题">
+								      <input id="id" type="hidden"   name="id" >
 								    </div>
 								  </div>
 								  <div class="form-group">
@@ -135,15 +140,9 @@
 								      <textarea id="ans" type="text" class="form-control"  rows="3" name="answer" placeholder="参考答案"></textarea>
 								    </div>
 								  </div>
-								  <div class="form-group">
-								    <label   class="col-sm-2 control-label">标签</label>
-								    <div class="col-sm-10">
-								      <input id="label" type="text" class="form-control" name="tabel" placeholder="请输入标签，便于搜索题目，例如: <高中数学>,<初中英语>" >
-								    </div>
-								  </div>
 								   <div class="form-group">
 								    <div class="col-sm-3 col-sm-offset-4">
-								      <input type="submit" class="btn btn-primary"  value="修改题目">
+								      <button type="button" class="btn btn-primary" id="sub" >修改题目</button>
 								    </div>
 								  </div>
 							</form>
@@ -175,17 +174,42 @@
     		});
     		$(function(){
     			$("button.edit").click(function(){
-    				var title = $(this).parent().siblings("span.title").html();
-    				var a = $(this).parent().siblings("span.A").html();
-    				var b = $(this).parent().siblings("span.B").html();
-    				var c = $(this).parent().siblings("span.C").html();
-    				var d = $(this).parent().siblings("span.D").html();
+    				//var title = $(this).parent().siblings("span.title").html();
+    				var id = $(this).attr("name");
+    				var title = $("#"+id+"title").html();
+    				var a = $("#"+id+"A").html();
+    				var b = $("#"+id+"B").html();
+    				var c = $("#"+id+"C").html();
+    				var d = $("#"+id+"D").html();
+    				var ans = $("#"+id+"ans").html();;
     				$("#title").val(title);
     				$("#A").val(a);
     				$("#B").val(b);
     				$("#C").val(c);
     				$("#D").val(d);
+    				$("#ans").val(ans);
+    				$("#id").val(id);
     				$("#myModal").modal('toggle');
+    			});
+    		});
+    		$(function(){
+    			$("#sub").click(function(){
+     				$.post("../../problem/update/json",$("#form2").serialize(),function(date){
+         				var mes = date.mes;
+         				if(mes== 'success'){
+         					alert("修改成功！");
+         				}else{
+         					alert("修改失败！");
+         				}
+         				$("#myModal").modal('hide');
+         				window.location.reload();
+     				});
+    			});
+    			$(".delete").click(function(){
+     				$.post("../../problem/delete/json",{"id":$(this).attr("name")},function(date){
+         				alert("删除成功！");
+     				});
+     				$(this).parents("div .item").fadeOut(2000);
     			});
     		});
     	</script>

@@ -33,7 +33,7 @@ public class ProblemController {
 	
 	/**
 	 * 
-	 * 跳转到试卷主页面
+	 * 跳转到 试题主页面
 	 * @return
 	 */
 	@RequestMapping("/problem")
@@ -43,7 +43,7 @@ public class ProblemController {
 	}
 	
 	/**
-	 * 保存试卷
+	 * 保存试题
 	 * 
 	 * @return
 	 */
@@ -58,21 +58,6 @@ public class ProblemController {
 		return "redirect:/admin/problem";
 	}
 	
-	
-	@RequestMapping("/problem/list/json")
-	public void list(HttpServletResponse response){
-		
-		List<Problem> problemList =  problemService.findAll();
-		String list = JSON.toJSONString(problemList);
-		response.setContentType("application/json");
-		response.setCharacterEncoding("utf-8");
-		try {
-			response.getWriter().println(list);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 	
 	/**
 	 * 根据关键字 搜索试题
@@ -93,6 +78,41 @@ public class ProblemController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * 修改试题
+	 * @param problem
+	 * @throws IOException 
+	 */
+	@RequestMapping("/problem/update/json")
+	public void update(@ModelAttribute Problem problem,HttpServletResponse response) throws IOException{
+		Problem p = problemService.getById(problem.getId());
+		response.setContentType("application/json");
+		if(p!=null){
+			p.setTitle(problem.getTitle());
+			p.setOptA(problem.getOptA());
+			p.setOptB(problem.getOptB());
+			p.setOptC(problem.getOptC());
+			p.setOptD(problem.getOptD());
+			p.setAnswer(problem.getAnswer());
+			problemService.updata(p);
+			response.getWriter().println("{\"mes\":\"success\"}");
+		}else{
+			response.getWriter().println("{\"mes\":\"error\"}");
+		}
+		
+	}
+	
+	/**
+	 * 删除 试题
+	 * @param problem
+	 * @throws IOException 
+	 */
+	@RequestMapping("/problem/delete/json")
+	public void delete(@RequestParam int id , HttpServletResponse response) throws IOException{
+		problemService.delete(id);
+		response.getWriter().println("{\"mes\":\"success\"}");
 	}
 }
 

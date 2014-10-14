@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
@@ -87,6 +88,7 @@ public class Admin implements Serializable{
 			joinColumns=@JoinColumn(name="admin_id"),
 			inverseJoinColumns=@JoinColumn(name="privilege_id")
 	)
+	@OrderBy("id")
 	public Set<Privilege> getPrivileges() {
 		return privileges;
 	}
@@ -95,6 +97,7 @@ public class Admin implements Serializable{
 	}
 	
 	@Transient
+	
 	public Integer[] getPrivilegeIds() {
 		return privilegeIds;
 	}

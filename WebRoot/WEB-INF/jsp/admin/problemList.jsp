@@ -66,7 +66,9 @@
 							    <button class="btn btn-sm btn-info" onClick="$(this).siblings('div').toggle();">答案</button>
 							    
 							    <span style="float: right">
-							    	<button name="${pro.id}" class="btn btn-sm btn-warning delete" onClick="return confirm('你确定要删除吗？？')">删除试题</button>
+							    	<!-- 删除试卷
+							    		<button name="${pro.id}" class="btn btn-sm btn-warning delete" onClick="return confirm('你确定要删除吗？？')">删除试题</button>
+							    	 -->
 							    	<button name="${pro.id}" class="btn btn-sm btn-info edit" >修改试题</button>
 							    </span>
 							    <div style="color: red; ">
@@ -159,6 +161,7 @@
     	<%@ include file="buttom.jsp" %>
     	<script type="text/javascript">
     		$(function(){
+    			//添加试题到 试题篮
     			$(".add").click(function(){
         			$(this).parents("div .item").toggleClass("well");
         			var id = $(this).attr('id');
@@ -173,6 +176,7 @@
         		});
     		});
     		$(function(){
+    			//显示修改模态框
     			$("button.edit").click(function(){
     				//var title = $(this).parent().siblings("span.title").html();
     				var id = $(this).attr("name");
@@ -193,6 +197,8 @@
     			});
     		});
     		$(function(){
+    			
+    			//提交表单修改
     			$("#sub").click(function(){
      				$.post("../../problem/update/json",$("#form2").serialize(),function(date){
          				var mes = date.mes;
@@ -204,13 +210,17 @@
          				$("#myModal").modal('hide');
          				window.location.reload();
      				});
+     				
     			});
+    			
+    			/*	删除试卷
     			$(".delete").click(function(){
      				$.post("../../problem/delete/json",{"id":$(this).attr("name")},function(date){
          				alert("删除成功！");
      				});
      				$(this).parents("div .item").fadeOut(2000);
     			});
+    			*/
     		});
     	</script>
   </body>

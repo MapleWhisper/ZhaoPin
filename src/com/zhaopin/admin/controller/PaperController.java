@@ -1,11 +1,13 @@
 package com.zhaopin.admin.controller;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.collections.map.HashedMap;
@@ -89,6 +91,10 @@ public class PaperController {
 		paper.setMultChoiceList(problemService.getByIds(JSON.parseArray(paper.getMultChoice(), Integer.class)));
 		paper.setJudegeList(problemService.getByIds(JSON.parseArray(paper.getJudege(), Integer.class)));
 		paper.setQuestionList(problemService.getByIds(JSON.parseArray(paper.getQuestion(), Integer.class)));
+		paper.setSingleNumber(paper.getSingleList().size());
+		paper.setMultChoiceNumber(paper.getMultChoiceList().size());
+		paper.setJudgeNumber(paper.getJudegeList().size());
+		paper.setQuestionNumber(paper.getQuestionList().size());
 		
 		model.addAttribute("paper", paper);
 		return "admin/showPaper";
@@ -159,11 +165,23 @@ public class PaperController {
 	/**
 	 * 根据Id删除试卷
 	 * @return
+	 * @throws IOException 
 	 */
 	@RequestMapping("paper/delete/{id}")
-	public String delete(@PathVariable int id){
+	public void delete(@PathVariable int id ,HttpServletResponse response){
 		
-		return "redirect:/admin/paper";
+		try {
+			paperService.delete(id);
+			response.getWriter().println("{\"mes\":\"success\"}");
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				response.getWriter().println("{\"mes\":\"error\"}");
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+		
 	}
 	
 	/**

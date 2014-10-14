@@ -103,6 +103,10 @@ public class PaperController {
 		paper.setMultChoiceList(problemService.getByIds(JSON.parseArray(paper.getMultChoice(), Integer.class)));
 		paper.setJudegeList(problemService.getByIds(JSON.parseArray(paper.getJudege(), Integer.class)));
 		paper.setQuestionList(problemService.getByIds(JSON.parseArray(paper.getQuestion(), Integer.class)));
+		paper.setSingleNumber(paper.getSingleList().size());
+		paper.setMultChoiceNumber(paper.getMultChoiceList().size());
+		paper.setJudgeNumber(paper.getJudegeList().size());
+		paper.setQuestionNumber(paper.getQuestionList().size());
 
 		model.addAttribute("applyId",applyId);
 		model.addAttribute("paper",paper);

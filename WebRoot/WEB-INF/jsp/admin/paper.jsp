@@ -37,6 +37,7 @@
 						    			<td>试卷作者</td>
 						    			<td>试卷标签</td>
 						    			<td>生成时间</td>
+						    			<td>操作</td>
 						    		</tr>
 						    		<c:forEach items="${paperList }" var="p">
 						    			<tr>
@@ -44,6 +45,7 @@
 						    				<td>${p.auther }</td>
 						    				<td>${p.label }</td>
 						    				<td><fm:formatDate value="${p.createDate}" pattern="yyyy-MM-dd"/></td>
+						    				<td><a id="${p.id}" class="btn btn-sm btn-warning delete">删除</a></td>
 						    				<c:if test="${resumeId !=null }">
 						    					<td><a href="${pageContext.request.contextPath}/admin/apply/accept/${resumeId}/${p.id}" 
 						    							class='btn btn-danger ' onClick="return confirm('确定要要使用这个试卷并发给用户答题吗，一旦确定，不可修改试卷')">使用该试卷， 并通过用户简历审核</a></td>
@@ -58,7 +60,23 @@
 						
     			</div>
     		</div>
-    		
+    		<script type="text/javascript">
+    			$(function(){
+    				$(".delete").click(function(){
+    					var mes;
+         				$.post("../../problem/delete/"+$(this).attr("name"),{"id":$(this).attr("name")},function(date){
+         					mes= date.mes;
+         				});
+         				if(mes == 'success'){
+         					alert("删除成功");
+         					$(this).parent().parent("tr").fadeOut(2000);
+         				}else{
+         					alert("删除失败！有  用户的申请 使用了改试卷，不可删除");
+         				}
+         				
+        			});
+    			});
+    		</script>
     	</div>
     	<%@ include file="buttom.jsp" %>
   </body>

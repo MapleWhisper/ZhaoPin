@@ -111,7 +111,7 @@ public class ApplyController {
 		
 		Apply apply = applyService.getById(id);
 		apply.setState(ApplyState.已拒绝.toString());
-		
+		apply.setFinishDate(new Date());
 		applyService.updata(apply);
 		
 		return "redirect:/admin/apply";

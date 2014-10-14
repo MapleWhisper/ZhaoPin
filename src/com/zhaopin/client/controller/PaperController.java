@@ -69,7 +69,6 @@ public class PaperController {
 		if(apply.getPaper().getId().intValue() != paperId){				//如果申请的试卷Id  和 Url 试卷Id不相同，返回
 			flag = false;
 		}
-		
 		if(!flag){
 			return "redirect:/client/personalCenter";
 		}
@@ -79,25 +78,27 @@ public class PaperController {
 		if(apply.getStartAnswerDate() == null){
 			apply.setStartAnswerDate(new Date());
 			applyService.updata(apply);
-		}else{
-			Date start = apply.getStartAnswerDate();
-			Date now = new Date();
-			int diff = (int) (now.getTime() - start.getTime()); 
-		    int day = diff / (24 * 60 * 60 * 1000);  
-            int hour = (diff / (60 * 60 * 1000) - day * 24);  
-            int min = ((diff / (60 * 1000)) - day * 24 * 60 - hour * 60);  
-            int sec = (diff/1000-day*24*60*60-hour*60*60-min*60);  
-            if(day>0 || hour>0 || min >= 30){
-            	apply.setFinishDate(new Date());
-            	apply.setState(ApplyState.待批阅.toString());
-            	 applyService.updata(apply);
-            	return "redirect:/client/personalCenter"; //	如果试卷已经超时返回答题页面
-            }
-            min = SystemConstant.Paper_Time - min -1;
-            sec = 60 - sec;
-			model.addAttribute("timeLeft", min+":"+sec );
 		}
 		
+		//计算答题时间
+		Date start = apply.getStartAnswerDate();
+		Date now = new Date();
+		int diff = (int) (now.getTime() - start.getTime()); 
+	    int day = diff / (24 * 60 * 60 * 1000);  
+        int hour = (diff / (60 * 60 * 1000) - day * 24);  
+        int min = ((diff / (60 * 1000)) - day * 24 * 60 - hour * 60);  
+        int sec = (diff/1000-day*24*60*60-hour*60*60-min*60);  
+        if(day>0 || hour>0 || min >= 30){
+        	apply.setFinishDate(new Date());
+        	apply.setState(ApplyState.待批阅.toString());
+        	 applyService.updata(apply);
+        	return "redirect:/client/personalCenter"; //	如果试卷已经超时返回答题页面
+        }
+        min = SystemConstant.Paper_Time - min -1;
+        sec = 60 - sec;
+		model.addAttribute("timeLeft", min+":"+sec );
+		
+		//放入试题信息
 		paper.setSingleList(problemService.getByIds( JSON.parseArray(paper.getSingle(), Integer.class) ) );
 		paper.setMultChoiceList(problemService.getByIds(JSON.parseArray(paper.getMultChoice(), Integer.class)));
 		paper.setJudegeList(problemService.getByIds(JSON.parseArray(paper.getJudege(), Integer.class)));

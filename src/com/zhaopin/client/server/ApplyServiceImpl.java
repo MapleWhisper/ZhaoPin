@@ -20,7 +20,7 @@ public class ApplyServiceImpl extends BaseServerImpl<Apply> implements ApplyServ
 	@Override
 	public List<Apply> findByState(String state) {
 		@SuppressWarnings("unchecked")
-		List<Apply> list= (List<Apply>) getSession().createQuery("from Apply a where a.state = ?").setParameter(0, state).list();
+		List<Apply> list= (List<Apply>) getSession().createQuery("from Apply a where a.state = ? order by id desc").setParameter(0, state).list();
 		return list;
 	}
 	

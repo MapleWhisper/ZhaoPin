@@ -3,7 +3,7 @@
 <html>
   <head>
 	<%@ include file="header.jspf" %>
-	
+	<title>申请管理</title>
   </head>
   
   <body>
@@ -115,15 +115,16 @@
 									
 									<!-- 已完成 -->
 									<div class="tab-pane" id="list4" >
-								 		<table class="table table-striped table-hover table-bordered" id="table1">
+								 		<table class="table table-striped table-hover table-bordered table-condensed" id="table1">
 										 			<tr class="info">
 										 			<td>申请人</td>
 										 			<td>申请岗位</td>
 										 			<td>申请时间</td>
 										 			<td>完成时间</td>
 										 			<td>查看简历</td>
+										 			<td>查看试卷</td>
 										 			</tr>
-										 		<c:forEach items="${ list4}" var="a">
+										 		<c:forEach items="${list4}" var="a">
 										 			<tr class="data">
 											 			<td><a  title="用户信息" data-content="邮箱:${a.user.email}  电话:${a.user.phoneNumber} " 
 												 				onmouseover="$(this).popover('show')" onmouseout="$(this).popover('hide')">${a.user.name}</a></td>
@@ -131,6 +132,7 @@
 											 			<td><fm:formatDate pattern="yyyy-MM-dd HH:mm" value="${a.applyDate }"/></td>
 											 			<td><fm:formatDate pattern="yyyy-MM-dd HH:mm" value="${a.finishDate }"/></td>
 											 			<td><a target="_blank" href="${pageContext.request.contextPath}/client/resume/show/${a.user.resume.id}">简历</a></td>
+											 			<td><a target="_blank" href='${pageContext.request.contextPath}/admin/apply/check/${a.id }' class='btn btn-info '>查看试卷</a></td>
 										 			</tr>
 										 		</c:forEach>
 												</table>

@@ -61,7 +61,7 @@
 									  <div class="tab-pane active" id="single">
 									  		
 									  		
-									  		<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/admin/${pageContext.request.contextPath}/admin/problem/save" method="post" >
+									  		<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/admin/problem/save" method="post" >
 											  <div class="form-group">
 											    <label for="inputEmail3" class="col-sm-2 control-label">题目</label>
 											    <div class="col-sm-10">

@@ -177,10 +177,13 @@
 											<td>${apply.user.phoneNumber}</td>
 										</tr>
 									</table><!-- 	用户信息 -->	 			
-									<a href='${pageContext.request.contextPath}/admin/apply/finish/${apply.id }'  onclick="return confirm('确认要录用此人吗？')"
+									<c:if test="${apply.state == '待批阅' }">
+										<a href='${pageContext.request.contextPath}/admin/apply/finish/${apply.id }'  onclick="return confirm('确认要录用此人吗？')"
 										class='btn btn-primary btn-lg'>最终接受并完成招聘</a>
-									<a href='${pageContext.request.contextPath}/admin/apply/refuse/${apply.id}' onclick="return confirm('确认要拒绝吗？')" 
+										<a href='${pageContext.request.contextPath}/admin/apply/refuse/${apply.id}' onclick="return confirm('确认要拒绝吗？')" 
 											class='btn btn-danger btn-lg'>拒绝</a>
+									</c:if>
+									
 								</center>
 						  </div>
 						 	 

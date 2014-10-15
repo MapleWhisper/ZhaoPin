@@ -81,18 +81,14 @@ public class PositionController {
 	 */
 	@RequestMapping("/position/select/json")
 	public void select(HttpServletRequest req ,HttpServletResponse resp){
-		System.out.println("ajax ok");
 		HashMap<String, String> map = new HashMap<>();
 		map.put("workPlace", req.getParameter("workPlace"));		//把需要查询的条件放到map
 		map.put("position", req.getParameter("position"));
 		map.put("type",req.getParameter("type"));
 		
 		List<Position> list = positionServer.getByKey(map);			//更需条件查询列表
-		System.out.println("begin");
 	
 		String positionList = JSON.toJSONString(list);	//查询列表转换成Json字符串
-		
-		System.out.println(positionList);
 		resp.setCharacterEncoding("utf-8");
 		resp.setContentType("application/json");
 		try {

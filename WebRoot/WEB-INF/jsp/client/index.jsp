@@ -46,7 +46,7 @@
 							//alert(p.name);
 							var data = $("<tr class='data'><td><a href='position/show/id/${p.id}'>"+
 										p.name+"</a></td><td>"+p.position+"</td><td>"+p.type+"</td><td>"+p.workPlace+"</td><td>"+
-										p.recruitNumber+"</td><td>"+p.endDate.substring(0,10)+"</td></tr>");
+										p.recruitNumber+"</td><td>"+new Date(p.endDate).toLocaleDateString()+"</td></tr>");
 							$("#table").append(data);
 							
 						});
@@ -154,7 +154,7 @@
 									<td>${p.type }</td>
 									<td>${p.workPlace }</td>
 									<td>${p.recruitNumber }</td>
-									<td><fm:formatDate value="${p.endDate}" pattern="yyyy-MM-dd"></fm:formatDate></td>
+									<td><fm:formatDate value="${p.endDate}" pattern="yyyy/MM/dd"></fm:formatDate></td>
 									
 								</tr>
 							</c:forEach>

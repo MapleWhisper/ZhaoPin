@@ -11,7 +11,6 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,13 +18,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.serializer.SimplePropertyPreFilter;
+import com.alibaba.fastjson.serializer.PropertyFilter;
 import com.zhaopin.client.server.PositionServer;
 import com.zhaopin.client.server.UserServer;
-import com.zhaopin.po.Apply;
 import com.zhaopin.po.Position;
-import com.zhaopin.po.User;
-import com.zhaopin.utils.ApplyState;
 
 @Controller
 @RequestMapping("/client")
@@ -92,13 +88,11 @@ public class PositionController {
 		map.put("type",req.getParameter("type"));
 		
 		List<Position> list = positionServer.getByKey(map);			//更需条件查询列表
+		System.out.println("begin");
+	
+		String positionList = JSON.toJSONString(list);	//查询列表转换成Json字符串
 		
-		
-		
-		
-		String positionList = JSON.toJSONString(list, new SimplePropertyPreFilter(Apply.class,"applys") );	//查询列表转换成Json字符串
-		
-		//System.out.println(positionList);
+		System.out.println(positionList);
 		resp.setCharacterEncoding("utf-8");
 		resp.setContentType("application/json");
 		try {

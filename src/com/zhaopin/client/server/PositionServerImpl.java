@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.hibernate.Query;
+import org.hibernate.Session;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,7 +38,12 @@ public class PositionServerImpl extends BaseServerImpl<Position> implements Posi
 		}
 		System.out.println("hql语句:"+hql);
 		
-		return (List<Position>) getSession().createQuery(hql).setDate(0, new Date()).list();
+		List<Position> list = (List<Position>) getSession().createQuery(hql).setDate(0, new Date()).list();
+		for(Position p: list){
+			p.setPositionInfo(null);
+			p.setApplys(null);
+		}
+		return list;
 	}
 	
 	/**

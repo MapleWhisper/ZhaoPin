@@ -5,12 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.alibaba.fastjson.JSON;
 import com.zhaopin.admin.server.PaperService;
@@ -40,11 +42,6 @@ public class ApplyController {
 	
 	@Resource(name="problemServiceImpl")
 	private ProblemService problemService;
-	/**
-	 * 	Ajax请求返回Json字符串
-	 * 	@param state	传入的状态 		待审核，待答题，待批阅，已完成，已拒绝
-	 * 	@return
-	 */
 	
 	/**
 	 * 后台 申请列表页面
@@ -52,13 +49,28 @@ public class ApplyController {
 	 * @return
 	 */
 	@RequestMapping("/apply")
-	public String apply(Model model){
-		List<Apply> list1 = applyService.findByState(ApplyState.待审核.toString());
-		List<Apply> list2 = applyService.findByState(ApplyState.待答题.toString());
-		List<Apply> list3 = applyService.findByState(ApplyState.待批阅.toString());
-		List<Apply> list4 = applyService.findByState(ApplyState.已完成.toString());
-		List<Apply> list5 = applyService.findByState(ApplyState.已拒绝.toString());
-		HashMap<String,String> map = applyService.findCountByState();
+	public String apply(Model model ,HttpServletRequest request ){
+		
+		Integer month = Integer.parseInt(request.getParameter("month")==null?"1":request.getParameter("month"));
+		List<Apply> list1 = null;
+		List<Apply> list2 = null;
+		List<Apply> list3 = null;
+		List<Apply> list4 = null;
+		List<Apply> list5 = null;
+		System.out.println(month+"月");
+			 list1 = applyService.findByState(ApplyState.待审核.toString(),month);
+			 list2 = applyService.findByState(ApplyState.待答题.toString(),month);
+			 list3 = applyService.findByState(ApplyState.待批阅.toString(),month);
+			 list4 = applyService.findByState(ApplyState.已完成.toString(),month);
+			 list5 = applyService.findByState(ApplyState.已拒绝.toString(),month);
+		
+		HashMap<String,String> map = new HashMap<String,String>();
+		map.put("待审核", list1.size()+"");
+		map.put("待答题", list2.size()+"");
+		map.put("待批阅", list3.size()+"");
+		map.put("已完成", list4.size()+"");
+		map.put("已拒绝", list5.size()+"");
+		
 		
 		model.addAttribute("list1", list1);
 		model.addAttribute("list2", list2);
@@ -69,6 +81,7 @@ public class ApplyController {
 		
 		
 		return "admin/apply";
+		
 	}
 	
 	/*

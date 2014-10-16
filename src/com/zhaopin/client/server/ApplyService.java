@@ -17,6 +17,14 @@ public interface ApplyService extends BaseServer<Apply>{
 	public List<Apply> findByState(String state);
 	
 	/**
+	 * 根据传入的状态返回 申请列表	
+	 * @param state 状态
+	 * @param mouth 需要查询的月份
+	 * @return
+	 */
+	public List<Apply> findByState(String state,int month);
+	
+	/**
 	 * 返回每个状态的数目
 	 */
 	public HashMap<String,String> findCountByState();

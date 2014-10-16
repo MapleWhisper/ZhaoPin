@@ -124,7 +124,8 @@ public class ResumeController  {
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;	
 		MultipartFile file = multipartRequest.getFile("pic");
 		MultipartFile file1 = multipartRequest.getFile("resumeFile");
-		String path = "E:/GitHub/ZhaoPin/WebRoot/image/user/"+user.getId()+"/";
+		String path = request.getServletContext().getRealPath("/");
+		path = path + "/image/user/"+user.getId()+"/";
 		new File(path).mkdirs();
 		
 		if(file!=null && !"".equals(file.getOriginalFilename() )){		//图片上传部分

@@ -22,6 +22,33 @@
     						<h3 class="panel-title">申请审核</h3>
     					</div>
     					<div class="panel-body">
+    						<!-- 日期选择框 -->
+    						<div class="panel panel-default ">
+							  <div class="panel-body " >
+							    <form action="${pageContext.request.contextPath}/admin/apply" class="form-horizontal" role="form">
+							      <!-- form-group -->
+								  <div class="form-group" >
+								    <label class="col-sm-2 control-label">申请时间:</label>
+								    <div class="col-sm-4">
+								    	<select class="form-control" name="month">
+									    	<option  value="1">1个月内的申请</option>
+									    	<option  value="3">3个月内的申请</option>
+									    	<option  value="6">6个月内的申请</option>
+									    	<option  value="12">12个月内的申请</option>
+									    	<option  value="13">一年前的申请</option>
+								   		 </select>
+								    </div>
+								     <div class="col-sm-1" data-toggle="tooltip" data-placement="top" title="只有适用于 成功 和 拒绝 的申请" onmouseover="$(this).tooltip('show')">
+								     	<button type="submit" class="btn btn-default">查询</button>
+								     </div>
+								  </div><!-- form-group -->
+								</form>
+							  </div>
+							</div>
+    							
+    						<!-- 日期选择框 -->
+										
+    					
     						<!-- 申请头 -->
 							<ul class="nav  nav-pills nav-justified" role="tablist">
 							  <li class="active"><a href="#list1" title="待审核" role="tab" data-toggle="tab">待审核<span class="badge" id="step1">${count.待审核}</span></a></li>
@@ -115,6 +142,7 @@
 									
 									<!-- 已完成 -->
 									<div class="tab-pane" id="list4" >
+										
 								 		<table class="table table-striped table-hover table-bordered table-condensed" id="table1">
 										 			<tr class="info">
 										 			<td>申请人</td>

@@ -6,10 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.hibernate.Query;
-import org.hibernate.Session;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.googlecode.ehcache.annotations.Cacheable;
 import com.zhaopin.base.BaseServerImpl;
 import com.zhaopin.po.Position;
 
@@ -26,7 +26,7 @@ public class PositionServerImpl extends BaseServerImpl<Position> implements Posi
 	/**
 	 * 根据查询条件返回对象列表
 	 */
-	
+	@Cacheable(cacheName = "MyCache" )
 	@Override
 	public List<Position> getByKey(HashMap<String,String> map) {
 		String hql = "from Position p where p.endDate > ? ";
@@ -49,6 +49,7 @@ public class PositionServerImpl extends BaseServerImpl<Position> implements Posi
 	/**
 	 * 根据时间倒叙 取得最近发布的5个职位
 	 */
+	@Cacheable(cacheName = "MyCache")
 	@Override
 	public List<Position> getPositionName() {
 		// TODO Auto-generated method stub
@@ -62,6 +63,7 @@ public class PositionServerImpl extends BaseServerImpl<Position> implements Posi
 	/**
 	 * 查询所有未到截止日期的岗位
 	 */
+	@Cacheable(cacheName = "MyCache" )
 	@Override
 	public List<Position> getByEndDate() {
 		String hql = "from Position p where p.endDate > ?";

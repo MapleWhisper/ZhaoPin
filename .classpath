@@ -33,5 +33,7 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/activation.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/spring-context-support-3.2.4.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/classloader-leak-prevention-1.10.0.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/ehcache-2.7.2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/ehcache-spring-annotations-1.1.2.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

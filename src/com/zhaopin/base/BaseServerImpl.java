@@ -9,8 +9,12 @@ import javax.annotation.Resource;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
+import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.googlecode.ehcache.annotations.Cacheable;
+import com.googlecode.ehcache.annotations.TriggersRemove;
 
 /**
  * 
@@ -32,6 +36,9 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 	@Resource
 	private SessionFactory sessionFactory;
 	
+	@Resource()
+	private HibernateTemplate hibernateTemplate;
+	
 	/**
 	 * 使用抽象的父类 使得 this.getClass 获得的是子类的Class 并通过这个获得父类泛型类型
 	 * 通过泛型类型获得整正的Class类型
@@ -51,17 +58,16 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 	 * @return
 	 */
 	protected Session getSession(){
-		return sessionFactory.getCurrentSession();
+		return sessionFactory.openSession();
 	}
 	
 	/**
 	 *  保存实例
 	 */
+	@TriggersRemove(cacheName="MyCache",removeAll=true)
 	@Override
 	public void save(E entry) {
-		Session session = getSession();
-		session.save(entry);
-		session.flush();
+		hibernateTemplate.save(entry);
 	}
 
 	
@@ -69,28 +75,23 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 	 * 更新实例
 	 * 
 	 */
+	@TriggersRemove(cacheName="MyCache",removeAll=true)
 	@Override
 	public void updata(E entry) {
-		Session session = getSession();
-		if(entry!=null){
-			session.update(entry);
-			session.flush();
-		}
-		
+		hibernateTemplate.update(entry);
+		hibernateTemplate.flush();
 	}
 	
 	/**
 	 * 
 	 * 删除实例
 	 */
+	@TriggersRemove(cacheName="MyCache",removeAll=true)
 	@Override
 	public void delete(Integer id) {
 		E entry = this.getById(id);
-		Session session = getSession();
-		if(entry!=null){
-			session.delete(entry);
-			session.flush();
-		}
+		hibernateTemplate.delete(entry);
+		hibernateTemplate.flush();
 	}
 	
 	/**
@@ -98,10 +99,11 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 	 * 通过Id获取实例
 	 * 
 	 */
+	@Cacheable(cacheName = "MyCache")
 	@Override
 	public E getById(Integer id) {
 		if(id!=null){
-			return (E)getSession().load(clazz, id);
+			return (E)hibernateTemplate.load(clazz, id);
 		}
 		return null;
 		
@@ -112,16 +114,18 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 	 * 
 	 * 获取到所有的对象列表
 	 */
+	@Cacheable(cacheName = "MyCache")
 	@Override
 	public List<E> findAll() {
 		
-		return 	(List<E>) getSession().createQuery("from "+clazz.getSimpleName()).list();
+		return 	(List<E>) hibernateTemplate.find("from "+clazz.getSimpleName());
 	}
 	
 	/**
 	 * 
 	 * 通过 Id 集合来查找实例
 	 */
+	@Cacheable(cacheName = "MyCache")
 	@Override
 	public List<E> getByIds(Integer[] ids) {
 		if( ids==null || ids.length==0){
@@ -136,6 +140,7 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 	 * 
 	 * 通过 Id 集合来查找实例
 	 */
+	@Cacheable(cacheName = "MyCache")
 	@Override
 	public List<E> getByIds(List<Integer> ids) {
 		if( ids==null || ids.size()==0){

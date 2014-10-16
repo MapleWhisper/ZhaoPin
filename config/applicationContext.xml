@@ -6,11 +6,14 @@
 	xmlns:context="http://www.springframework.org/schema/context" 
 	xmlns:aop="http://www.springframework.org/schema/aop" 
 	xmlns:tx="http://www.springframework.org/schema/tx" 
-	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring" 
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
 						http://www.springframework.org/schema/context 	http://www.springframework.org/schema/context/spring-context-2.5.xsd 
           				http://www.springframework.org/schema/aop  		http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
 						http://www.springframework.org/schema/tx        http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+						 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd  
+          			  http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcache-spring-1.1.xsd
 						http://www.springframework.org/schema/mvc  http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
     <!-- 	扫描包，默认扫描所有 com.zhaopin下的所有注解 -->
  	 <context:component-scan base-package="com.zhaopin"></context:component-scan>
@@ -22,6 +25,10 @@
        <property name="dataSource" ref="dataSource" />
         <property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
        <property name="packagesToScan" value="com.zhaopin.po"></property>
+	</bean>
+	
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
 	<bean id="hibernateTransactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
@@ -39,7 +46,17 @@
             </list>  
         </property>  
     </bean>		
-    			
+    <!-- 
+    <ehcache:annotation-driven cache-manager="cacheManager" />   
+    
+    <ehcache:config cache-manager="cacheManager">  
+        <ehcache:evict-expired-elements interval="60" />  
+    </ehcache:config>  
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+    	<property name="configLocation" value="classpath:ehcache.xml"></property>
+    </bean>
+     -->
+   
 	 <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"  
         destroy-method="close">  
         <property name="url" value="${url}" />  

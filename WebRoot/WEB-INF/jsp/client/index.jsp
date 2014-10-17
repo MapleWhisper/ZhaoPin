@@ -44,7 +44,7 @@
 						$(".data").remove();
 						$(data).each(function(i,p){
 							//alert(p.name);
-							var data = $("<tr class='data'><td><a href='position/show/id/${p.id}'>"+
+							var data = $("<tr class='data'><td><a href='position/show/id/"+p.id+"'>"+
 										p.name+"</a></td><td>"+p.position+"</td><td>"+p.type+"</td><td>"+p.workPlace+"</td><td>"+
 										p.recruitNumber+"</td><td>"+new Date(p.endDate).toLocaleDateString()+"</td></tr>");
 							$("#table").append(data);

@@ -58,7 +58,7 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 	 * @return
 	 */
 	protected Session getSession(){
-		return sessionFactory.openSession();
+		return sessionFactory.getCurrentSession();
 	}
 	
 	/**
@@ -67,7 +67,8 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 	@TriggersRemove(cacheName="MyCache",removeAll=true)
 	@Override
 	public void save(E entry) {
-		hibernateTemplate.save(entry);
+		getSession().save(entry);
+		getSession().flush();
 	}
 
 	
@@ -78,8 +79,8 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 	@TriggersRemove(cacheName="MyCache",removeAll=true)
 	@Override
 	public void updata(E entry) {
-		hibernateTemplate.update(entry);
-		hibernateTemplate.flush();
+		getSession().update(entry);
+		getSession().flush();
 	}
 	
 	/**
@@ -90,8 +91,8 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 	@Override
 	public void delete(Integer id) {
 		E entry = this.getById(id);
-		hibernateTemplate.delete(entry);
-		hibernateTemplate.flush();
+		getSession().delete(entry);
+		getSession().flush();
 	}
 	
 	/**
@@ -103,7 +104,7 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 	@Override
 	public E getById(Integer id) {
 		if(id!=null){
-			return (E)hibernateTemplate.load(clazz, id);
+			return (E)getSession().load(clazz, id);
 		}
 		return null;
 		
@@ -118,7 +119,7 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 	@Override
 	public List<E> findAll() {
 		
-		return 	(List<E>) hibernateTemplate.find("from "+clazz.getSimpleName());
+		return 	(List<E>) getSession().createQuery("from "+clazz.getSimpleName()).list();
 	}
 	
 	/**

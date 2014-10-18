@@ -4,6 +4,10 @@
   <head>
 	<%@ include file="header.jspf" %>
 	<title>试题管理</title>
+	<!-- 
+	<script src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/messages_zh.min.js"></script>
+	 -->
   </head>
   
   <body>
@@ -61,11 +65,11 @@
 									  <div class="tab-pane active" id="single">
 									  		
 									  		
-									  		<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/admin/problem/save" method="post" >
+									  		<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/admin/problem/save" method="post" id="form1" >
 											  <div class="form-group">
 											    <label for="inputEmail3" class="col-sm-2 control-label">题目</label>
 											    <div class="col-sm-10">
-											      <textarea type="text" class="form-control"  rows="3" name="title"></textarea>
+											      <textarea type="text" class="form-control"  rows="3" name="title" ></textarea>
 											      <input type="hidden" name="type" value="单选题">
 											    </div>
 											  </div>
@@ -339,6 +343,7 @@
 				
 			});
 		});
+
 		</script>
   </body>
 </html>

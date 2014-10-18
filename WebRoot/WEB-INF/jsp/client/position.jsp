@@ -9,7 +9,7 @@
 	</style>
   </head>
 	
-	 <body  style="background: url(image/bg.jpg) repeat;">  
+	 <body  >  
     	<div class="container">
     		<%@ include file="head.jsp" %>
     		<div class="row" style="margin-top: 70px ;margin-bottom: 100px">

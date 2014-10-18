@@ -11,6 +11,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,15 +34,23 @@ public class PositionController {
 	@Resource(name="userServerImpl")
 	private UserServer userServer;
 	
+	
+	
 	/**
 	 * 显示职位详情页面
 	 * @return
 	 */
 	@RequestMapping("/position/show/id/{id}")
-	public String loginAdmin( @PathVariable int id,Model model){
+	public String loginAdmin( @PathVariable int id,Model model ,HttpSession session){
 		Position p1 = positionServer.getById(id);
-		p1.setScanNumber(p1.getScanNumber()==null?1:p1.getScanNumber()+1);		//浏览岗位，把岗位浏览次数加一
-		positionServer.updata(p1);
+		
+		if( session.getAttribute(id+"")==null ){	//如果Session是新的
+			session.setAttribute(id+"", id+"");
+			p1.setScanNumber(p1.getScanNumber()==null?1:p1.getScanNumber()+1);		//浏览岗位，把岗位浏览次数加一
+			positionServer.updata(p1);
+		}
+		  
+		
 		if(!model.containsAttribute("positionName")){
 
 			List<Position>plist=positionServer.getPositionName();	

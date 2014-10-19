@@ -4,6 +4,7 @@
 
   <head>
   <title>博弈教育招聘</title>
+  
 	<%@ include file="header.jspf" %>
 	<script type="text/javascript">
 		$(function(){
@@ -72,7 +73,7 @@
 	<div class="container">
 		<%@ include file="head.jsp" %>
 		<div class="row" style="margin-top: 20px">
-			<div class="col-md-9">
+			<div class="col-xs-9">
 				<div class="panel panel-info">
 					<div class="panel-heading">
 						<h3 class="panel-title">职位分类</h3>
@@ -162,7 +163,7 @@
 						</table>
 				<!-- 导航条 
 						<div class="row">
-							<div class="col-md--4 col-md-offset-8">
+							<div class="col-xs--4 col-xs-offset-8">
 								<ul class="pagination ">
 									<li><a href="#">&laquo;</a></li>
 									<li class="active"><a href="#">1</a></li>
@@ -182,7 +183,7 @@
 
 
 			</div>
-			<div class="col-md-3">
+			<div class="col-xs-3">
 				<div class="panel panel-info">
 					<div class="panel-heading">
 						<h3 class="panel-title">最近岗位</h3>

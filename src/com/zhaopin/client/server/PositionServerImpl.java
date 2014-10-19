@@ -9,7 +9,6 @@ import org.hibernate.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.googlecode.ehcache.annotations.Cacheable;
 import com.zhaopin.base.BaseServerImpl;
 import com.zhaopin.po.Position;
 

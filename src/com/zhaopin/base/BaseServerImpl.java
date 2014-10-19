@@ -13,8 +13,6 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.googlecode.ehcache.annotations.Cacheable;
-import com.googlecode.ehcache.annotations.TriggersRemove;
 
 /**
  * 
@@ -64,7 +62,6 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 	/**
 	 *  保存实例
 	 */
-	@TriggersRemove(cacheName="MyCache",removeAll=true)
 	@Override
 	public void save(E entry) {
 		getSession().save(entry);
@@ -76,7 +73,6 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 	 * 更新实例
 	 * 
 	 */
-	@TriggersRemove(cacheName="MyCache",removeAll=true)
 	@Override
 	public void updata(E entry) {
 		getSession().update(entry);
@@ -87,7 +83,6 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 	 * 
 	 * 删除实例
 	 */
-	@TriggersRemove(cacheName="MyCache",removeAll=true)
 	@Override
 	public void delete(Integer id) {
 		E entry = this.getById(id);
@@ -100,7 +95,6 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 	 * 通过Id获取实例
 	 * 
 	 */
-	@Cacheable(cacheName = "MyCache")
 	@Override
 	public E getById(Integer id) {
 		if(id!=null){
@@ -115,7 +109,6 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 	 * 
 	 * 获取到所有的对象列表
 	 */
-	@Cacheable(cacheName = "MyCache")
 	@Override
 	public List<E> findAll() {
 		
@@ -126,7 +119,6 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 	 * 
 	 * 通过 Id 集合来查找实例
 	 */
-	@Cacheable(cacheName = "MyCache")
 	@Override
 	public List<E> getByIds(Integer[] ids) {
 		if( ids==null || ids.length==0){
@@ -141,7 +133,6 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 	 * 
 	 * 通过 Id 集合来查找实例
 	 */
-	@Cacheable(cacheName = "MyCache")
 	@Override
 	public List<E> getByIds(List<Integer> ids) {
 		if( ids==null || ids.size()==0){

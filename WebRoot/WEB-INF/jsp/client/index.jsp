@@ -64,6 +64,9 @@
 	
   </head>
   
+  
+  <!-- <body style="background: url(${pageContext.request.contextPath}/image/index-bg.jpg) repeat;"> -->
+  
   <body style="background: url(${pageContext.request.contextPath}/image/index-bg.jpg) repeat;">
     	<div  style="margin-top: 50px">
 			<img width="100%" src="${pageContext.request.contextPath}/image/index-im1.jpg">

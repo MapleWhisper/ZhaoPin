@@ -1,5 +1,6 @@
 package com.zhaopin.utils;
 
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Properties;
 
@@ -59,19 +60,20 @@ public class MailSender {
 	 * @param to	发送到的邮箱地址
 	 * @param subject	邮件标题
 	 * @param htmlText	邮件内容
+	 * @throws  
 	 */
-	public static void send(String from ,String to ,String subject , String htmlText){
+	public static void send(String to ,String subject , String htmlText){
 		MimeMessage message = mailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message);
 		
 		try {
 			
 			helper.setTo(to);
-			helper.setFrom(from);
+			helper.setFrom(new InternetAddress(MimeUtility.encodeText("博弈教育")+"<boyieduzhaopin@163.com>"));
 			helper.setSubject(subject);
 			helper.setText(htmlText,true);
 			
-		} catch (MessagingException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		

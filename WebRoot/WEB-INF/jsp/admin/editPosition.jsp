@@ -20,23 +20,23 @@
 	<div class="container">
 		<%@ include file="head.jsp"%>
 		<div class="row" style="margin-top: 70px ">
-			<div class="col-sm-3">
+			<div class="col-xs-3">
 				<%@ include file="left.jsp"%>
 			</div>
-			<div class="col-sm-9">
+			<div class="col-xs-9">
 				<form action="${pageContext.request.contextPath}/admin/position/update" method="post">
 				<div class="panel panel-info">
 					<div class="panel-heading">
 						<h3 class="panel-title">
 							<div class="row">
-								<div class="col-sm-8">
+								<div class="col-xs-8">
 									职位名称
 									<div class="form-group ">
 										<input type="text" name="name" class="form-control" value="${position.name }">
 										<input hidden="hidden" name="id" value="${position.id }"/>
 									</div>
 								</div>
-								<div class="col-sm-4 ">
+								<div class="col-xs-4 ">
 									截止日期  	
 									<div class="form-group ">
 										<input type="text" name="endDate" class="form-control" onClick="WdatePicker()" value="<fm:formatDate value="${position.endDate}"></fm:formatDate>">

@@ -16,4 +16,13 @@
 	<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/tree.js"></script>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
+	<style type="text/css">
+		input.error { border: 1px solid red; }
+		label.error {
+		  padding-left: 12px;
+		  padding-bottom: 5px;
+		  font-weight: bold;
+		  color: #EA5200;
+		}
+	</style>
 

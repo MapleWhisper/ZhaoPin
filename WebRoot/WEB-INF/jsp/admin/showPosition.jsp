@@ -9,18 +9,18 @@
     	<div class="container">
     		<%@ include file="head.jsp" %>
     		<div class="row" style="margin-top: 70px ;">
-    				<div class="col-sm-3">
+    				<div class="col-xs-3">
 						<%@ include file="left.jsp" %>
     				</div>
-					<div class="col-sm-9">
+					<div class="col-xs-9">
 					<div class="panel panel-info" >
 					  <div class="panel-heading">
 					    <h3 class="panel-title">
 					    	<div class="row">
-					    		<div class="col-sm-8">
+					    		<div class="col-xs-8">
 					    			${position.name }
 					    		</div>
-					    		<div class="col-sm-4">
+					    		<div class="col-xs-4">
 					    			招聘截止日期:<fm:formatDate value="${position.endDate }"/>
 					    		</div>
 					    	</div>
@@ -78,7 +78,7 @@
 								</div>
 								
 							<div class="row">
-								<div class="col-sm--4 col-md-offset-8">	
+								<div class="col-xs--4 col-xs-offset-8">	
 									
 								</div>
 								

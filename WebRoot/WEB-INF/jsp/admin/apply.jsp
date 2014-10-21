@@ -12,10 +12,10 @@
     		
     		<%@ include file="head.jsp" %>
     		<div class="row" style="margin-top: 70px">
-    			<div class="col-sm-3">
+    			<div class="col-xs-3">
 					<%@ include file="left.jsp" %>
     			</div>
-    			<div class="col-sm-9">
+    			<div class="col-xs-9">
 				<!-- 面板 -->
     				<div class="panel panel-primary">
     					<div class="panel-heading">
@@ -28,8 +28,8 @@
 							    <form action="${pageContext.request.contextPath}/admin/apply" class="form-horizontal" role="form">
 							      <!-- form-group -->
 								  <div class="form-group" >
-								    <label class="col-sm-2 control-label">申请时间:</label>
-								    <div class="col-sm-4">
+								    <label class="col-xs-2 control-label">申请时间:</label>
+								    <div class="col-xs-4">
 								    	<select class="form-control" name="month">
 									    	<option  value="1">1个月内的申请</option>
 									    	<option  value="3">3个月内的申请</option>
@@ -38,7 +38,7 @@
 									    	<option  value="13">一年前的申请</option>
 								   		 </select>
 								    </div>
-								     <div class="col-sm-1" data-toggle="tooltip" data-placement="top" title="只有适用于 成功 和 拒绝 的申请" onmouseover="$(this).tooltip('show')">
+								     <div class="col-xs-1" data-toggle="tooltip" data-placement="top" title="只有适用于 成功 和 拒绝 的申请" onmouseover="$(this).tooltip('show')">
 								     	<button type="submit" class="btn btn-default">查询</button>
 								     </div>
 								  </div><!-- form-group -->

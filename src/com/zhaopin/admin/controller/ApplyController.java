@@ -168,6 +168,7 @@ public class ApplyController {
 			apply.setState(ApplyState.已完成.toString());
 			apply.setFinishDate(new Date());
 			MailSender.sendUserToSuccess(apply.getUser().getEmail(), apply);
+			apply.getPosition().setRecruitNumber(apply.getPosition().getRecruitNumber()-1);
 		}
 		applyService.updata(apply);
 		

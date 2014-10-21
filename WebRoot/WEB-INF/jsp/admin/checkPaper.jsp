@@ -15,15 +15,15 @@
     	<div class="container">
     		<%@ include file="head.jsp" %>
     		<div class="row" style="margin-top: 70px">
-    			<div class="col-sm-3">
+    			<div class="col-xs-3">
 					<%@ include file="left.jsp" %>
     			</div>
-    			<div class="col-sm-9">
+    			<div class="col-xs-9">
     					<div  style="text-align: center;margin-top: 100px">
-    						<div class="col-sm-6">
+    						<div class="col-xs-6">
     							<h2 >${paper.title }</h2>
     						</div>
-    						<div class="col-sm-6">
+    						<div class="col-xs-6">
     							<!-- 	用户信息 -->
 								<table class="table table-striped table-hover table-bordered">
 									<tr>
@@ -41,7 +41,7 @@
 						</div>
 					<div class="row">
 						<!--左侧的导航条 -->
-					  <div class="col-sm-1">
+					  <div class="col-xs-1">
 				  			<ul class="nav nav-pills nav-stacked nav-left" role="tablist" id="nav" >
 			  					  <li role="presentation" class="pre active"><a href="#part1" >单选</a></li>
 								  <li role="presentation" class="pre"><a href="#part2" >多选</a></li>
@@ -50,7 +50,7 @@
 								  <li role="presentation" class="pre"><a href="#part5" >审核</a></li>
 							</ul>
 					  </div><!--左侧的导航条 -->
-					  <div class="col-sm-11">
+					  <div class="col-xs-11">
 					  
 					   <form action="${pageContext.request.contextPath}/admin/paper/answer" method="post">
 					   		<input type="hidden" name="id" value="${paper.id}">

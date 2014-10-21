@@ -12,10 +12,10 @@
     	<div class="container">
     		<%@ include file="head.jsp" %>
     		<div class="row" style="margin-top: 70px">
-    			<div class="col-sm-3">
+    			<div class="col-xs-3">
 					<%@ include file="left.jsp" %>
     			</div>
-    			<div class="col-sm-9">
+    			<div class="col-xs-9">
 					<!--  试题列表 -->
     				<div class="panel panel-primary">
 					  <div class="panel-heading">
@@ -24,12 +24,12 @@
 					  <div class="panel-body">
 					    	<!-- 试卷导航栏 -->
 					    <div class="row">
-					    	<div class="col-sm-8">
+					    	<div class="col-xs-8">
 							  <!--分页 -->
 					    		<%@ include file="page.jsp"%>
 					    	  <!--分页 -->
 					    	</div>
-					    	<div class="col-sm-4">
+					    	<div class="col-xs-4">
 					    		<a href='${pageContext.request.contextPath}/admin/paperCart' target="_blank" class="btn btn-lg btn-primary">进入试卷篮，生成试卷</a>
 					    	</div>
 					    </div>
@@ -43,11 +43,11 @@
     						<div class="panel panel-default item">
 							  <div class="panel-heading">
 							  	<div class="row">
-							  		<div class="col-sm-2">第  <code>${s.count }</code> 题</div>
-							  		<div class="col-sm-2 dif">试题难度:${pro.difficulty}</div>
-							  		<div class="col-sm-3 create">入库日期:<fm:formatDate pattern="yyyy-MM-dd" value="${pro.createDate}" /></div>
-							  		<div class="col-sm-2 type">试卷类型:${pro.type }</div>
-							  		<div class="col-sm-3"><button class="btn btn-primary btn-lg add" id="${pro.id}">添加到试卷篮</button></div>
+							  		<div class="col-xs-2">第  <code>${s.count }</code> 题</div>
+							  		<div class="col-xs-2 dif">试题难度:${pro.difficulty}</div>
+							  		<div class="col-xs-3 create">入库日期:<fm:formatDate pattern="yyyy-MM-dd" value="${pro.createDate}" /></div>
+							  		<div class="col-xs-2 type">试卷类型:${pro.type }</div>
+							  		<div class="col-xs-3"><button class="btn btn-primary btn-lg add" id="${pro.id}">添加到试卷篮</button></div>
 							  	</div>
 							  		
 							  </div>
@@ -88,7 +88,7 @@
 					</div><!--  试题列表 panel-->
 					
 						
-    			</div><!-- class="col-sm-9" -->
+    			</div><!-- class="col-xs-9" -->
 
     		</div>
     		
@@ -105,45 +105,45 @@
 				      <div class="modal-body">
 				        	<form class="form-horizontal" role="form" id="form2" method="post" >
 								  <div class="form-group">
-								    <label   class="col-sm-2 control-label">题目</label>
-								    <div class="col-sm-10">
+								    <label   class="col-xs-2 control-label">题目</label>
+								    <div class="col-xs-10">
 								      <textarea id="title" type="text" class="form-control"  rows="3" name="title" required></textarea>
 								      <input id="id" type="hidden"   name="id" >
 								    </div>
 								  </div>
 								  <div class="form-group">
-								    <label   class="col-sm-2 control-label">选项A</label>
-								    <div class="col-sm-10">
+								    <label   class="col-xs-2 control-label">选项A</label>
+								    <div class="col-xs-10">
 								      <input id="A" type="text" class="form-control"  name="optA" >
 								     
 								    </div>
 								  </div>
 								  <div class="form-group">
-								    <label   class="col-sm-2 control-label">选项B</label>
-								    <div class="col-sm-10">
+								    <label   class="col-xs-2 control-label">选项B</label>
+								    <div class="col-xs-10">
 								      <input id="B" type="text" class="form-control" name="optB" >
 								    </div>
 								  </div>
 								  <div class="form-group">
-								    <label   class="col-sm-2 control-label">选项C</label>
-								    <div class="col-sm-10">
+								    <label   class="col-xs-2 control-label">选项C</label>
+								    <div class="col-xs-10">
 								      <input id="C" type="text" class="form-control"  name="optC" >
 								    </div>
 								  </div>
 								  <div class="form-group">
-								    <label   class="col-sm-2 control-label">选项D</label>
-								    <div class="col-sm-10">
+								    <label   class="col-xs-2 control-label">选项D</label>
+								    <div class="col-xs-10">
 								      <input id="D" type="text" class="form-control" name="optD" >
 								    </div>
 								  </div>
 								  <div class="form-group">
-								    <label   class="col-sm-2 control-label">答案</label>
-								    <div class="col-sm-10">
+								    <label   class="col-xs-2 control-label">答案</label>
+								    <div class="col-xs-10">
 								      <textarea id="ans" type="text" class="form-control"  rows="3" name="answer" placeholder="参考答案"></textarea>
 								    </div>
 								  </div>
 								   <div class="form-group">
-								    <div class="col-sm-3 col-sm-offset-4">
+								    <div class="col-xs-3 col-xs-offset-4">
 								      <button type="button" class="btn btn-primary" id="sub" >修改题目</button>
 								    </div>
 								  </div>

@@ -6,61 +6,7 @@
   <title>博弈教育招聘</title>
   
 	<%@ include file="header.jspf" %>
-	<script type="text/javascript">
-		$(function(){
-			var workPlace = "";
-			var position = "";
-			var type = "";
-			$("button").click(function(){
-				//alert("ok");
-				//按钮点击时，添加active class效果
-				var btn = $(this);
-				var classString = $(this).attr("class");
-				if(classString.indexOf("active")!=-1){
-					$(this).removeClass("active");
-				}else{
-					$(this).addClass("active");
-					$(this).siblings().removeClass("active");
-				}
-				
-				var name = btn.attr("name");
-				if(name=="workPlace"){
-					workPlace = btn.text();
-				}
-				if(name=="position" ){
-					position = btn.text();
-				}
-				if(name=="type"){
-					type = btn.text();
-				}
-				//ajax 向后台传送数据
-				$.ajax({
-					type:"POST",
-					 url: "position/select/json",
-					 data:{"workPlace":workPlace,"position":position,"type":type},
-					 dataType:"json",
-					 success:function(data){
-						//alert(data);
-						var str;
-						$(".data").remove();
-						$(data).each(function(i,p){
-							//alert(p.name);
-							var data = $("<tr class='data'><td><a href='position/show/id/"+p.id+"'>"+
-										p.name+"</a></td><td>"+p.position+"</td><td>"+p.type+"</td><td>"+p.workPlace+"</td><td>"+
-										p.recruitNumber+"</td><td>"+new Date(p.endDate).toLocaleDateString()+"</td></tr>");
-							$("#table").append(data);
-							
-						});
-						//alert(str);
-					 }
-				});
-			});
-		});
-		$(function(){
-			$("td a").attr("target","_blank");
-			$(".panel-body a").attr("target","_blank");
-		})
-	</script>
+	
 	
   </head>
   
@@ -223,7 +169,61 @@
 
 	</div>
 	<!--container -->
-
+	<script type="text/javascript">
+		$(function(){
+			var workPlace = "";
+			var position = "";
+			var type = "";
+			$("button").click(function(){
+				//alert("ok");
+				//按钮点击时，添加active class效果
+				var btn = $(this);
+				var classString = $(this).attr("class");
+				if(classString.indexOf("active")!=-1){
+					$(this).removeClass("active");
+				}else{
+					$(this).addClass("active");
+					$(this).siblings().removeClass("active");
+				}
+				
+				var name = btn.attr("name");
+				if(name=="workPlace"){
+					workPlace = btn.text();
+				}
+				if(name=="position" ){
+					position = btn.text();
+				}
+				if(name=="type"){
+					type = btn.text();
+				}
+				//ajax 向后台传送数据
+				$.ajax({
+					type:"POST",
+					 url: "position/select/json",
+					 data:{"workPlace":workPlace,"position":position,"type":type},
+					 dataType:"json",
+					 success:function(data){
+						//alert(data);
+						var str;
+						$(".data").remove();
+						$(data).each(function(i,p){
+							//alert(p.name);
+							var data = $("<tr class='data'><td><a href='position/show/id/"+p.id+"'>"+
+										p.name+"</a></td><td>"+p.position+"</td><td>"+p.type+"</td><td>"+p.workPlace+"</td><td>"+
+										p.recruitNumber+"</td><td>"+new Date(p.endDate).toLocaleDateString()+"</td></tr>");
+							$("#table").append(data);
+							
+						});
+						//alert(str);
+					 }
+				});
+			});
+		});
+		$(function(){
+			$("td a").attr("target","_blank");
+			$(".panel-body a").attr("target","_blank");
+		})
+	</script>
     	<%@ include file="buttom.jsp" %>
   </body>
 </html>

@@ -17,23 +17,23 @@
     	<div class="container">
     		<%@ include file="head.jsp" %>
     		<div class="row" style="margin-top: 70px">
-    			<div class="col-sm-3">
+    			<div class="col-xs-3">
 					<%@ include file="left.jsp" %>
     			</div>
-    			<div class="col-sm-9">
+    			<div class="col-xs-9">
     					<div class="panel panel-warning">
 						  <div class="panel-heading">
 						    <h3 class="panel-title">试卷篮</h3>
 						  </div>
 						  <div class="panel-body">
 						  		<div class="row">
-						  			<div class="col-sm-8">
+						  			<div class="col-xs-8">
 						  				<div class="page-header">
 										  <h1>  <a href="${pageContext.request.contextPath}/admin/paper/item/1"> << 返回试题列表</a>  
 										  	 <small>继续添加试题</small></h1>
 										</div>
 						  			</div>
-						  			<div class="col-sm-4">
+						  			<div class="col-xs-4">
 						  				<ul class="list-group">
 										  <li class="list-group-item">单选题：<span class="label label-danger num">${paperCart.singleNumber}个</span></li>
 										  <li class="list-group-item">多选题：<span class="label label-danger num">${paperCart.multChoiceNumber}个</span></li>
@@ -48,7 +48,7 @@
 								  </div>
 								  <div class="panel-body">
 								    	
-									  <div class="col-sm-11">
+									  <div class="col-xs-11">
 											<!--单选题 -->
 											<div class="panel panel-primary" id="part1">
 											  <div class="panel-heading">
@@ -60,10 +60,10 @@
 						    						<div class="panel panel-default item">
 													  <div class="panel-heading">
 													  	<div class="row">
-													  		<div class="col-sm-2 ">第${ s.count }题</div>
-													  		<div class="col-sm-4">试题难度:${pro.difficulty}</div>
-													  		<div class="col-sm-4">试题标签:${pro.label}</div>
-													  		<div class="col-sm-2"><button class="btn btn-primary remove" id="${pro.id}">删除</button></div>
+													  		<div class="col-xs-2 ">第${ s.count }题</div>
+													  		<div class="col-xs-4">试题难度:${pro.difficulty}</div>
+													  		<div class="col-xs-4">试题标签:${pro.label}</div>
+													  		<div class="col-xs-2"><button class="btn btn-primary remove" id="${pro.id}">删除</button></div>
 													  	</div>
 													  </div>
 													  <div class="panel-body">
@@ -88,10 +88,10 @@
 					    						<div class="panel panel-default item">
 												  <div class="panel-heading">
 												  	<div class="row">
-												  		<div class="col-sm-2">第${ s.count }题</div>
-												  		<div class="col-sm-4">试题难度:${pro.difficulty}</div>
-												  		<div class="col-sm-4">试题标签:${pro.label}</div>
-												  		<div class="col-sm-2"><button class="btn btn-primary remove" id="${pro.id}">删除</button></div>
+												  		<div class="col-xs-2">第${ s.count }题</div>
+												  		<div class="col-xs-4">试题难度:${pro.difficulty}</div>
+												  		<div class="col-xs-4">试题标签:${pro.label}</div>
+												  		<div class="col-xs-2"><button class="btn btn-primary remove" id="${pro.id}">删除</button></div>
 												  	</div>
 												  </div>
 												  <div class="panel-body">
@@ -116,10 +116,10 @@
 					    						<div class="panel panel-default item">
 												  <div class="panel-heading">
 												  	<div class="row">
-												  		<div class="col-sm-2">第${ s.count }题</div>
-												  		<div class="col-sm-4">试题难度:${pro.difficulty}</div>
-												  		<div class="col-sm-4">试题标签:${pro.label}</div>
-												  		<div class="col-sm-2"><button class="btn btn-primary remove" id="${pro.id}">删除</button></div>
+												  		<div class="col-xs-2">第${ s.count }题</div>
+												  		<div class="col-xs-4">试题难度:${pro.difficulty}</div>
+												  		<div class="col-xs-4">试题标签:${pro.label}</div>
+												  		<div class="col-xs-2"><button class="btn btn-primary remove" id="${pro.id}">删除</button></div>
 												  	</div>
 												  </div>
 												  <div class="panel-body">
@@ -140,10 +140,10 @@
 					    						<div class="panel panel-default item">
 												  <div class="panel-heading">
 												  	<div class="row">
-												  		<div class="col-sm-2">第${ s.count }题</div>
-												  		<div class="col-sm-4">试题难度:${pro.difficulty}</div>
-												  		<div class="col-sm-4">试题标签:${pro.label}</div>
-												  		<div class="col-sm-2"><button class="btn btn-primary remove" id="${pro.id}">删除</button></div>
+												  		<div class="col-xs-2">第${ s.count }题</div>
+												  		<div class="col-xs-4">试题难度:${pro.difficulty}</div>
+												  		<div class="col-xs-4">试题标签:${pro.label}</div>
+												  		<div class="col-xs-2"><button class="btn btn-primary remove" id="${pro.id}">删除</button></div>
 												  	</div>
 												  </div>
 												  <div class="panel-body">
@@ -157,9 +157,9 @@
 													生成试卷</a></center>
 											
 											
-										   </div><!-- col-sm-11 -->
+										   </div><!-- col-xs-11 -->
 										   <!--右侧的导航条 -->
-									  		<div class="col-sm-1">
+									  		<div class="col-xs-1">
 								  			<ul class="nav nav-pills nav-stacked nav-left" role="tablist" id="nav" >
 							  					  <li role="presentation" class="pre active"><a href="#part1" >单选</a></li>
 												  <li role="presentation" class="pre"><a href="#part2" >多选</a></li>
@@ -190,21 +190,21 @@
 		      <div class="modal-body">
 		        	<form class="form-horizontal" action="${pageContext.request.contextPath}/admin/paper/save" role="form" method="post">
 					  <div class="form-group">
-					    <label  class="col-sm-2 control-label">试卷标题</label>
-					    <div class="col-sm-10">
+					    <label  class="col-xs-2 control-label">试卷标题</label>
+					    <div class="col-xs-10">
 					      <input type="text" class="form-control" id="" name="title">
 					    </div>
 					  </div>
 					  <div class="form-group">
-					    <label  class="col-sm-2 control-label">作者</label>
-					    <div class="col-sm-10">
+					    <label  class="col-xs-2 control-label">作者</label>
+					    <div class="col-xs-10">
 					      <input type="text" class="form-control" id="" name="auther">
 					    </div>
 					  </div>
 					  
 					 
 					  <div class="form-group">
-					    <div class="col-sm-6">
+					    <div class="col-xs-6">
 			  				<ul class="list-group">
 							  <li class="list-group-item">单选题：<span class="label label-danger num">${paperCart.singleNumber}个</span></li>
 							  <li class="list-group-item">多选题：<span class="label label-danger num">${paperCart.multChoiceNumber}个</span></li>
@@ -212,7 +212,7 @@
 							  <li class="list-group-item">简答题：<span class="label label-danger num">${paperCart.questionNumber}个</span></li>
 							</ul>
 						</div>
-						<div class="col-sm-6">
+						<div class="col-xs-6">
 							<button type="submit" class="btn btn-warning btn-lg">提交试卷</button>
 						</div>
 					  </div>

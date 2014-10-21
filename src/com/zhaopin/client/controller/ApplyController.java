@@ -1,17 +1,15 @@
 package com.zhaopin.client.controller;
 
-import java.util.ArrayList;
+
+
 import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -22,7 +20,6 @@ import com.zhaopin.po.Apply;
 import com.zhaopin.po.Position;
 import com.zhaopin.po.User;
 import com.zhaopin.utils.ApplyState;
-import com.zhaopin.utils.MailSender;
 
 /**
  * 申请 相关操作
@@ -48,24 +45,35 @@ public class ApplyController {
 	 * @return
 	 */
 	@RequestMapping("/apply/{positionId}")
-	public String apply(@PathVariable int positionId,HttpSession session){
+	public String apply(@PathVariable int positionId,HttpSession session,Model model){
 		Position position = positionServer.getById(positionId);
 		if(position==null){			//如果岗位为空，跳转到主页面
 			return "redirect:/client/index";
 		}
-		position.setApplyNumber(position.getApplyNumber()==null?1:position.getApplyNumber()+1);		//申请次数加一
-		
 		User user = (User) session.getAttribute("user");
 		
 		if(user==null || position==null){
 			return "redirect:/client/login";	//用户为空，返回登录页面
 		}
 		if(user.getResume()==null){
-			return "client/resume";			//如果用户简历为空，跳到简历页面
+			return "redirect:/client/resume";			//如果用户简历为空，跳到简历页面
 		}
 		User u = userServer.getById(user.getId());
-		
+		String meg = "";
 		if(u!=null){		//如果用户不为空
+			@SuppressWarnings("unchecked")
+			Set<Apply> list =  u.getApplys();
+			if(list.size()>=3){
+				model.addAttribute("meg", "每个用户最多可以申请3个岗位哦o(╯□╰)o，感谢您的支持~");
+				return "error";
+			}
+			for(Apply s : list){
+				if(s.getPosition().getId() == positionId ){
+					model.addAttribute("meg", "这个岗位您已经申请过了哦o(╯□╰)o，感谢您的支持~");
+					return "error";
+				}
+			}
+			position.setApplyNumber(position.getApplyNumber()==null?1:position.getApplyNumber()+1);		//申请次数加一
 			Apply apply = new Apply();
 			apply.setUser(u);
 			apply.setState(ApplyState.待审核.toString());

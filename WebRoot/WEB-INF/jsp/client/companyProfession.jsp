@@ -33,7 +33,7 @@
 		</div>
 		<div class="row">
 			<!--左侧的导航条 -->
-			<div class="col-sm-3">
+			<div class="col-xs-3">
 
 				<ul class="nav nav-pills nav-stacked" role="tablist" id="nav">
 					<li role="presentation" class="pre"><a
@@ -47,7 +47,7 @@
 			<!--左侧的导航条 -->
 
 
-			<div class="col-sm-8" style="background-color: repeat;">
+			<div class="col-xs-8" style="background-color: repeat;">
 
 
 				<div class="row">

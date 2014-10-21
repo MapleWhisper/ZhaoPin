@@ -32,14 +32,12 @@
 		</div>
 		<div class="row">
 			<!--左侧的导航条 -->
-			<div class="col-sm-3">
+			<div class="col-xs-3">
 
 				<ul class="nav nav-pills nav-stacked" role="tablist" id="nav">
 					<li role="presentation" class="pre active"><a
 						href="#companyIntroduction">我们的自我简介</a></li>
 					<li role="presentation" class="pre"><a href="${pageContext.request.contextPath}/client/companyProfession">我们的主业务</a></li>
-																 		 
-					
 					<li role="presentation" class="pre"><a href="${pageContext.request.contextPath}/client/companyHistory">我们的里程碑</a></li>
 				</ul>
 
@@ -47,9 +45,9 @@
 			<!--左侧的导航条 -->
 
 
-			<div class="col-sm-8" style="background-color: repeat;">
-				<div class="row"
-					style="background-image: url(${pageContext.request.contextPath}/image/company.jpg); ">
+			<div class="col-xs-8" style="background-color: repeat;">
+				<!-- style="background-image: url(${pageContext.request.contextPath}/image/company.jpg);  -->
+				<div class="row">
 					<div class="page-header"
 						style="margin-left: 30px;margin-top: 100px;"
 						id="companyIntroduction">

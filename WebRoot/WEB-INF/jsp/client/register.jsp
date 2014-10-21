@@ -3,7 +3,9 @@
 <html>
   <head>
 	<%@ include file="header.jspf" %>
+	<title>注册页面</title>
 	  <script src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
+	  <script src="${pageContext.request.contextPath}/js/messages_zh.js"></script>
   </head>
   
   <body style="background: url(${pageContext.request.contextPath}/image/register-bg.jpg);">
@@ -60,7 +62,7 @@
 											<input type="text" name="phoneNumber" class="form-control" id="phoneNumber">
 										</div>
 									</div>
-									
+									<!--  //注册验证码功能
 									<div class="form-group" align="center">
 										<label for="" class="col-sm-3 control-label">验证码</label>
 										<div class="col-sm-5">
@@ -70,7 +72,18 @@
 											<img alt="验证码" class="control-label" src="${pageContext.request.contextPath}/client/valifImage">
 										</div>
 									</div>
-
+									-->
+									
+									<!-- 注册 邮箱验证功能 -->
+									<div class="form-group" align="center">
+										<label for="" class="col-sm-3 control-label">邮箱验证码</label>
+										<div class="col-sm-5">
+											<input type="text" class="form-control" name="valifCode" id="valifCode" required>
+										</div>
+										<div class="col-sm-3">
+											<button id="sendEmail" type="button" class="btn btn-success" >点我发送验证码</button>
+										</div>
+									</div>
 
 
 									<div class="form-group">
@@ -97,8 +110,18 @@
     	</div>
     	<%@ include file="buttom.jsp" %>
     	 <script type="text/javascript">
-		$(function() {  
-			$("#form1").validate({
+    	 function count(cnt){
+    		 	cnt--;
+    		 	if(cnt>0){
+    		 		$("#sendEmail").html(cnt+"秒后再次发送");
+    		 		setTimeout("count("+cnt+")", 1000);
+    		 	}else{
+    		 		$("#sendEmail").html("点我发送验证码");
+    				$("#sendEmail").removeAttr("disabled");
+    		 	}
+			};
+			$(function() {  
+				$("#form1").validate({
 				rules:{
 					email: {
 						required:true,
@@ -150,8 +173,30 @@
 			var p = $("#e1").text();
 			if( p.length==0){
 				$("#e2").remove();
+			}else{
+				setTimeout("history.go(-1)",1000)
 			}
 		});
+		$(function(){
+				
+				$("#sendEmail").click(function(){
+					var email = $("#email").val();
+					if( email.length<=5 || email.indexOf('@')==-1){
+						alert("请填写正确邮箱");
+						$("#sendEmail").attr("disabled");
+					}else{
+						
+						$.post("/ZhaoPin/client/sendEmail",{"email":email},function(data){
+							alert("发送验证码成功,请您到邮箱["+email+"]查看,如果您没有收到邮件，请和招聘人员联系");
+							$("#sendEmail").attr("disabled","true");
+							$("#sendEmail").html("60秒后再次发送");
+							count(60);
+						});
+					}
+					
+				});
+		});
+		
 	</script>
   </body>
 </html>

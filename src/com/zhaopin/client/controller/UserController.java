@@ -1,5 +1,8 @@
 package com.zhaopin.client.controller;
 
+import java.io.IOException;
+import java.util.Random;
+
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -8,14 +11,15 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.zhaopin.client.server.UserServer;
 import com.zhaopin.po.User;
+import com.zhaopin.utils.MailSender;
 import com.zhaopin.utils.ZhaoPinUtils;
 
 @Controller
@@ -24,6 +28,8 @@ public class UserController {
 	
 	@Resource(name="userServerImpl")
 	private UserServer userServer;
+	
+	private Random random = new Random();
 	
 	
 	/**
@@ -118,13 +124,14 @@ public class UserController {
 	public String save(@ModelAttribute User user,Model model,@RequestParam String valifCode,HttpSession session){
 		//如果输入的验证码不正确
 		if( !valifCode.equals(session.getAttribute("valifCode") ))  {
-			model.addAttribute("error","验证码错误");
+			model.addAttribute("error","邮箱验证码错误");
 			return "client/register";
 		}
 		
 		try {
 			userServer.save(user);
 			System.out.println(user.getName());
+			session.removeAttribute("valifCode");
 			return "redirect:/client/login";
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -167,5 +174,34 @@ public class UserController {
 		return "client/resetPwd";
 	}
 	
+	/**
+	 * 向用户发送验证码,间隔100s
+	 * 
+	 * @param email
+	 */
+	@RequestMapping("/sendEmail")
+	public void sendEmail(@RequestParam String email,HttpSession session,HttpServletResponse response){
+		try {
+			System.out.println(email);
+			if(email.indexOf("@")!=-1){
+				String subject = "【欢迎注册博弈教育】";
+				int valifCode = 100000+random.nextInt(99999);
+				StringBuilder text = new StringBuilder();
+				text.append("<html><body><h2>【博弈教育】您的验证码:<font color='red'>"+valifCode)
+						.append("</font></h2><br><h4>请您在 20 分钟内在注册页面输入验证码 以完成注册</h4></body></html>");
+				//MailSender.send(email,subject,text.toString());
+				session.setAttribute("valifCode", valifCode+"");
+				response.getWriter().println("success");
+				
+			}else{
+				response.getWriter().println("error");
+			}
+			
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		
+	}
 	
 }

@@ -13,18 +13,18 @@
     	<div class="container">
     		<%@ include file="head.jsp" %>
     		<div class="row" style="margin-top: 70px ;margin-bottom: 100px">
-					<div class="col-sm-9">
+					<div class="col-xs-9">
 					<div class="panel panel-info" >
 					  <div class="panel-heading">
 					    <h3 class="panel-title">
 					    	<div class="row">
-					    		<div class="col-sm-7">
+					    		<div class="col-xs-7">
 					    			${position.name }
 					    		</div>
-					    		<div class="col-sm-2">
+					    		<div class="col-xs-2">
 					    			浏览次数:${position.scanNumber }
 					    		</div>
-					    		<div class="col-sm-3">
+					    		<div class="col-xs-3">
 					    			截止日期:<fm:formatDate value="${position.endDate }"/>
 					    		</div>
 					    	</div>
@@ -84,8 +84,18 @@
 								
 							<div class="row">
 									<center><a class="btn btn-lg btn-primary"  href="${pageContext.request.contextPath}/client/apply/${position.id}" >立即申请<br>Apply</a></center>
-								
+									<div class="form-group">
+						    			 <div class="col-xs-7 col-xs-offset-1">
+											<c:if test="${meg !=null && meg!='' }">
+												<div class="alert alert-danger alert-dismissible" role="alert">
+		  												<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		 												 <span id="e1">${meg }<span>
+												</div>
+											</c:if>						      	
+						  			   	 </div>
+						   			 </div>
 							</div>
+							
 					  </div>
 					 </div>
 					 
@@ -93,7 +103,7 @@
 					  		
 							
 				
-					<div class="col-sm-3">
+					<div class="col-xs-3">
 						<div class="panel panel-info">
 							<div class="panel-heading">
 								<h3 class="panel-title">最近岗位</h3>

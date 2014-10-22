@@ -13,13 +13,11 @@ import com.zhaopin.po.Resume;
 /**
  * 
  * @author 武玉密
- *
+ * 
  */
 @Service
 @Transactional
-public class ResumeServiceImpl extends BaseServerImpl<Resume> implements ResumeService{
+public class ResumeServiceImpl extends BaseServerImpl<Resume> implements
+		ResumeService {
 
-	 
-
-	 
 }

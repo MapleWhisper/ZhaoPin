@@ -57,7 +57,7 @@
 										<td>
 											<div class="btn-group" >
 											  <button type="button" class="btn btn-default" name="position">不限</button>
-											  <button type="button" class="btn btn-default" name="position">教师</button>
+											  <button type="button" class="btn btn-default" name="position">教育</button>
 											  <button type="button" class="btn btn-default" name="position">技术</button>
 											  <button type="button" class="btn btn-default" name="position">管理</button>
 											</div>

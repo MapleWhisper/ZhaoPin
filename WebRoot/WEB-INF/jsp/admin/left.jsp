@@ -55,6 +55,18 @@
 					</ul>
 				</li>
 				
+				
+					<li><span><i class="glyphicon glyphicon-minus-sign"></i>首页管理</span>
+						<ul>
+							<li><span><i class="glyphicon glyphicon-leaf"></i>
+								<a href="${pageContext.request.contextPath}/admin/article/company">公司介绍</a></span>
+							</li>
+							<li><span><i class="glyphicon glyphicon-leaf"></i>
+								<a href="${pageContext.request.contextPath}/admin/article/help">帮助中心</a></span>
+							</li>
+						</ul>
+					</li>
+				
 				<!-- 如果是系统管理员，才显示页面 -->
 				<c:if test="${ sessionScope.admin.username == 'admin' }">
 				

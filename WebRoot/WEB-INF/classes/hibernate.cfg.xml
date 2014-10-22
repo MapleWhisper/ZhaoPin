@@ -19,7 +19,8 @@
 	<mapping class="com.zhaopin.po.Resume" />
 	<mapping class="com.zhaopin.po.Problem" />
 	<mapping class="com.zhaopin.po.Paper" />
-	
+	<mapping class="com.zhaopin.po.Article" />
+
 
 
 </session-factory>

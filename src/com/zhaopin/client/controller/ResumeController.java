@@ -213,10 +213,13 @@ public class ResumeController  {
 			return "redirect:/client/index";
 		}
 		User u  = (User) session.getAttribute("user");
-		if(u.getResume().getId() != id && session.getAttribute("admin")!=null){
-			model.addAttribute("meg", "对不起，非法浏览别人的简历是不允许的~╮(╯_╰)╭");
-			return "error";
+		if(u!=null){
+			if(u.getResume().getId() != id && session.getAttribute("admin")!=null){
+				model.addAttribute("meg", "对不起，非法浏览别人的简历是不允许的~╮(╯_╰)╭");
+				return "error";
+			}
 		}
+		
 		model.addAttribute("resume", resume);
 		
 		model.addAttribute("graduateSchool",ZhaoPinUtils.spiltString(resume.getGraduateSchool().substring(4)));

@@ -59,10 +59,7 @@
 					<li><span><i class="glyphicon glyphicon-minus-sign"></i>首页管理</span>
 						<ul>
 							<li><span><i class="glyphicon glyphicon-leaf"></i>
-								<a href="${pageContext.request.contextPath}/admin/article/company">公司介绍</a></span>
-							</li>
-							<li><span><i class="glyphicon glyphicon-leaf"></i>
-								<a href="${pageContext.request.contextPath}/admin/article/help">帮助中心</a></span>
+								<a href="${pageContext.request.contextPath}/admin/article">公司/帮助</a></span>
 							</li>
 						</ul>
 					</li>

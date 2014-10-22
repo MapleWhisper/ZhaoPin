@@ -67,39 +67,39 @@
 									  		
 									  		<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/admin/problem/save" method="post" id="form1" >
 											  <div class="form-group">
-											    <label for="inputEmail3" class="col-xs-2 control-label">题目</label>
+											    <label  class="col-xs-2 control-label">题目</label>
 											    <div class="col-xs-10">
-											      <textarea type="text" class="form-control"  rows="3" name="title" ></textarea>
-											      <input type="hidden" name="type" value="单选题">
+											      <textarea   rows="10" id="editor1" class="from-control" name="title" ></textarea>
+											      <input  type="hidden" name="type" value="单选题">
 											    </div>
 											  </div>
 											  <div class="form-group">
-											    <label for="inputPassword3" class="col-xs-2 control-label">选项A</label>
+											    <label   class="col-xs-2 control-label">选项A</label>
 											    <div class="col-xs-10">
 											      <input type="text" class="form-control"  name="optA">
 											     
 											    </div>
 											  </div>
 											  <div class="form-group">
-											    <label for="inputPassword3" class="col-xs-2 control-label">选项B</label>
+											    <label   class="col-xs-2 control-label">选项B</label>
 											    <div class="col-xs-10">
 											      <input type="text" class="form-control" name="optB" >
 											    </div>
 											  </div>
 											  <div class="form-group">
-											    <label for="inputPassword3" class="col-xs-2 control-label">选项C</label>
+											    <label   class="col-xs-2 control-label">选项C</label>
 											    <div class="col-xs-10">
 											      <input type="text" class="form-control"  name="optC">
 											    </div>
 											  </div>
 											  <div class="form-group">
-											    <label for="inputPassword3" class="col-xs-2 control-label">选项D</label>
+											    <label   class="col-xs-2 control-label">选项D</label>
 											    <div class="col-xs-10">
 											      <input type="text" class="form-control" name="optD" >
 											    </div>
 											  </div>
 											  <div class="form-group">
-											    <label for="inputPassword3" class="col-xs-2 control-label">答案</label>
+											    <label   class="col-xs-2 control-label">答案</label>
 											    <div class="col-xs-2">
 											      	<select class="form-control" name="answer">
 											      		<option value="A" selected="selected">A</option>
@@ -110,13 +110,13 @@
 											    </div>
 											  </div>
 											  <div class="form-group">
-											    <label for="inputPassword3" class="col-xs-2 control-label">标签</label>
+											    <label   class="col-xs-2 control-label">标签</label>
 											    <div class="col-xs-10">
 											      <input type="text" class="form-control" name="tabel" placeholder="请输入标签，便于搜索题目，例如: <高中数学>,<初中英语>" >
 											    </div>
 											  </div>
 											  <div class="form-group">
-											    <label for="inputPassword3" class="col-xs-2 control-label">难易</label>
+											    <label   class="col-xs-2 control-label">难易</label>
 											    <div class="col-xs-2">
 											      	<select class="form-control" multiple name="difficulty">
 											      		<option value="简单" selected="selected">简单</option>
@@ -138,39 +138,39 @@
 									  <div class="tab-pane" id="Multiple">
 									  		<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/admin/problem/save" method="post"  >
 											  <div class="form-group">
-											    <label for="inputEmail3" class="col-xs-2 control-label">题目</label>
+											    <label   class="col-xs-2 control-label">题目</label>
 											    <div class="col-xs-10">
-											      <textarea type="text" class="form-control"  rows="3" name="title"></textarea>
+											      <textarea type="text" id="editor2" class="form-control"  rows="3" name="title"></textarea>
 											      <input type="hidden" name="type" value="多选题">
 											    </div>
 											  </div>
 											  <div class="form-group">
-											    <label for="inputPassword3" class="col-xs-2 control-label">选项A</label>
+											    <label   class="col-xs-2 control-label">选项A</label>
 											    <div class="col-xs-10">
 											      <input type="text" class="form-control"  name="optA">
 											     
 											    </div>
 											  </div>
 											  <div class="form-group">
-											    <label for="inputPassword3" class="col-xs-2 control-label">选项B</label>
+											    <label   class="col-xs-2 control-label">选项B</label>
 											    <div class="col-xs-10">
 											      <input type="text" class="form-control" name="optB" >
 											    </div>
 											  </div>
 											  <div class="form-group">
-											    <label for="inputPassword3" class="col-xs-2 control-label">选项C</label>
+											    <label   class="col-xs-2 control-label">选项C</label>
 											    <div class="col-xs-10">
 											      <input type="text" class="form-control"  name="optC">
 											    </div>
 											  </div>
 											  <div class="form-group">
-											    <label for="inputPassword3" class="col-xs-2 control-label">选项D</label>
+											    <label   class="col-xs-2 control-label">选项D</label>
 											    <div class="col-xs-10">
 											      <input type="text" class="form-control" name="optD" >
 											    </div>
 											  </div>
 											  <div class="form-group" >
-											    <label for="inputPassword3" class="col-xs-2 control-label">答案</label>
+											    <label   class="col-xs-2 control-label">答案</label>
 											    <div class="col-xs-2" data-toggle="tooltip" data-placement="top" title="按住 Control (Ctrl) 键多选" onmouseover="$(this).tooltip('show')">
 											      	<select class="form-control" multiple name="answer">
 											      		<option value="A" selected="selected">A</option>
@@ -181,13 +181,13 @@
 											    </div>
 											  </div>
 											  <div class="form-group">
-											    <label for="inputPassword3" class="col-xs-2 control-label">标签</label>
+											    <label   class="col-xs-2 control-label">标签</label>
 											    <div class="col-xs-10">
 											      <input type="text" class="form-control" name="tabel" placeholder="请输入标签，便于搜索题目，例如: <高中数学>,<初中英语>" >
 											    </div>
 											  </div>
 											  <div class="form-group">
-											    <label for="inputPassword3" class="col-xs-2 control-label">难易</label>
+											    <label   class="col-xs-2 control-label">难易</label>
 											    <div class="col-xs-2">
 											      	<select class="form-control" multiple name="difficulty">
 											      		<option value="简单" selected="selected">简单</option>
@@ -209,15 +209,15 @@
 									  <div class="tab-pane" id="juedge">
 									  		<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/admin/problem/save" method="post" >
 											  <div class="form-group">
-											    <label for="inputEmail3" class="col-xs-2 control-label">题目</label>
+											    <label   class="col-xs-2  control-label">题目</label>
 											    <div class="col-xs-10">
-											      <textarea type="text" class="form-control"  rows="3" name="title"></textarea>
+											      <textarea id="editor3" class="form-control"  rows="3" name="title"></textarea>
 											      <input type="hidden" name="type" value="判断题">
 											    </div>
 											  </div>
 											 
 											  <div class="form-group" >
-											    <label for="inputPassword3" class="col-xs-2 control-label">答案</label>
+											    <label   class="col-xs-2 control-label">答案</label>
 											    <div class="col-xs-2" >
 											      	<select class="form-control"  name="answer">
 											      		<option value="对" selected="selected">对</option>
@@ -226,13 +226,13 @@
 											    </div>
 											  </div>
 											  <div class="form-group">
-											    <label for="inputPassword3" class="col-xs-2 control-label">标签</label>
+											    <label   class="col-xs-2 control-label">标签</label>
 											    <div class="col-xs-10">
 											      <input type="text" class="form-control" name="tabel" placeholder="请输入标签，便于搜索题目，例如: <高中数学>,<初中英语>" >
 											    </div>
 											  </div>
 											  <div class="form-group">
-											    <label for="inputPassword3" class="col-xs-2 control-label">难易</label>
+											    <label   class="col-xs-2 control-label">难易</label>
 											    <div class="col-xs-2">
 											      	<select class="form-control" multiple name="difficulty">
 											      		<option value="简单" selected="selected">简单</option>
@@ -254,26 +254,26 @@
 									  <div class="tab-pane" id="question">
 									  			<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/admin/problem/save" method="post" >
 												  <div class="form-group">
-												    <label for="inputEmail3" class="col-xs-2 control-label">题目</label>
+												    <label   class="col-xs-2 control-label">题目</label>
 												    <div class="col-xs-10">
-												      <textarea type="text" class="form-control"  rows="3" name="title"></textarea>
+												      <textarea type="text" id="editor4" class="form-control"  rows="3" name="title"></textarea>
 												      <input type="hidden" name="type" value="简答题">
 												    </div>
 												  </div>
 												  <div class="form-group" >
-												    <label for="inputPassword3" class="col-xs-2 control-label">参考答案</label>
+												    <label   class="col-xs-2 control-label">参考答案</label>
 												    <div class="col-xs-10" >
 												      	<textarea type="text" class="form-control"  rows="3" name="answer" placeholder="参考答案"></textarea>
 												    </div>
 												  </div>
 												  <div class="form-group">
-												    <label for="inputPassword3" class="col-xs-2 control-label">标签</label>
+												    <label   class="col-xs-2 control-label">标签</label>
 												    <div class="col-xs-10">
 												      <input type="text" class="form-control" name="tabel" placeholder="请输入标签，便于搜索题目，例如: <高中数学>,<初中英语>" >
 												    </div>
 												  </div>
 												  <div class="form-group">
-												    <label for="inputPassword3" class="col-xs-2 control-label">难易</label>
+												    <label   class="col-xs-2 control-label">难易</label>
 												    <div class="col-xs-2">
 												      	<select class="form-control" multiple name="difficulty">
 												      		<option value="简单" selected="selected">简单</option>
@@ -326,6 +326,8 @@
 		</div><!--  模态框 -->
     	
     	<%@ include file="buttom.jsp" %>
+    	<script src="${pageContext.request.contextPath}/js/ckeditor/ckeditor.js"></script>
+		<script src="${pageContext.request.contextPath}/js/ckeditor/jquery.js"></script>
     	<script type="text/javascript">
 		$(function(){
 			$("#problemList").click(function(){
@@ -343,7 +345,12 @@
 				
 			});
 		});
-
+		$(function() {
+			$( 'textarea#editor1' ).ckeditor();
+			$( 'textarea#editor2' ).ckeditor();
+			$( 'textarea#editor3' ).ckeditor();
+			$( 'textarea#editor4' ).ckeditor();
+		} );
 		</script>
   </body>
 </html>

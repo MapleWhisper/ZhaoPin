@@ -86,9 +86,14 @@ public class APositionController {
 	 * @return		返回到职业列表页面
 	 */
 	@RequestMapping("/position/delete/id/{id}")
-	public String delete(@PathVariable int id){
-		System.out.println("删除id为"+id+"的职位");
-		positionServer.delete(id);
+	public String delete(@PathVariable int id,Model model){
+		try {
+			positionServer.delete(id);
+		} catch (Exception e) {
+			model.addAttribute("meg", "这个岗位 已经被申请，不可以删除！请修改截止日期，使得岗位无效;");
+			return "error";
+		}
+		
 		return "redirect:/admin/position";
 	} 
 	

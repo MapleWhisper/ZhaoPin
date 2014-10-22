@@ -4,6 +4,7 @@
 <html>
   <head>
 	<%@ include file="header.jspf" %>
+	<title>职位浏览</title>
   </head>
   <body >
   	<div class="container">

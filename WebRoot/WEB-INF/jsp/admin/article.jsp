@@ -38,8 +38,8 @@
 									</c:if>								
 								</td>
 								<td><fm:formatDate pattern="yyyy-MM-dd HH:mm" value="${com.createDate}"/></td>
-								<td><a href="edit/id/${com.id }" class="btn btn-info"><span class=" glyphicon glyphicon-edit"></span>&nbsp;&nbsp;修改</a></td>
-								<td><a href="delete/id/${com.id}" class="btn btn-danger" onclick="return confirm('确认要删除吗？')"><span class=" glyphicon  glyphicon-trash"></span>&nbsp;&nbsp;删除</a></td>
+								<td><a href="article/edit/id/${com.id }" class="btn btn-info"><span class=" glyphicon glyphicon-edit"></span>&nbsp;&nbsp;修改</a></td>
+								<td><a href="article/delete/id/${com.id}" class="btn btn-danger" onclick="return confirm('确认要删除吗？')"><span class=" glyphicon  glyphicon-trash"></span>&nbsp;&nbsp;删除</a></td>
 							</tr>																								
 						 </c:forEach>
 							

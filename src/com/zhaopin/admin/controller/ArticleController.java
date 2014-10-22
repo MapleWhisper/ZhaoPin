@@ -23,12 +23,11 @@ public class ArticleController {
 	private ArticleService articleService;
 	
 	
-	@RequestMapping("/article/company")
+	@RequestMapping("/article")
 	public String company(Model model){
-		
-		List<Article> list = articleService.findCompanyAll();
+		List<Article> list = articleService.findAll();
 		model.addAttribute("companyList", list);
-		return "admin/company";
+		return "admin/article";
 		
 	}
 	
@@ -54,7 +53,7 @@ public class ArticleController {
 			article.setType("1");
 		}
 		articleService.save(article);
-		return "redirect:/admin/company";
+		return "redirect:/admin/article";
 	}
 	
 	@RequestMapping("/article/edit/id/{id}")
@@ -72,7 +71,7 @@ public class ArticleController {
 		a.setTitle(article.getTitle());
 		a.setContext(article.getContext());
 		articleService.updata(a);
-		return "admin/editArticle";
+		return "redirect:/admin/article";
 	}
 	
 }

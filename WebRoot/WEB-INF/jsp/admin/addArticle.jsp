@@ -1,9 +1,11 @@
 
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
+
 <html>
 <head>
 <%@ include file="header.jspf"%>
+<title>文章添加</title>
 <link rel="stylesheet"  href="${pageContext.request.contextPath}/js/kindeditor/themes/simple/simple.css" />
 <script charset="utf-8" src="${pageContext.request.contextPath}/js/kindeditor/kindeditor-min.js"></script>
 <script charset="utf-8" src="${pageContext.request.contextPath}/js/kindeditor/lang/zh_CN.js"></script>
@@ -33,6 +35,7 @@
 									<label  class="col-xs-2 control-label">文章类别：</label>
 									<div class="col-xs-4">
 										<input type="radio" name="type" value="1">公司介绍
+										<br>
 										<input type="radio" name="type" value="2">帮助文章
 									</div>
 								</div>
@@ -40,7 +43,7 @@
 								<div class="form-group">
 									<label  class="col-xs-2 control-label">文章内容：</label>
 									<div class="col-xs-9">
-										<textarea id="editor" class="form-control" name="context"  required rows="25"></textarea>
+										<textarea id="editor" class="form-control" name="context" rows="25"></textarea>
 									</div>
 								</div>
 								

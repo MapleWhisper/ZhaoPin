@@ -12,7 +12,7 @@ public class ArticleSerivceImpl extends BaseServerImpl<Article> implements Artic
 	
 	@Override
 	public List<Article> findCompanyAll() {
-		String hql = "from Article a where a.type=1";
+		String hql = " from Article a where a.type=1";
 		List<Article> list = (List<Article>) getSession().createQuery(hql).list();
 		return list;
 	}

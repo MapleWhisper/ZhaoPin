@@ -82,12 +82,12 @@ public class AdminController {
 		
 		Admin admin = adminServer.getById(id);
 		Set<Privilege> privileges =  admin.getPrivileges();
-		Integer [] ids = new Integer[privileges.size()];
+		Integer [] ids = new Integer[privileges.size()+1];
 		if(privileges!=null){
 			
 			Arrays.fill(ids, 0);
 			int index = 0 ;
-			for(Privilege p : admin.getPrivileges()){
+			for(Privilege p : privileges){
 				ids[index++]=p.getId();
 			}
 		}

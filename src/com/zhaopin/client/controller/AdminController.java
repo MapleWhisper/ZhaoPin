@@ -1,6 +1,7 @@
 package com.zhaopin.client.controller;
 
 import java.util.Arrays;
+import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -54,16 +55,15 @@ public class AdminController {
 		System.out.println("管理员登陆");
 		//登陆成功
 		if(a!=null){
-			Integer [] ids = new Integer[5];
-			Arrays.fill(ids, 0);
-			int index = 0 ;
-			if(a.getPrivileges()!=null){
-				for(Privilege p : a.getPrivileges()){
+			Set<Privilege> privileges =  a.getPrivileges();
+			Integer [] ids = new Integer[privileges.size()+1];
+			if(privileges!=null){
+				Arrays.fill(ids, 0);
+				int index = 0 ;
+				for(Privilege p : privileges){
 					ids[index++]=p.getId();
 				}
 			}
-			admin.setPrivilegeIds(ids);
-			
 			session.setAttribute("admin", a);
 			return "redirect:/admin/position";
 		}

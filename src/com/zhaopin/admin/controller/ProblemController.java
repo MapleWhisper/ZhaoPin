@@ -50,7 +50,6 @@ public class ProblemController {
 	@RequestMapping("/problem/save")
 	public String save(@ModelAttribute Problem problem ,Model model){
 		
-		System.out.println("ok");
 		problem.setCreateDate(new Date());
 		problemService.save(problem);
 		

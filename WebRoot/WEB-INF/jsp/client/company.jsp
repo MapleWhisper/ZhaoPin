@@ -10,16 +10,6 @@
 	width: 250px
 }
 </style>
-<script>
-		$(function(){
-			$(".pre").click(function(){
-				//alert("ok");
-				$(this).addClass("active");
-				$(this).siblings().removeClass("active");
-			});
-		});
-		
-	</script>
 </head>
 
 <body style="background-color: #f5f5f5">
@@ -44,7 +34,7 @@
 			<!--左侧的导航条 -->
 
 
-			<div class="col-xs-9" style="background-color: repeat;">
+			<div class="col-xs-9" >
 				<!-- style="background-image: url(${pageContext.request.contextPath}/image/company.jpg);  -->
 				<div class="row">
 					<div class="panel panel-default">

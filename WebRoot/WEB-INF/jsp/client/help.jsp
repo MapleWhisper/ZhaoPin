@@ -10,16 +10,6 @@
 	width: 250px
 }
 </style>
-<script>
-		$(function(){
-			$(".pre").click(function(){
-				//alert("ok");
-				$(this).addClass("active");
-				$(this).siblings().removeClass("active");
-			});
-		});
-		
-	</script>
 </head>
 
 <body style="background-color: #f5f5f5">

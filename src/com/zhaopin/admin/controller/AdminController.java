@@ -3,9 +3,9 @@ package com.zhaopin.admin.controller;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -81,10 +81,12 @@ public class AdminController {
 	public String editAdmin(@PathVariable int id,Model model){
 		
 		Admin admin = adminServer.getById(id);
-		Integer [] ids = new Integer[5];
-		Arrays.fill(ids, 0);
-		int index = 0 ;
-		if(admin.getPrivileges()!=null){
+		Set<Privilege> privileges =  admin.getPrivileges();
+		Integer [] ids = new Integer[privileges.size()];
+		if(privileges!=null){
+			
+			Arrays.fill(ids, 0);
+			int index = 0 ;
 			for(Privilege p : admin.getPrivileges()){
 				ids[index++]=p.getId();
 			}

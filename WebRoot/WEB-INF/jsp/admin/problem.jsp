@@ -21,7 +21,7 @@
 				  <!--搜索提示栏 -->
 				  	<div class="panel panel-primary">
 						 <div class="panel-heading">
-							    <h3 class="panel-title">搜索试题</h3>
+							    <h3 class="panel-title" style="font-size: 25px">搜索试题</h3>
 					      </div>
 						 <div class="panel-body">
     						 <div class="form-group">

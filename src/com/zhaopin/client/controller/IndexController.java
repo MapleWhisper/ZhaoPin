@@ -7,7 +7,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -15,10 +14,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.zhaopin.client.server.ArticleService;
 import com.zhaopin.client.server.PositionServer;
 import com.zhaopin.client.server.UserServer;
+import com.zhaopin.po.Article;
 import com.zhaopin.po.Position;
-import com.zhaopin.po.User;
 
 /**
  * 
@@ -35,13 +35,16 @@ public class IndexController {
 
 	@Resource(name="userServerImpl")
 	private UserServer userServer;
-
+	@Resource(name="articleSerivceImpl")
+	private ArticleService articleService;
 	/**
 	 * 此方法是用来加载主页数据，然后跳转到主页上的
 	 * 
 	 * @param model	//模型，需要加入的数据
 	 * @return	返回到主页 index页面上
 	 */
+	 
+	
 	@RequestMapping("/index")
 	public String index(ModelMap map,HttpServletRequest req,HttpSession session){
 				
@@ -75,6 +78,18 @@ public class IndexController {
 			}
 			map.addAttribute("positionName",plist);
 		}
+		
+		List<Article> list = articleService.findCompanyAll();
+		map.addAttribute("companyList", list);
+		
+		
+		
+		List<Article> list1 = articleService.findHelpAll();
+		map.addAttribute("helpList", list1);
+		
+		
+		
+		
 		return "client/index";
 	}
 

@@ -21,15 +21,19 @@
 		</div>
 		<div class="row">
 			<!--左侧的导航条 -->
-			<div class="col-xs-3">
-				<ul class="list-group" role="tablist" id="nav">
+			<div class="col-xs-3" >
+				<div class="list-group" style="position: fixed;width: 250px;">
 					<c:forEach items="${companyList}" var="com">
-						<li role="presentation"  class="list-group-item pre ">
-							<a href="${pageContext.request.contextPath}/client/article/show/id/${com.id}">
+						<c:if test="${com.id == article.id }">
+							<a href="${pageContext.request.contextPath}/client/article/show/id/${com.id}" class="list-group-item active">
 								${com.title}<span style="float: right;"><span class="glyphicon glyphicon-chevron-right"></span></span></a>
-						</li>
+						</c:if>
+						<c:if test="${com.id != article.id }">
+							<a href="${pageContext.request.contextPath}/client/article/show/id/${com.id}" class="list-group-item">
+								${com.title}<span style="float: right;"><span class="glyphicon glyphicon-chevron-right"></span></span></a>
+						</c:if>
 					</c:forEach>
-				</ul>
+				</div>
 			</div>
 			<!--左侧的导航条 -->
 
@@ -40,7 +44,9 @@
 					<div class="panel panel-default">
 					  <div class="panel-body">
 						  <div class="page-header">
-						 	 <h1>${article.title} <small>Company Introduction</small></h1>
+						  
+						 	 <h1><span class="	glyphicon glyphicon-bookmark"></span>
+						 	 ${article.title} <small>Company Introduction</small></h1>
 						  </div>
 								<div style="padding: 30px;">
 								<p>

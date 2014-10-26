@@ -48,9 +48,6 @@ public class PaperController {
 	 */
 	@RequestMapping("/paper")
 	public String paper(Model model){
-		
-		
-		
 		List<Paper> paperList = paperService.findAll();
 		model.addAttribute("paperList", paperList);
 		
@@ -74,7 +71,6 @@ public class PaperController {
 	}
 	
 	/**
-	 * 
 	 * 根据Id 显示试卷
 	 * @param id
 	 * @return

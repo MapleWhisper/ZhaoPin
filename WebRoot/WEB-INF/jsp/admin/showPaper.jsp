@@ -19,9 +19,9 @@
 					<%@ include file="left.jsp" %>
     			</div>
     			<div class="col-xs-9">
-    					<div class="page-header " style="text-align: center;margin-top: 100px">
-							<h2 >${paper.title }</h2>
-						</div>
+   					<div class="page-header " style="text-align: center;margin-top: 100px">
+						<h2 >${paper.title }</h2>
+					</div>
 					<div class="row">
 						<!--左侧的导航条 -->
 					  <div class="col-xs-1">

@@ -56,8 +56,6 @@
 						    	</table>
 						  </div>
 						</div><!-- 试卷列表 -->
-						
-						
     			</div>
     		</div>
     		<script type="text/javascript">

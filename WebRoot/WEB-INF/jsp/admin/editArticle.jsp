@@ -38,8 +38,6 @@
 									</div>
 								</div>
 								
-								
-								
 								<div class="form-group">
 									<center><input type="submit" value="修改文章" id="submit"  class="btn btn-primary btn-lg"/></center>
 								</div>

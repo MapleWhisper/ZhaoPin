@@ -3,6 +3,7 @@
 <html>
 <head>
 <%@ include file="header.jspf"%>
+<title>修改简历</title>
 
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/My97DatePicker/WdatePicker.js">
@@ -22,14 +23,13 @@
 									<div class="col-sm-8 col-sm-offset-2">
 										<div class="alert alert-danger alert-dismissible" role="alert">
   												<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
- 												 <span id="e1">${error}<span>
+ 												 <span id="e1">${error}</span>
 										</div>
 									</div>
 						</div>
 						<form action="${pageContext.request.contextPath}/client/resume/update" class="form-horizontal" role="form"
 								 enctype="multipart/form-data" id="form" method="post">
 							<div class="row">
-
 								<div class="col-sm-8 ">
 									<div class="page-header">
 										<h3>个人信息基础</h3>
@@ -187,6 +187,7 @@
 								</div>
 								
 							</div>
+							</div>
 							<div class="form-group">
 									<div class="col-sm-offset-3 col-sm-4">
 										<input type="submit" class="btn btn-primary btn-lg "
@@ -208,7 +209,7 @@
 	<script type="text/javascript">
 		$(function(){
 			var p = $("#e1").text();
-			if( p.length==11){
+			if( p.length==0){
 				$("#e2").remove();
 			}
 		});

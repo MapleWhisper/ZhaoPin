@@ -214,7 +214,7 @@ public class ResumeController  {
 		}
 		User u  = (User) session.getAttribute("user");
 		if(u!=null){
-			if(u.getResume().getId() != id && session.getAttribute("admin")!=null){
+			if(u.getResume().getId() != id && session.getAttribute("admin")==null){
 				model.addAttribute("meg", "对不起，非法浏览别人的简历是不允许的~╮(╯_╰)╭");
 				return "error";
 			}

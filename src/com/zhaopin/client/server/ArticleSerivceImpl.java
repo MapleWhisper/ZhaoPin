@@ -8,11 +8,13 @@ import com.zhaopin.base.BaseServerImpl;
 import com.zhaopin.po.Article;
 
 @Service
+@SuppressWarnings("unchecked")
 public class ArticleSerivceImpl extends BaseServerImpl<Article> implements ArticleService{
 	
 	@Override
 	public List<Article> findCompanyAll() {
 		String hql = " from Article a where a.type=1";
+		
 		List<Article> list = (List<Article>) getSession().createQuery(hql).list();
 		return list;
 	}

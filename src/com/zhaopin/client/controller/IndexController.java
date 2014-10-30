@@ -48,12 +48,12 @@ public class IndexController {
 	@RequestMapping("/index")
 	public String index(ModelMap map,HttpServletRequest req,HttpSession session){
 				
-		
-		if(!map.containsAttribute("positionList")){
-			map.addAttribute("positionList",positionServer.getByEndDate());	//把简历列表信息 加载到主页面
+		if(session.getAttribute("positionList")==null){
+			session.setAttribute("positionList",positionServer.getByEndDate());	//把简历列表信息 加载到主页面
 		}
-
-		if(!map.containsAttribute("positionName")){
+		
+		
+		if(session.getAttribute("positionName")==null){
 
 			List<Position>plist=positionServer.getPositionName();	
 			Iterator<Position>it=plist.iterator();
@@ -76,19 +76,13 @@ public class IndexController {
 					e.printStackTrace();
 				}
 			}
-			map.addAttribute("positionName",plist);
+			session.setAttribute("positionName",plist);
 		}
 		
-		List<Article> list = articleService.findCompanyAll();
-		map.addAttribute("companyList", list);
-		
-		
-		
-		List<Article> list1 = articleService.findHelpAll();
-		map.addAttribute("helpList", list1);
-		
-		
-		
+		if(session.getAttribute("companyList")==null || session.getAttribute("helpList")==null){
+			session.setAttribute("companyList",articleService.findCompanyAll());
+			session.setAttribute("helpList",articleService.findHelpAll());
+		}
 		
 		return "client/index";
 	}

@@ -3,8 +3,7 @@
 <html>
 <head>
 <%@ include file="header.jspf"%>
-<script
-	src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
+
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/My97DatePicker/WdatePicker.js">
 </script>
@@ -52,7 +51,7 @@
 											<div class="form-group">
 												<label for="birthday" class="col-sm-2 control-label">出生日期</label>
 												<div class="col-sm-6">
-													<input type="text" class="form-control inputxt"
+													<input type="text" class="form-control" required="required"
 														name="birthday" id="birthday" onClick="WdatePicker()">
 												</div>
 											</div>
@@ -67,7 +66,7 @@
 											<div class="form-group">
 												<label for="phoneNumber" class="col-sm-2 control-label">电话</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control inputxt"
+													<input type="number" class="form-control inputxt"
 														id="phoneNumber" name="phoneNumber" placeholder="150****">
 												</div>
 											</div>
@@ -75,7 +74,7 @@
 												<label for="idType" class="col-sm-2 control-label">证件类型</label>
 												<div class="col-sm-9">
 													<input type="text" class="form-control inputxt" id="idType"
-														name="idType" placeholder="第二代居民身份证">
+														name="idType" value="第二代居民身份证">
 												</div>
 											</div>
 
@@ -83,7 +82,7 @@
 											<div class="form-group">
 												<label for="idNumber" class="col-sm-2 control-label">证件号码</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control inputxt"
+													<input type="number" class="form-control inputxt"
 														id="idNumber" name="idNumber" placeholder="371321******">
 												</div>
 											</div>
@@ -97,7 +96,7 @@
 											<div class="form-group">
 												<label for="email" class="col-sm-2 control-label">电子邮箱</label>
 												<div class="col-sm-9">
-													<input type="text" class="form-control inputxt" id="email"
+													<input type="email" class="form-control inputxt" id="email"
 														name="email" placeholder="xxx@163.com">
 												</div>
 											</div>
@@ -142,7 +141,7 @@
 									<div class="form-group">
 										<label for="exceptSalary" class="col-sm-3 control-label">期望薪资待遇</label>
 										<div class="col-sm-6">
-											<input type="text" class="form-control inputxt"
+											<input type="number" class="form-control inputxt"
 												id="exceptSalary" name="exceptSalary" placeholder="2000">
 										</div>
 									</div>
@@ -272,7 +271,7 @@
 									</div>
 
 								</div>
-								<div class="form-group" >
+								<div class="form-group">
 									<div class="col-sm-offset-3 col-sm-4" style="margin-top: 50px">
 										<input type="submit" class="btn btn-primary btn-lg "
 											value="提交简历" />
@@ -290,6 +289,8 @@
 	</div>
 
 	<%@ include file="buttom.jsp"%>
+	<script src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/messages_zh.js"></script>
 	<script type="text/javascript">
 	$(function() {  
 		$("#form1").validate({

@@ -1,5 +1,6 @@
 package com.zhaopin.po;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Component;
 
 @Entity
 @Component
-public class Article {
+public class Article implements Serializable{
 	private Integer id;			//文章Id
 	private String title;		//文章标题
 	private String context;		//文章内容

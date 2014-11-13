@@ -119,11 +119,24 @@
 							</div>
 						</div>
 					</div>	
-					</div>
+					
+					<div class="col-xs-3">
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h3 class="panel-title">联系我们</h3>
+							</div>
+							<div class="panel-body" >
+								<h3>学校位置</h3>
+								<h5>南岗区邮政街321号博弈教育学校</h5>
+								<h3>电话</h3>
+								<h5>53627549  13206552833 </h5>
+							</div>
+						</div>
+					</div>	
+					
 				</div>
-
-    		
     	</div>
+    	
     	<%@ include file="buttom.jsp" %>
   </body>
 </html>

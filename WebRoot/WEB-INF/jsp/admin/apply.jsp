@@ -101,14 +101,14 @@
 										 			<td>查看简历</td>
 										 			<td>操作</td>
 										 			</tr>
-										 		<c:forEach items="${ list2}" var="a">
+										 		<c:forEach items="${list2}" var="a">
 										 			<tr class="data">
 										 			<td><a  title="用户信息" data-content="邮箱:${a.user.email}  电话:${a.user.phoneNumber} " 
 											 				onmouseover="$(this).popover('show')" onmouseout="$(this).popover('hide')">${a.user.name}</a></td>
 										 			<td><a target="_blank" href="position/show/id/${a.position.id}">${a.position.name }</a></td>
 										 			<td><fm:formatDate pattern="yyyy-MM-dd HH:mm" value="${a.applyDate }"/></td>
 										 			<td><a target="_blank" href="${pageContext.request.contextPath}/client/resume/show/${a.user.resume.id}">简历</a></td>
-										 			<td><a href='#' class='btn btn-info '>提醒用户答题</a></td>
+										 			<td><button type="button"  class='btn btn-info send' name="${a.id}">提醒用户答题</button></td>
 										 			</tr>
 										 		</c:forEach>
 												</table>
@@ -200,5 +200,18 @@
     		
     	</div>
     	<%@ include file="buttom.jsp" %>
+    	<script type="text/javascript">
+    		
+    		$(function(){
+    			$(".send").click(function(){
+    				var id = $(this).attr("name");
+    				$.post("apply/send/"+id,function(data){
+    					alert(data);
+    				});
+    				///
+    			});
+    		});
+    	</script>
+    	
   </body>
 </html>

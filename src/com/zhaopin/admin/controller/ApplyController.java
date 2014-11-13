@@ -1,11 +1,14 @@
 package com.zhaopin.admin.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -218,5 +221,20 @@ public class ApplyController {
 		model.addAttribute("apply", apply);
 		model.addAttribute("paper", paper);
 		return "admin/checkPaper";
+	}
+	
+	@RequestMapping("/apply/send/{id}")
+	public void sendUserToAnswer(@PathVariable int id,HttpServletResponse response) throws Exception{
+		Apply apply = applyService.getById(id);
+		PrintWriter  pw  = null; 
+		try{
+			MailSender.sendUserToAnswer(apply.getUser().getEmail(), apply);
+			pw = response.getWriter();
+			pw.println("success");
+		}catch(Exception e){
+			e.printStackTrace();
+			pw.println("error");
+		}
+		
 	}
 }

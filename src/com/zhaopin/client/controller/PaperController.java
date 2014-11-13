@@ -23,6 +23,7 @@ import com.zhaopin.po.Apply;
 import com.zhaopin.po.Paper;
 import com.zhaopin.po.User;
 import com.zhaopin.utils.ApplyState;
+import com.zhaopin.utils.MailSender;
 import com.zhaopin.utils.SystemConstant;
 
 
@@ -152,6 +153,7 @@ public class PaperController {
 		apply.setAnswer(ans);
 		apply.setState(ApplyState.待批阅.toString());
 		applyService.updata(apply);
+		MailSender.sendAdminToCheck(apply);
 		
 		
 		return "redirect:/client/personalCenter";

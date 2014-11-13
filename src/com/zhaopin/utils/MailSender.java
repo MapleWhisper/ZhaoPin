@@ -1,10 +1,8 @@
 package com.zhaopin.utils;
 
-import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Properties;
-
-import javax.mail.MessagingException;
+import javax.annotation.Resource;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeUtility;
@@ -17,6 +15,11 @@ import com.zhaopin.po.Apply;
 public class MailSender {
 	private static JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 	private static JavaMailSenderImpl mailSender2 = new JavaMailSenderImpl();
+	
+	@Resource(name="systemProperties")
+	private static SystemProperties systemProperties;
+	
+	private static Properties properties;
 	static{
 		 Properties prop  =   new  Properties() ;
 		 prop.put( " mail.smtp.auth " ,  " true " ) ;  //  将这个参数设为true，让服务器进行认证,认证用户名和密码是否正确 
@@ -33,11 +36,12 @@ public class MailSender {
 		 mailSender2.setUsername("boyieduzhaopin2@163.com");
 		 mailSender2.setPassword("013579"); 
 		 mailSender2.setDefaultEncoding("utf-8");
+		 
+		 properties = systemProperties.properties;
 	}
-	
+	/*/*
 	public static void main(String[] args) throws MessagingException {
 		
-		/*
 		MimeMessage message = mailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message);
 		
@@ -49,10 +53,9 @@ public class MailSender {
 		
 		mailSender.send(message);
 		System.out.println("邮件发送成功");
-		*/
 		
 	}
-	
+	*/
 	/**
 	 * 发送邮件
 	 * 
@@ -87,13 +90,13 @@ public class MailSender {
 	 * @param to	需要发送的人的邮箱(管理员邮箱)
 	 * @throws EncodingException 
 	 */
-	public static void sendAdminToAccept(String to ,Apply apply) {
+	public static void sendAdminToAccept(Apply apply) {
 		MimeMessage message = mailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message);
 		try {
 			
 			//邮件信息
-			helper.setTo(to);
+			helper.setTo(properties.getProperty("adminEmail"));
 			helper.setSubject("【待审核】你好，管理员！您有一个新的招聘待审核通知");
 			helper.setFrom(new InternetAddress(MimeUtility.encodeText("博弈教育招聘")+"<boyieduzhaopin@163.com>"));
 			
@@ -155,15 +158,15 @@ public class MailSender {
 	 * @param to	需要发送的人的邮箱(管理员邮箱)
 	 * @throws EncodingException 
 	 */
-	public static void sendAdminToCheck(String to ,Apply apply) {
-		MimeMessage message = mailSender.createMimeMessage();
+	public static void sendAdminToCheck(Apply apply) {
+		MimeMessage message = mailSender2.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message);
 		try {
 			
 			//邮件信息
-			helper.setTo(to);
+			helper.setTo(properties.getProperty("adminEmail"));
 			helper.setSubject("【待批阅】你好，管理员！有新的用户已完成答题，请进入个人中心页面 批阅");
-			helper.setFrom(new InternetAddress(MimeUtility.encodeText("博弈教育招聘")+"<boyieduzhaopin@163.com>"));
+			helper.setFrom(new InternetAddress(MimeUtility.encodeText("博弈教育招聘")+"<boyieduzhaopin2@163.com>"));
 			
 			//邮件内容
 			StringBuilder builder = new StringBuilder();
@@ -181,7 +184,7 @@ public class MailSender {
 			e.printStackTrace();
 		}
 		//发送邮件
-		mailSender.send(message);
+		mailSender2.send(message);
 		System.out.println("邮件发送成功");
 	}
 	

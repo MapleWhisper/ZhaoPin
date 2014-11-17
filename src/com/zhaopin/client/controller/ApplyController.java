@@ -81,7 +81,7 @@ public class ApplyController {
 			apply.setApplyDate(new Date());
 			apply.setPosition(position);
 			applyService.save(apply);
-			MailSender.sendAdminToCheck(apply);
+			MailSender.sendAdminToAccept(apply);
 		}
 		
 		return "redirect:/client/personalCenter";

@@ -6,6 +6,7 @@
 <head>
 <%@ include file="header.jspf"%>
 <title>文章添加</title>
+<link rel="stylesheet"  href="${pageContext.request.contextPath}/js/kindeditor/themes/simple/simple.css" />
 
 </head>
 
@@ -59,7 +60,7 @@
 			</div>
 		</div><!-- 	container -->
 		
-		<link rel="stylesheet"  href="${pageContext.request.contextPath}/js/kindeditor/themes/simple/simple.css" />
+		
 		<script charset="utf-8" src="${pageContext.request.contextPath}/js/kindeditor/kindeditor-min.js"></script>
 		<script charset="utf-8" src="${pageContext.request.contextPath}/js/kindeditor/lang/zh_CN.js"></script>
 		<script type="text/javascript">

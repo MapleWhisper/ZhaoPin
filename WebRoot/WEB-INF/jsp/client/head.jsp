@@ -21,7 +21,7 @@
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li><a href="${pageContext.request.contextPath}/client/index">社会招聘</a></li>
-						<li><a href="${pageContext.request.contextPath}/client/article/company">公司介绍</a></li>
+						<li><a target="_blank" href="http://company.bjsyedu.com/?page_id=35">公司介绍</a></li>
 						<li><a href="${pageContext.request.contextPath}/client/article/help">帮助中心</a></li>
 						<li><a href="${pageContext.request.contextPath}/client/index">校园招聘</a></li>
 					</ul>

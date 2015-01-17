@@ -9,6 +9,7 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.6.2/html5shiv.js"></script>
       <script src="js/respond.src.js"></script>
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/image/logo.jpg" type="image/x-icon" />
 	<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 	<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/tree.js"></script>

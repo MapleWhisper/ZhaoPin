@@ -4,7 +4,7 @@
 			
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="#"><strong>教育公司图标</strong></a>
+					<a class="navbar-brand" href="#"><img width="30px" src="${pageContext.request.contextPath}/image/logo.jpg"></a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->

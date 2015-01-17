@@ -14,7 +14,7 @@
 		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="#"><strong>教育公司图标</strong></a>
+					<a class="navbar-brand" href="#"><img width="30px" src="${pageContext.request.contextPath}/image/logo.jpg"></a>
 				</div>
 
 				<div class="collapse navbar-collapse"

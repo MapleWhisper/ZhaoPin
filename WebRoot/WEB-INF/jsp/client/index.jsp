@@ -155,7 +155,11 @@
 						<h3 class="panel-title">公司介绍</h3>
 					</div>
 					<div class="panel-body">
-
+						<ul style="margin-left: -25">
+								<li><a
+									href="http://company.bjsyedu.com/?page_id=35">博精思弈教育介绍</a>
+								</li>
+						</ul>
 						<c:forEach items="${companyList }" var="com">
 							<ul style="margin-left: -25">
 								<li><a

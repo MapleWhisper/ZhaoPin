@@ -34,7 +34,7 @@
 					</form>
 					 -->
 					<ul class="nav navbar-nav navbar-right">
-						<li><p class="navbar-text">欢迎来到 集团招聘！</p></li>
+						<li><p class="navbar-text">欢迎来到博精思弈教育招聘！</p></li>
 						
 			<!--	已登录		 -->
 					<c:if test="${ sessionScope.user!=null}">

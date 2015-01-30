@@ -3,7 +3,7 @@
 <html>
 
 <head>
-<title>博弈教育招聘</title>
+<title>博精思弈教育招聘</title>
 <%@ include file="header.jspf"%>
 </head>
 

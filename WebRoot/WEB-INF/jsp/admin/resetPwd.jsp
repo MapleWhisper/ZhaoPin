@@ -10,10 +10,10 @@
     	<div class="container">
     		<%@ include file="head.jsp" %>
     		<div class="row" style="margin-top: 70px">
-    			<div class="col-xs-3">
+    			<div class="col-xs-2">
 					<%@ include file="left.jsp" %>
     			</div>
-    			<div class="col-xs-9">
+    			<div class="col-xs-10">
     				<div class="panel panel-primary">
 					  <div class="panel-heading">修改密码</div>
 					  <div class="panel-body">

@@ -104,7 +104,6 @@ public class PositionController {
 			resp.getWriter().append(positionList);		//返回json数据
 			resp.getWriter().flush();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

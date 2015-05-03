@@ -27,7 +27,6 @@ public class FileUploadTestController {
 			try {
 				Files.copy(file.getInputStream(), Paths.get( "d:/"+file.getOriginalFilename())  );
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

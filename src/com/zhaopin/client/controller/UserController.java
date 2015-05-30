@@ -189,7 +189,7 @@ public class UserController {
 				StringBuilder text = new StringBuilder();
 				text.append("<html><body><h2>【博弈教育】您的验证码:<font color='red'>"+valifCode)
 						.append("</font></h2><br><h4>请您在 20 分钟内在注册页面输入验证码 以完成注册</h4></body></html>");
-				//MailSender.send(email,subject,text.toString());
+				MailSender.send(email,subject,text.toString());
 				session.setAttribute("valifCode", valifCode+"");
 				response.getWriter().println("success");
 				

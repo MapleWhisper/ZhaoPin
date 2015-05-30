@@ -174,7 +174,7 @@
 			if( p.length==0){
 				$("#e2").remove();
 			}else{
-				setTimeout("history.go(-1)",1000)
+				setTimeout("history.go(-1)",3000)
 			}
 		});
 		$(function(){
